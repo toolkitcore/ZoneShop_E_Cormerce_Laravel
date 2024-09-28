@@ -526,13 +526,10 @@
                         <div class="collapse" id="sidebarCategory">
                             <ul class="nav sub-navbar-nav">
                                 <li class="sub-nav-item">
-                                    <a class="sub-nav-link" href="category-list.html">List</a>
+                                    <a class="sub-nav-link" href="{{URL::to('/all-category-product')}}">List Category</a>
                                 </li>
                                 <li class="sub-nav-item">
-                                    <a class="sub-nav-link" href="category-edit.html">Edit</a>
-                                </li>
-                                <li class="sub-nav-item">
-                                    <a class="sub-nav-link" href="category-add.html">Create</a>
+                                    <a class="sub-nav-link" href="{{URL::to('/add-category-product')}}">Add Category</a>
                                 </li>
                             </ul>
                         </div>

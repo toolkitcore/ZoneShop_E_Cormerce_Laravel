@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
+use App\Models\Admin; // Nhập khẩu model Admin
+
 
 class AdminControllers extends Controller
 {
@@ -25,10 +27,11 @@ class AdminControllers extends Controller
         $admin_email = $request->admin_email;
         $admin_password = md5($request->admin_password);
 
-        $result = DB::table('tbl_admin')
-            ->where('admin_email', $admin_email)
+        $result = Admin::where('admin_email', $admin_email)
             ->where('admin_password', $admin_password)
             ->first();
+
+
         if ($result) {
             Session::put('admin_name', $result->admin_name);
             Session::put('admin_id', $result->admin_id);
