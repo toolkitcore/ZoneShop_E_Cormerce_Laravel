@@ -4,7 +4,7 @@
     <div class="container-xxl">
 
         <div class="row">
-            @foreach($categories as $category)
+            <!-- @foreach($categories as $category)
             <div class="col-md-6 col-xl-3">
                 <div class="card">
                     <div class="card-body text-center">
@@ -15,8 +15,35 @@
                     </div>
                 </div>
             </div>
-            @endforeach
+            @endforeach -->
         </div>
+        <?php
+
+        use Illuminate\Support\Facades\Session;
+
+        $message = Session::get('message');
+        if ($message) {
+            echo '<div class="alert alert-success alert-icon" id="success-alert" role="alert">
+        <div class="d-flex align-items-center">
+            <div class="avatar-sm rounded bg-success d-flex justify-content-center align-items-center fs-18 me-2 flex-shrink-0">
+                <i class="bx bx-check-shield text-white"></i>
+            </div>
+            <div class="flex-grow-1">
+                ' . $message . '
+            </div>
+        </div>
+    </div>';
+            Session::put('message', null);
+            echo '<script>
+        setTimeout(function() {
+            var alert = document.getElementById("success-alert");
+            if (alert) {
+                alert.style.display = "none";
+            }
+        }, 3000); // 5000 milliseconds = 5 seconds
+    </script>';
+        }
+        ?>
 
         <div class="row">
             <div class="col-xl-12">
@@ -74,7 +101,7 @@
                                                 <div class="rounded bg-light avatar-md d-flex align-items-center justify-content-center">
                                                     <img src="{{asset('public/uploads/category/'.$category->category_image)}}" alt="" class="avatar-md">
                                                 </div>
-                                                <p class="text-dark fw-medium fs-15 mb-0">{{$category->category_name}}s</p>
+                                                <p class="text-dark fw-medium fs-15 mb-0">{{$category->category_name}}</p>
                                             </div>
 
                                         </td>
@@ -84,12 +111,30 @@
                                                                     overflow: hidden;
                                                                     text-overflow: ellipsis;">{{$category->category_desc}}</td>
                                         <td>
-                                            <a href="#!" class="btn btn-light btn-sm"><iconify-icon icon="solar:eye-broken" class="align-middle fs-18"></iconify-icon></a>
+                                            <?php
+                                            if ($category->category_status == 0) {
+                                            ?>
+                                                <a href="{{URL::to('/active-category-product/'.$category->category_id)}}" class="btn btn-light btn-sm">
+                                                    <iconify-icon icon="solar:eye-broken" class="align-middle fs-18"></iconify-icon>
+                                                </a>
+                                            <?php
+                                            } else {
+                                            ?>
+                                                <a href="{{URL::to('/unactive-category-product/'.$category->category_id)}}" class="btn btn-primary btn-sm">
+                                                    <iconify-icon icon="solar:eye-broken" class="align-middle fs-18"></iconify-icon>
+                                                </a>
+                                            <?php
+                                            }
+                                            ?>
                                         </td>
                                         <td>
                                             <div class="d-flex gap-2">
-                                                <a href="#!" class="btn btn-soft-primary btn-sm"><iconify-icon icon="solar:pen-2-broken" class="align-middle fs-18"></iconify-icon></a>
-                                                <a href="#!" class="btn btn-soft-danger btn-sm"><iconify-icon icon="solar:trash-bin-minimalistic-2-broken" class="align-middle fs-18"></iconify-icon></a>
+                                                <!-- EDIT CATEGORY -->
+                                                <a href="{{URL::to('/edit-category-product/'.$category->category_id)}}" class="btn btn-soft-primary btn-sm">
+                                                    <iconify-icon icon="solar:pen-2-broken" class="align-middle fs-18"></iconify-icon>
+                                                </a>
+                                                <!-- DELETE CATEGORY -->
+                                                <a href="{{URL::to('/delete-category-product')}}" class="btn btn-soft-danger btn-sm"><iconify-icon icon="solar:trash-bin-minimalistic-2-broken" class="align-middle fs-18"></iconify-icon></a>
                                             </div>
                                         </td>
                                     </tr>
