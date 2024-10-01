@@ -14,21 +14,52 @@ class CategoryController extends Controller
 {
     public function Show_Category()
     {
-        $categories = Category_Product::orderBy('category_id', 'desc')->get();
+        $categories = Category_Product::paginate(6);
         return view('admin.all_category_product', compact('categories'));
     }
     public function Add_Category()
     {
-        return view('admin.add_category_product');
+        $categories = Category_Product::all();
+        return view('admin.add_category_product', compact('categories'));
     }
+
+    public function CheckNumberSortOrderCategory($number_check, $category_parent_id)
+    {
+        $categories = Category_Product::where('category_parent_id', $category_parent_id)->get();
+        $maxSortOrder = 0;
+        $isNumberInList = false;
+
+        foreach ($categories as $item) {
+            if ($item->category_sort_order == $number_check) {
+                $isNumberInList = true;
+            }
+
+            if ($item->category_sort_order > $maxSortOrder) {
+                $maxSortOrder = $item->category_sort_order;
+            }
+        }
+
+        if (!$isNumberInList) {
+            return $number_check;
+        }
+
+        return $maxSortOrder + 1;
+    }
+
 
     public function Add_Category_Action(Request $request)
     {
         $data = new Category_Product();
         $data->category_name = $request->category_name;
-        $data->category_parent_id = 1; // default is 1: admin
+        if ($request->category_parent_id == '') {
+            $data->category_parent_id = null;
+        } {
+            $data->category_parent_id = $request->category_parent_id; // default is 1: admin
+        }
         $data->category_desc = $request->category_desc;
         $data->category_status = (int)$request->category_status;
+        $data->category_sort_order =
+            $this->CheckNumberSortOrderCategory((int)$request->category_sort_order, $data->category_parent_id);
 
         if ($request->category_image == '') {
             $data->category_image = '';
@@ -44,13 +75,13 @@ class CategoryController extends Controller
                 $data->category_image = $new_image;
 
                 $data->save();
-                Session::put('message', 'Add Category Successfully !');
+                Session::flash('message', 'Add Category Successfully !');
                 return Redirect::to('add-category-product');
             }
         }
         $data->save();
         // Thiết lập thông báo
-        Session::put('message', 'Add Category Successfully !');
+        Session::flash('message', 'Add Category Successfully !');
         return Redirect('add-category-product');
     }
     // SET STATUS FOR CATEGORY 
@@ -58,14 +89,14 @@ class CategoryController extends Controller
     {
         Category_Product::where('category_id', $category_id)->update(['category_status' => 1]);
 
-        Session::put('message', 'Activate the category product successfurlly!');
+        Session::flash('message', 'Activate the category product successfurlly!');
         return Redirect('/all-category-product');
     }
     public function Set_UnActive_category_product($category_id)
     {
         Category_Product::where('category_id', $category_id)->update(['category_status' => 0]);
 
-        Session::put('message', 'Uctivate the category product successfurlly!');
+        Session::flash('message', 'Uctivate the category product successfurlly!');
         return Redirect('/all-category-product');
     }
     //show page edit category 
@@ -93,12 +124,18 @@ class CategoryController extends Controller
             $data['category_image'] = $new_image;
 
             DB::table('tbl_category_product')->where('category_id', $category_id)->update($data);
-            Session::put('message', 'Update the Category product Successfully !');
+            Session::flash('message', 'Update the Category product Successfully !');
             return Redirect::to('all-category-product');
         }
 
         DB::table('tbl_category_product')->where('category_id', $category_id)->update($data);
-        Session::put('message', 'Update the Category product Successfully !');
+        Session::flash('message', 'Update the Category product Successfully !');
         return Redirect::to('all-category-product');
+    }
+    public function Delete_Category_product($category_id)
+    {
+        Category_Product::where('category_id', $category_id)->delete();
+        Session::flash('message', 'Delete the Category Product Successfully');
+        return Redirect('all-category-product');
     }
 }

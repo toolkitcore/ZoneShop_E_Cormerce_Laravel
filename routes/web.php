@@ -22,7 +22,7 @@ Route::get('/profile-admin', [AdminControllers::class, 'Show_profile']);
 Route::get('/all-category-product', [CategoryController::class, 'Show_Category']);
 Route::get('/add-category-product', [CategoryController::class, 'Add_Category']);
 Route::post('/add-category-action', [CategoryController::class, 'Add_Category_Action']);
-Route::get('/delete-category-action', [CategoryController::class, 'Delete_Category_Action']);
+Route::get('/delete-category-product/{category_id}', [CategoryController::class, 'Delete_Category_product']);
 
 Route::get('/edit-category-product/{caterory_id}', [CategoryController::class, 'Edit_Category_product']);
 Route::post('/update-category-action/{caterory_id}', [CategoryController::class, 'Update_Category_product']);

@@ -14,6 +14,7 @@ class Category_Product extends Model
         'category_id',
         'category_name',
         'category_parent_id',
+        'category_sort_order',
         'category_desc',
         'category_status',
         'category_image',

@@ -81,7 +81,7 @@
                                             </div>
                                         </th>
                                         <th>Categories</th>
-                                        <th>Parent ID</th>
+                                        <th>Parent</th>
                                         <th>Description</th>
                                         <th>Status</th>
                                         <th>Action</th>
@@ -105,7 +105,15 @@
                                             </div>
 
                                         </td>
-                                        <td>ID-Parent</td>
+                                        <td>
+                                            <?php
+                                            if ($category->category_parent_id == null) {
+                                                echo 'Root';
+                                            } else {
+                                                echo $category->category_parent_id;
+                                            }
+                                            ?>
+                                        </td>
                                         <td class="truncate" style="max-width: 100px;
                                                                     white-space: nowrap;
                                                                     overflow: hidden;
@@ -134,7 +142,7 @@
                                                     <iconify-icon icon="solar:pen-2-broken" class="align-middle fs-18"></iconify-icon>
                                                 </a>
                                                 <!-- DELETE CATEGORY -->
-                                                <a href="{{URL::to('/delete-category-product')}}" class="btn btn-soft-danger btn-sm"><iconify-icon icon="solar:trash-bin-minimalistic-2-broken" class="align-middle fs-18"></iconify-icon></a>
+                                                <a href="{{URL::to('/delete-category-product/'.$category->category_id)}}" onclick="return confirm('Are you sure to delete This')" class="btn btn-soft-danger btn-sm"><iconify-icon icon="solar:trash-bin-minimalistic-2-broken" class="align-middle fs-18"></iconify-icon></a>
                                             </div>
                                         </td>
                                     </tr>
@@ -147,11 +155,7 @@
                     <div class="card-footer border-top">
                         <nav aria-label="Page navigation example">
                             <ul class="pagination justify-content-end mb-0">
-                                <li class="page-item"><a class="page-link" href="javascript:void(0);">Previous</a></li>
-                                <li class="page-item active"><a class="page-link" href="javascript:void(0);">1</a></li>
-                                <li class="page-item"><a class="page-link" href="javascript:void(0);">2</a></li>
-                                <li class="page-item"><a class="page-link" href="javascript:void(0);">3</a></li>
-                                <li class="page-item"><a class="page-link" href="javascript:void(0);">Next</a></li>
+                                <span>{!!$categories->render() !!}</span>
                             </ul>
                         </nav>
                     </div>

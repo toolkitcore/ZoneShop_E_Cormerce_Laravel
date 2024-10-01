@@ -16,7 +16,8 @@ return new class extends Migration
         Schema::create('tbl_category_product', function (Blueprint $table) {
             $table->increments('category_id');
             $table->string('category_name');
-            $table->tinyInteger('category_parent_id');
+            $table->tinyInteger('category_parent_id')->nullable()->default(NULL);
+            $table->tinyInteger('category_sort_order');
             $table->text('category_desc');
             $table->tinyInteger('category_status');
             $table->string('category_image');

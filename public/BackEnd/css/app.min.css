@@ -22176,14 +22176,18 @@ input[type="file"]::file-selector-button {
   text-overflow: ellipsis; /* Hiển thị dấu '...' nếu nội dung quá dài */
 }
 
-#success-alert {
-  position: fixed;
-  top: 20px; /* Khoảng cách từ đỉnh */
-  right: 20px; /* Khoảng cách từ bên phải */
-  z-index: 1050; /* Đảm bảo nó nằm trên các phần tử khác */
-  width: auto; /* Hoặc bạn có thể định nghĩa chiều rộng cụ thể */
-  max-width: 300px; /* Chiều rộng tối đa */
-  display: flex; /* Sử dụng flexbox để căn chỉnh nội dung */
+    #success-alert {
+        position: fixed;
+        top: 20px; /* Khoảng cách từ đỉnh */
+        right: 20px; /* Khoảng cách từ bên phải */
+        z-index: 1050; /* Đảm bảo nó nằm trên các phần tử khác */
+        width: auto; /* Hoặc bạn có thể định nghĩa chiều rộng cụ thể */
+        max-width: 300px; /* Chiều rộng tối đa */
+        display: flex; /* Sử dụng flexbox để căn chỉnh nội dung */
+    }
+
 }
 
+.hidden.sm\:flex-1.sm\:flex.sm\:items-center.sm\:justify-between {
+  display: none;
 }
