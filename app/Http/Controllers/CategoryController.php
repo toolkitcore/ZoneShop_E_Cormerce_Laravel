@@ -15,12 +15,12 @@ class CategoryController extends Controller
     public function Show_Category()
     {
         $categories = Category_Product::paginate(6);
-        return view('admin.all_category_product', compact('categories'));
+        return view('admin.category.all_category_product', compact('categories'));
     }
     public function Add_Category()
     {
         $categories = Category_Product::all();
-        return view('admin.add_category_product', compact('categories'));
+        return view('admin.category.add_category_product', compact('categories'));
     }
 
     public function CheckNumberSortOrderCategory($number_check, $category_parent_id)
@@ -104,9 +104,14 @@ class CategoryController extends Controller
     {
 
         $edit_category_product = Category_Product::where('category_id', $caterory_id)->get();
-        $manager_category_product = view('admin.edit_category_product')->with('edit_category_product', $edit_category_product);
+        $categories = Category_Product::all();
 
-        return view('admin_layout')->with('admin.all_category_product', $manager_category_product);
+        $manager_category_product = view('admin.category.edit_category_product')
+            ->with('edit_category_product', $edit_category_product)
+            ->with('categories', $categories);
+
+        return view('admin_layout')
+            ->with('admin.category.all_category_product', $manager_category_product);
     }
 
     public function Update_Category_product(Request $request, $category_id)
@@ -114,6 +119,13 @@ class CategoryController extends Controller
         $data = array();
         $data['category_name'] = $request->category_name;
         $data['category_desc'] = $request->category_desc;
+        if ($request->category_parent_id == '') {
+            $data['category_parent_id'] = null;
+        } {
+            $data['category_parent_id'] = $request->category_parent_id;
+        }
+        $data['category_sort_order'] =
+            $this->CheckNumberSortOrderCategory((int)$request->category_sort_order, $data['category_parent_id']);
 
         $get_image = $request->file('category_image');
         if ($get_image) {

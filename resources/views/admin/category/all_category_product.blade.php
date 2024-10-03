@@ -110,7 +110,11 @@
                                             if ($category->category_parent_id == null) {
                                                 echo 'Root';
                                             } else {
-                                                echo $category->category_parent_id;
+                                                foreach ($categories as $category_1) {
+                                                    if ($category->category_parent_id == $category_1->category_id) {
+                                                        echo $category_1->category_name;
+                                                    }
+                                                }
                                             }
                                             ?>
                                         </td>

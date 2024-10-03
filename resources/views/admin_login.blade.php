@@ -4,7 +4,7 @@
 <head>
     <!-- Title Meta -->
     <meta charset="utf-8" />
-    <title>Sign In | Larkon - Responsive Admin Dashboard Template</title>
+    <title>Sign In | ZoneShop</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="A fully responsive premium admin dashboard template" />
     <meta name="author" content="Techzaa" />
@@ -43,7 +43,7 @@
                                         <img src="{{asset('public/BackEnd/images/logo-light.png')}}" height="24" alt="logo light">
                                     </a>
                                 </div>
-                                <h2 class="fw-bold fs-24 text-center">Admintrators</h2>
+                                <h2 class="fw-bold fs-24 text-center">Administrator</h2>
                                 <?php
 
                                 use Illuminate\Support\Facades\Session;
