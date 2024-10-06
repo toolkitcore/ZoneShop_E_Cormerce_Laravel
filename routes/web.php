@@ -7,6 +7,7 @@ use App\Http\Controllers\AdminControllers;
 use App\Http\Controllers\AttributesProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\BrandController;
+use App\Http\Controllers\DetailProductController;
 use App\Http\Controllers\ProductController;
 
 // FRONTEND
@@ -48,12 +49,24 @@ Route::get('/unactive-brand-product/{brand_id}', [BrandController::class, 'Set_U
 // PRODUCTS
 Route::get('/all-product', [ProductController::class, 'Show_Product']);
 Route::get('/add-product', [ProductController::class, 'Add_Product']);
-Route::get('/edit-product', [ProductController::class, 'Edit_Product']);
+Route::get('/edit-product/{product_id}', [ProductController::class, 'Edit_Product']);
+Route::post('/add-product-action', [ProductController::class, 'Add_Product_Action']);
+Route::get('//active-product/{product_id}', [ProductController::class, 'Set_Active_product']);
+Route::get('//unactive-product/{product_id}', [ProductController::class, 'Set_UnActive_product']);
+Route::post('/update-product-action/{product_id}', [ProductController::class, 'Update_Product']);
+Route::get('/delete-product/{product_id}', [ProductController::class, 'Delete_Product']);
 
 // ATTRIBUTES PRODUCTS
 Route::get('/all-attribute-product', [AttributesProductController::class, 'Show_Attribute_Product']);
 Route::get('/add-attribute-product', [AttributesProductController::class, 'Add_Attribute_Product']);
-Route::get('/edit-attribute-product', [AttributesProductController::class, 'Edit_Attribute_Product']);
+Route::get('/edit-attribute-product/{category_id}', [AttributesProductController::class, 'Edit_Attribute_Product']);
 Route::post('/add-attribute-action', [AttributesProductController::class, 'Add_attribute_action']);
-Route::post('/update-attribute-action', [AttributesProductController::class, 'Update_attribute_action']);
-Route::get('/delete-attribute-action', [AttributesProductController::class, 'Delete_attribute_action']);
+
+Route::get('/delete-attribute-action/{category_id}', [AttributesProductController::class, 'Delete_attribute_action']); // chưa làm
+Route::post('/update-attribute-action/{category_id}', [AttributesProductController::class, 'Update_attribute_action']); // chưa làm
+
+// PRODUCTS DETAIL
+Route::get('/all-detail-product', [DetailProductController::class, 'Show_Detail_Product']);
+Route::get('/add-detail-product', [DetailProductController::class, 'Add_Detail_Product']);
+Route::get('/edit-detail-product/{category_id}', [DetailProductController::class, 'Edit_Detail_Product']);
+Route::post('/add-detail-action', [DetailProductController::class, 'Add_Detail_action']);

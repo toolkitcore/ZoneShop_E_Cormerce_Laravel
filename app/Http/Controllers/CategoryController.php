@@ -90,14 +90,14 @@ class CategoryController extends Controller
     {
         Category_Product::where('category_id', $category_id)->update(['category_status' => 1]);
 
-        Session::flash('message', 'Activate the category product successfurlly!');
+        Session::flash('success', 'Activate the category product successfurlly!');
         return Redirect('/all-category-product');
     }
     public function Set_UnActive_category_product($category_id)
     {
         Category_Product::where('category_id', $category_id)->update(['category_status' => 0]);
 
-        Session::flash('message', 'Uctivate the category product successfurlly!');
+        Session::flash('success', 'Uctivate the category product successfurlly!');
         return Redirect('/all-category-product');
     }
     //show page edit category 
@@ -137,18 +137,18 @@ class CategoryController extends Controller
             $data['category_image'] = $new_image;
 
             DB::table('tbl_category_product')->where('category_id', $category_id)->update($data);
-            Session::flash('message', 'Update the Category product Successfully !');
+            Session::flash('success', 'Update the Category product Successfully !');
             return Redirect::to('all-category-product');
         }
 
         DB::table('tbl_category_product')->where('category_id', $category_id)->update($data);
-        Session::flash('message', 'Update the Category product Successfully !');
+        Session::flash('success', 'Update the Category product Successfully !');
         return Redirect::to('all-category-product');
     }
     public function Delete_Category_product($category_id)
     {
         Category_Product::where('category_id', $category_id)->delete();
-        Session::flash('message', 'Delete the Category Product Successfully');
+        Session::flash('success', 'Delete the Category Product Successfully');
         return Redirect('all-category-product');
     }
 }

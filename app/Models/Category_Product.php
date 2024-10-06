@@ -22,4 +22,9 @@ class Category_Product extends Model
         'category_status',
         'category_image',
     ];
+
+    public function attributes()
+    {
+        return $this->hasMany(Attributes::class, 'category_id');
+    }
 }

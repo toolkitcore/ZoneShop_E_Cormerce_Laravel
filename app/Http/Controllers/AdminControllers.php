@@ -31,13 +31,13 @@ class AdminControllers extends Controller
             ->where('admin_password', $admin_password)
             ->first();
 
-
         if ($result) {
             Session::put('admin_name', $result->admin_name);
             Session::put('admin_id', $result->admin_id);
+            Session::flash('success', 'Login Successfully !');
             return Redirect::to('/dashboard');
         } else {
-            Session::put('message', 'Mật khẩu hoặc tài khoản bị sai !');
+            Session::flash('error', 'Password or Username invalid! Please enter again !');
             return Redirect::to('/admin');
         }
     }
@@ -45,6 +45,7 @@ class AdminControllers extends Controller
     {
         Session::put('admin_name', null);
         Session::put('admin_id', null);
+        Session::flash('success', 'Logout Successfully !');
         return Redirect::to('/admin');
     }
     public function Show_profile()

@@ -12,6 +12,8 @@
 
     <!-- App favicon -->
     <link rel="shortcut icon" href="{{ asset('public/BackEnd/images/favicon.ico') }}">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+
 
     <!-- Vendor css (Require in all Page) -->
     <link href="{{ asset('public/BackEnd/css/vendor.min.css') }}" rel="stylesheet" type="text/css" />
@@ -563,7 +565,7 @@
                     <li class="menu-title">General</li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ URL::to('/trang-chu') }}">
+                        <a class="nav-link" href="{{ URL::to('/dashboard') }}">
                             <span class="nav-icon">
                                 <iconify-icon icon="solar:widget-5-bold-duotone"></iconify-icon>
                             </span>
@@ -582,41 +584,58 @@
                         <div class="collapse" id="sidebarProducts">
                             <ul class="nav sub-navbar-nav">
                                 <li class="sub-nav-item">
-                                    <a class="sub-nav-link  menu-arrow" href="#sidebarItemDemoSubItem"
+                                    <a class="sub-nav-link menu-arrow" href="#sidebarItemDemoSubItem1"
                                         data-bs-toggle="collapse" role="button" aria-expanded="false"
-                                        aria-controls="sidebarItemDemoSubItem">
+                                        aria-controls="sidebarItemDemoSubItem1">
                                         <span> Attribute Product </span>
                                     </a>
-                                    <div class="collapse" id="sidebarItemDemoSubItem">
+                                    <div class="collapse" id="sidebarItemDemoSubItem1">
                                         <ul class="nav sub-navbar-nav">
                                             <li class="sub-nav-item">
-                                                <a class="sub-nav-link" href="javascript:void(0);">List Attribute</a>
+                                                <a class="sub-nav-link"
+                                                    href={{ URL::to('all-attribute-product') }}">List Attribute</a>
                                             </li>
                                             <li class="sub-nav-item">
-                                                <a class="sub-nav-link" href="javascript:void(0);">Add Attribute</a>
-                                            </li>
-                                            <li class="sub-nav-item">
-                                                <a class="sub-nav-link" href="javascript:void(0);">Edit Attribute</a>
+                                                <a class="sub-nav-link"
+                                                    href={{ URL::to('add-attribute-product') }}">Add Attribute</a>
                                             </li>
                                         </ul>
                                     </div>
                                 </li>
                                 <li class="sub-nav-item">
-                                    <a class="sub-nav-link  menu-arrow" href="#sidebarItemDemoSubItem"
+                                    <a class="sub-nav-link menu-arrow" href="#sidebarItemDemoSubItem2"
                                         data-bs-toggle="collapse" role="button" aria-expanded="false"
-                                        aria-controls="sidebarItemDemoSubItem">
-                                        <span> Products </span>
+                                        aria-controls="sidebarItemDemoSubItem2">
+                                        <span> Product Detail </span>
                                     </a>
-                                    <div class="collapse" id="sidebarItemDemoSubItem">
+                                    <div class="collapse" id="sidebarItemDemoSubItem2">
                                         <ul class="nav sub-navbar-nav">
                                             <li class="sub-nav-item">
-                                                <a class="sub-nav-link" href="javascript:void(0);">List Product</a>
+                                                <a class="sub-nav-link"
+                                                    href="{{ URL::to('all-detail-product') }}">List Product</a>
                                             </li>
                                             <li class="sub-nav-item">
-                                                <a class="sub-nav-link" href="javascript:void(0);">Add Product</a>
+                                                <a class="sub-nav-link"
+                                                    href="{{ URL::to('add-detail-product') }}">Add Product</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="sub-nav-item">
+                                    <a class="sub-nav-link menu-arrow" href="#sidebarItemDemoSubItem3"
+                                        data-bs-toggle="collapse" role="button" aria-expanded="false"
+                                        aria-controls="sidebarItemDemoSubItem3">
+                                        <span> Products </span>
+                                    </a>
+                                    <div class="collapse" id="sidebarItemDemoSubItem3">
+                                        <ul class="nav sub-navbar-nav">
+                                            <li class="sub-nav-item">
+                                                <a class="sub-nav-link" href="{{ URL::to('all-product') }}">List
+                                                    Product</a>
                                             </li>
                                             <li class="sub-nav-item">
-                                                <a class="sub-nav-link" href="javascript:void(0);">Edit Product</a>
+                                                <a class="sub-nav-link" href="{{ URL::to('add-product') }}">Add
+                                                    Product</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -624,6 +643,7 @@
                             </ul>
                         </div>
                     </li>
+
                     <li class="nav-item">
                         <a class="nav-link menu-arrow" href="#sidebarCategory" data-bs-toggle="collapse"
                             role="button" aria-expanded="false" aria-controls="sidebarCategory">
@@ -1403,6 +1423,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"
         integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
     <!-- Vendor Javascript (Require in all Page) -->
     <script src="{{ asset('public/BackEnd/js/vendor.js') }}"></script>
     <!-- App Javascript (Require in all Page) -->
@@ -1415,6 +1438,7 @@
 
     <!-- Dashboard Js -->
     <script src="{{ asset('public/BackEnd/js/pages/dashboard.js') }}"></script>
+
 
 </body>
 

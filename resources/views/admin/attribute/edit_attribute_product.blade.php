@@ -1,67 +1,46 @@
 @extends('admin_layout')
 @section('content_admin')
+    @include('components.toast')
+
+
     <div class="page-content">
 
-        <!-- Start Container Fluid -->
         <div class="container-xxl">
 
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <h4 class="card-title">Add Attribute</h4>
-                        </div>
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <form>
+                    <form action="{{ URL::to('/update-attribute-action') }}" method="post">
+                        @csrf
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Add Attribute</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-lg-12">
                                         <div class="mb-3">
-                                            <label for="variant-name" class="form-label text-dark">Attribute Variant</label>
+                                            <label for="variant-name" class="form-label">
+                                                Name Attribute </label>
                                             <input type="text" id="variant-name" class="form-control"
-                                                placeholder="Enter Name" value="Brand">
+                                                placeholder="Enter List Attributes" name="attribute_name">
+                                            <p class="ms-3 mt-1">
+                                                For a single attribute: name_attribute <br>
+                                                For a list of attributes: [name_attribute_1, name_attribute_2,
+                                                name_attribute_3, ...]
+                                            </p>
                                         </div>
-                                    </form>
-                                </div>
-                                <div class="col-lg-6">
-                                    <form>
-                                        <div class="mb-3">
-                                            <label for="value-name" class="form-label text-dark">Attribute Value</label>
-                                            <input type="text" id="value-name" class="form-control"
-                                                placeholder="Enter Value"
-                                                value="Dyson , H&M, Nike , GoPro , Huawei , Rolex , Zara , Thenorthface">
-                                        </div>
-                                    </form>
-                                </div>
-                                <div class="col-lg-6">
-                                    <form>
-                                        <div class="">
-                                            <label for="attribute-id" class="form-label text-dark">Attribute ID</label>
-                                            <input type="text" id="attribute-id" class="form-control"
-                                                placeholder="Enter ID" value="BR-3922">
-                                        </div>
-                                    </form>
-                                </div>
-                                <div class="col-lg-6">
-                                    <form>
-                                        <div class="">
-                                            <label for="option" class="form-label"> Option</label>
-                                            <select class="form-control" id="option" data-choices data-choices-groups
-                                                data-placeholder="Select Option">
-                                                <option value="Dropdown" selected>Dropdown</option>
-                                                <option value="Radio">Radio</option>
-                                            </select>
-                                        </div>
-                                    </form>
+
+                                    </div>
                                 </div>
                             </div>
+                            <div class="card-footer border-top">
+                                <input type="submit" class="btn btn-primary" value="Update Attributes">
+                            </div>
                         </div>
-                        <div class="card-footer border-top">
-                            <a href="#!" class="btn btn-primary">Edit Change</a>
-                        </div>
-                    </div>
+                    </form>
                 </div>
             </div>
-        </div>
 
+        </div>
     </div>
 @endsection

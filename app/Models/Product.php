@@ -24,7 +24,8 @@ class Product extends Model
         'product_quantity',
         'product_image',
         'brand_id',
-        'category_id'
+        'category_id',
+        'product_status'
     ];
 
     // Bỏ qua các trường timestamp nếu không dùng chúng

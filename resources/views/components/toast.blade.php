@@ -1,5 +1,5 @@
 <!-- resources/views/components/toast.blade.php -->
-@if (session('success') || session('error'))
+@if (session('success') || session('error') || $errors->any())
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script>
         function showToast(text, options) {
@@ -12,31 +12,38 @@
                 backgroundColor: options.backgroundColor, // Thêm màu cho toast
             }).showToast();
         }
-    </script>
-    <script>
+
         document.addEventListener("DOMContentLoaded", function() {
             @if (session('success'))
-                var toastText = "{{ session('success') }}";
-                var toastOptions = {
+                showToast("{{ session('success') }}", {
                     gravity: 'top',
                     position: 'right',
                     duration: 5000,
-                    close: 'close',
-                    backgroundColor: '#28a745', // Màu xanh cho thông báo thành công
-                };
-                showToast(toastText, toastOptions);
+                    close: true,
+                    backgroundColor: '#28a745' // Màu xanh cho thông báo thành công
+                });
             @endif
 
             @if (session('error'))
-                var toastText = "{{ session('error') }}";
-                var toastOptions = {
+                showToast("{{ session('error') }}", {
                     gravity: 'top',
                     position: 'right',
                     duration: 5000,
-                    close: 'close',
-                    backgroundColor: '#dc3545', // Màu đỏ cho thông báo lỗi
-                };
-                showToast(toastText, toastOptions);
+                    close: true,
+                    backgroundColor: '#dc3545' // Màu đỏ cho thông báo lỗi
+                });
+            @endif
+
+            @if ($errors->any())
+                var errorText =
+                    "<ul>@foreach ($errors->all() as $error)<li>{{ $error }}</li>@endforeach</ul>";
+                showToast(errorText, {
+                    gravity: 'top',
+                    position: 'right',
+                    duration: 10000, // Thời gian hiển thị lâu hơn cho lỗi xác thực
+                    close: true,
+                    backgroundColor: '#ffc107' // Màu vàng cho thông báo lỗi xác thực
+                });
             @endif
         });
     </script>

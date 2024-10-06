@@ -38,37 +38,52 @@
                                                     <label class="form-check-label" for="customCheck1"></label>
                                                 </div>
                                             </th>
-                                            <th>ID</th>
                                             <th>Category</th>
                                             <th>Attributes</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>
-                                                <div class="form-check">
-                                                    <input type="checkbox" class="form-check-input" id="customCheck2">
-                                                    <label class="form-check-label" for="customCheck2">&nbsp;</label>
-                                                </div>
-                                            </td>
-                                            <td>BR-3922</td>
-                                            <td>Brand</td>
-                                            <td>Dyson , H&M, Nike , GoPro , Huawei , Rolex , Zara , Thenorthface</td>
-                                            <td>
-                                                <div class="d-flex gap-2">
-
-                                                    <a href="#!" class="btn btn-soft-primary btn-sm"><iconify-icon
-                                                            icon="solar:pen-2-broken"
-                                                            class="align-middle fs-18"></iconify-icon></a>
-                                                    <a href="#!" class="btn btn-soft-danger btn-sm"><iconify-icon
-                                                            icon="solar:trash-bin-minimalistic-2-broken"
-                                                            class="align-middle fs-18"></iconify-icon></a>
-                                                </div>
-                                            </td>
-                                        </tr>
+                                        @foreach ($categories as $category_item)
+                                            <tr>
+                                                <td>
+                                                    <div class="form-check">
+                                                        <input type="checkbox" class="form-check-input" id="customCheck2">
+                                                        <label class="form-check-label" for="customCheck2">&nbsp;</label>
+                                                    </div>
+                                                </td>
+                                                <td>{{ $category_item->category_name }}</td>
+                                                <td>
+                                                    @if ($category_item->attributes->isEmpty())
+                                                        <span>No attributes found</span>
+                                                    @else
+                                                        @foreach ($category_item->attributes as $attribute)
+                                                            {{ $attribute->attribute_name }}
+                                                            @if (!$loop->last)
+                                                                ,
+                                                            @endif
+                                                        @endforeach
+                                                    @endif
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex gap-2">
+                                                        <a href="{{ URL::to('/edit-attribute-product/' . $category_item->category_id) }}"
+                                                            class="btn btn-soft-primary btn-sm">
+                                                            <iconify-icon icon="solar:pen-2-broken"
+                                                                class="align-middle fs-18"></iconify-icon>
+                                                        </a>
+                                                        <a href="{{ URL::to('/delete-attribute-product/' . $category_item->category_id) }}"
+                                                            class="btn btn-soft-danger btn-sm">
+                                                            <iconify-icon icon="solar:trash-bin-minimalistic-2-broken"
+                                                                class="align-middle fs-18"></iconify-icon>
+                                                        </a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
+
                             </div>
                             <!-- end table-responsive -->
                         </div>

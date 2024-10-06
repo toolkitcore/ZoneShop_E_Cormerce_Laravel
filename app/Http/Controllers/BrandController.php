@@ -31,7 +31,7 @@ class BrandController extends Controller
         $data->brand_status = (int)$request->brand_status;
         $data->save();
 
-        Session::flash('message', 'Add brand Successfully !');
+        Session::flash('success', 'Add brand Successfully !');
         return Redirect('add-brand-product');
     }
     // SET STATUS FOR brand 
@@ -39,14 +39,14 @@ class BrandController extends Controller
     {
         Brand_Product::where('brand_id', $brand_id)->update(['brand_status' => 1]);
 
-        Session::flash('message', 'Activate the brand product successfurlly!');
+        Session::flash('success', 'Activate the brand product successfurlly!');
         return Redirect('/all-brand-product');
     }
     public function Set_UnActive_Brand_Product($brand_id)
     {
         Brand_Product::where('brand_id', $brand_id)->update(['brand_status' => 0]);
 
-        Session::flash('message', 'Uctivate the brand product successfurlly!');
+        Session::flash('success', 'Unactive the brand product successfurlly!');
         return Redirect('/all-brand-product');
     }
     //show page edit brand 
@@ -71,13 +71,13 @@ class BrandController extends Controller
         $data['brand_desc'] = $request->brand_desc;
 
         DB::table('tbl_Brand_Product')->where('brand_id', $brand_id)->update($data);
-        Session::flash('message', 'Update the brand product Successfully !');
+        Session::flash('success', 'Update the brand product Successfully !');
         return Redirect::to('all-brand-product');
     }
     public function Delete_Brand_Product($brand_id)
     {
         Brand_Product::where('brand_id', $brand_id)->delete();
-        Session::flash('message', 'Delete the brand Product Successfully');
+        Session::flash('success', 'Delete the brand Product Successfully');
         return Redirect('all-brand-product');
     }
 }
