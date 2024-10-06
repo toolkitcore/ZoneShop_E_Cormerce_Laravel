@@ -51,11 +51,13 @@ class CategoryController extends Controller
     {
         $data = new Category_Product();
         $data->category_name = $request->category_name;
+
         if ($request->category_parent_id == '') {
             $data->category_parent_id = null;
-        } {
-            $data->category_parent_id = $request->category_parent_id; // default is 1: admin
+        } else {
+            $data->category_parent_id = $request->category_parent_id;
         }
+
         $data->category_desc = $request->category_desc;
         $data->category_status = (int)$request->category_status;
         $data->category_sort_order =
@@ -64,26 +66,25 @@ class CategoryController extends Controller
         if ($request->category_image == '') {
             $data->category_image = '';
         } else {
-
             $get_image = $request->file('category_image');
             if ($get_image) {
                 $get_name_image = $get_image->getClientOriginalName();
                 $name_image = current(explode('.', $get_name_image));
-                // lấy đuôi mở rộng của file
                 $new_image = $name_image . rand(0, 99) . '.' . $get_image->getClientOriginalExtension();
                 $get_image->move('public/uploads/category', $new_image);
                 $data->category_image = $new_image;
-
-                $data->save();
-                Session::flash('message', 'Add Category Successfully !');
-                return Redirect::to('add-category-product');
             }
         }
+
         $data->save();
-        // Thiết lập thông báo
-        Session::flash('message', 'Add Category Successfully !');
-        return Redirect('add-category-product');
+
+        // Lưu thông báo vào session để hiển thị sau redirect
+        Session::flash('success', 'Add Category Successfully!');
+
+        return Redirect::to('add-category-product');
     }
+
+
     // SET STATUS FOR CATEGORY 
     public function Set_Active_category_product($category_id)
     {

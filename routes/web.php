@@ -4,8 +4,10 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminControllers;
+use App\Http\Controllers\AttributesProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\BrandController;
+use App\Http\Controllers\ProductController;
 
 // FRONTEND
 Route::get('/', [HomeController::class, 'Show_Page_Home']);
@@ -42,3 +44,16 @@ Route::post('/update-brand-action/{brand_id}', [BrandController::class, 'Update_
 
 Route::get('/active-brand-product/{brand_id}', [BrandController::class, 'Set_Active_Brand_product']);
 Route::get('/unactive-brand-product/{brand_id}', [BrandController::class, 'Set_UnActive_Brand_product']);
+
+// PRODUCTS
+Route::get('/all-product', [ProductController::class, 'Show_Product']);
+Route::get('/add-product', [ProductController::class, 'Add_Product']);
+Route::get('/edit-product', [ProductController::class, 'Edit_Product']);
+
+// ATTRIBUTES PRODUCTS
+Route::get('/all-attribute-product', [AttributesProductController::class, 'Show_Attribute_Product']);
+Route::get('/add-attribute-product', [AttributesProductController::class, 'Add_Attribute_Product']);
+Route::get('/edit-attribute-product', [AttributesProductController::class, 'Edit_Attribute_Product']);
+Route::post('/add-attribute-action', [AttributesProductController::class, 'Add_attribute_action']);
+Route::post('/update-attribute-action', [AttributesProductController::class, 'Update_attribute_action']);
+Route::get('/delete-attribute-action', [AttributesProductController::class, 'Delete_attribute_action']);

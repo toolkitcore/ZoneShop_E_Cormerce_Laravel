@@ -1,5 +1,10 @@
 @extends('admin_layout')
 @section('content_admin')
+
+@include('components.toast')//
+
+<!-- Form và nội dung thêm danh mục -->
+
 <div class="page-content">
     <!-- Start Container Fluid -->
     <script>
@@ -117,7 +122,10 @@
                         <div class="p-3 bg-light mb-3 rounded">
                             <div class="row justify-content-end g-2">
                                 <div class="col-lg-2">
-                                    <input type="submit" class="btn btn-outline-secondary w-100" value="Add Category">
+
+                                    <button type="submit" class="btn btn-outline-secondary w-100">
+                                        Add Category
+                                    </button>
                                 </div>
                                 <div class="col-lg-2">
                                     <a href="#!" class="btn btn-primary w-100">Cancel</a>
