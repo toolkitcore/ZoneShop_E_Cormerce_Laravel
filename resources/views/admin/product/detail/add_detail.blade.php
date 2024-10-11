@@ -16,41 +16,44 @@
                 <form action="{{ URL::to('/add-detail-action') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="col-xl-12 col-lg-12">
-                        <form action="">
-
-                            <div class="card">
-                                <div class="card-header">
-                                    <h4 class="card-title">Products Details</h4>
-                                </div>
-                                <div class="card-body">
-                                    <div class="row">
-                                        @foreach ($category->attributes as $item)
-                                            <div class="col-lg-6">
-                                                <div class="mb-3">
-                                                    <label for="category-title" class="form-label">
-                                                        {{ $item->attribute_name }}: .{{ $item->category_id }}
-                                                    </label>
-                                                    <input type="text" name="category_name" id="category-title"
-                                                        class="form-control" placeholder="Enter Value">
-                                                </div>
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">
+                                    {{ $Product->category->category_name . '/' . $Product->product_name }}</h3>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Products Details</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    @foreach ($category->attributes as $item)
+                                        <div class="col-lg-6">
+                                            <div class="mb-3">
+                                                <label for="category-title" class="form-label">
+                                                    {{ $item->attribute_name }}:
+                                                </label>
+                                                <input type="text" name="attribute_value" id="category-title"
+                                                    class="form-control" placeholder="Enter Value">
                                             </div>
-                                        @endforeach
-                                    </div>
+                                        </div>
+                                    @endforeach
                                 </div>
                             </div>
-                            <div class="p-3 bg-light mb-3 rounded">
-                                <div class="row justify-content-end g-2">
-                                    <div class="col-lg-2">
-                                        <button type="submit" class="btn btn-outline-secondary w-100">
-                                            Add Product Details
-                                        </button>
-                                    </div>
-                                    <div class="col-lg-2">
-                                        <a href="#!" class="btn btn-primary w-100">Cancel</a>
-                                    </div>
+                        </div>
+                        <div class="p-3 bg-light mb-3 rounded">
+                            <div class="row justify-content-end g-2">
+                                <div class="col-lg-2">
+                                    <button type="submit" class="btn btn-outline-secondary w-100">
+                                        Add Product Details
+                                    </button>
+                                </div>
+                                <div class="col-lg-2">
+                                    <a href="#!" class="btn btn-primary w-100">Cancel</a>
                                 </div>
                             </div>
-                        </form>
+                        </div>
                     </div>
                 </form>
             </div>

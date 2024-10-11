@@ -85,7 +85,7 @@ class CategoryController extends Controller
     }
 
 
-    // SET STATUS FOR CATEGORY 
+    // SET STATUS FOR CATEGORY
     public function Set_Active_category_product($category_id)
     {
         Category_Product::where('category_id', $category_id)->update(['category_status' => 1]);
@@ -150,5 +150,11 @@ class CategoryController extends Controller
         Category_Product::where('category_id', $category_id)->delete();
         Session::flash('success', 'Delete the Category Product Successfully');
         return Redirect('all-category-product');
+    }
+
+    public function Filter_Category_Root()
+    {
+        $category_root = Category_Product::whereNull('category_parent_id')->get();
+        Redirect('all-category-product')->with('category_root', $category_root);
     }
 }

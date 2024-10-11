@@ -2,7 +2,34 @@
 @section('content_admin')
     @include('components.uploadpicture')
     @include('components.toast')
+    {{-- <script defer>
+        function updateCard() {
+            // Get input values from the form
+            const productName = document.getElementById('product-name').value;
+            const productCategory = document.getElementById('product-category').value;
+            const productBrand = document.getElementById('product-brand').value;
+            const productDescription = document.getElementById('product-description').value;
+            const productQuantity = document.getElementById('product-quantity').value;
+            const productStatus = document.getElementById('product-status').value;
+            const productPriceOriginal = document.getElementById('product-price-original').value;
+            const productPriceSelling = document.getElementById('product-price-selling').value;
+            const productDiscount = ((productPriceOriginal - productPriceSelling) / productPriceOriginal) * 100;
+            const productImage = document.getElementById('product-image').value;
 
+            // Update the card fields dynamically
+            document.getElementById('card-product-name').innerText = productName;
+            document.getElementById('card-product-category').innerText = productCategory;
+            document.getElementById('card-product-brand').innerText = productBrand;
+            document.getElementById('card-product-description').innerText = productDescription;
+            document.getElementById('card-product-quantity').innerText = productQuantity;
+            document.getElementById('card-product-status').innerText = productStatus;
+            document.getElementById('card-product-price-original').innerText = productPriceOriginal;
+            document.getElementById('card-product-price-selling').innerText = productPriceSelling;
+            document.getElementById('card-product-discount').innerText = productDiscount;
+            document.getElementById('card-product-image').src = productImage;
+
+        }
+    </script> --}}
 
     <div class="page-content">
 
@@ -13,85 +40,59 @@
                 {{-- <div class="col-xl-3 col-lg-4">
                     <div class="card">
                         <div class="card-body">
-                            <img src="{{ 'public/BackEnd/images/product/p-1.png' }}" alt=""
-                                class="img-fluid rounded bg-light">
-                            <div class="mt-3">
-                                <h4>Men Black Slim Fit T-shirt <span class="fs-14 text-muted ms-1">(Fashion)</span></h4>
-                                <h5 class="text-dark fw-medium mt-3">Price :</h5>
-                                <h4 class="fw-semibold text-dark mt-2 d-flex align-items-center gap-2">
-                                    <span class="text-muted text-decoration-line-through">$100</span> $80 <small
-                                        class="text-muted"> (30% Off)</small>
-                                </h4>
-                                <div class="mt-3">
-                                    <h5 class="text-dark fw-medium">Size :</h5>
-                                    <div class="d-flex flex-wrap gap-2" role="group"
-                                        aria-label="Basic checkbox toggle button group">
-                                        <input type="checkbox" class="btn-check" id="size-s">
-                                        <label
-                                            class="btn btn-light avatar-sm rounded d-flex justify-content-center align-items-center"
-                                            for="size-s">S</label>
-
-                                        <input type="checkbox" class="btn-check" id="size-m" checked>
-                                        <label
-                                            class="btn btn-light avatar-sm rounded d-flex justify-content-center align-items-center"
-                                            for="size-m">M</label>
-
-                                        <input type="checkbox" class="btn-check" id="size-xl">
-                                        <label
-                                            class="btn btn-light avatar-sm rounded d-flex justify-content-center align-items-center"
-                                            for="size-xl">Xl</label>
-
-                                        <input type="checkbox" class="btn-check" id="size-xxl">
-                                        <label
-                                            class="btn btn-light avatar-sm rounded d-flex justify-content-center align-items-center"
-                                            for="size-xxl">XXL</label>
-
-                                    </div>
-                                </div>
-                                <div class="mt-3">
-                                    <h5 class="text-dark fw-medium">Colors :</h5>
-                                    <div class="d-flex flex-wrap gap-2" role="group"
-                                        aria-label="Basic checkbox toggle button group">
-                                        <input type="checkbox" class="btn-check" id="color-dark">
-                                        <label
-                                            class="btn btn-light avatar-sm rounded d-flex justify-content-center align-items-center"
-                                            for="color-dark"> <i class="bx bxs-circle fs-18 text-dark"></i></label>
-
-                                        <input type="checkbox" class="btn-check" id="color-yellow">
-                                        <label
-                                            class="btn btn-light avatar-sm rounded d-flex justify-content-center align-items-center"
-                                            for="color-yellow"> <i class="bx bxs-circle fs-18 text-warning"></i></label>
-
-                                        <input type="checkbox" class="btn-check" id="color-white">
-                                        <label
-                                            class="btn btn-light avatar-sm rounded d-flex justify-content-center align-items-center"
-                                            for="color-white"> <i class="bx bxs-circle fs-18 text-white"></i></label>
-
-                                        <input type="checkbox" class="btn-check" id="color-red">
-                                        <label
-                                            class="btn btn-light avatar-sm rounded d-flex justify-content-center align-items-center"
-                                            for="color-red"> <i class="bx bxs-circle fs-18 text-danger"></i></label>
-
-                                    </div>
-                                </div>
+                            <div class="bg-light text-center rounded bg-light">
+                                <img src="{{ asset('public/BackEnd/images/product/p-1.png') }}" alt=""
+                                    class="avatar-xxl">
                             </div>
-                        </div>
-                        <div class="card-footer bg-light-subtle">
-                            <div class="row g-2">
-                                <div class="col-lg-6">
-                                    <a href="#!" class="btn btn-outline-secondary w-100">Create Product</a>
+                            <div class="mt-3">
+                                <h4 id="card-product-name">Name Product</h4>
+                                <div class="row">
+                                    <div class="col-lg-12 col-12">
+                                        <p class="mb-1 mt-2">Price :</p>
+                                        <h3 class="mb-0">
+                                            <span class="text-muted text-decoration-line-through"
+                                                id="card-product-price-original">100</span>
+                                            <span id="card-product-price-selling">500</span>
+                                            <small class="text-muted" id="card-product-discount">(Off 30%)</small>
+                                            </h4>
+                                    </div>
                                 </div>
-                                <div class="col-lg-6">
-                                    <a href="#!" class="btn btn-primary w-100">Cancel</a>
+                                <div class="row">
+                                    <div class="col-lg-6 col-6">
+                                        <p class="mb-1 mt-2">Category :</p>
+                                        <h5 class="mb-0" id="card-product-category">Name Category</h5>
+                                    </div>
+                                    <div class="col-lg-6 col-6">
+                                        <p class="mb-1 mt-2">Brand :</p>
+                                        <h5 class="mb-0" id="card-product-brand">Name Brand</h5>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6 col-6">
+                                        <p class="mb-1 mt-2">Stock :</p>
+                                        <h5 class="mb-0" id="card-product-quantity">10000</h5>
+                                    </div>
+                                    <div class="col-lg-6 col-6">
+                                        <p class="mb-1 mt-2">Status :</p>
+                                        <h5 class="mb-0" id="card-product-status">Active/Unactive</h5>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12 col-12">
+                                        <p class="mb-1 mt-2">Description :</p>
+                                        <h5 class="mb-0" id="card-product-description">Lorem ipsum dolor sit, amet
+                                            consectetur adipisicing elit.
+                                            Quisquam eaque asperiores dignissimos aliquam minus? </h5>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div> --}}
 
-                <form action="{{ URL::to('/add-product-action') }}" method="post" enctype="multipart/form-data">
-                    @csrf
-                    <div class="col-xl-9 col-lg-8 ">
+                <div class="col-xl-12 col-lg-12 ">
+                    <form action="{{ URL::to('/add-product-action') }}" method="post" enctype="multipart/form-data">
+                        @csrf
                         <div class="card">
                             <div class="card-header">
                                 <h4 class="card-title">Add Thumbnail Photo</h4>
@@ -217,18 +218,21 @@
 
                         <div class="p-3 bg-light mb-3 rounded">
                             <div class="row justify-content-end g-2">
+                                {{-- <div class="col-lg-2">
+                                    <button onclick="updateCard()" class="btn btn-outline-secondary w-100">Demo </button>
+                                </div> --}}
                                 <div class="col-lg-2">
-                                    {{-- <a href="submit" class="btn btn-outline-secondary w-100">Create Product</a> --}}
-                                    <input type="submit" class="btn btn-outline-secondary w-100" value="Create Product">
+                                    <input type="submit" class="btn btn-outline-secondary w-100"
+                                        value="Save & Continue">
                                 </div>
                                 <div class="col-lg-2">
                                     <a href="#!" class="btn btn-primary w-100">Cancel</a>
                                 </div>
                             </div>
                         </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
     </div>
 @endsection

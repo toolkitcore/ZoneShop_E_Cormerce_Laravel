@@ -8,15 +8,15 @@
             <div class="row">
                 <!-- @foreach ($categories as $category)
     <div class="col-md-6 col-xl-3">
-                                <div class="card">
-                                    <div class="card-body text-center">
-                                        <div class="rounded bg-secondary-subtle d-flex align-items-center justify-content-center mx-auto">
-                                            <img src="{{ asset('public/uploads/category/' . $category->category_image) }}" alt="" class="avatar-xl">
-                                        </div>
-                                        <h4 class="mt-3 mb-0">{{ $category->category_name }}</h4>
-                                    </div>
-                                </div>
-                            </div>
+                                                                    <div class="card">
+                                                                        <div class="card-body text-center">
+                                                                            <div class="rounded bg-secondary-subtle d-flex align-items-center justify-content-center mx-auto">
+                                                                                <img src="{{ asset('public/uploads/category/' . $category->category_image) }}" alt="" class="avatar-xl">
+                                                                            </div>
+                                                                            <h4 class="mt-3 mb-0">{{ $category->category_name }}</h4>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
     @endforeach -->
             </div>
 
@@ -27,23 +27,21 @@
                             <h4 class="card-title flex-grow-1">All Categories List</h4>
 
                             <a href="{{ URL::to('/add-category-product') }}" class="btn btn-sm btn-primary">
-                                Add Product
+                                Add Category
                             </a>
 
                             <div class="dropdown">
                                 <a href="#" class="dropdown-toggle btn btn-sm btn-outline-light"
                                     data-bs-toggle="dropdown" aria-expanded="false">
-                                    This Month
+                                    Filter Category
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end">
                                     <!-- item-->
-                                    <a href="#!" class="dropdown-item">Download</a>
+                                    <a href="{{ URL::to('/filter-category-root') }}" class="dropdown-item">Root</a>
                                     <!-- item-->
-                                    <a href="#!" class="dropdown-item">Export</a>
-                                    <!-- item-->
-                                    <a href="#!" class="dropdown-item">Import</a>
                                 </div>
                             </div>
+
                         </div>
                         <div>
                             <div class="table-responsive">
@@ -64,6 +62,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+
                                         @foreach ($categories as $category)
                                             <tr>
                                                 <td>

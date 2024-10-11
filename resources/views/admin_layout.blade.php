@@ -91,7 +91,7 @@
                                     <a href="javascript:void(0);" class="dropdown-item py-3 border-bottom text-wrap">
                                         <div class="d-flex">
                                             <div class="flex-shrink-0">
-                                                <img src="{{ asset('public/BackEnd/images/users/avatar-1.jpg') }}"
+                                                <img src="{{ asset('public/uploads/profile/admin_profile.png') }}"
                                                     class="img-fluid me-2 avatar-sm rounded-circle" alt="avatar-1" />
                                             </div>
                                             <div class="flex-grow-1">
@@ -202,7 +202,7 @@
                                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="d-flex align-items-center">
                                     <img class="rounded-circle" width="32"
-                                        src="{{ asset('public/BackEnd/images/users/avatar-1.jpg') }}" alt="avatar-3">
+                                        src="{{ asset('public/uploads/profile/admin_profile.png') }}" alt="avatar-3">
                                 </span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
@@ -587,17 +587,17 @@
                                     <a class="sub-nav-link menu-arrow" href="#sidebarItemDemoSubItem1"
                                         data-bs-toggle="collapse" role="button" aria-expanded="false"
                                         aria-controls="sidebarItemDemoSubItem1">
-                                        <span> Attribute Product </span>
+                                        <span> Attributes </span>
                                     </a>
                                     <div class="collapse" id="sidebarItemDemoSubItem1">
                                         <ul class="nav sub-navbar-nav">
                                             <li class="sub-nav-item">
                                                 <a class="sub-nav-link"
-                                                    href={{ URL::to('all-attribute-product') }}">List Attribute</a>
+                                                    href="{{ URL::to('all-attribute-product') }}">List Attribute</a>
                                             </li>
                                             <li class="sub-nav-item">
                                                 <a class="sub-nav-link"
-                                                    href={{ URL::to('add-attribute-product') }}">Add Attribute</a>
+                                                    href="{{ URL::to('add-attribute-product') }}">Add Attribute</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -612,11 +612,11 @@
                                         <ul class="nav sub-navbar-nav">
                                             <li class="sub-nav-item">
                                                 <a class="sub-nav-link"
-                                                    href="{{ URL::to('all-detail-product') }}">List Product</a>
+                                                    href="{{ URL::to('all-detail-product') }}">List Product Detail</a>
                                             </li>
                                             <li class="sub-nav-item">
                                                 <a class="sub-nav-link"
-                                                    href="{{ URL::to('add-detail-product') }}">Add Product</a>
+                                                    href="{{ URL::to('add-detail-product') }}">Add Product Detail</a>
                                             </li>
                                         </ul>
                                     </div>

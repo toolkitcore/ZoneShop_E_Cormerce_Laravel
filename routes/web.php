@@ -33,8 +33,9 @@ Route::post('/update-category-action/{caterory_id}', [CategoryController::class,
 
 Route::get('/active-category-product/{caterory_id}', [CategoryController::class, 'Set_Active_category_product']);
 Route::get('/unactive-category-product/{caterory_id}', [CategoryController::class, 'Set_UnActive_category_product']);
+Route::get('/filter-category-root', [CategoryController::class, 'Filter_Category_Root']);
 
-//BRAND PRODUCTS 
+//BRAND PRODUCTS
 Route::get('/all-brand-product', [BrandController::class, 'Show_Brand']);
 Route::get('/add-brand-product', [BrandController::class, 'Add_Brand']);
 Route::post('/add-brand-action', [BrandController::class, 'Add_Brand_Action']);
@@ -67,6 +68,6 @@ Route::post('/update-attribute-action/{category_id}', [AttributesProductControll
 
 // PRODUCTS DETAIL
 Route::get('/all-detail-product', [DetailProductController::class, 'Show_Detail_Product']);
-Route::get('/add-detail-product', [DetailProductController::class, 'Add_Detail_Product']);
+Route::get('/add-detail-product/{category_id}', [DetailProductController::class, 'Add_Detail_Product']);
 Route::get('/edit-detail-product/{category_id}', [DetailProductController::class, 'Edit_Detail_Product']);
 Route::post('/add-detail-action', [DetailProductController::class, 'Add_Detail_action']);

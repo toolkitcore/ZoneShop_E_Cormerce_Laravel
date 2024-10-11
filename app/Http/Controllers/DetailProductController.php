@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 use App\Http\Requests;
+use App\Models\Brand_Product;
 use App\Models\Category_Product;
 use App\Models\Product;
 use Illuminate\Support\Facades\Session;
@@ -22,18 +23,26 @@ class DetailProductController extends Controller
     // }
     public function Show_Detail_Product()
     {
-        $category = Category_Product::with('attributes')->where('category_id', 21)->first();
+        $products = Product::all();
+        $product_count = Product::count();
+        $categories = Category_Product::all();
+        $brands = Brand_Product::all();
 
-        return view('admin.product.detail.all_detail', compact('category'));
+        return view('admin.product.detail.all_detail', compact(
+            'products',
+            'product_count',
+            'categories',
+            'brands'
+        ));
     }
 
 
     public function Add_Detail_Product($product_id)
     {
-        $Product = Product::where('product_id', $product_id)->first();
+        $Product = Product::with(['category'])->where('product_id', $product_id)->first();
         if ($Product) {
             $category = Category_Product::with('attributes')->where('category_id', $Product->category_id)->first();
-            return view('admin.product.detail.add_detail', compact('category'));
+            return view('admin.product.detail.add_detail', compact('category', 'Product'));
         } else {
             return redirect()->back()->with('error', 'Product not found');
         }

@@ -60,7 +60,8 @@ class ProductController extends Controller
             return Redirect::back()->withInput(); // Quay lại với input trước đó
         }
 
-        return Redirect::to('add-product');
+
+        return Redirect::to('add-detail-product/' . $data->product_id);
     }
     public function Set_Active_product($product_id)
     {
