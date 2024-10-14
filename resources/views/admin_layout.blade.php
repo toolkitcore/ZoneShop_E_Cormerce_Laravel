@@ -14,6 +14,15 @@
     <link rel="shortcut icon" href="{{ asset('public/BackEnd/images/favicon.ico') }}">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
 
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.3/themes/smoothness/jquery-ui.css">
+    <!-- slider -->
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- đặt trước -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.3/jquery-ui.min.js"></script>
+    <!-- thao tác người dùng thì jquery ui  -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- Vendor css (Require in all Page) -->
     <link href="{{ asset('public/BackEnd/css/vendor.min.css') }}" rel="stylesheet" type="text/css" />
@@ -1431,12 +1440,13 @@
     <!-- App Javascript (Require in all Page) -->
     <script src="{{ asset('public/BackEnd/js/app.js') }}"></script>
 
+
     <!-- Vector Map Js -->
     <script src="{{ asset('public/BackEnd/vendor/jsvectormap/js/jsvectormap.min.js') }}"></script>
     <script src="{{ asset('public/BackEnd/vendor/jsvectormap/maps/world-merc.js') }}"></script>
     <script src="{{ asset('public/BackEnd/vendor/jsvectormap/maps/world.js') }}"></script>
 
-    <!-- Dashboard Js -->
+    <script src="{{ asset('public/BackEnd/js/pages/product-grid.js') }}"></script>
     <script src="{{ asset('public/BackEnd/js/pages/dashboard.js') }}"></script>
 
 

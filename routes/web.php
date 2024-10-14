@@ -71,3 +71,5 @@ Route::get('/all-detail-product', [DetailProductController::class, 'Show_Detail_
 Route::get('/add-detail-product/{category_id}', [DetailProductController::class, 'Add_Detail_Product']);
 Route::get('/edit-detail-product/{category_id}', [DetailProductController::class, 'Edit_Detail_Product']);
 Route::post('/add-detail-action', [DetailProductController::class, 'Add_Detail_action']);
+Route::get('/search', [DetailProductController::class, 'search']);
+Route::post('/get-data', [DetailProductController::class, 'getData'])->name('get_data');

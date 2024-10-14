@@ -3,18 +3,17 @@ const slider = document.getElementById("product-price-range");
 if (slider) {
 
     noUiSlider.create(slider, {
-        start: [0, 200], // Handle start position
-        step: 1, // Slider moves in increments of '10'
+        start: [0, 20000], // Handle start position
+        step: 100, // Slider moves in increments of '10'
         margin: 0, // Handles must be more than '20' apart
         connect: true, // Display a colored bar between the handles
         behaviour: 'tap-drag', // Move a handle on tap, bar is draggable
         range: { // Slider can select '0' to '100'
             'min': 0,
-            'max': 1500
+            'max': 30000
         },
         format: wNumb({
             decimals: 0,
-            prefix: '$ '
         })
 
     });
