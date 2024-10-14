@@ -5,7 +5,6 @@
     <!-- Form và nội dung thêm danh mục -->
 
     <div class="page-content">
-        <!-- Start Container Fluid -->
 
 
         <div class="container-xxl">
