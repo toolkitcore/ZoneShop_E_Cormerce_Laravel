@@ -169,4 +169,9 @@ class DetailProductController extends Controller
 
         return response()->json(['output' => $output]); // Trả về JSON
     }
+    public function Product_Details($product_id)
+    {
+        $product_item = Product::where('product_id', $product_id)->first();
+        return view('admin.product.detail.product_details', compact('product_item'));
+    }
 }

@@ -9,6 +9,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\DetailProductController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProductImagesController;
 
 // FRONTEND
 Route::get('/', [HomeController::class, 'Show_Page_Home']);
@@ -71,5 +72,13 @@ Route::get('/all-detail-product', [DetailProductController::class, 'Show_Detail_
 Route::get('/add-detail-product/{category_id}', [DetailProductController::class, 'Add_Detail_Product']);
 Route::get('/edit-detail-product/{category_id}', [DetailProductController::class, 'Edit_Detail_Product']);
 Route::post('/add-detail-action', [DetailProductController::class, 'Add_Detail_action']);
+Route::get('/product-details/{product_id}', [DetailProductController::class, 'Product_Details']);
 Route::get('/search', [DetailProductController::class, 'search']);
 Route::post('/get-data', [DetailProductController::class, 'getData'])->name('get_data');
+
+//PRODUCT IMAGES 
+Route::get('/product-images', [ProductImagesController::class, 'Show_Images']);
+Route::get('/add-product-images/{product_id}', [ProductImagesController::class, 'Add_Images']);
+Route::post('/upload-product-images/{product_id}', [ProductImagesController::class, 'Upload_Image_Product']);
+Route::get('/edit-product-images', [ProductImagesController::class, 'Edit_Images']);
+Route::get('/delete-product-images', [ProductImagesController::class, 'Delete_images']);
