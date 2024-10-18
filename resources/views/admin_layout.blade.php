@@ -16,6 +16,9 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.0/min/dropzone.min.css">
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.3/jquery-ui.min.js"></script>
+
     <!-- Vendor css (Require in all Page) -->
     <link href="{{ asset('public/BackEnd/css/vendor.min.css') }}" rel="stylesheet" type="text/css" />
 
@@ -637,6 +640,25 @@
                                             <li class="sub-nav-item">
                                                 <a class="sub-nav-link" href="{{ URL::to('add-product') }}">Add
                                                     Product</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="sub-nav-item">
+                                    <a class="sub-nav-link menu-arrow" href="#sidebarItemDemoSubItem4"
+                                        data-bs-toggle="collapse" role="button" aria-expanded="false"
+                                        aria-controls="sidebarItemDemoSubItem4">
+                                        <span> Images </span>
+                                    </a>
+                                    <div class="collapse" id="sidebarItemDemoSubItem4">
+                                        <ul class="nav sub-navbar-nav">
+                                            <li class="sub-nav-item">
+                                                <a class="sub-nav-link" href="{{ URL::to('product-images') }}">List
+                                                    Product Images</a>
+                                            </li>
+                                            <li class="sub-nav-item">
+                                                <a class="sub-nav-link" href="{{ URL::to('add-images') }}">Add
+                                                    Images</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -1422,14 +1444,13 @@
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.0/min/dropzone.min.js"></script>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.3/jquery-ui.min.js"></script>
     <!-- END Wrapper -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"
         integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 
     <!-- Vendor Javascript (Require in all Page) -->
     <script src="{{ asset('public/BackEnd/js/vendor.js') }}"></script>

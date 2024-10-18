@@ -40,7 +40,6 @@
                                         <label for="myFileInput" class="form-label">Choose Picture</label>
                                         <input name="category_image" class="form-control btn btn-primary" type="file"
                                             accept="image/*" id="myFileInput" onchange="previewImage(event)" />
-
                                     </div>
                                     <div class="mt-3">
                                         <?php

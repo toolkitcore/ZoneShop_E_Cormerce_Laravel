@@ -37,6 +37,9 @@
                     <div class="p-3 bg-light mb-3 rounded">
                         <div class="row justify-content-end g-2">
                             <div class="col-lg-2">
+                                <a href="{{ URL::to('/product-images') }}" class="btn btn-outline-secondary w-100">Back</a>
+                            </div>
+                            <div class="col-lg-2">
                                 <a href="#!" type="submit" id="uploadBtn"
                                     class="btn btn-outline-secondary w-100">Upload Images</a>
                             </div>
@@ -57,7 +60,6 @@
         var maxFilesVal = 4;
 
         Dropzone.options.myDragAndDropUploader = {
-
             paramName: "file",
             maxFilesize: maxFilesizeVal, // MB
             maxFiles: maxFilesVal,
@@ -65,6 +67,7 @@
             acceptedFiles: ".jpeg,.jpg,.png,.webp",
             addRemoveLinks: true,
             timeout: 60000,
+            parallelUploads: 4,
             autoProcessQueue: false,
             dictDefaultMessage: "Drop your files here or click to upload",
             dictFallbackMessage: "Your browser doesn't support drag and drop file uploads.",
@@ -73,24 +76,56 @@
             dictMaxFilesExceeded: "You can only upload up to " + maxFilesVal + " files.",
             maxfilesexceeded: function(file) {
                 this.removeFile(file);
-                // this.removeAllFiles();
             },
             sending: function(file, xhr, formData) {
                 $('#message').text('Image Uploading...');
             },
             success: function(file, response) {
+
+                showToast(response['message'], {
+                    gravity: 'top',
+                    position: 'right',
+                    duration: 5000,
+                    close: true,
+                    backgroundColor: '#28a745' // Màu xanh cho thông báo thành công
+                });
                 console.log(response.success);
                 console.log(response);
             },
             error: function(file, response) {
-                $('#message').text('Something Went Wrong! ' + response);
+                // Hiển thị thông báo toast cho lỗi
+                var errorMessage = response.message || 'Something Went Wrong!';
+                showToast(errorMessage, {
+                    gravity: 'top',
+                    position: 'right',
+                    duration: 5000,
+                    close: true,
+                    backgroundColor: '#dc3545' // Màu đỏ cho thông báo lỗi
+                });
+                $('#message').text(errorMessage);
                 console.log(response);
                 return false;
             }
         };
+
         document.getElementById("uploadBtn").addEventListener("click", function() {
-            Dropzone.forElement("#myDragAndDropUploader")
-                .processQueue(); // Start uploading when the button is clicked
+            var myDropzone = Dropzone.forElement("#myDragAndDropUploader");
+            if (myDropzone.getQueuedFiles().length > 0) {
+                myDropzone.processQueue();
+            } else {
+                $('#message').text('No files to upload.');
+            }
         });
+
+        function showToast(text, options) {
+            Toastify({
+                text: text,
+                gravity: options.gravity, // 'top' hoặc 'bottom'
+                position: options.position, // 'left' hoặc 'right'
+                duration: options.duration,
+                close: true,
+                backgroundColor: options.backgroundColor, // Thêm màu cho toast
+            }).showToast();
+        }
     </script>
 @endsection
