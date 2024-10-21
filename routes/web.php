@@ -80,7 +80,5 @@ Route::post('/get-data', [DetailProductController::class, 'getData'])->name('get
 Route::get('/product-images', [ProductImagesController::class, 'Show_Images']);
 Route::get('/add-product-images/{product_id}', [ProductImagesController::class, 'Add_Images']);
 Route::post('/upload-product-images/{product_id}', [ProductImagesController::class, 'Upload_Image_Product']);
-Route::get('/edit-product-images/{product_id}', [ProductImagesController::class, 'Edit_Images']);
-Route::post('/update-product-images/{product_id}', [ProductImagesController::class, 'Update_Images']);
-Route::get('/delete-list-images/{product_id}', [ProductImagesController::class, 'Delete_Images_choice']);
-Route::get('/delete-product-images', [ProductImagesController::class, 'Delete_images']);
+Route::get('/delete-product-images/{product_id}', [ProductImagesController::class, 'Delete_images']);
+Route::post('/delete-product-images-choice', [ProductImagesController::class, 'Delete_choice']);

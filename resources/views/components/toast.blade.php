@@ -1,5 +1,5 @@
 <!-- resources/views/components/toast.blade.php -->
-@if (session('success') || session('error') || $errors->any())
+@if (session('success') || session('error') || session('warning') || $errors->any())
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script>
         function showToast(text, options) {
@@ -31,6 +31,16 @@
                     duration: 5000,
                     close: true,
                     backgroundColor: '#dc3545' // Màu đỏ cho thông báo lỗi
+                });
+            @endif
+
+            @if (session('warning'))
+                showToast("{{ session('warning') }}", {
+                    gravity: 'top',
+                    position: 'right',
+                    duration: 5000,
+                    close: true,
+                    backgroundColor: '#ffcc00' // Màu cam cho thông báo cảnh báo
                 });
             @endif
 

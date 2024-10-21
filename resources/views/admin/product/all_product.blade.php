@@ -1,6 +1,7 @@
 @extends('admin_layout')
 @section('content_admin')
     @include('components.toast')
+    @include('components.confirm_delete')
 
     <div class="page-content">
         <div class="container-xxl">
@@ -125,10 +126,10 @@
                                                         </a>
                                                         <!-- DELETE product -->
                                                         <a href="{{ URL::to('/delete-product/' . $product->product_id) }}"
-                                                            onclick="return confirm('Are you sure to delete This')"
-                                                            class="btn btn-soft-danger btn-sm"><iconify-icon
-                                                                icon="solar:trash-bin-minimalistic-2-broken"
-                                                                class="align-middle fs-18"></iconify-icon></a>
+                                                            class="btn btn-soft-danger btn-sm delete-confirm">
+                                                            <iconify-icon icon="solar:trash-bin-minimalistic-2-broken"
+                                                                class="align-middle fs-18"></iconify-icon>
+                                                        </a>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -151,4 +152,43 @@
 
         </div>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const deleteButtons = document.querySelectorAll('[id^="delete-product-"]');
+
+            deleteButtons.forEach(button => {
+                button.addEventListener('click', function(event) {
+                    event.preventDefault(); // Prevent the default action
+
+                    const url = this.href; // Get the link's URL
+
+                    Swal.fire({
+                        title: 'Are you sure?',
+                        text: "You won't be able to revert this!",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonText: 'Yes, delete it!',
+                        cancelButtonText: 'No, cancel!',
+                        confirmButtonClass: 'btn btn-primary w-xs me-2 mt-2',
+                        cancelButtonClass: 'btn btn-danger w-xs mt-2',
+                        buttonsStyling: false,
+                        showCloseButton: false
+                    }).then(function(result) {
+                        if (result.value) {
+                            // If confirmed, redirect to the delete URL
+                            window.location.href = url;
+                        } else if (result.dismiss === Swal.DismissReason.cancel) {
+                            Swal.fire({
+                                title: 'Cancelled',
+                                text: 'Your product is safe :)',
+                                icon: 'error',
+                                confirmButtonClass: 'btn btn-primary mt-2',
+                                buttonsStyling: false
+                            });
+                        }
+                    });
+                });
+            });
+        });
+    </script>
 @endsection

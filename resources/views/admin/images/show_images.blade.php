@@ -61,20 +61,13 @@
                                                 </td>
                                                 <td>
                                                     <div class="d-flex gap-2">
-                                                        <!-- EDIT Images -->
-                                                        <a href="{{ 'edit-product-images/' . $item->product_id }}"
-                                                            class="btn btn-soft-primary btn-sm">
-                                                            <iconify-icon icon="solar:pen-2-broken"
-                                                                class="align-middle fs-18"></iconify-icon>
-                                                        </a>
                                                         <a href="{{ 'add-product-images/' . $item->product_id }}"
                                                             class="btn btn-soft-primary btn-sm">
                                                             <iconify-icon icon="material-symbols-light:add"
                                                                 class="align-middle fs-18"></iconify-icon>
                                                         </a>
                                                         <!-- DELETE Images -->
-                                                        <a href="#"
-                                                            onclick="return confirm('Are you sure to delete This')"
+                                                        <a href="{{ 'delete-product-images/' . $item->product_id }}"
                                                             class="btn btn-soft-danger btn-sm"><iconify-icon
                                                                 icon="solar:trash-bin-minimalistic-2-broken"
                                                                 class="align-middle fs-18"></iconify-icon></a>

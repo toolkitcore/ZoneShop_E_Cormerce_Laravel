@@ -111,17 +111,8 @@ if (document.getElementById("sweetalert-params"))
             showCloseButton: false
         }).then(function (result) {
             if (result.value) {
-                Swal.fire({
-                    title: 'Deleted!',
-                    text: 'Your file has been deleted.',
-                    icon: 'success',
-                    confirmButtonClass: 'btn btn-primary w-xs mt-2',
-                    buttonsStyling: false
-                })
-            } else if (
-                // Read more about handling dismissals
-                result.dismiss === Swal.DismissReason.cancel
-            ) {
+                document.getElementById('delete-form').submit();
+            } else if (result.dismiss === Swal.DismissReason.cancel) {
                 Swal.fire({
                     title: 'Cancelled',
                     text: 'Your imaginary file is safe :)',

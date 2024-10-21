@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\Product_Images;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
 
 class ProductImagesController extends Controller
@@ -20,58 +22,14 @@ class ProductImagesController extends Controller
         $product_item = Product::where('product_id', $product_id)->first();
         return view('admin.images.add_images', compact('product_item'));
     }
-    public function Edit_Images($product_id)
-    {
 
-        $product_item = Product::where('product_id', $product_id)->first();
-        $product_images = Product_Images::where('product_id', $product_id)->get();
-        return view('admin.images.edit_images', compact('product_item', 'product_images'));
-    }
-
-    public function Update_Images(Request $request, $product_id)
-    {
-        if ($request->hasFile('update')) {
-            $uploadPath = "public/uploads/images/";
-
-            $file = $request->file('update');
-
-            $extention = $file->getClientOriginalExtension();
-            $filename = time() . '-' . rand(0, 99) . '.' . $extention;
-            $file->move($uploadPath, $filename);
-
-            $finalImageName = $uploadPath . $filename;
-
-            Product_Images::create([
-                'product_id' => $product_id,
-                'image_name' => $finalImageName
-            ]);
-            return response()->json(['message' => 'Image Update Successfully']);
-        } else {
-            return response()->json(['error' => 'File update failed.']);
-        }
-    }
-    public function Delete_Images_choice($product_id)
-    {
-        // Tìm và xóa các ảnh liên quan đến sản phẩm
-        $images = Product_Images::where('product_id', $product_id)->get();
-        foreach ($images as $image) {
-            // Xóa tệp hình ảnh từ hệ thống (nếu cần)
-            if (file_exists(public_path($image->image_name))) {
-                unlink(public_path($image->image_name));
-            }
-            // Xóa hình ảnh trong cơ sở dữ liệu
-            $image->delete();
-        }
-        Session::flash('success', 'Update product images successfully !');
-        return redirect('product-images');
-    }
 
     public function Upload_Image_Product(Request $request, $product_id)
     {
 
         if ($request->hasFile('file')) {
 
-            $uploadPath = "public/uploads/images/";
+            $uploadPath = "public/uploads/images/product/";
 
             $file = $request->file('file');
 
@@ -89,5 +47,35 @@ class ProductImagesController extends Controller
         } else {
             return response()->json(['error' => 'File upload failed.']);
         }
+    }
+    public function Delete_images($product_id)
+    {
+        $list_images_of_product = Product_Images::where('product_id', $product_id)->get();
+        $product_item = Product::where('product_id', $product_id)->first();
+        return view('admin.images.delete_images', compact('product_item', 'list_images_of_product'));
+    }
+    public function Delete_choice(Request $request)
+    {
+        $imageIds = $request->input('image_ids');
+
+        if ($imageIds) {
+            foreach ($imageIds as $id) {
+                $image = Product_Images::find($id);
+                if ($image) {
+                    $imagePath = $image->image_name;
+                    if (File::exists($imagePath)) {
+                        unlink($imagePath);
+                    } else {
+                        // Ghi log lỗi
+                        Log::error("Failed to delete file: {$imagePath}");
+                    }
+                    $image->delete();
+                }
+            }
+            Session::flash('success', 'Delete list images of product successfully!');
+            return Redirect('/product-images');
+        }
+        Session::flash('warning', 'There is no photo deleted');
+        return Redirect('/product-images');
     }
 }

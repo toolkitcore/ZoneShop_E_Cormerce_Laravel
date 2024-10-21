@@ -1,6 +1,8 @@
 @extends('admin_layout')
 @section('content_admin')
     @include('components.toast')//
+    @include('components.confirm_delete')//
+
 
     <div class="page-content">
         <div class="container-xxl">
@@ -8,15 +10,15 @@
             <div class="row">
                 <!-- @foreach ($brands as $brand)
     <div class="col-md-6 col-xl-3">
-                        <div class="card">
-                            <div class="card-body text-center">
-                                <div class="rounded bg-secondary-subtle d-flex align-items-center justify-content-center mx-auto">
-                                    <img src="{{ asset('public/uploads/brand/' . $brand->brand_image) }}" alt="" class="avatar-xl">
+                                <div class="card">
+                                    <div class="card-body text-center">
+                                        <div class="rounded bg-secondary-subtle d-flex align-items-center justify-content-center mx-auto">
+                                            <img src="{{ asset('public/uploads/brand/' . $brand->brand_image) }}" alt="" class="avatar-xl">
+                                        </div>
+                                        <h4 class="mt-3 mb-0">{{ $brand->brand_name }}</h4>
+                                    </div>
                                 </div>
-                                <h4 class="mt-3 mb-0">{{ $brand->brand_name }}</h4>
                             </div>
-                        </div>
-                    </div>
     @endforeach -->
             </div>
 
@@ -115,8 +117,7 @@
                                                         </a>
                                                         <!-- DELETE brand -->
                                                         <a href="{{ URL::to('/delete-brand-product/' . $brand->brand_id) }}"
-                                                            onclick="return confirm('Are you sure to delete This')"
-                                                            class="btn btn-soft-danger btn-sm"><iconify-icon
+                                                            class="btn btn-soft-danger btn-sm delete-confirm"><iconify-icon
                                                                 icon="solar:trash-bin-minimalistic-2-broken"
                                                                 class="align-middle fs-18"></iconify-icon></a>
                                                     </div>
