@@ -63,15 +63,17 @@ Route::get('/all-attribute-product', [AttributesProductController::class, 'Show_
 Route::get('/add-attribute-product', [AttributesProductController::class, 'Add_Attribute_Product']);
 Route::get('/edit-attribute-product/{category_id}', [AttributesProductController::class, 'Edit_Attribute_Product']);
 Route::post('/add-attribute-action', [AttributesProductController::class, 'Add_attribute_action']);
+Route::post('/add-attribute-action-detail', [AttributesProductController::class, 'Add_attribute_action_detail']);
 
-Route::get('/delete-attribute-action/{category_id}', [AttributesProductController::class, 'Delete_attribute_action']); // chưa làm
-Route::post('/update-attribute-action/{category_id}', [AttributesProductController::class, 'Update_attribute_action']); // chưa làm
+Route::post('/delete-attribute-action', [AttributesProductController::class, 'Delete_attribute_action']);
+Route::get('/delete-list-attribute-action/{category_id}', [AttributesProductController::class, 'Delete_list_attribute_action']);
+Route::post('/update-attribute-action', [AttributesProductController::class, 'Update_Attribute_Action']);
 
 // PRODUCTS DETAIL
 Route::get('/all-detail-product', [DetailProductController::class, 'Show_Detail_Product']);
 Route::get('/add-detail-product/{category_id}', [DetailProductController::class, 'Add_Detail_Product']);
 Route::get('/edit-detail-product/{category_id}', [DetailProductController::class, 'Edit_Detail_Product']);
-Route::post('/add-detail-action', [DetailProductController::class, 'Add_Detail_action']);
+Route::post('/add-detail-action/{product_id}', [DetailProductController::class, 'Add_Detail_action']);
 Route::get('/product-details/{product_id}', [DetailProductController::class, 'Product_Details']);
 Route::get('/search', [DetailProductController::class, 'search']);
 Route::post('/get-data', [DetailProductController::class, 'getData'])->name('get_data');
@@ -82,3 +84,6 @@ Route::get('/add-product-images/{product_id}', [ProductImagesController::class, 
 Route::post('/upload-product-images/{product_id}', [ProductImagesController::class, 'Upload_Image_Product']);
 Route::get('/delete-product-images/{product_id}', [ProductImagesController::class, 'Delete_images']);
 Route::post('/delete-product-images-choice', [ProductImagesController::class, 'Delete_choice']);
+
+//PRODUCT OVERVIEW
+Route::get('/product-overview/{product_id}', [ProductImagesController::class, 'Product_Overview']);

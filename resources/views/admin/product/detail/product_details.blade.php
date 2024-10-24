@@ -11,53 +11,24 @@
                             <!-- Crossfade -->
                             <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
                                 <div class="carousel-inner" role="listbox">
-                                    <div class="carousel-item active">
-                                        <img src="{{ asset('public/BackEnd/images/product/p-1.png') }}" alt=""
-                                            class="img-fluid bg-light rounded">
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="{{ asset('public/BackEnd/images/product/p-10.png') }}" alt=""
-                                            class="img-fluid bg-light rounded">
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="{{ asset('public/BackEnd/images/product/p-13.png') }}" alt=""
-                                            class="img-fluid bg-light rounded">
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="{{ asset('public/BackEnd/images/product/p-14.png') }}" alt=""
-                                            class="img-fluid bg-light rounded">
-                                    </div>
-                                    <!-- <a class="carousel-control-prev rounded" href="#carouselExampleFade" role="button" data-bs-slide="prev">
-                                                                                                           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                                                                                           <span class="visually-hidden">Previous</span>
-                                                                                                      </a>
-                                                                                                      <a class="carousel-control-next rounded" href="#carouselExampleFade" role="button" data-bs-slide="next">
-                                                                                                           <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                                                                                           <span class="visually-hidden">Next</span>
-                                                                                                      </a> -->
+                                    @foreach ($product_images as $index => $item_image)
+                                        <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
+                                            <img src="{{ asset($item_image->image_name) }}" alt=""
+                                                class="img-fluid bg-light rounded">
+                                        </div>
+                                    @endforeach
                                 </div>
                                 <div class="carousel-indicators m-0 mt-2 d-lg-flex d-none position-static h-100">
-                                    <button type="button" data-bs-target="#carouselExampleFade" data-bs-slide-to="0"
-                                        aria-current="true" aria-label="Slide 1"
-                                        class="w-auto h-auto rounded bg-light active">
-                                        <img src="{{ asset('public/BackEnd/images/product/p-1.png') }}"
-                                            class="d-block avatar-xl" alt="swiper-indicator-img">
-                                    </button>
-                                    <button type="button" data-bs-target="#carouselExampleFade" data-bs-slide-to="1"
-                                        aria-label="Slide 2" class="w-auto h-auto rounded bg-light">
-                                        <img src="{{ asset('public/BackEnd/images/product/p-10.png') }}"
-                                            class="d-block avatar-xl" alt="swiper-indicator-img">
-                                    </button>
-                                    <button type="button" data-bs-target="#carouselExampleFade" data-bs-slide-to="2"
-                                        aria-label="Slide 3" class="w-auto h-auto rounded bg-light">
-                                        <img src="{{ asset('public/BackEnd/images/product/p-13.png') }}"
-                                            class="d-block avatar-xl" alt="swiper-indicator-img">
-                                    </button>
-                                    <button type="button" data-bs-target="#carouselExampleFade" data-bs-slide-to="3"
-                                        aria-label="Slide 3" class="w-auto h-auto rounded bg-light">
-                                        <img src="{{ asset('public/BackEnd/images/product/p-14.png') }}"
-                                            class="d-block avatar-xl" alt="swiper-indicator-img">
-                                    </button>
+                                    @foreach ($product_images as $index => $item_image)
+                                        <button type="button" data-bs-target="#carouselExampleFade"
+                                            data-bs-slide-to="{{ $index }}"
+                                            aria-current="{{ $index == 0 ? 'true' : 'false' }}"
+                                            aria-label="Slide {{ $index + 1 }}"
+                                            class="w-auto h-auto rounded bg-light {{ $index == 0 ? 'active' : '' }}">
+                                            <img src="{{ asset($item_image->image_name) }}" class="d-block avatar-xl"
+                                                alt="swiper-indicator-img">
+                                        </button>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
@@ -309,35 +280,14 @@
                         <div class="card-body">
                             <div class="">
                                 <ul class="d-flex flex-column gap-2 list-unstyled fs-14 text-muted mb-0">
-                                    <li><span class="fw-medium text-dark">Product Dimensions</span><span
-                                            class="mx-2">:</span>53.3 x 40.6 x 6.4 cm; 500 Grams</li>
-                                    <li><span class="fw-medium text-dark">Date First Available</span><span
-                                            class="mx-2">:</span>22 September 2023</li>
-                                    <li><span class="fw-medium text-dark">Department</span><span
-                                            class="mx-2">:</span>Men</li>
-                                    <li><span class="fw-medium text-dark">Manufacturer </span><span
-                                            class="mx-2">:</span>Greensboro, NC 27401 Prospa-Pal</li>
-                                    <li><span class="fw-medium text-dark">ASIN</span><span
-                                            class="mx-2">:</span>B0CJMML118</li>
-                                    <li><span class="fw-medium text-dark">Item model number</span><span
-                                            class="mx-2">:</span> 1137AZ</li>
-                                    <li><span class="fw-medium text-dark">Country of Origin</span><span
-                                            class="mx-2">:</span>U.S.A</li>
-                                    <li><span class="fw-medium text-dark">Manufacturer </span><span
-                                            class="mx-2">:</span>Suite 941 89157 Baumbach Views, Gilbertmouth, TX
-                                        31542-2135</li>
-                                    <li><span class="fw-medium text-dark">Packer </span><span class="mx-2">:</span>Apt.
-                                        726 80915 Hung Stream, Rowetown, WV 44364</li>
-                                    <li><span class="fw-medium text-dark">Importer</span><span class="mx-2">:</span>Apt.
-                                        726 80915 Hung Stream, Rowetown, WV 44364</li>
-                                    <li><span class="fw-medium text-dark">Item Weight</span><span
-                                            class="mx-2">:</span>500 g</li>
-                                    <li><span class="fw-medium text-dark">Item Dimensions LxWxH</span><span
-                                            class="mx-2">:</span>53.3 x 40.6 x 6.4 Centimeters</li>
-                                    <li><span class="fw-medium text-dark">Generic Name</span><span
-                                            class="mx-2">:</span>T-Shirt</li>
-                                    <li><span class="fw-medium text-dark">Best Sellers Rank</span><span
-                                            class="mx-2">:</span>#13 in Clothing & Accessories</li>
+                                    @foreach ($product_details as $attribute_item)
+                                        <li>
+                                            <span
+                                                class="fw-medium text-dark">{{ $attribute_item->attribute->attribute_name }}</span>
+                                            <span class="mx-2">:</span>
+                                            {{ $attribute_item->attribute_value }}
+                                        </li>
+                                    @endforeach
                                 </ul>
                             </div>
                             <div class="mt-3">

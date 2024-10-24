@@ -10,6 +10,8 @@ use App\Http\Requests;
 use App\Models\Brand_Product;
 use App\Models\Category_Product;
 use App\Models\Product;
+use App\Models\Product_Attributes;
+use App\Models\Product_Images;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
 
@@ -53,34 +55,20 @@ class DetailProductController extends Controller
 
         return view('admin.product.detail.edit_detail');
     }
-    public function Add_detail_action(Request $request)
+    public function Add_detail_action(Request $request, $product_id)
     {
-        $checklistAttributes = $request->attribute_name;
-        if ($checklistAttributes) {
-            $result = validateAttributesText($checklistAttributes);
-            if (is_string($result)) {
-                $data = new Attributes();
-                $data->category_id = $request->category_id;
-                $data->attribute_name = $result;
-                $data->save();
-                Session::flash('success', 'Add Attributes Successfully!');
-                return redirect('add-attribute-product');
-            } else if ($result !== false) {
-                foreach ($result as $key) {
-                    $data = new Attributes();
-                    $data->category_id = $request->category_id;
-                    $data->attribute_name = $key;
-                    $data->save();
-                }
-                Session::flash('success', 'Add Attributes Successfully!');
-                return redirect('add-attribute-product');
-            } else {
-                return redirect('add-attribute-product')->withInput(); // Trả về với input đã nhập
-            }
-        } else {
-            Session::flash('error', 'Please provide attributes.');
-            return redirect('add-attribute-product')->withInput(); // Trả về với input đã nhập
+
+        $attributes = $request->input('attribute_values');
+
+        foreach ($attributes as $attributeID => $value) {
+            Product_Attributes::create([
+                'product_id' => $product_id,
+                'attribute_id' => $attributeID,
+                'attribute_value' => $value,
+            ]);
         }
+        Session::flash('success', 'Product details added successfully!');
+        return redirect('all-detail-product');
     }
 
     public function search(Request $request)
@@ -171,7 +159,13 @@ class DetailProductController extends Controller
     }
     public function Product_Details($product_id)
     {
+        $product_details = Product_Attributes::where('product_id', $product_id)->with('attribute')->get();
         $product_item = Product::where('product_id', $product_id)->first();
-        return view('admin.product.detail.product_details', compact('product_item'));
+        $product_images = Product_Images::where('product_id', $product_id)->get();
+        return view('admin.product.detail.product_details', compact(
+            'product_item',
+            'product_details',
+            'product_images'
+        ));
     }
 }

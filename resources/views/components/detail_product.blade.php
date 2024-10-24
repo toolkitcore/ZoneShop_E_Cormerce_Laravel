@@ -27,7 +27,8 @@
                                 <a href="{{ URL::to('edit-product/' . $value->product_id) }}"
                                     class="dropdown-item">Edit</a>
                                 <!-- item-->
-                                <a href="#!" class="dropdown-item">Overview</a>
+                                <a href="{{ URL::to('product-details/' . $value->product_id) }}"
+                                    class="dropdown-item">Overview</a>
                                 <!-- item-->
                                 <a href="#!" class="dropdown-item">Delete</a>
                             </div>

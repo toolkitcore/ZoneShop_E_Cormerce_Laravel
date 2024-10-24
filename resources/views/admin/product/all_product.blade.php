@@ -119,13 +119,18 @@
                                                 <td>
                                                     <div class="d-flex gap-2">
                                                         <!-- EDIT product -->
-                                                        <a href="{{ URL::to('/edit-product/' . $product->product_id) }}"
+                                                        <a href="{{ URL::to('edit-product/' . $product->product_id) }}"
                                                             class="btn btn-soft-primary btn-sm">
                                                             <iconify-icon icon="solar:pen-2-broken"
                                                                 class="align-middle fs-18"></iconify-icon>
                                                         </a>
+                                                        <a href="{{ URL::to('product-details/' . $product->product_id) }}"
+                                                            class="btn btn-soft-primary btn-sm">
+                                                            <iconify-icon icon="fluent-emoji-high-contrast:glasses"
+                                                                class="align-middle fs-18"></iconify-icon>
+                                                        </a>
                                                         <!-- DELETE product -->
-                                                        <a href="{{ URL::to('/delete-product/' . $product->product_id) }}"
+                                                        <a href="{{ URL::to('delete-product/' . $product->product_id) }}"
                                                             class="btn btn-soft-danger btn-sm delete-confirm">
                                                             <iconify-icon icon="solar:trash-bin-minimalistic-2-broken"
                                                                 class="align-middle fs-18"></iconify-icon>

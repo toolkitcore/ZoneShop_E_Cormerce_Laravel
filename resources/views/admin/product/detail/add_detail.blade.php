@@ -12,13 +12,16 @@
                 <div class="col-xl-12 col-lg-12">
                     <h2 class="text-center text-primary">ADD PRODUCT DETAIL</h2>
                 </div>
-                <form action="{{ URL::to('/add-detail-action') }}" method="post" enctype="multipart/form-data">
+                <form action="{{ URL::to('/add-detail-action/' . $Product->product_id) }}" method="post"
+                    enctype="multipart/form-data">
                     @csrf
                     <div class="col-xl-12 col-lg-12">
                         <div class="card">
                             <div class="card-header">
                                 <h3 class="card-title">
-                                    {{ $Product->category->category_name . '/' . $Product->product_name }}</h3>
+                                    {{ $Product->category->category_name . '/' }} <span class="text-primary">
+                                        {{ $Product->product_name }}</span>
+                                </h3>
                             </div>
                         </div>
                         <div class="card">
@@ -30,11 +33,12 @@
                                     @foreach ($category->attributes as $item)
                                         <div class="col-lg-6">
                                             <div class="mb-3">
-                                                <label for="category-title" class="form-label">
-                                                    {{ $item->attribute_name }}:
+                                                <label for="attribute-{{ $item->attribute_id }}" class="form-label">
+                                                    {{ $item->attribute_name }} :
                                                 </label>
-                                                <input type="text" name="attribute_value" id="category-title"
-                                                    class="form-control" placeholder="Enter Value">
+                                                <input type="text" name="attribute_values[{{ $item->attribute_id }}]"
+                                                    id="attribute-{{ $item->attribute_id }}" class="form-control"
+                                                    placeholder="Enter value" required>
                                             </div>
                                         </div>
                                     @endforeach
