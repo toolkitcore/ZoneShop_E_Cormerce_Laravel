@@ -66,6 +66,40 @@ class AttributesProductController extends Controller
             return redirect('add-attribute-product')->withInput(); // Trả về với input đã nhập
         }
     }
+    public function Add_attribute_choice_action(Request $request, $category_id)
+    {
+        $checklistAttributes = $request->attribute_name;
+        if ($checklistAttributes) {
+            $result = validateAttributesText($checklistAttributes);
+            if (is_string($result)) {
+                $data = new Attributes();
+                $data->category_id =  $category_id;
+                $data->attribute_name = $result;
+                $data->save();
+                Session::flash('success', 'Add Attributes Successfully!');
+                return redirect('all-attribute-product');
+            } else if ($result !== false) {
+                foreach ($result as $key) {
+                    $data = new Attributes();
+                    $data->category_id =  $category_id;
+                    $data->attribute_name = $key;
+                    $data->save();
+                }
+                Session::flash('success', 'Add Attributes Successfully!');
+                return redirect('all-attribute-product');
+            } else {
+                return redirect('all-attribute-product'); // Trả về với input đã nhập
+            }
+        } else {
+            Session::flash('error', 'Please provide attributes.');
+            return redirect('all-attribute-product'); // Trả về với input đã nhập
+        }
+    }
+    public function Add_Attribute_Choice($category_id)
+    {
+        $category_item = Category_Product::where('category_id', $category_id)->first();
+        return view('admin.attribute.add_attribute_choice', compact('category_item'));
+    }
     public function Update_Attribute_Action(Request $request)
     {
         // lỗi validate lỗi 500 
@@ -113,7 +147,7 @@ class AttributesProductController extends Controller
         } else {
             Session::flash('error', 'No attributes found for this category!');
         }
-        return redirect()->route('all-attribute-product');
+        return redirect('all-attribute-product');
     }
 
     public function Add_attribute_action_detail(Request $request)

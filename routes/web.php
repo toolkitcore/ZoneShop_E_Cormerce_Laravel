@@ -61,10 +61,11 @@ Route::get('/delete-product/{product_id}', [ProductController::class, 'Delete_Pr
 // ATTRIBUTES PRODUCTS
 Route::get('/all-attribute-product', [AttributesProductController::class, 'Show_Attribute_Product']);
 Route::get('/add-attribute-product', [AttributesProductController::class, 'Add_Attribute_Product']);
+Route::get('/add-attribute-choice/{category_id}', [AttributesProductController::class, 'Add_Attribute_Choice']);
 Route::get('/edit-attribute-product/{category_id}', [AttributesProductController::class, 'Edit_Attribute_Product']);
 Route::post('/add-attribute-action', [AttributesProductController::class, 'Add_attribute_action']);
+Route::post('/add-attribute-choice-action/{category_id}', [AttributesProductController::class, 'Add_attribute_choice_action']);
 Route::post('/add-attribute-action-detail', [AttributesProductController::class, 'Add_attribute_action_detail']);
-
 Route::post('/delete-attribute-action', [AttributesProductController::class, 'Delete_attribute_action']);
 Route::get('/delete-list-attribute-action/{category_id}', [AttributesProductController::class, 'Delete_list_attribute_action']);
 Route::post('/update-attribute-action', [AttributesProductController::class, 'Update_Attribute_Action']);
