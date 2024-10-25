@@ -620,7 +620,8 @@
                                             </li>
                                             <li class="sub-nav-item">
                                                 <a class="sub-nav-link"
-                                                    href="{{ URL::to('add-detail-product') }}">Add Product Detail</a>
+                                                    href="{{ URL::to('add-detail-product-page') }}">Add Product
+                                                    Detail</a>
                                             </li>
                                         </ul>
                                     </div>

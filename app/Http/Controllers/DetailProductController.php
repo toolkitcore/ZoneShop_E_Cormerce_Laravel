@@ -49,6 +49,22 @@ class DetailProductController extends Controller
             return redirect()->back()->with('error', 'Product not found');
         }
     }
+    public function Edit_Detail_Product($product_id)
+    {
+        $Product = Product::with('category', 'productAttributes.attribute')
+            ->where('product_id', $product_id)
+            ->first();
+
+        if ($Product) {
+            $category = Category_Product::with('attributes')
+                ->where('category_id', $Product->category_id)
+                ->first();
+            return view('admin.product.detail.edit_detail', compact('Product', 'category'));
+        } else {
+            return redirect()->back()->with('error', 'Product not found!');
+        }
+    }
+
 
     public function Edit_Attribute_Product($category_id)
     {
@@ -68,7 +84,26 @@ class DetailProductController extends Controller
             ]);
         }
         Session::flash('success', 'Product details added successfully!');
-        return redirect('all-detail-product');
+        return redirect('add-detail-product-page');
+    }
+    public function Update_Detail_action(Request $request, $product_id)
+    {
+
+        $attributes = $request->input('attribute_values');
+
+        foreach ($attributes as $attributeID => $value) {
+            Product_Attributes::updateOrCreate(
+                [
+                    'product_id' => $product_id,
+                    'attribute_id' => $attributeID
+                ],
+                [
+                    'attribute_value' => $value
+                ]
+            );
+        }
+        Session::flash('success', 'Product details udpated successfully!');
+        return redirect('add-detail-product-page');
     }
 
     public function search(Request $request)
@@ -167,5 +202,10 @@ class DetailProductController extends Controller
             'product_details',
             'product_images'
         ));
+    }
+    public function Show_add_detail_product()
+    {
+        $products = Product::with('productAttributes', 'category', 'brand')->get();
+        return view('admin.product.detail.add_page', compact('products'));
     }
 }
