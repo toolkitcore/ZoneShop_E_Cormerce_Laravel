@@ -27,7 +27,7 @@ class DetailProductController extends Controller
     {
         $products = Product::all();
         $product_count = Product::count();
-        $categories = Category_Product::all();
+        $categories = Category_Product::whereNotNull('category_parent_id')->get();
         $brands = Brand_Product::all();
 
         return view('admin.product.detail.all_detail', compact(

@@ -19,7 +19,7 @@ class CategoryController extends Controller
     }
     public function Add_Category()
     {
-        $categories = Category_Product::all();
+        $categories = Category_Product::whereNull('category_parent_id')->get();
         return view('admin.category.add_category_product', compact('categories'));
     }
 

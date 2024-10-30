@@ -2,19 +2,37 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ClientController;
 use App\Http\Controllers\AdminControllers;
 use App\Http\Controllers\AttributesProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\BrandController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\DetailProductController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductImagesController;
 
 // FRONTEND
-Route::get('/', [HomeController::class, 'Show_Page_Home']);
-Route::get('/trang-chu', [HomeController::class, 'Show_Page_Home']);
-Route::get('/thong-tin', [HomeController::class, 'Show_About']);
+
+Route::get('/', [ClientController::class, 'Show_Page_Home']);
+Route::get('/trang-chu', [ClientController::class, 'Show_Page_Home']);
+Route::get('/thong-tin', [ClientController::class, 'Show_About']);
+Route::get('/lien-he', [ClientController::class, 'Show_Contact']);
+Route::get('/gio-hang', [ClientController::class, 'Show_Cart']);
+
+// HOME PAGE
+Route::get('/san-pham-{product_id}', [ClientController::class, 'Show_Single_Product']);
+Route::get('/danh-sach-san-pham', [ClientController::class, 'Show_List_Product']);
+Route::get('/danh-muc-san-pham-{category_id}', [ClientController::class, 'Show_Category_Product']);
+Route::get('/gio-hang', [ClientController::class, 'Show_Cart']);
+
+//Cart 
+Route::post('/them-san-pham', [CartController::class, 'Add_to_cart']);
+Route::get('/xoa-gio-hang/{rowId}', [CartController::class, 'Delete_to_cart']);
+Route::get('/xoa-gio-hang', [CartController::class, 'ClearCart']);
+Route::post('/update-quantity-product', [CartController::class, 'Update_Quantity_Product'])->name('update_quantity');
+
+
 
 //BACKEND
 Route::get('/admin', [AdminControllers::class, 'index']);
@@ -53,8 +71,8 @@ Route::get('/all-product', [ProductController::class, 'Show_Product']);
 Route::get('/add-product', [ProductController::class, 'Add_Product']);
 Route::get('/edit-product/{product_id}', [ProductController::class, 'Edit_Product']);
 Route::post('/add-product-action', [ProductController::class, 'Add_Product_Action']);
-Route::get('//active-product/{product_id}', [ProductController::class, 'Set_Active_product']);
-Route::get('//unactive-product/{product_id}', [ProductController::class, 'Set_UnActive_product']);
+Route::get('/active-product/{product_id}', [ProductController::class, 'Set_Active_product']);
+Route::get('/unactive-product/{product_id}', [ProductController::class, 'Set_UnActive_product']);
 Route::post('/update-product-action/{product_id}', [ProductController::class, 'Update_Product']);
 Route::get('/delete-product/{product_id}', [ProductController::class, 'Delete_Product']);
 

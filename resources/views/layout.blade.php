@@ -14,6 +14,11 @@
     <!-- CSS
     ============================================ -->
     <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.0/min/dropzone.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.3/jquery-ui.min.js"></script>
+
     <link rel="stylesheet" href="{{ asset('public/FrontEnd/css/vendor/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('public/FrontEnd/css/vendor/font-awesome.css') }}">
     <link rel="stylesheet" href="{{ asset('public/FrontEnd/css/vendor/flaticon/flaticon.css') }}">
@@ -94,30 +99,46 @@
                                 </a>
                             </div>
                             <ul class="mainmenu">
-
-                                <li><a href="{{ URL::to('/trang-chu') }}">Home</a></li>
+                                <li>
+                                    <a class="{{ request()->is('trang-chu') ? 'active' : '' }}"
+                                        href="{{ URL::to('/trang-chu') }}">Home</a>
+                                </li>
                                 <li class="menu-item-has-children">
-                                    <a href="#">Categories</a>
+                                    <a href="#"
+                                        class=" {{ request()->is('danh-muc-san-pham-*') ? 'active' : '' }}">Categories</a>
                                     <ul class="axil-submenu">
-                                        <li><a href="#">Danh mục 1</a></li>
+                                        @foreach ($categories as $category_item)
+                                            <li>
+                                                <a href="{{ 'danh-muc-san-pham-' . $category_item->category_id }}"
+                                                    class="{{ request()->is('danh-muc-san-pham-' . $category_item->category_id) ? 'active' : '' }}">{{ $category_item->category_name }}</a>
+                                            </li>
+                                        @endforeach
                                     </ul>
                                 </li>
                                 <li class="menu-item-has-children">
-                                    <a href="#">Pages</a>
+                                    <a href="#"
+                                        class=" {{ request()->is('wishlist') ? 'active' : '' }}">Pages</a>
                                     <ul class="axil-submenu">
                                         <li><a href="wishlist.html">Wishlist</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="{{ URL::to('/thong-tin') }}">About</a></li>
+                                <li>
+                                    <a href="{{ URL::to('/thong-tin') }}"
+                                        class="{{ request()->is('thong-tin') ? 'active' : '' }}">About</a>
+                                </li>
                                 <li class="menu-item-has-children">
-                                    <a href="#">Blog</a>
+                                    <a href="#" class=" {{ request()->is('blog*') ? 'active' : '' }}">Blog</a>
                                     <ul class="axil-submenu">
                                         <li><a href="blog.html">Blog List</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="contact.html">Contact</a></li>
+                                <li>
+                                    <a href="{{ URL::to('lien-he') }}"
+                                        class="{{ request()->is('lien-he') ? 'active' : '' }}">Contact</a>
+                                </li>
                             </ul>
                         </nav>
+
                         <!-- End Mainmanu Nav -->
 
                     </div>
@@ -183,6 +204,59 @@
     <!-- CONTENT MAIN  -->
     @yield('content')
 
+
+
+    <div class="service-area">
+        <div class="container">
+            <div class="row row-cols-xl-4 row-cols-sm-2 row-cols-1 row--20">
+                <div class="col">
+                    <div class="service-box service-style-2">
+                        <div class="icon">
+                            <img src="{{ asset('public/FrontEnd/images/icons/service1.png') }}" alt="Service">
+                        </div>
+                        <div class="content">
+                            <h6 class="title">Fast &amp; Secure Delivery</h6>
+                            <p>Tell about your service.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="service-box service-style-2">
+                        <div class="icon">
+                            <img src="{{ asset('public/FrontEnd/images/icons/service2.png') }}" alt="Service">
+                        </div>
+                        <div class="content">
+                            <h6 class="title">Money Back Guarantee</h6>
+                            <p>Within 10 days.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="service-box service-style-2">
+                        <div class="icon">
+                            <img src="{{ asset('public/FrontEnd/images/icons/service3.png') }}" alt="Service">
+                        </div>
+                        <div class="content">
+                            <h6 class="title">24 Hour Return Policy</h6>
+                            <p>No question ask.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="service-box service-style-2">
+                        <div class="icon">
+                            <img src="{{ asset('public/FrontEnd/images/icons/service4.png') }}" alt="Service">
+                        </div>
+                        <div class="content">
+                            <h6 class="title">Pro Quality Support</h6>
+                            <p>24/7 Live support.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Start Footer Area  -->
     <footer class="axil-footer-area footer-style-2">
         <!-- Start Footer Top Area  -->
@@ -222,7 +296,7 @@
                                 <ul>
                                     <li><a href="my-account.html">My Account</a></li>
                                     <li><a href="sign-up.html">Login / Register</a></li>
-                                    <li><a href="cart.html">Cart</a></li>
+                                    <li><a href="{{ URL::to('gio-hang') }}">Cart</a></li>
                                     <li><a href="wishlist.html">Wishlist</a></li>
                                     <li><a href="shop.html">Shop</a></li>
                                 </ul>
@@ -239,8 +313,8 @@
                                     <li><a href="privacy-policy.html">Privacy Policy</a></li>
                                     <li><a href="terms-of-service.html">Terms Of Use</a></li>
                                     <li><a href="#">FAQ</a></li>
-                                    <li><a href="contact.html">Contact</a></li>
-                                    <li><a href="contact.html">Contact</a></li>
+                                    <li><a href="{{ URL::to('lien-he') }}">Contact</a></li>
+                                    <li><a href="{{ URL::to('lien-he') }}">Contact</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -416,42 +490,6 @@
                                             pretium. Integer ante est, elementum eget magna. Pellentesque sagittis
                                             dictum libero, eu dignissim tellus.</p>
 
-                                        <div class="product-variations-wrapper">
-
-                                            <!-- Start Product Variation  -->
-                                            <div class="product-variation">
-                                                <h6 class="title">Colors:</h6>
-                                                <div class="color-variant-wrapper">
-                                                    <ul class="color-variant mt--0">
-                                                        <li class="color-extra-01 active"><span><span
-                                                                    class="color"></span></span>
-                                                        </li>
-                                                        <li class="color-extra-02"><span><span
-                                                                    class="color"></span></span>
-                                                        </li>
-                                                        <li class="color-extra-03"><span><span
-                                                                    class="color"></span></span>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <!-- End Product Variation  -->
-
-                                            <!-- Start Product Variation  -->
-                                            <div class="product-variation">
-                                                <h6 class="title">Size:</h6>
-                                                <ul class="range-variant">
-                                                    <li>xs</li>
-                                                    <li>s</li>
-                                                    <li>m</li>
-                                                    <li>l</li>
-                                                    <li>xl</li>
-                                                </ul>
-                                            </div>
-                                            <!-- End Product Variation  -->
-
-                                        </div>
-
                                         <!-- Start Product Action Wrapper  -->
                                         <div class="product-action-wrapper d-flex-center">
                                             <!-- Start Quentity Action  -->
@@ -460,7 +498,7 @@
 
                                             <!-- Start Product Action  -->
                                             <ul class="product-action d-flex-center mb--0">
-                                                <li class="add-to-cart"><a href="cart.html"
+                                                <li class="add-to-cart"><a href="{{ URL::to('gio-hang') }}"
                                                         class="axil-btn btn-bg-primary">Add to Cart</a></li>
                                                 <li class="wishlist"><a href="wishlist.html"
                                                         class="axil-btn wishlist-btn"><i class="far fa-heart"></i></a>
@@ -524,7 +562,8 @@
                                 <span class="price old-price">$49.99</span>
                             </div>
                             <div class="product-cart">
-                                <a href="cart.html" class="cart-btn"><i class="fal fa-shopping-cart"></i></a>
+                                <a href="{{ URL::to('gio-hang') }}" class="cart-btn"><i
+                                        class="fal fa-shopping-cart"></i></a>
                                 <a href="wishlist.html" class="cart-btn"><i class="fal fa-heart"></i></a>
                             </div>
                         </div>
@@ -553,7 +592,8 @@
                                 <span class="price old-price">$49.99</span>
                             </div>
                             <div class="product-cart">
-                                <a href="cart.html" class="cart-btn"><i class="fal fa-shopping-cart"></i></a>
+                                <a href="{{ URL::to('gio-hang') }}" class="cart-btn"><i
+                                        class="fal fa-shopping-cart"></i></a>
                                 <a href="wishlist.html" class="cart-btn"><i class="fal fa-heart"></i></a>
                             </div>
                         </div>
@@ -656,7 +696,7 @@
                     <span class="subtotal-amount">$610.00</span>
                 </h3>
                 <div class="group-btn">
-                    <a href="cart.html" class="axil-btn btn-bg-primary viewcart-btn">View Cart</a>
+                    <a href="{{ URL::to('gio-hang') }}" class="axil-btn btn-bg-primary viewcart-btn">View Cart</a>
                     <a href="checkout.html" class="axil-btn btn-bg-secondary checkout-btn">Checkout</a>
                 </div>
             </div>
@@ -685,6 +725,7 @@
     <!-- Offer Modal End -->
     <!-- JS
 ============================================ -->
+
     <!-- Modernizer JS -->
     <script src="{{ asset('public/FrontEnd/js/vendor/modernizr.min.js') }}"></script>
     <!-- jQuery JS -->
