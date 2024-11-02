@@ -33,22 +33,41 @@
                                 <h6 class="title">CATEGORIES</h6>
                                 <div class="shop-submenu">
                                     <ul>
-                                        <li class="current-cat"><a href="#">All Product</a></li>
+                                        <li class="current-cat">
+                                            <input type="checkbox" class="form-check-input" id="all-categories" checked>
+                                            <label class="form-check-label" for="all-categories">All Category</label>
+                                        </li>
                                         @foreach ($categories as $category)
-                                            <li><a href="#">{{ $category->category_name }}</a></li>
+                                            <li>
+                                                <input type="checkbox" class="form-check-input common_selector category"
+                                                    id="category-{{ $category->category_id }}"
+                                                    value="{{ $category->category_id }}">
+                                                <label class="form-check-label"
+                                                    for="category-{{ $category->category_id }}">{{ $category->category_name }}</label>
+                                            </li>
                                         @endforeach
                                     </ul>
+
                                 </div>
                             </div>
                             <div class="toggle-list product-categories product-gender active">
                                 <h6 class="title">BRANDS</h6>
                                 <div class="shop-submenu">
                                     <ul>
-                                        <li class="chosen"><a href="#">All Brand</a></li>
+                                        <li class="chosen">
+                                            <input type="checkbox" class="form-check-input" id="all-brands" checked>
+                                            <label class="form-check-label" for="all-brands">All Brand</label>
+                                        </li>
                                         @foreach ($brands as $brand)
-                                            <li><a href="#">{{ $brand->brand_name }}</a></li>
+                                            <li>
+                                                <input type="checkbox" class="form-check-input common_selector brand"
+                                                    id="brand-{{ $brand->brand_id }}" value="{{ $brand->brand_id }}">
+                                                <label class="form-check-label"
+                                                    for="brand-{{ $brand->brand_id }}">{{ $brand->brand_name }}</label>
+                                            </li>
                                         @endforeach
                                     </ul>
+
                                 </div>
                             </div>
                             <div class="toggle-list product-price-range active">
@@ -95,8 +114,8 @@
                             </div>
                         </div>
                         <!-- End .row -->
-                        <div class="row row--15">
-                            @foreach ($products as $product)
+                        <div class="row row--15 filter_data">
+                            {{-- @foreach ($products as $product)
                                 <div class="col-xl-4 col-sm-6">
                                     <div class="axil-product product-style-one mb--30">
                                         <div class="thumbnail">
@@ -135,7 +154,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            @endforeach
+                            @endforeach --}}
                         </div>
                         <div class="text-center pt--20">
                             <a href="#" class="axil-btn btn-bg-lighter btn-load-more">Load more</a>
@@ -168,4 +187,59 @@
         </div>
         <!-- End Axil Newsletter Area  -->
     </main>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') // Lấy token từ meta tag
+                }
+            });
+            filter_data();
+
+            function filter_data() {
+                var action = 'get_data';
+                var priceSlider = $('#slider-range');
+
+                var minCost = priceSlider.slider("values", 0);
+                var maxCost = priceSlider.slider("values", 1);
+
+                var category = get_filter('category');
+                var brand = get_filter('brand');
+
+                $.ajax({
+                    url: "{{ route('get_list_product') }}",
+                    method: 'POST',
+                    data: {
+                        action: action,
+                        minCost: minCost,
+                        maxCost: maxCost,
+                        category: category,
+                        brand: brand,
+                    },
+                    success: function(data) {
+                        $('.filter_data').html(data.output); // Cập nhật HTML từ dữ liệu JSON
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        console.error(textStatus, errorThrown); // Xử lý lỗi nếu cần
+                    }
+                });
+            }
+
+            function get_filter(class_name) {
+                var filter = [];
+                $('.' + class_name + ':checked').each(function() {
+                    filter.push($(this).val());
+                });
+                return filter;
+            }
+
+            $('.common_selector').click(function() {
+                filter_data();
+            });
+
+            $('#slider-range').on('slidechange', function(event, ui) {
+                filter_data();
+            });
+        })
+    </script>
 @endsection

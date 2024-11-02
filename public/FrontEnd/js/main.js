@@ -205,16 +205,19 @@
             $('#slider-range').slider({
                 range: true,
                 min: 0,
-                max: 5000,
-                values: [0, 3000],
+                max: 5000000,
+                values: [0, 1000000],
+                step: 100,
                 slide: function(event, ui) {
-                    $('#amount').val('$' + ui.values[0] + '  $' + ui.values[1]);
+                    // Format the values with thousands separators
+                    $('#amount').val(ui.values[0].toLocaleString() + ' VND' + '  ' + ui.values[1].toLocaleString() + ' VND');
                 }
             });
-            $('#amount').val('$' + $('#slider-range').slider('values', 0) +
-                '  $' + $('#slider-range').slider('values', 1));
-
+            // Initial value formatting
+            $('#amount').val($('#slider-range').slider('values', 0).toLocaleString() + ' VND' +
+                '  ' + $('#slider-range').slider('values', 1).toLocaleString() + ' VND');
         },
+        
 
         quantityRanger: function() {
             $('.pro-qty').prepend('<span class="dec qtybtn">-</span>');

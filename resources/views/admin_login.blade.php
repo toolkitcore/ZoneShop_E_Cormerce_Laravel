@@ -71,9 +71,6 @@
                                                 style="padding: 15px; font-size: 16px; height: 60px;">Sign In</button>
                                         </div>
                                     </form>
-
-
-
                                 </div>
                             </div>
                         </div>

@@ -27,39 +27,51 @@
                                     <th scope="col" class="product-subtotal">Subtotal</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                @foreach ($content as $key => $v_content)
-                                    <tr>
-                                        <td class="product-remove"><a
-                                                href="{{ URL::to('xoa-gio-hang/' . $v_content->rowId) }}"
-                                                class="remove-wishlist"><i class="fal fa-times"></i></a></td>
-                                        <td class="product-thumbnail"><a href="single-product.html"><img
-                                                    src="{{ asset($v_content->options->image) }}" alt="Image Product"></a>
-                                        </td>
-                                        <td class="product-title"><a
-                                                href="{{ URL::to('san-pham-' . $v_content->id) }}">{{ $v_content->name }}</a>
-                                        </td>
-                                        <td class="product-price" data-title="Price"><span
-                                                class="currency-symbol"></span>{{ number_format($v_content->price) }} VND
-                                        </td>
-                                        <td class="product-quantity" data-title="Qty">
-                                            <div class="pro-qty">
-                                                <input type="number" class="quantity-input cart-quantity"
-                                                    value="{{ $v_content->qty }}" data-rowId="{{ $v_content->rowId }}"
-                                                    readonly>
-                                            </div>
-                                        </td>
-                                        <td class="product-subtotal" data-title="Subtotal">
-                                            <span class="currency-symbol total" id="subtotal-{{ $v_content->rowId }}">
-                                                {{ number_format($v_content->subtotal) . ' VND' }}
-                                            </span>
+                            <tbody class="cart-controller">
+                                @if ($content == null || $content->isEmpty())
+                                    <tr class="cart-items">
+                                        <td colspan="6">
+                                            <p class="text-center text-primary">NOT PRODUCT</p>
                                         </td>
                                     </tr>
-                                @endforeach
+                                @else
+                                    @foreach ($content as $key => $v_content)
+                                        <tr class="cart-items" id="cart-item-{{ $v_content->rowId }}">
+                                            <td class="product-remove">
+                                                <a href="javascript:void(0);" class="remove-cart-product"
+                                                    data-rowid="{{ $v_content->rowId }}">
+                                                    <i class="fal fa-times"></i>
+                                                </a>
+                                            </td>
+                                            <td class="product-thumbnail"><a href="single-product.html"><img
+                                                        src="{{ asset($v_content->options->image) }}"
+                                                        alt="Image Product"></a></td>
+                                            <td class="product-title"><a
+                                                    href="{{ URL::to('san-pham-' . $v_content->id) }}">{{ $v_content->name }}</a>
+                                            </td>
+                                            <td class="product-price" data-title="Price"><span
+                                                    class="currency-symbol"></span>{{ number_format($v_content->price) }}
+                                                VND</td>
+                                            <td class="product-quantity" data-title="Qty">
+                                                <div class="pro-qty">
+                                                    <input type="number" class="quantity-input cart-quantity"
+                                                        value="{{ $v_content->qty }}" data-rowId="{{ $v_content->rowId }}"
+                                                        readonly>
+                                                </div>
+                                            </td>
+                                            <td class="product-subtotal" data-title="Subtotal">
+                                                <span class="currency-symbol total" id="subtotal-{{ $v_content->rowId }}">
+                                                    {{ number_format($v_content->subtotal) . ' VND' }}
+                                                </span>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                @endif
+
                             </tbody>
                         </table>
                     </div>
-                    <div class="cart-update-btn-area">
+                    {{-- <div class="cart-update-btn-area">
                         <div class="input-group product-cupon">
                             <input placeholder="Enter coupon code" type="text">
                             <div class="product-cupon-btn">
@@ -69,10 +81,10 @@
                         <div class="update-btn">
                             <a href="#" class="axil-btn btn-outline">Update Cart</a>
                         </div>
-                    </div>
+                    </div> --}}
                     <div class="row">
                         <div class="col-xl-5 col-lg-7 offset-xl-7 offset-lg-5">
-                            <div class="axil-order-summery mt--80">
+                            <div class="axil-order-summery">
                                 <h5 class="title mb--20">Order Summary</h5>
                                 <div class="summery-table-wrap">
                                     <table class="table summery-table mb--30">
@@ -80,7 +92,7 @@
                                             <tr class="order-subtotal">
                                                 <td>Subtotal</td>
                                                 <td class="total-all">
-                                                    {{ number_format(intval(floatval(str_replace(',', '', Cart::total()))), 0, '.', ',') . ' VND' }}
+                                                    {{ number_format(intval(floatval(str_replace(',', '', Cart::subtotal()))), 0, '.', ',') . ' VND' }}
                                                 </td>
                                             </tr>
                                             {{-- <tr class="order-shipping">
@@ -107,7 +119,7 @@
                                             <tr class="order-total">
                                                 <td>Total</td>
                                                 <td class="order-total-amount total-all">
-                                                    {{ number_format(intval(floatval(str_replace(',', '', Cart::total()))), 0, '.', ',') . ' VND' }}
+                                                    {{ number_format(intval(floatval(str_replace(',', '', Cart::subtotal()))), 0, '.', ',') . ' VND' }}
                                                 </td>
                                                 </td>
                                             </tr>
@@ -126,38 +138,4 @@
         <!-- End Cart Area  -->
 
     </main>
-
-    <script>
-        $(document).ready(function() {
-            $('.qtybtn').on('click', function() {
-
-                let quantityInput = $(this).siblings('.cart-quantity');
-                let rowid = quantityInput.data('rowid');
-                let quantity = parseInt(quantityInput.val());
-
-                $.ajax({
-                    url: '{{ route('update_quantity') }}',
-                    method: 'POST',
-                    data: {
-                        _token: "{{ csrf_token() }}",
-                        rowid: rowid,
-                        quantity: quantity
-                    },
-                    success: function(response) {
-                        $('.total-all').text('');
-                        $('.total-all').text(parseFloat(response.total.replace(/,/g, ''))
-                            .toLocaleString('en-US') + ' VND');
-
-                        $('#subtotal-' + rowid).text('');
-                        $('#subtotal-' + rowid).text(response.subtotal
-                            .toLocaleString().replace(/\./g, ',') + ' VND');
-                    },
-                    error: function(xhr) {
-                        console.log(xhr.responseText); // Hiển thị lỗi nếu có
-                    }
-                });
-            });
-
-        });
-    </script>
 @endsection

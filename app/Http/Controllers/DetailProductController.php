@@ -192,6 +192,32 @@ class DetailProductController extends Controller
 
         return response()->json(['output' => $output]); // Trả về JSON
     }
+    public function get_all_product(Request $request)
+    {
+        // dd($request->all());
+        $query = Product::where('product_status', 1);
+
+
+        if ($request->filled(['minCost', 'maxCost'])) {
+            $query->whereBetween('product_price_selling', [
+                $request->input('minCost'),
+                $request->input('maxCost')
+            ]);
+        }
+        if ($request->has('category')) {
+            $query->whereIn('category_id', $request->input('category'));
+        }
+
+        if ($request->has('brand')) {
+            $query->whereIn('brand_id', $request->input('brand'));
+        }
+
+        $products = $query->get();
+        $output = view('components.product_item', compact('products'))->render();
+
+        return response()->json(['output' => $output]); // Trả về JSON
+    }
+
     public function Product_Details($product_id)
     {
         $product_details = Product_Attributes::where('product_id', $product_id)->with('attribute')->get();

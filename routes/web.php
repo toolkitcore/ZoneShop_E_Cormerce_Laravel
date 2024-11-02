@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\ClientController;
@@ -12,9 +13,11 @@ use App\Http\Controllers\DetailProductController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductImagesController;
 
+
+
+
 // FRONTEND
 
-Route::get('/', [ClientController::class, 'Show_Page_Home']);
 Route::get('/trang-chu', [ClientController::class, 'Show_Page_Home']);
 Route::get('/thong-tin', [ClientController::class, 'Show_About']);
 Route::get('/lien-he', [ClientController::class, 'Show_Contact']);
@@ -24,17 +27,35 @@ Route::get('/gio-hang', [ClientController::class, 'Show_Cart']);
 Route::get('/san-pham-{product_id}', [ClientController::class, 'Show_Single_Product']);
 Route::get('/danh-sach-san-pham', [ClientController::class, 'Show_List_Product']);
 Route::get('/danh-muc-san-pham-{category_id}', [ClientController::class, 'Show_Category_Product']);
-Route::get('/gio-hang', [ClientController::class, 'Show_Cart']);
 
-//Cart 
-Route::post('/them-san-pham', [CartController::class, 'Add_to_cart']);
-Route::get('/xoa-gio-hang/{rowId}', [CartController::class, 'Delete_to_cart']);
-Route::get('/xoa-gio-hang', [CartController::class, 'ClearCart']);
+// Cart Routes
+Route::post('/them-san-pham', [CartController::class, 'Add_to_cart'])->name('add_to_cart');
+Route::post('/add-cart-item', [CartController::class, 'Add_to_cart_item'])->name('add_cart_item'); // Add this route
+Route::delete('/xoa-gio-hang/{rowId}', [CartController::class, 'Delete_to_cart']);
+Route::get('/xoa-gio-hang', [CartController::class, 'ClearCart'])->name('clear_cart');
 Route::post('/update-quantity-product', [CartController::class, 'Update_Quantity_Product'])->name('update_quantity');
+Route::get('/gio-hang', [ClientController::class, 'Show_Cart'])->name('gio_hang'); // Add this route to show cart
 
+// ALL PRODUCT
+Route::post('/get-data-product', [DetailProductController::class, 'get_all_product'])->name('get_list_product');
 
 
 //BACKEND
+Route::get('/', function () {
+    return redirect('trang-chu');
+});
+
+Route::get('/dashboard', function () {
+    return view('welcome');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+
 Route::get('/admin', [AdminControllers::class, 'index']);
 Route::get('/dashboard', [AdminControllers::class, 'Show_Dashboard']);
 Route::post('/admin-dashboard', [AdminControllers::class, 'Dashboard']);
@@ -105,3 +126,5 @@ Route::get('/add-product-images/{product_id}', [ProductImagesController::class, 
 Route::post('/upload-product-images/{product_id}', [ProductImagesController::class, 'Upload_Image_Product']);
 Route::get('/delete-product-images/{product_id}', [ProductImagesController::class, 'Delete_images']);
 Route::post('/delete-product-images-choice', [ProductImagesController::class, 'Delete_choice']);
+
+require __DIR__ . '/auth.php';

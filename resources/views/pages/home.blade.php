@@ -303,7 +303,8 @@
                                                                 class="far fa-eye"></i></a>
                                                     </li>
                                                     <li class="select-option">
-                                                        <a href="single-product.html">
+                                                        <a href="{{ URL::to('gio-hang') }}" class="add-cart-item"
+                                                            data-product-id="{{ $product_item->product_id }}">
                                                             Add to Cart
                                                         </a>
                                                     </li>

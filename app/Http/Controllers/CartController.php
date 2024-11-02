@@ -32,26 +32,52 @@ class CartController extends Controller
 
         return redirect()->back()->with('error', 'Không tìm thấy sản phẩm.');
     }
+    public function Add_to_cart_item(Request $request)
+    {
+        $product_id = $request->input('product_id');
+        $quantity = $request->input('quantity');
+
+        $data = Product::where('product_id', $product_id)->first();
+
+        if ($data) {
+            Cart::add([
+                'id' => $data->product_id,
+                'name' => $data->product_name,
+                'qty' => $quantity,
+                'price' => $data->product_price_selling,
+                'weight' => 0,
+                'options' => [
+                    'image' => $data->product_image,
+                ],
+            ]);
+        }
+        return response()->json(['redirect' => route('gio_hang')]);
+    }
     public function Delete_to_cart($rowId)
     {
-        Cart::update($rowId, 0);
-        return Redirect('gio-hang');
+        Cart::remove($rowId);
+        $new_total = Cart::subtotal();
+
+        return response()->json([
+            'success' => true,
+            'newTotal' => $new_total
+        ]);
     }
 
     public function ClearCart()
     {
         Cart::destroy();
-        return Redirect('gio-hang');
+        return response()->json(['success' => true, 'message' => 'Cart cleared successfully']);
     }
+
     public function Update_Quantity_Product(Request $request)
     {
-        ///dd($request->all());
         $rowId = $request->input('rowid');
         $quantity = $request->input('quantity');
 
         Cart::update($rowId, $quantity);
 
-        $total = Cart::total();
+        $total = Cart::subtotal();
 
         return response()->json([
             'success' => true,

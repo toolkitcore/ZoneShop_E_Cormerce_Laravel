@@ -8,6 +8,13 @@
     <meta name="robots" content="noindex, follow" />
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="update-quantity-route" content="{{ route('update_quantity') }}">
+    <meta name="clear-cart-route" content="{{ route('clear_cart') }}">
+    <meta name="remove-cart-item-url" content="{{ url('xoa-gio-hang') }}">
+    <meta name="add-cart-item-url" content="{{ url('add-cart-item') }}">
+
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="{{ asset('/public/FrontEnd/images/favicon.ico') }}">
 
@@ -117,9 +124,10 @@
                                 </li>
                                 <li class="menu-item-has-children">
                                     <a href="#"
-                                        class=" {{ request()->is('wishlist') ? 'active' : '' }}">Pages</a>
+                                        class=" {{ request()->is('danh-sach-san-pham') ? 'active' : '' }}">Pages</a>
                                     <ul class="axil-submenu">
-                                        <li><a href="wishlist.html">Wishlist</a></li>
+                                        <li><a href="{{ URL::to('danh-sach-san-pham') }}">All Product</a></li>
+                                        <li><a href="{{ URL::to('gio-hang') }}">Cart</a></li>
                                     </ul>
                                 </li>
                                 <li>
@@ -603,7 +611,12 @@
         </div>
     </div>
     <!-- Header Search Modal End -->
-
+    <?php
+    
+    use Gloudemans\Shoppingcart\Facades\Cart;
+    
+    $content = Cart::content();
+    ?>
 
     <div class="cart-dropdown" id="cart-dropdown">
         <div class="cart-content-wrap">
@@ -613,87 +626,42 @@
             </div>
             <div class="cart-body">
                 <ul class="cart-item-list">
-                    <li class="cart-item">
-                        <div class="item-img">
-                            <a href="single-product.html"><img
-                                    src="{{ asset('public/FrontEnd/images/product/electric/product-01.png') }}"
-                                    alt="Commodo Blown Lamp"></a>
-                            <button class="close-btn"><i class="fas fa-times"></i></button>
-                        </div>
-                        <div class="item-content">
-                            <div class="product-rating">
-                                <span class="icon">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </span>
-                                <span class="rating-number">(64)</span>
+                    @foreach ($content as $key => $v_content)
+                        <li class="cart-item">
+                            <div class="item-img">
+                                <a href="single-product.html"><img src="{{ asset($v_content->options->image) }}"
+                                        alt="Commodo Blown Lamp"></a>
+                                <button class="close-btn"><i class="fas fa-times"></i></button>
                             </div>
-                            <h3 class="item-title"><a href="single-product-3.html">Wireless PS Handler</a></h3>
-                            <div class="item-price"><span class="currency-symbol">$</span>155.00</div>
-                            <div class="pro-qty item-quantity">
-                                <input type="number" class="quantity-input" value="15">
+                            <div class="item-content">
+                                <div class="product-rating">
+                                    <span class="icon">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </span>
+                                    <span class="rating-number">(64)</span>
+                                </div>
+                                <h3 class="item-title"><a href="single-product-3.html">{{ $v_content->name }}</a>
+                                </h3>
+                                <div class="item-price"><span
+                                        class="currency-symbol"></span>{{ number_format($v_content->price) }}
+                                    VND</div>
+                                <div class="pro-qty item-quantity">
+                                    <input type="number" class="quantity-input" value="{{ $v_content->qty }}">
+                                </div>
                             </div>
-                        </div>
-                    </li>
-                    <li class="cart-item">
-                        <div class="item-img">
-                            <a href="single-product-2.html"><img
-                                    src="{{ asset('public/FrontEnd/images/product/electric/product-02.png') }}"
-                                    alt="Commodo Blown Lamp"></a>
-                            <button class="close-btn"><i class="fas fa-times"></i></button>
-                        </div>
-                        <div class="item-content">
-                            <div class="product-rating">
-                                <span class="icon">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </span>
-                                <span class="rating-number">(4)</span>
-                            </div>
-                            <h3 class="item-title"><a href="single-product-2.html">Gradient Light Keyboard</a></h3>
-                            <div class="item-price"><span class="currency-symbol">$</span>255.00</div>
-                            <div class="pro-qty item-quantity">
-                                <input type="number" class="quantity-input" value="5">
-                            </div>
-                        </div>
-                    </li>
-                    <li class="cart-item">
-                        <div class="item-img">
-                            <a href="single-product-3.html"><img
-                                    src="{{ asset('public/FrontEnd/images/product/electric/product-03.png') }}"
-                                    alt="Commodo Blown Lamp"></a>
-                            <button class="close-btn"><i class="fas fa-times"></i></button>
-                        </div>
-                        <div class="item-content">
-                            <div class="product-rating">
-                                <span class="icon">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </span>
-                                <span class="rating-number">(6)</span>
-                            </div>
-                            <h3 class="item-title"><a href="single-product.html">HD CC Camera</a></h3>
-                            <div class="item-price"><span class="currency-symbol">$</span>200.00</div>
-                            <div class="pro-qty item-quantity">
-                                <input type="number" class="quantity-input" value="100">
-                            </div>
-                        </div>
-                    </li>
+                        </li>
+                    @endforeach
                 </ul>
             </div>
             <div class="cart-footer">
                 <h3 class="cart-subtotal">
                     <span class="subtotal-title">Subtotal:</span>
-                    <span class="subtotal-amount">$610.00</span>
+                    <span class="subtotal-amount">
+                        {{ number_format(intval(floatval(str_replace(',', '', Cart::subtotal()))), 0, '.', ',') . ' VND' }}</span>
                 </h3>
                 <div class="group-btn">
                     <a href="{{ URL::to('gio-hang') }}" class="axil-btn btn-bg-primary viewcart-btn">View Cart</a>
@@ -727,6 +695,7 @@
 ============================================ -->
 
     <!-- Modernizer JS -->
+    <script src="{{ asset('public/FrontEnd/js/ajax/cart.js') }}"></script>
     <script src="{{ asset('public/FrontEnd/js/vendor/modernizr.min.js') }}"></script>
     <!-- jQuery JS -->
     <script src="{{ asset('public/FrontEnd/js/vendor/jquery.js') }}"></script>
