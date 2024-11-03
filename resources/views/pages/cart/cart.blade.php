@@ -36,7 +36,7 @@
                                     </tr>
                                 @else
                                     @foreach ($content as $key => $v_content)
-                                        <tr class="cart-items" id="cart-item-{{ $v_content->rowId }}">
+                                        <tr class="cart-items cart-item-remove-{{ $v_content->rowId }}">
                                             <td class="product-remove">
                                                 <a href="javascript:void(0);" class="remove-cart-product"
                                                     data-rowid="{{ $v_content->rowId }}">

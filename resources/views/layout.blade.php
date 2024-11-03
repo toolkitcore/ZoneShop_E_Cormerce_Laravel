@@ -521,30 +521,24 @@
             <div class="cart-body">
                 <ul class="cart-item-list">
                     @foreach ($content as $key => $v_content)
-                        <li class="cart-item">
+                        <li class="cart-item cart-item-remove-{{ $v_content->rowId }}">
                             <div class="item-img">
-                                <a href="single-product.html"><img src="{{ asset($v_content->options->image) }}"
-                                        alt="Commodo Blown Lamp"></a>
-                                <button class="close-btn"><i class="fas fa-times"></i></button>
+                                <a href="{{ 'san-pham-' . $v_content->id }}"><img
+                                        src="{{ asset($v_content->options->image) }}" alt="Commodo Blown Lamp"></a>
+                                <button class="close-btn remove-cart-product" data-rowid="{{ $v_content->rowId }}">
+                                    <i class="fas fa-times"></i>
+                                </button>
                             </div>
                             <div class="item-content">
-                                <div class="product-rating">
-                                    <span class="icon">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                    </span>
-                                    <span class="rating-number">(64)</span>
-                                </div>
-                                <h3 class="item-title"><a href="single-product-3.html">{{ $v_content->name }}</a>
+                                <h3 class="item-title"><a
+                                        href="{{ 'san-pham-' . $v_content->id }}">{{ $v_content->name }}</a>
                                 </h3>
                                 <div class="item-price"><span
                                         class="currency-symbol"></span>{{ number_format($v_content->price) }}
                                     VND</div>
                                 <div class="pro-qty item-quantity">
-                                    <input type="number" class="quantity-input" value="{{ $v_content->qty }}">
+                                    <input type="number" class="quantity-input cart-quantity"
+                                        value="{{ $v_content->qty }}" data-rowId="{{ $v_content->rowId }}" readonly>
                                 </div>
                             </div>
                         </li>
@@ -554,7 +548,7 @@
             <div class="cart-footer">
                 <h3 class="cart-subtotal">
                     <span class="subtotal-title">Subtotal:</span>
-                    <span class="subtotal-amount">
+                    <span class="subtotal-amount total-all">
                         {{ number_format(intval(floatval(str_replace(',', '', Cart::subtotal()))), 0, '.', ',') . ' VND' }}</span>
                 </h3>
                 <div class="group-btn">

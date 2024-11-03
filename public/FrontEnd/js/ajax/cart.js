@@ -6,11 +6,12 @@ $(document).ready(function() {
     let addCartItemUrl = $('meta[name="add-cart-item-url"]').attr('content');
 
     // Ajax update quantity cart
-    $('.qtybtn').on('click', function() {
+    $(document).on('click','.qtybtn', function() {
         let quantityInput = $(this).siblings('.cart-quantity');
         let rowid = quantityInput.data('rowid');
         let quantity = parseInt(quantityInput.val());
 
+        alert(quantity)
         $.ajax({
             url: updateQuantityRoute,
             method: 'POST',
@@ -20,6 +21,7 @@ $(document).ready(function() {
                 quantity: quantity
             },
             success: function(response) {
+                document.querySelector(".cart-quantity").value = quantity;
                 $('.total-all').text(parseFloat(response.total.replace(/,/g, '')).toLocaleString('en-US') + ' VND');
                 $('#subtotal-' + rowid).text(response.subtotal.toLocaleString().replace(/\./g, ',') + ' VND');
             },
@@ -50,9 +52,10 @@ $(document).ready(function() {
     });
 
     // Ajax remove cart product
-    $('.remove-cart-product').on('click', function(e) {
+    $(document).on('click','.remove-cart-product', function(e) {
         e.preventDefault();
         let rowid = $(this).data('rowid');
+        // alert(rowid);
         $.ajax({
             url: removeCartItemUrl + '/' + rowid,
             method: 'DELETE',
@@ -62,7 +65,7 @@ $(document).ready(function() {
             },
             success: function(response) {
                 if (response.success) {
-                    $('#cart-item-' + rowid).remove();
+                    $('.cart-item-remove-' + rowid).remove();
                     $('.total-all').text(parseFloat(response.newTotal.replace(/,/g, '')).toLocaleString('en-US') + ' VND');
                 } else {
                     alert("An error occurred. Please try again.");

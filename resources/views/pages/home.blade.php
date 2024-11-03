@@ -1420,32 +1420,8 @@
         <!-- End Axil Newsletter Area  -->
 
     </main>
-    <script type="text/javascript">
-        $(document).on('keyup', '#search', function() {
-            $value = $(this).val();
-            if ($value) {
-                $('.filter_data').hide();
-                $('.search_data').show();
-            } else {
-                $('.filter_data').show();
-                $('.search_data').hide();
-            }
 
-            $.ajax({
-                type: 'get',
-                url: "{{ URL::to('search') }}",
-                data: {
-                    'search': $value,
-                },
-                success: function(data) {
-                    console.log("AJAX Success:", data); // In dữ liệu trả về
-                    $('#Content').html(data);
-                },
-                error: function(xhr, status, error) {
-                    console.error("AJAX Error:", xhr.responseText); // In lỗi nếu có
-                }
-            });
-        });
+    <script>
         $(document).on('click', '.quick-view-button', function(e) {
             e.preventDefault();
             var product_id = $(this).data('id');
