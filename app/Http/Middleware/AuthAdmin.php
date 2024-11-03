@@ -12,14 +12,14 @@ class AuthAdmin
      * Handle an incoming request.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
+     * @param  \Closure  $next
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
     public function handle(Request $request, Closure $next)
     {
-        if (!Auth::check() || !Auth::user()->is_admin) { // Giả sử bạn có thuộc tính is_admin trong model User
-            return redirect('/'); // Hoặc một trang khác mà bạn muốn
+        if (Auth::check() && Auth::user()->role == 1) {
+            return $next($request);
         }
-        // return $next($request);
+        return redirect()->route('login');
     }
 }

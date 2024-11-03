@@ -48,7 +48,7 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-sm-6">
-                        <div class="header-top-dropdown">
+                        {{-- <div class="header-top-dropdown">
                             <div class="dropdown">
                                 <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown"
                                     aria-expanded="false">
@@ -69,7 +69,7 @@
                                     <li><a class="dropdown-item" href="#">USD</a></li>
                                 </ul>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                     <div class="col-sm-6">
                         <div class="header-top-link">
@@ -416,60 +416,13 @@
                                     <div class="col-lg-10 order-lg-2">
                                         <div
                                             class="single-product-thumbnail product-large-thumbnail axil-product thumbnail-badge zoom-gallery">
-                                            <div class="thumbnail">
-                                                <img src="{{ asset('public/FrontEnd/images/product/product-big-01.png') }}"
+                                            <div class="thumbnail" id="large-image-container">
+                                                <img class="view-picture"
+                                                    src="{{ asset('public/FrontEnd/images/product/product-big-01.png') }}"
                                                     alt="Product Images">
                                                 <div class="label-block label-right">
-                                                    <div class="product-badget">20% OFF</div>
+                                                    <div class="product-badget view-discount">20% OFF</div>
                                                 </div>
-                                                <div class="product-quick-view position-view">
-                                                    <a href="FrontEnd/images/product/product-big-01.png')}}"
-                                                        class="popup-zoom">
-                                                        <i class="far fa-search-plus"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="thumbnail">
-                                                <img src="{{ asset('public/FrontEnd/images/product/product-big-02.png') }}"
-                                                    alt="Product Images">
-                                                <div class="label-block label-right">
-                                                    <div class="product-badget">20% OFF</div>
-                                                </div>
-                                                <div class="product-quick-view position-view">
-                                                    <a href="FrontEnd/images/product/product-big-02.png')}}"
-                                                        class="popup-zoom">
-                                                        <i class="far fa-search-plus"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="thumbnail">
-                                                <img src="{{ asset('public/FrontEnd/images/product/product-big-03.png') }}"
-                                                    alt="Product Images">
-                                                <div class="label-block label-right">
-                                                    <div class="product-badget">20% OFF</div>
-                                                </div>
-                                                <div class="product-quick-view position-view">
-                                                    <a href="FrontEnd/images/product/product-big-03.png')}}"
-                                                        class="popup-zoom">
-                                                        <i class="far fa-search-plus"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-2 order-lg-1">
-                                        <div class="product-small-thumb small-thumb-wrapper">
-                                            <div class="small-thumb-img">
-                                                <img src="{{ asset('public/FrontEnd/images/product/product-thumb/thumb-08.png') }}"
-                                                    alt="thumb image">
-                                            </div>
-                                            <div class="small-thumb-img">
-                                                <img src="{{ asset('public/FrontEnd/images/product/product-thumb/thumb-07.png') }}"
-                                                    alt="thumb image">
-                                            </div>
-                                            <div class="small-thumb-img">
-                                                <img src="{{ asset('public/FrontEnd/images/product/product-thumb/thumb-09.png') }}"
-                                                    alt="thumb image">
                                             </div>
                                         </div>
                                     </div>
@@ -487,14 +440,14 @@
                                                 <a href="#">(<span>1</span> customer reviews)</a>
                                             </div>
                                         </div>
-                                        <h3 class="product-title">Serif Coffee Table</h3>
-                                        <span class="price-amount">$155.00 - $255.00</span>
+                                        <h3 class="view-product-title">Serif Coffee Table</h3>
+                                        <h4 class="view-price-amount">10000 VND</h4>
                                         <ul class="product-meta">
                                             <li><i class="fal fa-check"></i>In stock</li>
                                             <li><i class="fal fa-check"></i>Free delivery available</li>
                                             <li><i class="fal fa-check"></i>Sales 30% Off Use Code: MOTIVE30</li>
                                         </ul>
-                                        <p class="description">In ornare lorem ut est dapibus, ut tincidunt nisi
+                                        <p class="view-description">In ornare lorem ut est dapibus, ut tincidunt nisi
                                             pretium. Integer ante est, elementum eget magna. Pellentesque sagittis
                                             dictum libero, eu dignissim tellus.</p>
 
@@ -534,78 +487,19 @@
             <div class="card-header">
                 <form action="#">
                     <div class="input-group">
-                        <input type="search" class="form-control" name="prod-search" id="prod-search"
-                            placeholder="Write Something....">
+                        <input type="search" id="search-navbar" class="form-control" name="prod-search"
+                            id="prod-search" placeholder="Search Prouct ....">
                         <button type="submit" class="axil-btn btn-bg-primary"><i class="far fa-search"></i></button>
                     </div>
                 </form>
             </div>
             <div class="card-body">
                 <div class="search-result-header">
-                    <h6 class="title">24 Result Found</h6>
-                    <a href="shop.html" class="view-all">View All</a>
+                    <h6 class="title"><span id="product_count">0</span> Result Found</h6>
+                    <a href="{{ URL::to('danh-sach-san-pham') }}" class="view-all">View All</a>
                 </div>
-                <div class="psearch-results">
-                    <div class="axil-product-list">
-                        <div class="thumbnail">
-                            <a href="single-product.html">
-                                <img src="{{ asset('public/FrontEnd/images/product/electric/product-09.png') }}"
-                                    alt="Yantiti Leather Bags">
-                            </a>
-                        </div>
-                        <div class="product-content">
-                            <div class="product-rating">
-                                <span class="rating-icon">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fal fa-star"></i>
-                                </span>
-                                <span class="rating-number"><span>100+</span> Reviews</span>
-                            </div>
-                            <h6 class="product-title"><a href="single-product.html">Media Remote</a></h6>
-                            <div class="product-price-variant">
-                                <span class="price current-price">$29.99</span>
-                                <span class="price old-price">$49.99</span>
-                            </div>
-                            <div class="product-cart">
-                                <a href="{{ URL::to('gio-hang') }}" class="cart-btn"><i
-                                        class="fal fa-shopping-cart"></i></a>
-                                <a href="wishlist.html" class="cart-btn"><i class="fal fa-heart"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="axil-product-list">
-                        <div class="thumbnail">
-                            <a href="single-product.html">
-                                <img src="{{ asset('public/FrontEnd/images/product/electric/product-09.png') }}"
-                                    alt="Yantiti Leather Bags">
-                            </a>
-                        </div>
-                        <div class="product-content">
-                            <div class="product-rating">
-                                <span class="rating-icon">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fal fa-star"></i>
-                                </span>
-                                <span class="rating-number"><span>100+</span> Reviews</span>
-                            </div>
-                            <h6 class="product-title"><a href="single-product.html">Media Remote</a></h6>
-                            <div class="product-price-variant">
-                                <span class="price current-price">$29.99</span>
-                                <span class="price old-price">$49.99</span>
-                            </div>
-                            <div class="product-cart">
-                                <a href="{{ URL::to('gio-hang') }}" class="cart-btn"><i
-                                        class="fal fa-shopping-cart"></i></a>
-                                <a href="wishlist.html" class="cart-btn"><i class="fal fa-heart"></i></a>
-                            </div>
-                        </div>
-                    </div>
+                <div class="psearch-results" id="content">
+
                 </div>
             </div>
         </div>
@@ -721,3 +615,26 @@
 </body>
 
 </html>
+<script type="text/javascript">
+    $(document).on('keyup', '#search-navbar', function() {
+        $value = $(this).val();
+        if ($value) {
+            $('.psearch-results').show();
+        }
+
+        $.ajax({
+            type: 'get',
+            url: "{{ URL::to('search-navbar') }}",
+            data: {
+                'search': $value,
+            },
+            success: function(data) {
+                $('#content').html(data.output);
+                $('#product_count').text(data.products_count);
+            },
+            error: function(xhr, status, error) {
+                console.error("AJAX Error:", xhr.responseText); // In lỗi nếu có
+            }
+        });
+    });
+</script>

@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\DB;
 
 use App\Http\Requests;
+use App\Models\Product_Images;
 use Illuminate\Support\Facades\Session;
 
 class ProductController extends Controller
@@ -128,5 +129,19 @@ class ProductController extends Controller
         Product::where('product_id', $product_id)->delete();
         Session::flash('success', 'Delete the Product Successfully');
         return Redirect('all-product');
+    }
+    public function Product_detail($product_id)
+    {
+        $product = Product::where('product_id', $product_id)
+            ->where('product_status', '=', '1')
+            ->with('brand', 'category', 'productAttributes')
+            ->first();
+        $product_images = Product_Images::where('product_id', $product_id)->get();
+
+        $data = [
+            'product' => $product,
+            'product_images' => $product_images
+        ];
+        return response()->json($data);
     }
 }

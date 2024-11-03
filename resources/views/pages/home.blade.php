@@ -218,7 +218,7 @@
                         <div class="slick-single-layout">
                             <div class="categrie-product" data-sal="zoom-out" data-sal-delay="200"
                                 data-sal-duration="500">
-                                <a href="#">
+                                <a href="{{ URL::to('danh-muc-san-pham-' . $item->category_id) }}">
                                     <img class="img-fluid" src="{{ 'public/uploads/category/' . $item->category_image }}"
                                         alt="product categorie">
                                     <h6 class="cat-title">{{ $item->category_name }}</h6>
@@ -298,9 +298,12 @@
                                             </div>
                                             <div class="product-hover-action">
                                                 <ul class="cart-action">
-                                                    <li class="quickview"><a href="#" data-bs-toggle="modal"
-                                                            data-bs-target="#quick-view-modal"><i
-                                                                class="far fa-eye"></i></a>
+                                                    <li class="quickview">
+                                                        <a href="#" class="quick-view-button"
+                                                            data-bs-toggle="modal" data-bs-target="#quick-view-modal"
+                                                            data-id="{{ $product_item->product_id }}">
+                                                            <i class="far fa-eye"></i>
+                                                        </a>
                                                     </li>
                                                     <li class="select-option">
                                                         <a href="{{ URL::to('gio-hang') }}" class="add-cart-item"
@@ -1417,4 +1420,103 @@
         <!-- End Axil Newsletter Area  -->
 
     </main>
+    <script type="text/javascript">
+        $(document).on('keyup', '#search', function() {
+            $value = $(this).val();
+            if ($value) {
+                $('.filter_data').hide();
+                $('.search_data').show();
+            } else {
+                $('.filter_data').show();
+                $('.search_data').hide();
+            }
+
+            $.ajax({
+                type: 'get',
+                url: "{{ URL::to('search') }}",
+                data: {
+                    'search': $value,
+                },
+                success: function(data) {
+                    console.log("AJAX Success:", data); // In dữ liệu trả về
+                    $('#Content').html(data);
+                },
+                error: function(xhr, status, error) {
+                    console.error("AJAX Error:", xhr.responseText); // In lỗi nếu có
+                }
+            });
+        });
+        $(document).on('click', '.quick-view-button', function(e) {
+            e.preventDefault();
+            var product_id = $(this).data('id');
+            // alert(product_id);
+
+            $.ajax({
+                url: 'product-detail/' + product_id,
+                method: 'GET',
+                success: function(data) {
+                    // alert(data.product_name);
+                    $('#quick-view-modal .view-product-title').text(data.product.product_name);
+                    $('#quick-view-modal .view-price-amount')
+                        .text(number_format(data.product.product_price_selling) + ' VND');
+
+                    $('#quick-view-modal .view-description').text(data.product.product_description);
+                    $('#quick-view-modal .view-picture').attr('src', data.product.product_image);
+                    var originalPrice = data.product.product_price_original;
+                    var sellingPrice = data.product.product_price_selling;
+                    var discountPercentage = Math.round(((originalPrice - sellingPrice) /
+                        originalPrice) * 100);
+                    if (originalPrice > 0) {
+                        $('#quick-view-modal .view-discount').text(discountPercentage + '% Off');
+                    } else {
+                        $('#quick-view-modal .view-discount').text('No Discount Available');
+                    }
+
+                },
+                error: function() {
+                    alert('Lỗi rồi nha cu');
+                }
+            });
+        });
+        $(document).on('click', '.header-search-icon', function(e) {
+            e.preventDefault();
+            var product_id = $(this).data('id');
+            // alert(product_id);
+
+            $.ajax({
+                url: 'product-detail/' + product_id,
+                method: 'GET',
+                success: function(data) {
+                    // alert(data.product_name);
+                    $('#quick-view-modal .view-product-title').text(data.product.product_name);
+                    $('#quick-view-modal .view-price-amount')
+                        .text(number_format(data.product.product_price_selling) + ' VND');
+
+                    $('#quick-view-modal .view-description').text(data.product.product_description);
+                    $('#quick-view-modal .view-picture').attr('src', data.product.product_image);
+                    var originalPrice = data.product.product_price_original;
+                    var sellingPrice = data.product.product_price_selling;
+                    var discountPercentage = Math.round(((originalPrice - sellingPrice) /
+                        originalPrice) * 100);
+                    if (originalPrice > 0) {
+                        $('#quick-view-modal .view-discount').text(discountPercentage + '% Off');
+                    } else {
+                        $('#quick-view-modal .view-discount').text('No Discount Available');
+                    }
+
+                },
+                error: function() {
+                    alert('Lỗi rồi nha cu');
+                }
+            });
+        });
+
+        function number_format(number, decimals = 2, decPoint = '.', thousandsSep = ',') {
+            number = parseFloat(number).toFixed(decimals);
+            const parts = number.split('.');
+            parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, thousandsSep);
+
+            return parts[1] === '00' ? parts[0] : parts.join(decPoint);
+        }
+    </script>
 @endsection

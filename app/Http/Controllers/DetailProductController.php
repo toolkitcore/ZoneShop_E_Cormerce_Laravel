@@ -167,6 +167,22 @@ class DetailProductController extends Controller
         // }
         return response($output);
     }
+    public function search_Navbar(Request $request)
+    {
+        $products = Product::where('product_name', 'Like', '%' . $request->search . '%')
+            ->orWhere('product_price_selling', 'Like', '%' . $request->search . '%')
+            ->get();
+
+        $products_count = $products->count();
+
+        $output = view('components.detail_product_search', compact('products'))->render();
+
+        return response()->json([
+            'output' => $output,
+            'products_count' => $products_count,
+        ]);
+    }
+
     public function getData(Request $request)
     {
         // dd($request->all());
