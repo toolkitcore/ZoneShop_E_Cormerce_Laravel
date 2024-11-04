@@ -22,8 +22,8 @@ $(document).ready(function() {
                 },
                 success: function(response) {
                     document.querySelector(".cart-quantity").value = quantity;
-                    $('.total-all').text(parseFloat(response.total.replace(/,/g, '')).toLocaleString('en-US') + ' VND');
-                    $('#subtotal-' + rowid).text(response.subtotal.toLocaleString().replace(/\./g, ',') + ' VND');
+                    $('.total-all').text(response.total + ' VND');
+                    $('#subtotal-' + rowid).text(response.subtotal + ' VND');
                 },
                 error: function(xhr) {
                     console.log(xhr.responseText); // Hiển thị lỗi nếu có
@@ -74,7 +74,7 @@ $(document).ready(function() {
                         $('.cart-count').remove();
                     }
                     $('.cart-item-remove-' + rowid).remove();
-                    $('.total-all').text(parseFloat(response.newTotal.replace(/,/g, '')).toLocaleString('en-US') + ' VND');
+                    $('.total-all').text(response.newTotal + ' VND');
                 } else {
                     alert("An error occurred. Please try again.");
                 }

@@ -76,7 +76,20 @@
                             <ul class="quick-link">
                                 <li><a href="#">Help</a></li>
                                 <li><a href="sign-up.html">Join Us</a></li>
-                                <li><a href="sign-in.html">Sign In</a></li>
+                                <li>
+                                    @auth
+                                        <a href="{{ route('logout') }}"
+                                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                            Log out
+                                        </a>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                            style="display: none;">
+                                            @csrf
+                                        </form>
+                                    @else
+                                        <a href="{{ route('login') }}">Sign In</a>
+                                    @endauth
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -128,6 +141,7 @@
                                     <ul class="axil-submenu">
                                         <li><a href="{{ URL::to('danh-sach-san-pham') }}">All Product</a></li>
                                         <li><a href="{{ URL::to('gio-hang') }}">Cart</a></li>
+                                        <li><a href="{{ URL::to('show-wishlist') }}">Wishlist</a></li>
                                     </ul>
                                 </li>
                                 <li>
@@ -184,7 +198,7 @@
                                     <span class="title">QUICKLINKS</span>
                                     <ul>
                                         <li>
-                                            <a href="my-account.html">My Account</a>
+                                            <a href="{{ URL::to('account') }}">My Account</a>
                                         </li>
                                         <li>
                                             <a href="#">Initiate return</a>
@@ -196,11 +210,26 @@
                                             <a href="{{ URL::to('/admin') }}">Adminstrator</a>
                                         </li>
                                     </ul>
-                                    <div class="login-btn">
-                                        <a href="sign-in.html" class="axil-btn btn-bg-primary">Login</a>
-                                    </div>
-                                    <div class="reg-footer text-center">No account yet? <a href="sign-up.html"
-                                            class="btn-link">REGISTER HERE.</a></div>
+                                    @auth
+                                        <div class="login-btn">
+                                            <a href="{{ route('logout') }}" class="axil-btn btn-bg-primary"
+                                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                                Logout
+                                            </a>
+                                        </div>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                            style="display: none;">
+                                            @csrf
+                                        </form>
+                                    @else
+                                        <div class="login-btn">
+                                            <a href="{{ route('login') }}" class="axil-btn btn-bg-primary">Sign In</a>
+                                        </div>
+                                        <div class="reg-footer text-center">No account yet? <a
+                                                href="{{ route('register') }}" class="btn-link">REGISTER HERE.</a></div>
+                                    @endauth
+                                    {{-- <div class="reg-footer text-center">No account yet? <a href="sign-up.html"
+                                            class="btn-link">REGISTER HERE.</a></div> --}}
                                 </div>
                             </li>
                             <li class="axil-mobile-toggle">
@@ -310,7 +339,7 @@
                             <h5 class="widget-title">Account</h5>
                             <div class="inner">
                                 <ul>
-                                    <li><a href="my-account.html">My Account</a></li>
+                                    <li><a href="{{ URL::to('account') }}">My Account</a></li>
                                     <li><a href="sign-up.html">Login / Register</a></li>
                                     <li><a href="{{ URL::to('gio-hang') }}">Cart</a></li>
                                     <li><a href="wishlist.html">Wishlist</a></li>
@@ -563,7 +592,7 @@
                 <h3 class="cart-subtotal">
                     <span class="subtotal-title">Subtotal:</span>
                     <span class="subtotal-amount total-all">
-                        {{ number_format(intval(floatval(str_replace(',', '', Cart::subtotal()))), 0, '.', ',') . ' VND' }}</span>
+                        {{ Cart::subtotal(0) . ' VND' }}</span>
                 </h3>
                 <div class="group-btn">
                     <a href="{{ URL::to('gio-hang') }}" class="axil-btn btn-bg-primary viewcart-btn">View Cart</a>

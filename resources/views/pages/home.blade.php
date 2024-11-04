@@ -311,8 +311,11 @@
                                                             Add to Cart
                                                         </a>
                                                     </li>
-                                                    <li class="wishlist"><a href="wishlist.html"><i
-                                                                class="far fa-heart"></i></a></li>
+                                                    <li class="wishlist">
+                                                        <a href="#" class="add-to-wishlist"
+                                                            data-product-id="{{ $product_item->product_id }}">
+                                                            <i class="far fa-heart"></i></a>
+                                                    </li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -360,7 +363,7 @@
                                                 </li>
                                                 <li class="select-option"><a href="single-product.html">Select Option</a>
                                                 </li>
-                                                <li class="wishlist"><a href="wishlist.html"><i
+                                                <li class="wishlist"><a href="{{ URL::to('show-wishlist') }}"><i
                                                             class="far fa-heart"></i></a></li>
                                             </ul>
                                         </div>
@@ -392,7 +395,7 @@
                                                 </li>
                                                 <li class="select-option"><a href="single-product.html">Select Option</a>
                                                 </li>
-                                                <li class="wishlist"><a href="wishlist.html"><i
+                                                <li class="wishlist"><a href="{{ URL::to('show-wishlist') }}"><i
                                                             class="far fa-heart"></i></a></li>
                                             </ul>
                                         </div>
@@ -437,7 +440,7 @@
                                                 </li>
                                                 <li class="select-option"><a href="single-product.html">Select Option</a>
                                                 </li>
-                                                <li class="wishlist"><a href="wishlist.html"><i
+                                                <li class="wishlist"><a href="{{ URL::to('show-wishlist') }}"><i
                                                             class="far fa-heart"></i></a></li>
                                             </ul>
                                         </div>
@@ -479,7 +482,7 @@
                                                 </li>
                                                 <li class="select-option"><a href="single-product.html">Select Option</a>
                                                 </li>
-                                                <li class="wishlist"><a href="wishlist.html"><i
+                                                <li class="wishlist"><a href="{{ URL::to('show-wishlist') }}"><i
                                                             class="far fa-heart"></i></a></li>
                                             </ul>
                                         </div>
@@ -513,7 +516,7 @@
                                                 </li>
                                                 <li class="select-option"><a href="single-product.html">Select Option</a>
                                                 </li>
-                                                <li class="wishlist"><a href="wishlist.html"><i
+                                                <li class="wishlist"><a href="{{ URL::to('show-wishlist') }}"><i
                                                             class="far fa-heart"></i></a></li>
                                             </ul>
                                         </div>
@@ -558,7 +561,7 @@
                                                 </li>
                                                 <li class="select-option"><a href="single-product.html">Select Option</a>
                                                 </li>
-                                                <li class="wishlist"><a href="wishlist.html"><i
+                                                <li class="wishlist"><a href="{{ URL::to('show-wishlist') }}"><i
                                                             class="far fa-heart"></i></a></li>
                                             </ul>
                                         </div>
@@ -603,7 +606,7 @@
                                                 </li>
                                                 <li class="select-option"><a href="single-product.html">Select Option</a>
                                                 </li>
-                                                <li class="wishlist"><a href="wishlist.html"><i
+                                                <li class="wishlist"><a href="{{ URL::to('show-wishlist') }}"><i
                                                             class="far fa-heart"></i></a></li>
                                             </ul>
                                         </div>
@@ -648,7 +651,7 @@
                                                 </li>
                                                 <li class="select-option"><a href="single-product.html">Select Option</a>
                                                 </li>
-                                                <li class="wishlist"><a href="wishlist.html"><i
+                                                <li class="wishlist"><a href="{{ URL::to('show-wishlist') }}"><i
                                                             class="far fa-heart"></i></a></li>
                                             </ul>
                                         </div>
@@ -841,7 +844,7 @@
                                                 </li>
                                                 <li class="select-option"><a href="single-product.html">Add to Cart</a>
                                                 </li>
-                                                <li class="wishlist"><a href="wishlist.html"><i
+                                                <li class="wishlist"><a href="{{ URL::to('show-wishlist') }}"><i
                                                             class="far fa-heart"></i></a></li>
                                             </ul>
                                         </div>
@@ -883,7 +886,8 @@
                                             <li class="quickview"><a href="#" data-bs-toggle="modal"
                                                     data-bs-target="#quick-view-modal"><i class="far fa-eye"></i></a></li>
                                             <li class="select-option"><a href="single-product.html">Select Option</a></li>
-                                            <li class="wishlist"><a href="wishlist.html"><i class="far fa-heart"></i></a>
+                                            <li class="wishlist"><a href="{{ URL::to('show-wishlist') }}"><i
+                                                        class="far fa-heart"></i></a>
                                             </li>
                                         </ul>
                                     </div>
@@ -929,7 +933,7 @@
                                                 </li>
                                                 <li class="select-option"><a href="single-product.html">Add to Cart</a>
                                                 </li>
-                                                <li class="wishlist"><a href="wishlist.html"><i
+                                                <li class="wishlist"><a href="{{ URL::to('show-wishlist') }}"><i
                                                             class="far fa-heart"></i></a></li>
                                             </ul>
                                         </div>
@@ -976,7 +980,7 @@
                                                 </li>
                                                 <li class="select-option"><a href="single-product.html">Add to Cart</a>
                                                 </li>
-                                                <li class="wishlist"><a href="wishlist.html"><i
+                                                <li class="wishlist"><a href="{{ URL::to('show-wishlist') }}"><i
                                                             class="far fa-heart"></i></a></li>
                                             </ul>
                                         </div>
@@ -1022,7 +1026,7 @@
                                                 </li>
                                                 <li class="select-option"><a href="single-product.html">Add to Cart</a>
                                                 </li>
-                                                <li class="wishlist"><a href="wishlist.html"><i
+                                                <li class="wishlist"><a href="{{ URL::to('show-wishlist') }}"><i
                                                             class="far fa-heart"></i></a></li>
                                             </ul>
                                         </div>
@@ -1073,7 +1077,8 @@
                                     </div>
                                     <div class="product-cart">
                                         <a href="cart.html" class="cart-btn"><i class="fal fa-shopping-cart"></i></a>
-                                        <a href="wishlist.html" class="cart-btn"><i class="fal fa-heart"></i></a>
+                                        <a href="{{ URL::to('show-wishlist') }}" class="cart-btn"><i
+                                                class="fal fa-heart"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -1104,7 +1109,8 @@
                                     </div>
                                     <div class="product-cart">
                                         <a href="cart.html" class="cart-btn"><i class="fal fa-shopping-cart"></i></a>
-                                        <a href="wishlist.html" class="cart-btn"><i class="fal fa-heart"></i></a>
+                                        <a href="{{ URL::to('show-wishlist') }}" class="cart-btn"><i
+                                                class="fal fa-heart"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -1135,7 +1141,8 @@
                                     </div>
                                     <div class="product-cart">
                                         <a href="cart.html" class="cart-btn"><i class="fal fa-shopping-cart"></i></a>
-                                        <a href="wishlist.html" class="cart-btn"><i class="fal fa-heart"></i></a>
+                                        <a href="{{ URL::to('show-wishlist') }}" class="cart-btn"><i
+                                                class="fal fa-heart"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -1166,7 +1173,8 @@
                                     </div>
                                     <div class="product-cart">
                                         <a href="cart.html" class="cart-btn"><i class="fal fa-shopping-cart"></i></a>
-                                        <a href="wishlist.html" class="cart-btn"><i class="fal fa-heart"></i></a>
+                                        <a href="{{ URL::to('show-wishlist') }}" class="cart-btn"><i
+                                                class="fal fa-heart"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -1197,7 +1205,8 @@
                                     </div>
                                     <div class="product-cart">
                                         <a href="cart.html" class="cart-btn"><i class="fal fa-shopping-cart"></i></a>
-                                        <a href="wishlist.html" class="cart-btn"><i class="fal fa-heart"></i></a>
+                                        <a href="{{ URL::to('show-wishlist') }}" class="cart-btn"><i
+                                                class="fal fa-heart"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -1229,7 +1238,8 @@
                                     </div>
                                     <div class="product-cart">
                                         <a href="cart.html" class="cart-btn"><i class="fal fa-shopping-cart"></i></a>
-                                        <a href="wishlist.html" class="cart-btn"><i class="fal fa-heart"></i></a>
+                                        <a href="{{ URL::to('show-wishlist') }}" class="cart-btn"><i
+                                                class="fal fa-heart"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -1260,7 +1270,8 @@
                                     </div>
                                     <div class="product-cart">
                                         <a href="cart.html" class="cart-btn"><i class="fal fa-shopping-cart"></i></a>
-                                        <a href="wishlist.html" class="cart-btn"><i class="fal fa-heart"></i></a>
+                                        <a href="{{ URL::to('show-wishlist') }}" class="cart-btn"><i
+                                                class="fal fa-heart"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -1291,7 +1302,8 @@
                                     </div>
                                     <div class="product-cart">
                                         <a href="cart.html" class="cart-btn"><i class="fal fa-shopping-cart"></i></a>
-                                        <a href="wishlist.html" class="cart-btn"><i class="fal fa-heart"></i></a>
+                                        <a href="{{ URL::to('show-wishlist') }}" class="cart-btn"><i
+                                                class="fal fa-heart"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -1422,38 +1434,6 @@
     </main>
 
     <script>
-        $(document).on('click', '.quick-view-button', function(e) {
-            e.preventDefault();
-            var product_id = $(this).data('id');
-            // alert(product_id);
-
-            $.ajax({
-                url: 'product-detail/' + product_id,
-                method: 'GET',
-                success: function(data) {
-                    // alert(data.product_name);
-                    $('#quick-view-modal .view-product-title').text(data.product.product_name);
-                    $('#quick-view-modal .view-price-amount')
-                        .text(number_format(data.product.product_price_selling) + ' VND');
-
-                    $('#quick-view-modal .view-description').text(data.product.product_description);
-                    $('#quick-view-modal .view-picture').attr('src', data.product.product_image);
-                    var originalPrice = data.product.product_price_original;
-                    var sellingPrice = data.product.product_price_selling;
-                    var discountPercentage = Math.round(((originalPrice - sellingPrice) /
-                        originalPrice) * 100);
-                    if (originalPrice > 0) {
-                        $('#quick-view-modal .view-discount').text(discountPercentage + '% Off');
-                    } else {
-                        $('#quick-view-modal .view-discount').text('No Discount Available');
-                    }
-
-                },
-                error: function() {
-                    alert('Lỗi rồi nha cu');
-                }
-            });
-        });
         $(document).on('click', '.header-search-icon', function(e) {
             e.preventDefault();
             var product_id = $(this).data('id');
@@ -1494,5 +1474,26 @@
 
             return parts[1] === '00' ? parts[0] : parts.join(decPoint);
         }
+        $(document).on('click', '.add-to-wishlist', function() {
+            var button = $(this);
+            var productId = $(this).data('product-id');
+            $.ajax({
+                type: 'POST',
+                url: '{{ route('addToWishlist') }}',
+                data: {
+                    product_id: productId,
+                    _token: '{{ csrf_token() }}',
+                },
+                success: function(response) {
+                    if (response.redirect) {
+                        window.location.href = response.redirect;
+                    }
+                },
+                error: function(xhr, status, error) {
+                    alert('Error adding product to wishlist:', error);
+                    console.log(xhr.responseText); // Log the entire response for more details
+                }
+            });
+        });
     </script>
 @endsection

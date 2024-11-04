@@ -58,7 +58,7 @@ class CartController extends Controller
     public function Delete_to_cart($rowId)
     {
         Cart::remove($rowId);
-        $new_total = Cart::subtotal();
+        $new_total = Cart::subtotal(0);
         $count = Cart::content()->unique('id')->count();
 
         return response()->json([
@@ -81,7 +81,7 @@ class CartController extends Controller
 
         Cart::update($rowId, $quantity);
 
-        $total = Cart::subtotal();
+        $total = Cart::subtotal(0);
 
         return response()->json([
             'success' => true,

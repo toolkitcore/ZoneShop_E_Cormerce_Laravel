@@ -12,9 +12,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\DetailProductController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductImagesController;
-
-
-
+use App\Http\Controllers\WishlistController;
 
 // FRONTEND
 
@@ -40,9 +38,18 @@ Route::get('/gio-hang', [ClientController::class, 'Show_Cart'])->name('gio_hang'
 // ALL PRODUCT
 Route::post('/get-data-product', [DetailProductController::class, 'get_all_product'])->name('get_list_product');
 
+// WISHLIST
+Route::get('/show-wishlist', [WishlistController::class, 'Show_Wishlist'])->name('wishlist');
+Route::post('/wishlist/add', [WishlistController::class, 'addToWishlist'])->name('addToWishlist');
+Route::post('/wishlist/back', [WishlistController::class, 'backToCart'])->name('backToCart');
+Route::delete('/wishlist/remove', [WishlistController::class, 'removeFromWishlist'])->name('removeFromWishlist');
+
 // ROUTE AJAX
 Route::get('product-detail/{product_id}', [ProductController::class, 'Product_detail'])->name('product_detail');
 Route::get('/search-navbar', [DetailProductController::class, 'search_Navbar']);
+
+//ACCOUNT
+Route::get('/account', [ClientController::class, 'Show_Account']);
 
 
 
@@ -118,3 +125,22 @@ Route::get('/add-product-images/{product_id}', [ProductImagesController::class, 
 Route::post('/upload-product-images/{product_id}', [ProductImagesController::class, 'Upload_Image_Product']);
 Route::get('/delete-product-images/{product_id}', [ProductImagesController::class, 'Delete_images']);
 Route::post('/delete-product-images-choice', [ProductImagesController::class, 'Delete_choice']);
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+// Route::get('auth/google', [GoogleAuthController::class, 'redirect'])->name('google-auth');
+// Route::get('auth/google/call-back', [GoogleAuthController::class, 'callbackGoogle']);
+
+
+require __DIR__ . '/auth.php';

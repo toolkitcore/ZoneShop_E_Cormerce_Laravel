@@ -70,4 +70,12 @@ class ClientController extends Controller
     {
         return view('pages.cart.cart');
     }
+
+    public function Show_Account()
+    {
+        if (!auth()->check()) {
+            return redirect()->route('login');
+        }
+        return view('pages.account.show_account');
+    }
 }

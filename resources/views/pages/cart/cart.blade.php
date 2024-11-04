@@ -92,7 +92,7 @@
                                             <tr class="order-subtotal">
                                                 <td>Subtotal</td>
                                                 <td class="total-all">
-                                                    {{ number_format(intval(floatval(str_replace(',', '', Cart::subtotal()))), 0, '.', ',') . ' VND' }}
+                                                    {{ Cart::subtotal(0) . ' VND' }}
                                                 </td>
                                             </tr>
                                             {{-- <tr class="order-shipping">
@@ -119,7 +119,7 @@
                                             <tr class="order-total">
                                                 <td>Total</td>
                                                 <td class="order-total-amount total-all">
-                                                    {{ number_format(intval(floatval(str_replace(',', '', Cart::subtotal()))), 0, '.', ',') . ' VND' }}
+                                                    {{ Cart::subtotal(0) . ' VND' }}
                                                 </td>
                                                 </td>
                                             </tr>
