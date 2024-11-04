@@ -37,6 +37,8 @@ class CartController extends Controller
         $product_id = $request->input('product_id');
         $quantity = $request->input('quantity');
 
+        // log($product_id . $quantity);
+
         $data = Product::where('product_id', $product_id)->first();
 
         if ($data) {
@@ -57,10 +59,12 @@ class CartController extends Controller
     {
         Cart::remove($rowId);
         $new_total = Cart::subtotal();
+        $count = Cart::content()->unique('id')->count();
 
         return response()->json([
             'success' => true,
-            'newTotal' => $new_total
+            'newTotal' => $new_total,
+            'count' => $count
         ]);
     }
 

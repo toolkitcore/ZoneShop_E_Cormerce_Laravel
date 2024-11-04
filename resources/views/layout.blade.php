@@ -164,7 +164,15 @@
                             </li>
                             <li class="shopping-cart">
                                 <a href="#" class="cart-dropdown-btn">
-                                    <span class="cart-count">3</span>
+                                    @php
+                                        $count = Cart::content()->unique('id')->count();
+                                    @endphp
+
+                                    @if ($count != 0)
+                                        <span class="cart-count">
+                                            {{ $count }}
+                                        </span>
+                                    @endif
                                     <i class="flaticon-shopping-cart"></i>
                                 </a>
                             </li>
@@ -454,13 +462,19 @@
                                         <!-- Start Product Action Wrapper  -->
                                         <div class="product-action-wrapper d-flex-center">
                                             <!-- Start Quentity Action  -->
-                                            <div class="pro-qty"><input type="text" value="1"></div>
+                                            <div class="pro-qty">
+                                                <input type="text" class="quantity-product" value="1">
+                                            </div>
                                             <!-- End Quentity Action  -->
 
                                             <!-- Start Product Action  -->
                                             <ul class="product-action d-flex-center mb--0">
-                                                <li class="add-to-cart"><a href="{{ URL::to('gio-hang') }}"
-                                                        class="axil-btn btn-bg-primary">Add to Cart</a></li>
+                                                <li class="add-to-cart">
+                                                    <a href="{{ URL::to('gio-hang') }}"
+                                                        class="axil-btn btn-bg-primary add-to-cart-quickview">Add to
+                                                        Cart
+                                                    </a>
+                                                </li>
                                                 <li class="wishlist"><a href="wishlist.html"
                                                         class="axil-btn wishlist-btn"><i class="far fa-heart"></i></a>
                                                 </li>
@@ -521,7 +535,7 @@
             <div class="cart-body">
                 <ul class="cart-item-list">
                     @foreach ($content as $key => $v_content)
-                        <li class="cart-item cart-item-remove-{{ $v_content->rowId }}">
+                        <li class="cart-items cart-item cart-item-remove-{{ $v_content->rowId }}">
                             <div class="item-img">
                                 <a href="{{ 'san-pham-' . $v_content->id }}"><img
                                         src="{{ asset($v_content->options->image) }}" alt="Commodo Blown Lamp"></a>
@@ -610,6 +624,65 @@
 
 </html>
 <script type="text/javascript">
+    $(document).on('click', '.quick-view-button', function(e) {
+        e.preventDefault();
+        var product_id = $(this).data('id');
+        // alert(product_id);
+
+        $.ajax({
+            url: 'product-detail/' + product_id,
+            method: 'GET',
+            success: function(data) {
+                // alert(data.product_name);
+                $('#quick-view-modal .view-product-title').text(data.product.product_name);
+                $('#quick-view-modal .view-price-amount')
+                    .text(number_format(data.product.product_price_selling) + ' VND');
+
+                $('#quick-view-modal .view-description').text(data.product.product_description);
+                $('#quick-view-modal .view-picture').attr('src', data.product.product_image);
+                var originalPrice = data.product.product_price_original;
+                var sellingPrice = data.product.product_price_selling;
+                var discountPercentage = Math.round(((originalPrice - sellingPrice) /
+                    originalPrice) * 100);
+                if (originalPrice > 0) {
+                    $('#quick-view-modal .view-discount').text(discountPercentage + '% Off');
+                } else {
+                    $('#quick-view-modal .view-discount').text('No Discount Available');
+                }
+                $('#quick-view-modal .add-to-cart-quickview').data('id', product_id);
+
+
+            },
+            error: function() {
+                alert('Lỗi rồi nha cu');
+            }
+        });
+
+        $(document).off('click', '.add-to-cart-quickview').on('click', '.add-to-cart-quickview', function(e) {
+            e.preventDefault();
+            var product_id = $(this).data('id'); // Retrieve product ID directly from button data
+            var quantity = $('#quick-view-modal .quantity-product').val();
+
+            $.ajax({
+                url: '{{ route('add_cart_item') }}',
+                method: 'POST',
+                data: {
+                    product_id: product_id,
+                    quantity: quantity,
+                    _token: '{{ csrf_token() }}' // Thêm CSRF token vào dữ liệu gửi đi
+                },
+                success: function(response) {
+                    if (response.redirect) {
+                        window.location.href = response.redirect;
+                    }
+                },
+                error: function(xhr) {
+                    alert("Có lỗi rồi check lại đi .");
+                }
+            })
+        });
+        // product_id = null;
+    });
     $(document).on('keyup', '#search-navbar', function() {
         $value = $(this).val();
         if ($value) {

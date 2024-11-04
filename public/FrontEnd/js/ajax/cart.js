@@ -6,30 +6,32 @@ $(document).ready(function() {
     let addCartItemUrl = $('meta[name="add-cart-item-url"]').attr('content');
 
     // Ajax update quantity cart
-    $(document).on('click','.qtybtn', function() {
+    $(document).on('click', '.qtybtn', function() {
         let quantityInput = $(this).siblings('.cart-quantity');
         let rowid = quantityInput.data('rowid');
         let quantity = parseInt(quantityInput.val());
-
-        alert(quantity)
-        $.ajax({
-            url: updateQuantityRoute,
-            method: 'POST',
-            data: {
-                _token: $('meta[name="csrf-token"]').attr('content'),
-                rowid: rowid,
-                quantity: quantity
-            },
-            success: function(response) {
-                document.querySelector(".cart-quantity").value = quantity;
-                $('.total-all').text(parseFloat(response.total.replace(/,/g, '')).toLocaleString('en-US') + ' VND');
-                $('#subtotal-' + rowid).text(response.subtotal.toLocaleString().replace(/\./g, ',') + ' VND');
-            },
-            error: function(xhr) {
-                console.log(xhr.responseText); // Hiển thị lỗi nếu có
-            }
-        });
+    
+        if (!isNaN(quantity) && quantity > 0) {
+            $.ajax({
+                url: updateQuantityRoute,
+                method: 'POST',
+                data: {
+                    _token: $('meta[name="csrf-token"]').attr('content'),
+                    rowid: rowid,
+                    quantity: quantity
+                },
+                success: function(response) {
+                    document.querySelector(".cart-quantity").value = quantity;
+                    $('.total-all').text(parseFloat(response.total.replace(/,/g, '')).toLocaleString('en-US') + ' VND');
+                    $('#subtotal-' + rowid).text(response.subtotal.toLocaleString().replace(/\./g, ',') + ' VND');
+                },
+                error: function(xhr) {
+                    console.log(xhr.responseText); // Hiển thị lỗi nếu có
+                }
+            });
+        }
     });
+    
 
     // Ajax clear cart
     $('.cart-clear').on('click', function(event) {
@@ -41,6 +43,7 @@ $(document).ready(function() {
             success: function(response) {
                 if (response.success) {
                     $('.cart-items').empty();
+                    $('.cart-count').remove();
                     $('.total-all').text('0 VND');
                     $('.cart-controller').html(`<tr class="cart-items"><td colspan="6"><p class="text-center text-primary">NOT PRODUCT</p></td></tr>`);
                 }
@@ -65,6 +68,11 @@ $(document).ready(function() {
             },
             success: function(response) {
                 if (response.success) {
+                    if(response.count!=0){
+                        $('.cart-count').text(response.count);
+                    }else{
+                        $('.cart-count').remove();
+                    }
                     $('.cart-item-remove-' + rowid).remove();
                     $('.total-all').text(parseFloat(response.newTotal.replace(/,/g, '')).toLocaleString('en-US') + ' VND');
                 } else {

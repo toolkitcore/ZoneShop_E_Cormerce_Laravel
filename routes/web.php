@@ -31,7 +31,7 @@ Route::get('/danh-muc-san-pham-{category_id}', [ClientController::class, 'Show_C
 
 // Cart Routes
 Route::post('/them-san-pham', [CartController::class, 'Add_to_cart'])->name('add_to_cart');
-Route::post('/add-cart-item', [CartController::class, 'Add_to_cart_item'])->name('add_cart_item'); // Add this route
+Route::post('/add-cart-item', [CartController::class, 'Add_to_cart_item'])->name('add_cart_item');
 Route::delete('/xoa-gio-hang/{rowId}', [CartController::class, 'Delete_to_cart']);
 Route::get('/xoa-gio-hang', [CartController::class, 'ClearCart'])->name('clear_cart');
 Route::post('/update-quantity-product', [CartController::class, 'Update_Quantity_Product'])->name('update_quantity');

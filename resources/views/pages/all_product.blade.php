@@ -10,7 +10,7 @@
                             <ul class="axil-breadcrumb">
                                 <li class="axil-breadcrumb-item"><a href="index.html">Home</a></li>
                                 <li class="separator"></li>
-                                <li class="axil-breadcrumb-item active" aria-current="page">Danh sách sản phẩm</li>
+                                <li class="axil-breadcrumb-item active" aria-current="page">All Products</li>
                             </ul>
                             <h1 class="title">Explore All Products</h1>
                         </div>

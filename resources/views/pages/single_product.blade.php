@@ -89,7 +89,7 @@
                                             <!-- Start Product Action  -->
                                             <ul class="product-action d-flex-center mb--0">
                                                 <li class="add-to-cart">
-                                                    <button type="submit" class="axil-btn btn-bg-primary">Add
+                                                    <button type="submit" class="axil-btn btn-bg-primary">zAdd
                                                         to Cart</button>
                                                 </li>
                                                 <li class="wishlist"><a href="wishlist.html"
