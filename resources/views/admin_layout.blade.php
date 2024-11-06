@@ -9,9 +9,12 @@
     <meta name="description" content="A fully responsive premium admin dashboard template" />
     <meta name="author" content="Techzaa" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
 
     <!-- App favicon -->
     <link rel="shortcut icon" href="{{ asset('public/BackEnd/images/favicon.ico') }}">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.0/min/dropzone.min.css">
@@ -660,6 +663,68 @@
                                             <li class="sub-nav-item">
                                                 <a class="sub-nav-link" href="{{ URL::to('add-images') }}">Add
                                                     Images</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link menu-arrow" href="#sidebarOrders" data-bs-toggle="collapse"
+                            role="button" aria-expanded="false" aria-controls="sidebarOrders">
+                            <span class="nav-icon">
+                                <iconify-icon icon="solar:bag-smile-bold-duotone"></iconify-icon>
+                            </span>
+                            <span class="nav-text"> Orders </span>
+                        </a>
+                        <div class="collapse" id="sidebarOrders">
+                            <ul class="nav sub-navbar-nav">
+                                <li class="sub-nav-item">
+                                    <a class="sub-nav-link menu-arrow" href="#sidebarItemOrderSubItem1"
+                                        data-bs-toggle="collapse" role="button" aria-expanded="false"
+                                        aria-controls="sidebarItemOrderSubItem1">
+                                        <span> Transactions </span>
+                                    </a>
+                                    <div class="collapse" id="sidebarItemOrderSubItem1">
+                                        <ul class="nav sub-navbar-nav">
+                                            <li class="sub-nav-item">
+                                                <a class="sub-nav-link" href="#">List Attribute</a>
+                                            </li>
+                                            <li class="sub-nav-item">
+                                                <a class="sub-nav-link" href="#">Add Attribute</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="sub-nav-item">
+                                    <a class="sub-nav-link menu-arrow" href="#sidebarItemOrderSubItem2"
+                                        data-bs-toggle="collapse" role="button" aria-expanded="false"
+                                        aria-controls="sidebarItemOrderSubItem2">
+                                        <span> Orders </span>
+                                    </a>
+                                    <div class="collapse" id="sidebarItemOrderSubItem2">
+                                        <ul class="nav sub-navbar-nav">
+                                            <li class="sub-nav-item">
+                                                <a class="sub-nav-link" href="#">List Attribute</a>
+                                            </li>
+                                            <li class="sub-nav-item">
+                                                <a class="sub-nav-link" href="#">Add Attribute</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="sub-nav-item">
+                                    <a class="sub-nav-link menu-arrow" href="#sidebarItemOrderSubItem3"
+                                        data-bs-toggle="collapse" role="button" aria-expanded="false"
+                                        aria-controls="sidebarItemOrderSubItem3">
+                                        <span> Address </span>
+                                    </a>
+                                    <div class="collapse" id="sidebarItemOrderSubItem3">
+                                        <ul class="nav sub-navbar-nav">
+                                            <li class="sub-nav-item">
+                                                <a class="sub-nav-link"
+                                                    href="{{ URL::to('address-pickup') }}">Address Pickup</a>
                                             </li>
                                         </ul>
                                     </div>

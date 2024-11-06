@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AddressController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -138,6 +139,27 @@ Route::get('/add-product-images/{product_id}', [ProductImagesController::class, 
 Route::post('/upload-product-images/{product_id}', [ProductImagesController::class, 'Upload_Image_Product']);
 Route::get('/delete-product-images/{product_id}', [ProductImagesController::class, 'Delete_images']);
 Route::post('/delete-product-images-choice', [ProductImagesController::class, 'Delete_choice']);
+
+
+//ADDRESS PICKUP
+Route::get('/address-pickup', [AddressController::class, 'Show_Address_Pickup'])->name('show_address_pickup');
+Route::post('/add-address-pickup', [AddressController::class, 'addAddress'])->name('add_address_pickup');
+Route::post('/delete-address', [AddressController::class, 'DeleteAddress'])->name('delete_address');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 Route::get('/', function () {
     return view('welcome');
