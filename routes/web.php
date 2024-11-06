@@ -10,14 +10,17 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\DetailProductController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductImagesController;
 use App\Http\Controllers\WishlistController;
+use App\Mail\HelloMail;
+use Illuminate\Support\Facades\Mail;
 
 // FRONTEND
 
 Route::get('/', [ClientController::class, 'Show_Page_Home']);
-Route::get('/trang-chu', [ClientController::class, 'Show_Page_Home']);
+Route::get('/trang-chu', [ClientController::class, 'Show_Page_Home'])->name('home');
 Route::get('/thong-tin', [ClientController::class, 'Show_About']);
 Route::get('/lien-he', [ClientController::class, 'Show_Contact']);
 Route::get('/gio-hang', [ClientController::class, 'Show_Cart']);
@@ -49,7 +52,17 @@ Route::get('product-detail/{product_id}', [ProductController::class, 'Product_de
 Route::get('/search-navbar', [DetailProductController::class, 'search_Navbar']);
 
 //ACCOUNT
-Route::get('/account', [ClientController::class, 'Show_Account']);
+Route::get('/account', [ClientController::class, 'Show_Account'])->name('profile_account');
+
+//MAILER
+// Route::get('/mailer', function () {
+//     Mail::to('hoangductrinh2k5@gmail.com')
+//         ->send(new HelloMail);
+// });
+
+//CHECKOUT
+Route::get('/show-checkout', [OrderController::class, 'Show_checkout'])->name('show_checkout');
+
 
 
 
@@ -130,13 +143,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('account.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 // Route::get('auth/google', [GoogleAuthController::class, 'redirect'])->name('google-auth');

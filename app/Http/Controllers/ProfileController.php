@@ -16,7 +16,8 @@ class ProfileController extends Controller
      */
     public function edit(Request $request): View
     {
-        return view('profile.edit', [
+        dd($request->user()); // Check if this returns a valid user object
+        return view('pages.account.show_account', [
             'user' => $request->user(),
         ]);
     }
@@ -34,7 +35,7 @@ class ProfileController extends Controller
 
         $request->user()->save();
 
-        return Redirect::route('profile.edit')->with('status', 'profile-updated');
+        return Redirect::route('profile_account')->with('status', 'profile-updated');
     }
 
     /**
