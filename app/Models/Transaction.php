@@ -11,6 +11,7 @@ class Transaction extends Model
 
     // Đặt tên bảng nếu khác với tên model (nếu cần)
     protected $table = 'tbl_transactions';
+    protected $primaryKey = 'transaction_id';
 
     // Các cột có thể gán giá trị (mass assignable)
     protected $fillable = [

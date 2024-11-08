@@ -126,7 +126,8 @@
                                         </tbody>
                                     </table>
                                 </div>
-                                <a href="{{ URL::to('check-out') }}" class="axil-btn btn-bg-primary checkout-btn">Process
+                                <a href="{{ URL::to('show-checkout') }}"
+                                    class="axil-btn btn-bg-primary checkout-btn">Process
                                     to
                                     Checkout</a>
                             </div>

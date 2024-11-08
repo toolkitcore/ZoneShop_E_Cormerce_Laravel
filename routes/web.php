@@ -14,6 +14,7 @@ use App\Http\Controllers\DetailProductController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductImagesController;
+use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\WishlistController;
 use App\Mail\HelloMail;
 use Illuminate\Support\Facades\Mail;
@@ -63,6 +64,8 @@ Route::get('/account', [ClientController::class, 'Show_Account'])->name('profile
 
 //CHECKOUT
 Route::get('/show-checkout', [OrderController::class, 'Show_checkout'])->name('show_checkout');
+Route::post('/process-checkout', [OrderController::class, 'Process_checkout'])->name('process_checkout');
+Route::post('/shipping/calculate', [OrderController::class, 'calculateFee'])->name('calculate_shipping');
 
 
 
@@ -147,7 +150,12 @@ Route::post('/add-address-pickup', [AddressController::class, 'addAddress'])->na
 Route::post('/delete-address', [AddressController::class, 'DeleteAddress'])->name('delete_address');
 
 
+//TRANSACTIONS
+Route::get('/show-transaction', [TransactionController::class, 'Show_Transaction'])->name('show_transaction');
 
+
+//ORDERS
+Route::get('/show-order', [OrderController::class, 'Show_Order'])->name('show_order');
 
 
 

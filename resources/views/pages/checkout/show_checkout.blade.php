@@ -1,114 +1,71 @@
 @extends('layout')
 @section('content')
     <main class="main-wrapper">
-
+        <?php
+        
+        use Gloudemans\Shoppingcart\Facades\Cart;
+        
+        $content = Cart::content();
+        ?>
         <!-- Start Checkout Area  -->
         <div class="axil-checkout-area axil-section-gap">
             <div class="container">
+                @foreach ($address_pickup as $address)
+                    <input type="hidden" name="" id="pickup_address" value="{{ $address->address }}">
+                    <input type="hidden" name="" id="pickup_ward" value="{{ $address->ward }}">
+                    <input type="hidden" name="" id="pickup_district" value="{{ $address->district }}">
+                    <input type="hidden" name="" id="pickup_province" value="{{ $address->province }}">
+                @endforeach
                 <form action="#">
+                    @csrf
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="axil-checkout-billing">
                                 <h4 class="title mb--40">Billing details</h4>
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="form-group">
-                                            <label>First Name <span>*</span></label>
-                                            <input type="text" id="first-name" placeholder="Adam">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="form-group">
-                                            <label>Last Name <span>*</span></label>
-                                            <input type="text" id="last-name" placeholder="John">
-                                        </div>
-                                    </div>
-                                </div>
                                 <div class="form-group">
-                                    <label>Company Name</label>
-                                    <input type="text" id="company-name">
-                                </div>
-                                <div class="form-group">
-                                    <label>Country/ Region <span>*</span></label>
-                                    <select id="Region">
-                                        <option value="3">Australia</option>
-                                        <option value="4">England</option>
-                                        <option value="6">New Zealand</option>
-                                        <option value="5">Switzerland</option>
-                                        <option value="1">United Kindom (UK)</option>
-                                        <option value="2">United States (USA)</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label>Street Address <span>*</span></label>
-                                    <input type="text" id="address1" class="mb--15"
-                                        placeholder="House number and street name">
-                                    <input type="text" id="address2"
-                                        placeholder="Apartment, suite, unit, etc. (optonal)">
-                                </div>
-                                <div class="form-group">
-                                    <label>Town/ City <span>*</span></label>
-                                    <input type="text" id="town">
-                                </div>
-                                <div class="form-group">
-                                    <label>Country</label>
-                                    <input type="text" id="country">
-                                </div>
-                                <div class="form-group">
-                                    <label>Phone <span>*</span></label>
-                                    <input type="tel" id="phone">
+                                    <label>Full Name <span>*</span></label>
+                                    <input type="text" id="first-name" name="checkout_fullname"
+                                        placeholder="Enter Full Name" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Email Address <span>*</span></label>
-                                    <input type="email" id="email">
-                                </div>
-                                <div class="form-group input-group">
-                                    <input type="checkbox" id="checkbox1" name="account-create">
-                                    <label for="checkbox1">Create an account</label>
-                                </div>
-                                <div class="form-group different-shippng">
-                                    <div class="toggle-bar">
-                                        <a href="javascript:void(0)" class="toggle-btn">
-                                            <input type="checkbox" id="checkbox2" name="diffrent-ship">
-                                            <label for="checkbox2">Ship to a different address?</label>
-                                        </a>
-                                    </div>
-                                    <div class="toggle-open">
-                                        <div class="form-group">
-                                            <label>Country/ Region <span>*</span></label>
-                                            <select id="Region">
-                                                <option value="3">Australia</option>
-                                                <option value="4">England</option>
-                                                <option value="6">New Zealand</option>
-                                                <option value="5">Switzerland</option>
-                                                <option value="1">United Kindom (UK)</option>
-                                                <option value="2">United States (USA)</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Street Address <span>*</span></label>
-                                            <input type="text" id="address1" class="mb--15"
-                                                placeholder="House number and street name">
-                                            <input type="text" id="address2"
-                                                placeholder="Apartment, suite, unit, etc. (optonal)">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Town/ City <span>*</span></label>
-                                            <input type="text" id="town">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Country</label>
-                                            <input type="text" id="country">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Phone <span>*</span></label>
-                                            <input type="tel" id="phone">
-                                        </div>
-                                    </div>
+                                    <input type="email" id="email" name="checkout_email" placeholder="Enter Email"
+                                        required>
                                 </div>
                                 <div class="form-group">
-                                    <label>Other Notes (optional)</label>
-                                    <textarea id="notes" rows="2" placeholder="Notes about your order, e.g. speacial notes for delivery."></textarea>
+                                    <label>Phone Number <span>*</span></label>
+                                    <input type="text" id="phone-number" name="checkout_phone" placeholder="Enter Phone"
+                                        required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Province <span>*</span></label>
+                                    <select id="province" name="checkout_province" required>
+                                        <option value="" data-request="1">Choose Province</option>
+                                        <!-- Options here -->
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>District <span>*</span></label>
+                                    <select id="district" name="checkout_district" required>
+                                        <option value="">Choose District</option>
+                                        <!-- Options here -->
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Ward <span>*</span></label>
+                                    <select id="ward" name="checkout_ward" required>
+                                        <option value="">Choose Ward</option>
+                                        <!-- Options here -->
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Detail Address <span>*</span></label>
+                                    <input type="text" id="detail-address" name="checkout_detail_address"
+                                        placeholder="Enter Detail Address" required>
+                                </div>
+                                <div class="form-group input-group">
+                                    <input type="checkbox" id="checkbox1" name="save_address">
+                                    <label for="checkbox1">Save address</label>
                                 </div>
                             </div>
                         </div>
@@ -124,37 +81,35 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr class="order-product">
-                                                <td>Commodo Blown Lamp <span class="quantity">x1</span></td>
-                                                <td>$117.00</td>
-                                            </tr>
+                                            @foreach ($content as $key => $v_content)
+                                                <tr class="order-product" data-id="{{ $v_content->id }}"
+                                                    data-name="{{ $v_content->name }}" data-qty="{{ $v_content->qty }}"
+                                                    data-price="{{ $v_content->price }}"
+                                                    data-amount="{{ $v_content->price * $v_content->qty }}">
+                                                    <td>{{ $v_content->name }} <span
+                                                            class="quantity">{{ 'x' . $v_content->qty }}</span></td>
+                                                    <td>{{ number_format($v_content->price * $v_content->qty) . ' VND' }}
+                                                    </td>
+                                                </tr>
+                                            @endforeach
                                             <tr class="order-subtotal">
                                                 <td>Subtotal</td>
-                                                <td>$117.00</td>
+                                                <td>{{ Cart::subtotal(0) . ' VND' }}</td>
                                             </tr>
                                             <tr class="order-shipping">
                                                 <td colspan="2">
                                                     <div class="shipping-amount">
-                                                        <span class="title">Shipping Method</span>
-                                                        <span class="amount">$35.00</span>
-                                                    </div>
-                                                    <div class="input-group">
-                                                        <input type="radio" id="radio1" name="shipping" checked>
-                                                        <label for="radio1">Free Shippping</label>
-                                                    </div>
-                                                    <div class="input-group">
-                                                        <input type="radio" id="radio2" name="shipping">
-                                                        <label for="radio2">Local</label>
-                                                    </div>
-                                                    <div class="input-group">
-                                                        <input type="radio" id="radio3" name="shipping">
-                                                        <label for="radio3">Flat rate</label>
+                                                        <span class="title">Shipping (GHTK)</span>
+                                                        <span class="amount" id="shipping-fee">0 VND</span>
                                                     </div>
                                                 </td>
                                             </tr>
                                             <tr class="order-total">
                                                 <td>Total</td>
-                                                <td class="order-total-amount">$323.00</td>
+                                                <td class="order-total-amount" id="total"
+                                                    data-total="{{ Cart::total(0) }}">
+                                                    {{ Cart::total(0) . ' VND' }}
+                                                </td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -162,7 +117,7 @@
                                 <div class="order-payment-method">
                                     <div class="single-payment">
                                         <div class="input-group">
-                                            <input type="radio" id="radio4" name="payment">
+                                            <input type="radio" id="radio4" name="payment" value="pay_online">
                                             <label for="radio4">Direct bank transfer</label>
                                         </div>
                                         <p>Make your payment directly into our bank account. Please use your Order ID as the
@@ -171,30 +126,181 @@
                                     </div>
                                     <div class="single-payment">
                                         <div class="input-group">
-                                            <input type="radio" id="radio5" name="payment">
+                                            <input type="radio" id="radio5" name="payment" value="pay_offline" checked>
                                             <label for="radio5">Cash on delivery</label>
                                         </div>
-                                        <p>Pay with cash upon delivery.</p>
-                                    </div>
-                                    <div class="single-payment">
-                                        <div class="input-group justify-content-between align-items-center">
-                                            <input type="radio" id="radio6" name="payment" checked>
-                                            <label for="radio6">Paypal</label>
-                                            <img src="assets/images/others/payment.png" alt="Paypal payment">
-                                        </div>
-                                        <p>Pay via PayPal; you can pay with your credit card if you don’t have a PayPal
-                                            account.</p>
+                                        <p>Pay with cash upon delivery</p>
                                     </div>
                                 </div>
-                                <button type="submit" class="axil-btn btn-bg-primary checkout-btn">Process to
-                                    Checkout</button>
+                                <button type="submit" id="checkout-button" class="axil-btn btn-bg-primary checkout-btn">
+                                    Process to Checkout
+                                </button>
                             </div>
                         </div>
                     </div>
                 </form>
+
             </div>
         </div>
         <!-- End Checkout Area  -->
 
     </main>
+    <script>
+        const host = "https://provinces.open-api.vn/api/";
+        var callAPI = (api) => {
+            return axios.get(api)
+                .then((response) => {
+                    renderData(response.data, "province");
+                });
+        }
+        callAPI('https://provinces.open-api.vn/api/?depth=1');
+        var callApiDistrict = (api) => {
+            return axios.get(api)
+                .then((response) => {
+                    renderData(response.data.districts, "district");
+                });
+        }
+        var callApiWard = (api) => {
+            return axios.get(api)
+                .then((response) => {
+                    renderData(response.data.wards, "ward");
+                });
+        }
+        var renderData = (array, select) => {
+            let row = ' <option disable value="">Choose</option>';
+            array.forEach(element => {
+                row += `<option value="${element.code}">${element.name}</option>`
+            });
+            document.querySelector("#" + select).innerHTML = row
+        }
+
+        $("#province").change(() => {
+            callApiDistrict(host + "p/" + $("#province").val() + "?depth=2");
+            printResult();
+        });
+        $("#district").change(() => {
+            callApiWard(host + "d/" + $("#district").val() + "?depth=2");
+            printResult();
+        });
+        $("#ward").change(() => {
+            printResult();
+        })
+        var fee_shipping_checkout = 0;
+        var printResult = () => {
+            if ($("#district").val() != "" &&
+                $("#province").val() != "" &&
+                $("#ward").val() != ""
+            ) {
+                let result = $("#province option:selected").text() +
+                    " | " + $("#district option:selected").text() + " | " +
+                    $("#ward option:selected").text();
+
+                const weight = 5000;
+                var totalAmount = document.getElementById('total').textContent.trim();
+                var amountOnly = totalAmount.replace(' VND', '');
+                var value = parseInt(amountOnly.replace(/,/g, ''));
+                var pickupAddress = document.getElementById('pickup_address').value;
+                var pickupWard = document.getElementById('pickup_ward').value;
+                var pickupDistrict = document.getElementById('pickup_district').value;
+                var pickupProvince = document.getElementById('pickup_province').value;
+
+                const data = {
+                    pick_province: pickupProvince,
+                    pick_district: pickupDistrict,
+                    pick_ward: pickupWard,
+                    province: $("#province option:selected").text(),
+                    district: $("#district option:selected").text(),
+                    ward: $("#ward option:selected").text(),
+                    weight: weight,
+                    value: value,
+                    deliver_option: "xteam",
+                };
+
+                axios.post('{{ route('calculate_shipping') }}', data)
+                    .then(response => {
+                        const fee = response.data.fee.fee;
+                        if (fee !== null) {
+                            fee_shipping_checkout = fee;
+                            document.getElementById('shipping-fee').textContent = fee.toLocaleString('en-US') +
+                                ' VND';
+                            var total_value = document.getElementById('total').getAttribute('data-total').replace(
+                                /,/g, '');
+                            var total_value_integer = parseInt(total_value, 10); // Convert to integer
+                            document.getElementById('total').textContent = (total_value_integer + fee)
+                                .toLocaleString(
+                                    'en-US') +
+                                ' VND';
+                        } else {
+                            alert('Không có phí ship được xác định.')
+                        }
+                    })
+                    .catch(error => {
+                        alert('Có lỗi xảy ra: ' + error.message)
+                    });
+            }
+        }
+
+        $(document).ready(function() {
+            $('#checkout-button').on('click', function(event) {
+                event.preventDefault();
+
+                var products = [];
+                $('.order-product').each(function() {
+                    var product = {
+                        name: $(this).data('name'),
+                        product_id: parseInt($(this).data('id')),
+                        quantity: parseInt($(this).data('qty')),
+                        price: parseFloat($(this).data('price')),
+                        amount: parseFloat($(this).data('amount'))
+                    };
+                    products.push(product);
+                });
+                var data = {
+                    checkout_fullname: $('#first-name').val(),
+                    checkout_email: $('#email').val(),
+                    checkout_phone: $('#phone-number').val(),
+                    checkout_province: $("#province option:selected").text(),
+                    checkout_district: $("#district option:selected").text(),
+                    checkout_ward: $("#ward option:selected").text(),
+                    checkout_detail_address: $('#detail-address').val(),
+                    order_products: products,
+                    transaction_amount: parseFloat($('#total').data('total').replace(/,/g, '')) +
+                        parseFloat(fee_shipping_checkout),
+                    payment: $('input[name="payment"]:checked').val(),
+                    _token: $('input[name="_token"]').val() // CSRF token
+                };
+                console.log(data);
+
+
+                // Validate form fields
+                let isValid = true;
+                for (let key in data) {
+                    if (data[key] === "" || data[key] === null) {
+                        isValid = false;
+                        break;
+                    }
+                }
+
+                if (!isValid) {
+                    alert("Please fill in all required fields.");
+                    return;
+                }
+
+                // Proceed with AJAX request if validation passed
+                $.ajax({
+                    url: '{{ URL::to('process-checkout') }}', // Path to your controller
+                    type: 'POST',
+                    data: data,
+                    success: function(response) {
+                        alert("Checkout successful!");
+                        console.log(response);
+                    },
+                    error: function(xhr, status, error) {
+                        alert("An error occurred while processing checkout.");
+                        console.log(xhr.responseText);
+                    }
+                });
+            });
+        });
+    </script>
 @endsection

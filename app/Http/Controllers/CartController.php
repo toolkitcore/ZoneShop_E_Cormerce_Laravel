@@ -26,7 +26,7 @@ class CartController extends Controller
                     'image' => $data->product_image,
                 ],
             ]);
-
+            Cart::setGlobalTax(0);
             return redirect('gio-hang')->with('success', 'Sản phẩm đã được thêm vào giỏ hàng thành công!');
         }
 
@@ -52,6 +52,7 @@ class CartController extends Controller
                     'image' => $data->product_image,
                 ],
             ]);
+            Cart::setGlobalTax(0);
         }
         return response()->json(['redirect' => route('gio_hang')]);
     }
