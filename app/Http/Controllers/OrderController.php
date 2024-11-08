@@ -24,53 +24,12 @@ class OrderController extends Controller
     {
         return view('admin.order.all_order');
     }
-    // public function Process_checkout(Request $request)
-    // {
-    //     $user_id = Auth::user()->id;
 
-    //     $address_delivery = new Address([
-    //         'user_id' => $user_id,
-    //         'address_type' => 'delivery',
-    //         'province' => $request->checkout_province,
-    //         'district' => $request->checkout_district,
-    //         'ward' => $request->checkout_ward,
-    //         'address' => $request->checkout_detail_address
-    //     ]);
-    //     // $address_delivery->save();
-    //     dd($address_delivery);
-
-
-
-
-    //     $transaction = new Transaction();
-    //     $transaction->user_id = $user_id;
-    //     $transaction->transaction_name = $request->checkout_fullname;
-    //     $transaction->transaction_email = $request->checkout_email;
-    //     $transaction->transaction_phone = $request->checkout_phone;
-    //     $transaction->pickup_address_id = $request->checkout_fullname;
-    //     $transaction->delivery_address_id = $request->checkout_fullname;
-    //     $transaction->transaction_amount = $request->checkout_fullname;
-    //     $transaction->transaction_payment = $request->checkout_fullname;
-    //     $transaction->transaction_message = $request->checkout_fullname;
-    //     $transaction->transaction_status = $request->checkout_fullname;
-    //     dd($transaction);
-
-
-    //     $order_item = new Orders();
-    //     $order_item->transaction_id = $request->checkout_fullname;
-    //     $order_item->product_id = $request->checkout_fullname;
-    //     $order_item->order_qty = $request->checkout_fullname;
-    //     $order_item->order_product_name = $request->checkout_fullname;
-    //     $order_item->order_price = $request->checkout_fullname;
-    //     $order_item->order_amount = $request->checkout_fullname;
-    //     dd($order_item);
-    // }
     public function Process_checkout(Request $request)
     {
 
 
         $user_id = Auth::user()->id;
-        $username = Auth::user()->name;
 
         $address_pickup = Address::where('address_type', 'pickup')->first();
 
@@ -124,10 +83,28 @@ class OrderController extends Controller
                 'order_amount' => $productAmount,
             ]);
         }
+        if ($paymentMethod == 'pay_online') {
+            $redirect = route('checkout_pay');
+        } else if ($paymentMethod == 'pay_offline') {
+            $redirect = route('checkout_confirm');
+        }
         // Trả về phản hồi JSON
         return response()->json([
-            'message' => 'Checkout successful!'
+            'message' => 'Checkout successful!',
+            'redirect' => $redirect
         ]);
+    }
+    public function Checkout_Success()
+    {
+        return view('pages.checkout.checkout_success');
+    }
+    public function Checkout_Confirm()
+    {
+        return view('pages.checkout.checkout_wait');
+    }
+    public function Checkout_Pay()
+    {
+        return view('pages.checkout.checkout_success');
     }
 
 

@@ -66,6 +66,9 @@ Route::get('/account', [ClientController::class, 'Show_Account'])->name('profile
 Route::get('/show-checkout', [OrderController::class, 'Show_checkout'])->name('show_checkout');
 Route::post('/process-checkout', [OrderController::class, 'Process_checkout'])->name('process_checkout');
 Route::post('/shipping/calculate', [OrderController::class, 'calculateFee'])->name('calculate_shipping');
+Route::get('/checkout-success', [OrderController::class, 'Checkout_Success'])->name('checkout_success');
+Route::get('/checkout-confirm', [OrderController::class, 'Checkout_Confirm'])->name('checkout_confirm');
+Route::get('/checkout-pay', [OrderController::class, 'Checkout_Pay'])->name('checkout_pay');
 
 
 

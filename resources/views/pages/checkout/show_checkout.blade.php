@@ -285,15 +285,14 @@
                     alert("Please fill in all required fields.");
                     return;
                 }
-
-                // Proceed with AJAX request if validation passed
                 $.ajax({
                     url: '{{ URL::to('process-checkout') }}', // Path to your controller
                     type: 'POST',
                     data: data,
                     success: function(response) {
-                        alert("Checkout successful!");
-                        console.log(response);
+                        if (response.redirect) {
+                            window.location.href = response.redirect;
+                        }
                     },
                     error: function(xhr, status, error) {
                         alert("An error occurred while processing checkout.");
