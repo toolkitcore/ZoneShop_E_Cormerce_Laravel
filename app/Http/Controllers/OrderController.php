@@ -57,7 +57,7 @@ class OrderController extends Controller
 
         $transaction = new Transaction([
             'user_id' => $user_id,
-            'transaction_name' => 'Order by ' . $checkoutFullName,
+            'transaction_name' =>  $checkoutFullName,
             'transaction_email' => $checkoutEmail,
             'transaction_phone' => $checkoutPhone,
             'pickup_address_id' => $address_pickup->address_id,
@@ -107,8 +107,6 @@ class OrderController extends Controller
         return view('pages.checkout.checkout_success');
     }
 
-
-
     public function calculateFee(Request $request)
     {
         $data = [
@@ -133,5 +131,25 @@ class OrderController extends Controller
         $responseData = json_decode($response->getBody()->getContents());
         $fee = isset($responseData->fee) ? $responseData->fee : null;
         return response()->json(['fee' => $fee]);
+    }
+
+    public function Show_All_Order()
+    {
+        $transaction_item = Transaction::with([
+            'orders',
+            'orders.product',
+            'deliveryAddress'
+        ])->get();
+        return view('admin.order.all_order', compact('transaction_item'));
+    }
+    public function Order_Confirm()
+    {
+        $order_item = Transaction::where('transaction_status', 0)->with('orders')->get();
+        return view('admin.order.order_confirm', compact('order_item'));
+    }
+    public function Order_Detail(Request $request, $transaction_id)
+    {
+        $transaction_item = Transaction::where('transaction_id', $transaction_id)->with(['orders', 'orders.product', 'deliveryAddress'])->first();
+        return view('admin.order.order_detail', compact('transaction_item'));
     }
 }

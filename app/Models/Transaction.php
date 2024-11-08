@@ -44,4 +44,9 @@ class Transaction extends Model
     {
         return $this->belongsTo(Address::class, 'delivery_address_id');
     }
+    // Trong model Transaction
+    public function orders()
+    {
+        return $this->hasMany(Orders::class, 'transaction_id', 'transaction_id');
+    }
 }

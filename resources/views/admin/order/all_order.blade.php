@@ -187,7 +187,7 @@
                                             <th>Order ID</th>
                                             <th>Created at</th>
                                             <th>Customer</th>
-                                            <th>Priority</th>
+                                            <th>Payment Method</th>
                                             <th>Total</th>
                                             <th>Payment Status</th>
                                             <th>Items</th>
@@ -197,38 +197,102 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>
-                                                #583488/80
-                                            </td>
-                                            <td>Apr 23 , 2024</td>
-                                            <td>
-                                                <a href="#!" class="link-primary fw-medium">Gail C. Anderson</a>
-                                            </td>
-                                            <td> Normal</td>
-                                            <td> $1,230.00</td>
-                                            <td> <span class="badge bg-light text-dark  px-2 py-1 fs-13">Unpaid</span></td>
-                                            <td> 4</td>
-                                            <td> -</td>
-                                            <td> <span
-                                                    class="badge border border-secondary text-secondary  px-2 py-1 fs-13">Draft</span>
-                                            </td>
-                                            <td>
-                                                <div class="d-flex gap-2">
-                                                    <a href="#!" class="btn btn-light btn-sm"><iconify-icon
-                                                            icon="solar:eye-broken"
-                                                            class="align-middle fs-18"></iconify-icon></a>
-                                                    <a href="#!" class="btn btn-soft-primary btn-sm"><iconify-icon
-                                                            icon="solar:pen-2-broken"
-                                                            class="align-middle fs-18"></iconify-icon></a>
-                                                    <a href="#!" class="btn btn-soft-danger btn-sm"><iconify-icon
-                                                            icon="solar:trash-bin-minimalistic-2-broken"
-                                                            class="align-middle fs-18"></iconify-icon></a>
-                                                </div>
-                                            </td>
-                                        </tr>
+                                        @foreach ($transaction_item as $item)
+                                            <tr>
+                                                <td>
+                                                    {{ $item->transaction_id }}
+                                                </td>
+                                                <td>{{ $item->created_at }}</td>
+                                                <td>
+                                                    <a href="#!"
+                                                        class="link-primary fw-medium">{{ $item->transaction_name }}</a>
+                                                </td>
+                                                <td>
+                                                    @if ($item->transaction_payment == 'pay_online')
+                                                        Online
+                                                    @else
+                                                        Offline
+                                                    @endif
+                                                </td>
+                                                <td> {{ number_format($item->transaction_amount) }}</td>
+                                                <td>
+                                                    @if ($item->transaction_payment == 'pay_offline')
+                                                        <span class="badge bg-light text-dark  px-2 py-1 fs-13">
+                                                            Unpaid
+                                                        </span>
+                                                    @elseif($item->transaction_payment == 'pay_online' && $item->transaction_status == 1)
+                                                        <span class="badge bg-success text-light  px-2 py-1 fs-13">
+                                                            Paid
+                                                        </span>
+                                                    @else
+                                                        <span class="badge bg-light text-dark  px-2 py-1 fs-13">
+                                                            Unpaid
+                                                        </span>
+                                                    @endif
+                                                </td>
+                                                <td> {{ $item->orders->sum('order_qty') }}</td>
+                                                <td> {{ $item->transaction_phone }}</td>
+                                                <td>
+                                                    @if ($item->transaction_status == 0 && $item->transaction_payment == 'pay_offline')
+                                                        <span
+                                                            class="badge border border-warning text-warning  px-2 py-1 fs-13">
+                                                            Wait confirm
+                                                        </span>
+                                                    @elseif($item->transaction_status == 0 && $item->transaction_payment == 'pay_online')
+                                                        <span
+                                                            class="badge border border-secondary text-secondary  px-2 py-1 fs-13">
+                                                            Paying...
+                                                        </span>
+                                                    @elseif($item->transaction_status == 1 && $item->transaction_payment == 'pay_online')
+                                                        <span
+                                                            class="badge border border-warning text-warning  px-2 py-1 fs-13">
+                                                            Wait confirm
+                                                        </span>
+                                                    @elseif($item->transaction_status == 2)
+                                                        <span
+                                                            class="badge border border-secondary text-secondary  px-2 py-1 fs-13">
+                                                            Paying
+                                                        </span>
+                                                    @elseif($item->transaction_status == 3)
+                                                        <span
+                                                            class="badge border border-warning text-warning  px-2 py-1 fs-13">
+                                                            Packaging
+                                                        </span>
+                                                    @elseif($item->transaction_status == 4)
+                                                        <span
+                                                            class="badge border border-success text-success  px-2 py-1 fs-13">
+                                                            Shipping
+                                                        </span>
+                                                    @elseif($item->transaction_status == 5)
+                                                        <span
+                                                            class="badge border border-success text-success  px-2 py-1 fs-13">
+                                                            Completed
+                                                        </span>
+                                                    @elseif($item->transaction_status == 6)
+                                                        <span
+                                                            class="badge border border-danger text-danger  px-2 py-1 fs-13">
+                                                            Canceled
+                                                        </span>
+                                                    @endif
 
-                                        <tr>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex gap-2">
+                                                        <a href="#!" class="btn btn-light btn-sm"><iconify-icon
+                                                                icon="solar:eye-broken"
+                                                                class="align-middle fs-18"></iconify-icon></a>
+                                                        <a href="#!" class="btn btn-soft-primary btn-sm"><iconify-icon
+                                                                icon="solar:pen-2-broken"
+                                                                class="align-middle fs-18"></iconify-icon></a>
+                                                        <a href="#!" class="btn btn-soft-danger btn-sm"><iconify-icon
+                                                                icon="solar:trash-bin-minimalistic-2-broken"
+                                                                class="align-middle fs-18"></iconify-icon></a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+
+                                        {{-- <tr>
                                             <td>
                                                 #456754/80
                                             </td>
@@ -479,7 +543,7 @@
                                                             class="align-middle fs-18"></iconify-icon></a>
                                                 </div>
                                             </td>
-                                        </tr>
+                                        </tr> --}}
 
 
                                     </tbody>

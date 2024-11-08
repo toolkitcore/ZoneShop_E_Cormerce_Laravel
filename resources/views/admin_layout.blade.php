@@ -706,11 +706,14 @@
                                     <div class="collapse" id="sidebarItemOrderSubItem2">
                                         <ul class="nav sub-navbar-nav">
                                             <li class="sub-nav-item">
-                                                <a class="sub-nav-link" href="#">List Attribute</a>
+                                                <a class="sub-nav-link" href="{{ URL::to('order-confirm') }}">Order
+                                                    Confirm</a>
                                             </li>
                                             <li class="sub-nav-item">
-                                                <a class="sub-nav-link" href="#">Add Attribute</a>
+                                                <a class="sub-nav-link" href="{{ URL::to('all-order') }}">List
+                                                    Order</a>
                                             </li>
+
                                         </ul>
                                     </div>
                                 </li>

@@ -159,6 +159,16 @@ Route::get('/show-transaction', [TransactionController::class, 'Show_Transaction
 
 //ORDERS
 Route::get('/show-order', [OrderController::class, 'Show_Order'])->name('show_order');
+Route::get('/all-order', [OrderController::class, 'Show_All_Order'])->name('all_order');
+Route::get('/order-confirm', [OrderController::class, 'Order_Confirm'])->name('order_confirm');
+Route::get('/order-detail/{transaction_id}', [OrderController::class, 'Order_Detail'])->name('order_detail');
+Route::get('/order-delete/{transaction_id}', [OrderController::class, 'Order_Delete'])->name('order_delete');
+
+Route::get('/confirm-order/{transaction_id}', [TransactionController::class, 'Confirm_Order']);
+Route::get('/confirm-package/{transaction_id}', [TransactionController::class, 'Confirm_Package']);
+Route::get('/confirm-ship/{transaction_id}', [TransactionController::class, 'Confirm_Ship']);
+Route::get('/confirm-completed/{transaction_id}', [TransactionController::class, 'Confirm_Completed']);
+Route::get('/cancel-order/{transaction_id}', [TransactionController::class, 'Cancel_Order']);
 
 
 
