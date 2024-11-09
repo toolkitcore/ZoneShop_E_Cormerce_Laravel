@@ -51,7 +51,10 @@ class OrderController extends Controller
             'province' => $checkoutProvince,
             'district' =>  $checkoutDistrict,
             'ward' => $checkoutWard,
-            'address' => $checkoutDetailAddress
+            'address' => $checkoutDetailAddress,
+            'fullname' =>  $checkoutFullName,
+            'email' => $checkoutEmail,
+            'phone' => $checkoutPhone
         ]);
         $address->save();
 
@@ -144,7 +147,10 @@ class OrderController extends Controller
     }
     public function Order_Confirm()
     {
-        $order_item = Transaction::where('transaction_status', 0)->with('orders')->get();
+        $order_item = Transaction::where('transaction_status', 0)
+            ->orWhere('transaction_status', 1)
+            ->with('orders')
+            ->get();
         return view('admin.order.order_confirm', compact('order_item'));
     }
     public function Order_Detail(Request $request, $transaction_id)

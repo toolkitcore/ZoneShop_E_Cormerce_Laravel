@@ -21,6 +21,9 @@ class Address extends Model
         'district',
         'ward',
         'address',
+        'fullname',
+        'email',
+        'phone',
     ];
 
     // Quan hệ với model User

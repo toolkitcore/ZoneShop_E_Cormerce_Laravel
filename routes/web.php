@@ -10,6 +10,7 @@ use App\Http\Controllers\AttributesProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\DetailProductController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
@@ -69,12 +70,10 @@ Route::post('/shipping/calculate', [OrderController::class, 'calculateFee'])->na
 Route::get('/checkout-success', [OrderController::class, 'Checkout_Success'])->name('checkout_success');
 Route::get('/checkout-confirm', [OrderController::class, 'Checkout_Confirm'])->name('checkout_confirm');
 Route::get('/checkout-pay', [OrderController::class, 'Checkout_Pay'])->name('checkout_pay');
-
-
+Route::post('/pay-online', [CheckoutController::class, 'vnpay_payment']);
 
 
 //BACKEND
-
 Route::get('/admin', [AdminControllers::class, 'index']);
 Route::get('/dashboard', [AdminControllers::class, 'Show_Dashboard']);
 Route::post('/admin-dashboard', [AdminControllers::class, 'Dashboard']);

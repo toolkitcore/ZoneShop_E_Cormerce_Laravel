@@ -220,7 +220,7 @@
                                                         <span class="badge bg-light text-dark  px-2 py-1 fs-13">
                                                             Unpaid
                                                         </span>
-                                                    @elseif($item->transaction_payment == 'pay_online' && $item->transaction_status == 1)
+                                                    @elseif($item->transaction_payment == 'pay_online' && $item->transaction_status >= 1 && $item->transaction_status <= 5)
                                                         <span class="badge bg-success text-light  px-2 py-1 fs-13">
                                                             Paid
                                                         </span>
@@ -241,7 +241,7 @@
                                                     @elseif($item->transaction_status == 0 && $item->transaction_payment == 'pay_online')
                                                         <span
                                                             class="badge border border-secondary text-secondary  px-2 py-1 fs-13">
-                                                            Paying...
+                                                            Paying
                                                         </span>
                                                     @elseif($item->transaction_status == 1 && $item->transaction_payment == 'pay_online')
                                                         <span
@@ -250,8 +250,8 @@
                                                         </span>
                                                     @elseif($item->transaction_status == 2)
                                                         <span
-                                                            class="badge border border-secondary text-secondary  px-2 py-1 fs-13">
-                                                            Paying
+                                                            class="badge border border-success text-success  px-2 py-1 fs-13">
+                                                            Confirmed
                                                         </span>
                                                     @elseif($item->transaction_status == 3)
                                                         <span
@@ -278,15 +278,12 @@
                                                 </td>
                                                 <td>
                                                     <div class="d-flex gap-2">
-                                                        <a href="#!" class="btn btn-light btn-sm"><iconify-icon
-                                                                icon="solar:eye-broken"
-                                                                class="align-middle fs-18"></iconify-icon></a>
-                                                        <a href="#!" class="btn btn-soft-primary btn-sm"><iconify-icon
-                                                                icon="solar:pen-2-broken"
-                                                                class="align-middle fs-18"></iconify-icon></a>
-                                                        <a href="#!" class="btn btn-soft-danger btn-sm"><iconify-icon
-                                                                icon="solar:trash-bin-minimalistic-2-broken"
-                                                                class="align-middle fs-18"></iconify-icon></a>
+                                                        <a href="{{ URL::to('order-detail/' . $item->transaction_id) }}"
+                                                            class="btn btn-soft-primary btn-sm">
+                                                            <iconify-icon icon="solar:eye-broken"
+                                                                class="align-middle fs-18">
+                                                            </iconify-icon>
+                                                        </a>
                                                     </div>
                                                 </td>
                                             </tr>

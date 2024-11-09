@@ -6,8 +6,11 @@
                 <div class="row align-items-center">
                     <div class="col-lg-6">
                         <div class="content" data-sal="slide-up" data-sal-duration="800" data-sal-delay="400">
-                            <span class="title-highlighter highlighter-secondary"> <i class="fal fa-exclamation-circle"></i>
-                                Successfully !!! </span>
+                            <span class="title-highlighter highlighter-secondary">
+                                <i class="fal fa-exclamation-circle">
+                                </i>
+                                Successfully !!!
+                            </span>
                             <h1 class="title">Sucessfully !</h1>
                             <p>The order has been confirmed. The order will be shipped to you soon. Please keep an eye on
                                 your phone to receive the delivery. Thank you for your trust!</p>
