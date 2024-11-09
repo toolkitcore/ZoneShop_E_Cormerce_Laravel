@@ -130,13 +130,15 @@
                                 </div>
                             </div>
 
-                            <form action="{{ URL::to('pay-online') }}" method="post" id="online-form">
+                            <form id="online-form">
                                 @csrf
-                                <input type="hidden" name="total" id="total-hidden" value="0">
-                                <button type="submit" name="redirect" class="axil-btn btn-bg-primary checkout-btn">
+                                <input type="hidden" name="total" id="total-hidden" value="1000000">
+                                <!-- Thay giá trị vào đây -->
+                                <button type="submit" id="checkout-btn" class="axil-btn btn-bg-primary checkout-btn">
                                     Process to Checkout
                                 </button>
                             </form>
+
 
                             <button type="submit" name="redirect" class="axil-btn btn-bg-primary checkout-btn"
                                 id="offline-btn">
@@ -330,6 +332,77 @@
                     error: function(xhr, status, error) {
                         alert("An error occurred while processing checkout.");
                         console.log(xhr.responseText);
+                    }
+                });
+            });
+        });
+        $(document).ready(function() {
+            $("#online-form").submit(function(e) {
+                e.preventDefault(); // Ngừng form tự động submit
+
+                var fee_shipping_checkout = 0; // Cập nhật giá trị phí vận chuyển nếu có
+
+                // Lấy dữ liệu sản phẩm từ trang
+                var products = [];
+                $('.order-product').each(function() {
+                    var product = {
+                        name: $(this).data('name'),
+                        product_id: parseInt($(this).data('id')),
+                        quantity: parseInt($(this).data('qty')),
+                        price: parseFloat($(this).data('price')),
+                        amount: parseFloat($(this).data('amount'))
+                    };
+                    products.push(product);
+                });
+
+                // Tạo đối tượng dữ liệu gửi đi
+                var data = {
+                    checkout_fullname: $('#first-name').val(),
+                    checkout_email: $('#email').val(),
+                    checkout_phone: $('#phone-number').val(),
+                    checkout_province: $("#province option:selected").text(),
+                    checkout_district: $("#district option:selected").text(),
+                    checkout_ward: $("#ward option:selected").text(),
+                    checkout_detail_address: $('#detail-address').val(),
+                    order_products: products,
+                    transaction_amount: parseFloat($('#total').data('total').replace(/,/g, '')) +
+                        parseFloat(fee_shipping_checkout),
+                    payment: $('input[name="payment"]:checked').val(),
+                    total: $('#total-hidden').val(),
+                    _token: $('input[name="_token"]').val() // CSRF token
+                };
+
+                console.log(data);
+
+                // Kiểm tra tính hợp lệ của các trường
+                let isValid = true;
+                for (let key in data) {
+                    if (data[key] === "" || data[key] === null) {
+                        isValid = false;
+                        break;
+                    }
+                }
+
+                if (!isValid) {
+                    alert("Please fill in all required fields.");
+                    return;
+                }
+
+                // Gửi AJAX request
+                $.ajax({
+                    url: "{{ route('pay-online') }}", // Đảm bảo đường dẫn chính xác
+                    type: "POST",
+                    data: data,
+                    success: function(response) {
+                        if (response.code == '00') {
+                            window.location.href = response.data;
+                        } else {
+                            alert("Có lỗi xảy ra, vui lòng thử lại!");
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.log(error);
+                        alert("Có lỗi xảy ra, vui lòng thử lại!");
                     }
                 });
             });

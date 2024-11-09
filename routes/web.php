@@ -68,10 +68,18 @@ Route::get('/show-checkout', [OrderController::class, 'Show_checkout'])->name('s
 Route::post('/process-checkout', [OrderController::class, 'Process_checkout'])->name('process_checkout');
 Route::post('/shipping/calculate', [OrderController::class, 'calculateFee'])->name('calculate_shipping');
 Route::get('/checkout-success', [OrderController::class, 'Checkout_Success'])->name('checkout_success');
-Route::get('/checkout-confirm', [OrderController::class, 'Checkout_Confirm'])->name('checkout_confirm');
+// Route::get('/checkout-confirm', [OrderController::class, 'Checkout_Confirm'])->name('checkout_confirm');
+Route::get('/checkout-confirm', [CheckoutController::class, 'vnpay_confirm']);
 Route::get('/checkout-pay', [OrderController::class, 'Checkout_Pay'])->name('checkout_pay');
-Route::post('/pay-online', [CheckoutController::class, 'vnpay_payment']);
+Route::post('/pay-online', [CheckoutController::class, 'vnpay_payment'])->name('pay-online');
 
+Route::get('/checkout-success', function () {
+    return view('pages.checkout.checkout_success');
+})->name('checkout.success');
+
+Route::get('/checkout-failed', function () {
+    return view('pages.checkout.checkout_failed');
+})->name('checkout.failed');
 
 //BACKEND
 Route::get('/admin', [AdminControllers::class, 'index']);

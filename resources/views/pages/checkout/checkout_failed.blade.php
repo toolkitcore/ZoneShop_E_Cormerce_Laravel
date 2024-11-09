@@ -9,10 +9,10 @@
                             <span class="title-highlighter highlighter-secondary">
                                 <i class="fal fa-exclamation-circle">
                                 </i>
-                                Successfully !!!
+                                Failed !!!
                             </span>
-                            <h1 class="title"> Payment Sucessfully !</h1>
-                            <p>The order soon confirming. The order will be shipped to you soon. Please keep an eye on
+                            <h1 class="title">Failed !</h1>
+                            <p>The order has been confirmed. The order will be shipped to you soon. Please keep an eye on
                                 your phone to receive the delivery. Thank you for your trust!</p>
                             <a href="{{ URL::to('trang-chu') }}" class="axil-btn btn-bg-secondary right-icon">Back To Home
                                 <i class="fal fa-long-arrow-right"></i></a>
