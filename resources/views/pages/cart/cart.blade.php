@@ -72,17 +72,6 @@
                             </tbody>
                         </table>
                     </div>
-                    {{-- <div class="cart-update-btn-area">
-                        <div class="input-group product-cupon">
-                            <input placeholder="Enter coupon code" type="text">
-                            <div class="product-cupon-btn">
-                                <button type="submit" class="axil-btn btn-outline">Apply</button>
-                            </div>
-                        </div>
-                        <div class="update-btn">
-                            <a href="#" class="axil-btn btn-outline">Update Cart</a>
-                        </div>
-                    </div> --}}
                     <div class="row">
                         <div class="col-xl-5 col-lg-7 offset-xl-7 offset-lg-5">
                             <div class="axil-order-summery">
@@ -96,27 +85,7 @@
                                                     {{ Cart::subtotal(0) . ' VND' }}
                                                 </td>
                                             </tr>
-                                            {{-- <tr class="order-shipping">
-                                                <td>Shipping</td>
-                                                <td>
-                                                    <div class="input-group">
-                                                        <input type="radio" id="radio1" name="shipping" checked>
-                                                        <label for="radio1">Free Shippping</label>
-                                                    </div>
-                                                    <div class="input-group">
-                                                        <input type="radio" id="radio2" name="shipping">
-                                                        <label for="radio2">Local: $35.00</label>
-                                                    </div>
-                                                    <div class="input-group">
-                                                        <input type="radio" id="radio3" name="shipping">
-                                                        <label for="radio3">Flat rate: $12.00</label>
-                                                    </div>
-                                                </td>
-                                            </tr> --}}
-                                            {{-- <tr class="order-tax">
-                                                <td>State Tax</td>
-                                                <td>$8.00</td>
-                                            </tr> --}}
+
                                             <tr class="order-total">
                                                 <td>Total</td>
                                                 <td class="order-total-amount total-all">

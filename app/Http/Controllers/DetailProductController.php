@@ -17,12 +17,7 @@ use Illuminate\Support\Facades\Redirect;
 
 class DetailProductController extends Controller
 {
-    // public function Show_Detail_Product($category_id)
-    // {
-    //     $category = Category_Product::with('attributes')->where('category_id', $category_id)->first();
 
-    //     return view('admin.product.detail.all_detail', compact('category'));
-    // }
     public function Show_Detail_Product()
     {
         $products = Product::all();

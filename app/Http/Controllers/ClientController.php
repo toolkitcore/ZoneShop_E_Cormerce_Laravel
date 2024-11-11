@@ -10,6 +10,7 @@ use App\Models\Product_Attributes;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class ClientController extends Controller
 {
@@ -40,6 +41,7 @@ class ClientController extends Controller
             ->with('productImages', 'category', 'brand', 'productAttributes.attribute')
             ->first();
         if (!$product) {
+            Session::flash('error', 'Product not exist!!');
             return redirect()->route('trang-chu')->with('error', 'Sản phẩm không tồn tại.');
         }
         $product_related = Product::where('category_id', $product->category_id)
@@ -77,6 +79,7 @@ class ClientController extends Controller
     public function Show_Account()
     {
         if (!auth()->check()) {
+            Session::flash('warning', 'Please Login !!!');
             return redirect()->route('login');
         }
         $user_id = Auth::user()->id;

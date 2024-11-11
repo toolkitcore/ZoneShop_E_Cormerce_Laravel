@@ -76,7 +76,7 @@ class CartController extends Controller
     public function ClearCart()
     {
         Cart::destroy();
-        Session::flash('success', 'Delete all successfully');
+        // Session::flash('success', 'Delete all successfully');
         return response()->json(['success' => true, 'message' => 'Cart cleared successfully']);
     }
 
