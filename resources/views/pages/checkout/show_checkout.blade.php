@@ -61,10 +61,6 @@
                                 <input type="text" id="detail-address" name="checkout_detail_address"
                                     placeholder="Enter Detail Address" required>
                             </div>
-                            <div class="form-group input-group">
-                                <input type="checkbox" id="checkbox1" name="save_address">
-                                <label for="checkbox1">Save address</label>
-                            </div>
                         </div>
                     </div>
                     <div class="col-lg-6">

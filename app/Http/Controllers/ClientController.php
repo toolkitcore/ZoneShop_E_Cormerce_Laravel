@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Address;
 use App\Models\Brand_Product;
 use App\Models\Category_Product;
 use App\Models\Product;
 use App\Models\Product_Attributes;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ClientController extends Controller
 {
@@ -76,6 +79,12 @@ class ClientController extends Controller
         if (!auth()->check()) {
             return redirect()->route('login');
         }
-        return view('pages.account.show_account');
+        $user_id = Auth::user()->id;
+        $address_default = Address::where('user_id', $user_id)->first();
+        $transaction_list = Transaction::where('user_id', $user_id)
+            ->with('orders')
+            ->get();
+
+        return view('pages.account.show_account', compact('transaction_list', 'address_default'));
     }
 }

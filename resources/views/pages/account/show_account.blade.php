@@ -95,13 +95,35 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr>
-                                                        <th scope="row">#6523</th>
-                                                        <td>September 10, 2020</td>
-                                                        <td>Processing</td>
-                                                        <td>$326.63 for 3 items</td>
-                                                        <td><a href="#" class="axil-btn view-btn">View</a></td>
-                                                    </tr>
+                                                    @foreach ($transaction_list as $item)
+                                                        <tr>
+                                                            <th scope="row">#{{ $item->transaction_id }}</th>
+                                                            <td>{{ $item->created_at }}</th>
+                                                            <td>
+                                                                @if ($item->transaction_status == 0 && $item->transaction_payment == 'pay_offline')
+                                                                    Wait Confirm
+                                                                @elseif ($item->transaction_status == 0 && $item->transaction_payment == 'pay_online')
+                                                                    Not Pay
+                                                                @elseif($item->transaction_status == 1)
+                                                                    Wait Confirm
+                                                                @elseif($item->transaction_status == 2)
+                                                                    Confirmed
+                                                                @elseif($item->transaction_status == 3)
+                                                                    Pakaging
+                                                                @elseif($item->transaction_status == 4)
+                                                                    Shipping
+                                                                @elseif($item->transaction_status == 5)
+                                                                    Completed
+                                                                @elseif($item->transaction_status == 6)
+                                                                    Canceled
+                                                                @endif
+                                                                </th>
+                                                            <td>{{ number_format($item->transaction_amount) . ' VND' }}
+                                                                </th>
+                                                            <td><a href="{{ URL::to('view-order-detail/' . $item->transaction_id) }}"
+                                                                    class="axil-btn view-btn">View</a></th>
+                                                        </tr>
+                                                    @endforeach
                                                 </tbody>
                                             </table>
                                         </div>
@@ -112,38 +134,38 @@
                                         <p class="notice-text">The following addresses will be used on the checkout page by
                                             default.</p>
                                         <div class="row row--30">
-                                            <div class="col-lg-6">
+                                            <div class="col-lg-12">
                                                 <div class="address-info mb--40">
-                                                    <div
-                                                        class="addrss-header d-flex align-items-center justify-content-between">
-                                                        <h4 class="title mb-0">Shipping Address</h4>
-                                                        <a href="#" class="address-edit"><i
-                                                                class="far fa-edit"></i></a>
-                                                    </div>
-                                                    <ul class="address-details">
-                                                        <li>Name: Annie Mario</li>
-                                                        <li>Email: annie@example.com</li>
-                                                        <li>Phone: 1234 567890</li>
-                                                        <li class="mt--30">7398 Smoke Ranch Road <br>
-                                                            Las Vegas, Nevada 89128</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <div class="address-info">
-                                                    <div
-                                                        class="addrss-header d-flex align-items-center justify-content-between">
-                                                        <h4 class="title mb-0">Billing Address</h4>
-                                                        <a href="#" class="address-edit"><i
-                                                                class="far fa-edit"></i></a>
-                                                    </div>
-                                                    <ul class="address-details">
-                                                        <li>Name: Annie Mario</li>
-                                                        <li>Email: annie@example.com</li>
-                                                        <li>Phone: 1234 567890</li>
-                                                        <li class="mt--30">7398 Smoke Ranch Road <br>
-                                                            Las Vegas, Nevada 89128</li>
-                                                    </ul>
+                                                    @if ($address_default == null)
+                                                        <div
+                                                            class="addrss-header d-flex align-items-center justify-content-between">
+                                                            <h4 class="title mb-0">Shipping Address</h4>
+                                                        </div>
+                                                        <ul class="address-details">
+                                                            <h4 class="text-primary">Address is null</h4>
+                                                            <a href="{{ URL::to('address-user') }}"
+                                                                class="axil-btn btn-bg-primary viewcart-btn">Add
+                                                                Address</a>
+
+                                                        </ul>
+                                                    @else
+                                                        <div
+                                                            class="addrss-header d-flex align-items-center justify-content-between">
+                                                            <h4 class="title mb-0">Shipping Address</h4>
+                                                            <a href="{{ URL::to('edit-address-user') }}"
+                                                                class="address-edit"><i class="far fa-edit"></i></a>
+                                                        </div>
+                                                        {{-- @foreach ($address_default as $item) --}}
+                                                        <ul class="address-details">
+                                                            <li>{{ 'Name: ' . $address_default->fullname }}</li>
+                                                            <li>{{ 'Email: ' . $address_default->email }}</li>
+                                                            <li>{{ 'Phone: ' . $address_default->phone }}</li>
+                                                            <li class="mt--30">
+                                                                {{ 'Address: ' . $address_default->address . ', ' . $address_default->ward . ', ' . $address_default->district . ', ' . $address_default->province . ', ' }}
+                                                            </li>
+                                                        </ul>
+                                                        {{-- @endforeach --}}
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>

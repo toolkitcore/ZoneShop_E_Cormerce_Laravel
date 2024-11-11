@@ -57,6 +57,11 @@ Route::get('/search-navbar', [DetailProductController::class, 'search_Navbar']);
 //ACCOUNT
 Route::get('/account', [ClientController::class, 'Show_Account'])->name('profile_account');
 
+Route::get('/address-user', [AddressController::class, 'Show_address']);
+Route::post('/save-address', [AddressController::class, 'Save_address'])->name('add.user');
+Route::get('/edit-address-user', [AddressController::class, 'Edit_address']);
+Route::post('/update-address', [AddressController::class, 'Update_address']);
+
 //MAILER
 // Route::get('/mailer', function () {
 //     Mail::to('hoangductrinh2k5@gmail.com')
@@ -68,7 +73,7 @@ Route::get('/show-checkout', [OrderController::class, 'Show_checkout'])->name('s
 Route::post('/process-checkout', [OrderController::class, 'Process_checkout'])->name('process_checkout');
 Route::post('/shipping/calculate', [OrderController::class, 'calculateFee'])->name('calculate_shipping');
 Route::get('/checkout-success', [OrderController::class, 'Checkout_Success'])->name('checkout_success');
-// Route::get('/checkout-confirm', [OrderController::class, 'Checkout_Confirm'])->name('checkout_confirm');
+Route::get('/checkout-confirm-page', [OrderController::class, 'Checkout_Confirm'])->name('checkout_confirm');
 Route::get('/checkout-confirm', [CheckoutController::class, 'vnpay_confirm']);
 Route::get('/checkout-pay', [OrderController::class, 'Checkout_Pay'])->name('checkout_pay');
 Route::post('/pay-online', [CheckoutController::class, 'vnpay_payment'])->name('pay-online');
