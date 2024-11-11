@@ -1,5 +1,6 @@
 @extends('layout')
 @section('content')
+    @include('components.toast')
     <main class="main-wrapper">
         <?php
         

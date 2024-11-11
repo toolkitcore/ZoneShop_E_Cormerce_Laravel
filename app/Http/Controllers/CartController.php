@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class CartController extends Controller
 {
@@ -27,6 +28,7 @@ class CartController extends Controller
                 ],
             ]);
             Cart::setGlobalTax(0);
+            Session::flash('success', 'Add cart Successfully !');
             return redirect('gio-hang')->with('success', 'Sản phẩm đã được thêm vào giỏ hàng thành công!');
         }
 
@@ -54,6 +56,7 @@ class CartController extends Controller
             ]);
             Cart::setGlobalTax(0);
         }
+        Session::flash('success', 'Added to Cart successfully');
         return response()->json(['redirect' => route('gio_hang')]);
     }
     public function Delete_to_cart($rowId)
@@ -62,6 +65,7 @@ class CartController extends Controller
         $new_total = Cart::subtotal(0);
         $count = Cart::content()->unique('id')->count();
 
+        Session::flash('success', 'Deleted Item successfully');
         return response()->json([
             'success' => true,
             'newTotal' => $new_total,
@@ -72,6 +76,7 @@ class CartController extends Controller
     public function ClearCart()
     {
         Cart::destroy();
+        Session::flash('success', 'Delete all successfully');
         return response()->json(['success' => true, 'message' => 'Cart cleared successfully']);
     }
 

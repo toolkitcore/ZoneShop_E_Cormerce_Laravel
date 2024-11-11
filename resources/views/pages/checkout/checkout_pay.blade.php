@@ -1,5 +1,6 @@
 @extends('layout')
 @section('content')
+    @include('components.toast')
     <main class="main-wrapper">
         <section class="error-page onepage-screen-area">
             <div class="container">

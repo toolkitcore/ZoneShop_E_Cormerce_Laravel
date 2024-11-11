@@ -12,7 +12,8 @@
                 </div>
                 <div class="product-hover-action">
                     <ul class="cart-action">
-                        <li class="wishlist"><a href="wishlist.html"><i class="far fa-heart"></i></a></li>
+                        <li class="wishlist"><a href="{{ URL::to('show-wishlist') }}"><i class="far fa-heart"></i></a>
+                        </li>
                         <li class="select-option">
                             <a href="#" class="add-cart-item" data-product-id="{{ $product->product_id }}">Add to
                                 Cart</a>

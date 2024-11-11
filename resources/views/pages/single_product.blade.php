@@ -1,5 +1,6 @@
 @extends('layout')
 @section('content')
+    @include('components.toast')
     <main class="main-wrapper">
         <!-- Start Shop Area  -->
         <div class="axil-single-product-area axil-section-gap pb--0 bg-color-white">
@@ -92,7 +93,7 @@
                                                     <button type="submit" class="axil-btn btn-bg-primary">zAdd
                                                         to Cart</button>
                                                 </li>
-                                                <li class="wishlist"><a href="wishlist.html"
+                                                <li class="wishlist"><a href="{{ URL::to('show-wishlist') }}"
                                                         class="axil-btn wishlist-btn"><i class="far fa-heart"></i></a></li>
                                             </ul>
                                             <!-- End Product Action  -->
@@ -398,7 +399,8 @@
                                     </div>
                                     <div class="product-hover-action">
                                         <ul class="cart-action">
-                                            <li class="wishlist"><a href="wishlist.html"><i class="far fa-heart"></i></a>
+                                            <li class="wishlist"><a href="{{ URL::to('show-wishlist') }}"><i
+                                                        class="far fa-heart"></i></a>
                                             </li>
                                             <li class="select-option"><a href="cart.html">Add to Cart</a></li>
                                             <li class="quickview"><a href="#" data-bs-toggle="modal"

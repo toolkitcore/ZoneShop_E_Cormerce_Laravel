@@ -1,5 +1,6 @@
 @extends('layout')
 @section('content')
+    @include('components.toast')
     <main class="main-wrapper">
         <!-- Start Wishlist Area  -->
         <div class="axil-wishlist-area axil-section-gap">
@@ -67,6 +68,14 @@
                 },
                 success: function(response) {
                     $('.wishlist-item-' + product_id).remove();
+                    showToast(response.success, {
+                        gravity: 'top',
+                        position: 'right',
+                        duration: 3000,
+                        close: false,
+                        backgroundColor: '#28a745',
+                        close: false
+                    });
                 },
                 error: function(xhr, status, error) {
                     alert('Error adding product to wishlist:', error);
@@ -74,5 +83,16 @@
                 }
             });
         });
+
+        function showToast(text, options) {
+            Toastify({
+                text: text,
+                gravity: options.gravity,
+                position: options.position,
+                duration: options.duration,
+                close: false,
+                backgroundColor: options.backgroundColor,
+            }).showToast();
+        }
     </script>
 @endsection

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class WishlistController extends Controller
 {
@@ -34,9 +35,10 @@ class WishlistController extends Controller
             'attributes' => [],
         ]);
 
+        // Session::flash('success', 'Product added to wishlist successfully');
         return response()->json([
-            'message' => 'Product added to wishlist successfully',
-            'redirect' => route('wishlist')
+            'success' => true,
+            'message' => 'Product added to wishlist successfully'
         ]);
     }
     public function removeFromWishlist(Request $request)
@@ -44,8 +46,14 @@ class WishlistController extends Controller
         $rowid = $request->input('rowid');
         if ($rowid) {
             Cart::instance('wishlist')->remove($rowid);
-            return response()->json(['status' => 'success', 'message' => 'Đã xóa sản phẩm khỏi wishlist']);
+            return response()->json([
+                'success' => true,
+                'message' => 'Deleted product wishlist'
+            ]);
         }
-        return response()->json(['status' => 'error', 'message' => 'Lỗi xóa sản phẩm khỏi wishlist']);
+        return response()->json([
+            'error' => true,
+            'message' => 'Error Delete Wishlist'
+        ]);
     }
 }

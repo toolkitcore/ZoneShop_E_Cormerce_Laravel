@@ -1,5 +1,6 @@
 @extends('layout')
 @section('content')
+    @include('components.toast')
     <main class="main-wrapper">
         <div class="axil-checkout-area axil-section-gap">
             <div class="container">
@@ -17,6 +18,28 @@
                                             {{ 'Address: ' . $transaction->deliveryAddress->address . ', ' . $transaction->deliveryAddress->ward . ', ' . $transaction->deliveryAddress->district . ', ' . $transaction->deliveryAddress->province }}</span><br>
                                     </ul>
                                 </div>
+                                <h5 class="title mb--20">Status :
+                                    <span class="text-primary">
+                                        @if ($transaction->transaction_status == 0 && $transaction->transaction_payment == 'pay_offline')
+                                            Wait Confirm
+                                        @elseif ($transaction->transaction_status == 0 && $transaction->transaction_payment == 'pay_online')
+                                            Not Pay
+                                        @elseif($transaction->transaction_status == 1)
+                                            Wait Confirm
+                                        @elseif($transaction->transaction_status == 2)
+                                            Confirmed
+                                        @elseif($transaction->transaction_status == 3)
+                                            Pakaging
+                                        @elseif($transaction->transaction_status == 4)
+                                            Shipping
+                                        @elseif($transaction->transaction_status == 5)
+                                            Completed
+                                        @elseif($transaction->transaction_status == 6)
+                                            Canceled
+                                        @endif
+                                    </span>
+                                </h5>
+
                             </div>
                         </div>
                         <div class="col-lg-7">

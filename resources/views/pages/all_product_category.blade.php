@@ -1,5 +1,6 @@
 @extends('layout')
 @section('content')
+    @include('components.toast')
     <main class="main-wrapper">
         <!-- Start Breadcrumb Area  -->
         <div class="axil-breadcrumb-area">
@@ -103,7 +104,8 @@
                                     </div>
                                     <div class="product-hover-action">
                                         <ul class="cart-action">
-                                            <li class="wishlist"><a href="wishlist.html"><i class="far fa-heart"></i></a>
+                                            <li class="wishlist"><a href="{{ URL::to('show-wishlist') }}"><i
+                                                        class="far fa-heart"></i></a>
                                             </li>
                                             <li class="select-option"><a href="cart.html" class="add-cart-item"
                                                     data-product-id="{{ $product->product_id }}">Add to Cart</a></li>

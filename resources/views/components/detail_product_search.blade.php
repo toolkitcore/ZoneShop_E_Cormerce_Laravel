@@ -27,7 +27,7 @@
                     data-product-id="{{ $value->product_id }}">
                     <i class="fal fa-shopping-cart"></i>
                 </a>
-                <a href="wishlist.html" class="cart-btn"><i class="fal fa-heart"></i></a>
+                <a href="{{ URL::to('show-wishlist') }}" class="cart-btn"><i class="fal fa-heart"></i></a>
             </div>
         </div>
     </div>

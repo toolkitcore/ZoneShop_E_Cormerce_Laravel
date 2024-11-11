@@ -31,6 +31,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.min.js"
         integrity="sha512-bPh3uwgU5qEMipS/VOmRqynnMXGGSRv+72H/N260MQeXZIK4PG48401Bsby9Nq5P5fz7hy5UGNmC/W1Z51h2GQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 
     <link rel="stylesheet" href="{{ asset('public/FrontEnd/css/vendor/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('public/FrontEnd/css/vendor/font-awesome.css') }}">
@@ -178,7 +180,7 @@
                                 </a>
                             </li>
                             <li class="wishlist">
-                                <a href="wishlist.html">
+                                <a href="{{ URL::to('show-wishlist') }}">
                                     <i class="flaticon-heart"></i>
                                 </a>
                             </li>
@@ -348,7 +350,7 @@
                                     <li><a href="{{ URL::to('account') }}">My Account</a></li>
                                     <li><a href="sign-up.html">Login / Register</a></li>
                                     <li><a href="{{ URL::to('gio-hang') }}">Cart</a></li>
-                                    <li><a href="wishlist.html">Wishlist</a></li>
+                                    <li><a href="{{ URL::to('show-wishlist') }}">Wishlist</a></li>
                                     <li><a href="shop.html">Shop</a></li>
                                 </ul>
                             </div>
@@ -510,7 +512,7 @@
                                                         Cart
                                                     </a>
                                                 </li>
-                                                <li class="wishlist"><a href="wishlist.html"
+                                                <li class="wishlist"><a href="{{ URL::to('show-wishlist') }}"
                                                         class="axil-btn wishlist-btn"><i class="far fa-heart"></i></a>
                                                 </li>
                                             </ul>

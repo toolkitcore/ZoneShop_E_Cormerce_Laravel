@@ -1,5 +1,6 @@
 @extends('layout')
 @section('content')
+    @include('components.toast')
     <?php
     $user = Auth::user();
     $name_account = Auth::check() ? Auth::user()->name : 'Name';

@@ -1,5 +1,6 @@
 @extends('layout')
 @section('content')
+    @include('components.toast')
     <main class="main-wrapper">
         <div class="axil-checkout-area axil-section-gap">
             <div class="container">

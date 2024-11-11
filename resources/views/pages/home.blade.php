@@ -1,6 +1,7 @@
 <!-- PAGE HOME -->
 @extends('layout')
 @section('content')
+    @include('components.toast')
     <main class="main-wrapper">
         <div class="axil-main-slider-area main-slider-style-1">
             <div class="container">
@@ -1474,7 +1475,9 @@
 
             return parts[1] === '00' ? parts[0] : parts.join(decPoint);
         }
-        $(document).on('click', '.add-to-wishlist', function() {
+        $(document).on('click', '.add-to-wishlist', function(event) {
+            event.preventDefault(); // Ngăn chặn hành động mặc định của thẻ <a>
+
             var button = $(this);
             var productId = $(this).data('product-id');
             $.ajax({
@@ -1485,15 +1488,47 @@
                     _token: '{{ csrf_token() }}',
                 },
                 success: function(response) {
-                    if (response.redirect) {
-                        window.location.href = response.redirect;
+                    if (response.success) {
+                        showToast(response.message, {
+                            gravity: 'top',
+                            position: 'right',
+                            duration: 3000,
+                            close: false,
+                            backgroundColor: '#28a745'
+                        });
+                    } else {
+                        showToast(response.error, {
+                            gravity: 'top',
+                            position: 'right',
+                            duration: 3000,
+                            close: false,
+                            backgroundColor: '#dc3545'
+                        });
                     }
                 },
                 error: function(xhr, status, error) {
-                    alert('Error adding product to wishlist:', error);
-                    console.log(xhr.responseText); // Log the entire response for more details
+                    // showToast(error, {
+                    //     gravity: 'top',
+                    //     position: 'right',
+                    //     duration: 3000,
+                    //     close: true,
+                    //     backgroundColor: '#dc3545'
+                    // });
+                    // alert('Error adding product to wishlist:', error);
+                    // console.log(xhr.responseText); // Log the entire response for more details
                 }
             });
         });
+
+        function showToast(text, options) {
+            Toastify({
+                text: text,
+                gravity: options.gravity,
+                position: options.position,
+                duration: options.duration,
+                close: false,
+                backgroundColor: options.backgroundColor,
+            }).showToast();
+        }
     </script>
 @endsection
