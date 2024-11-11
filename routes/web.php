@@ -78,6 +78,10 @@ Route::get('/checkout-confirm', [CheckoutController::class, 'vnpay_confirm']);
 Route::get('/checkout-pay', [OrderController::class, 'Checkout_Pay'])->name('checkout_pay');
 Route::post('/pay-online', [CheckoutController::class, 'vnpay_payment'])->name('pay-online');
 
+//Order detail
+Route::get('/view-order-detail/{transaction_id}', [OrderController::class, 'Show_Order_Detail_fe']);
+
+
 Route::get('/checkout-success', function () {
     return view('pages.checkout.checkout_success');
 })->name('checkout.success');

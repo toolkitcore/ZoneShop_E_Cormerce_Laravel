@@ -17,6 +17,10 @@ class OrderController extends Controller
         if (!auth()->check()) {
             return redirect(route('login')); // Sửa 'ridirect' thành 'redirect'
         }
+        $user_id = Auth::user()->id;
+        $address_user = Address::where('user_id', $user_id)->first();
+        if (!$address_user) {
+        }
         $address_pickup = Address::where('address_type', 'pickup')->get();
         return view('pages.checkout.show_checkout', compact('address_pickup'));
     }
@@ -157,5 +161,13 @@ class OrderController extends Controller
     {
         $transaction_item = Transaction::where('transaction_id', $transaction_id)->with(['orders', 'orders.product', 'deliveryAddress'])->first();
         return view('admin.order.order_detail', compact('transaction_item'));
+    }
+    public function Show_Order_Detail_fe($transaction_id)
+    {
+
+        $transaction = Transaction::where('transaction_id', $transaction_id)
+            ->with(['orders', 'orders.product', 'deliveryAddress'])
+            ->first();
+        return view('pages.order.order_detail', compact('transaction'));
     }
 }
