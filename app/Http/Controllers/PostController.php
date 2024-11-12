@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Category_Product;
 use App\Models\Posts;
+use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -18,7 +20,6 @@ class PostController extends Controller
     {
         $data = $request->all();
 
-        // Kiểm tra xem có file hình ảnh không
         if ($request->hasFile('post_image')) {
             $get_image = $request->file('post_image');
             $get_name_image = $get_image->getClientOriginalName();
@@ -26,14 +27,11 @@ class PostController extends Controller
             $new_image = $name_image . '_' . time() . '.' . $get_image->getClientOriginalExtension();
             $path = 'public/uploads/blog/post';
 
-            // Di chuyển file vào thư mục uploads
             $get_image->move($path, $new_image);
 
-            // Lưu đường dẫn hình ảnh
             $data['post_image'] = 'public/uploads/blog/post/' . $new_image;
         }
 
-        // Lấy nội dung HTML từ Quill editor
         $content = $request->input('content');  // Nội dung HTML
 
         // Lưu thông tin bài viết vào cơ sở dữ liệu
@@ -45,7 +43,6 @@ class PostController extends Controller
             'post_des' => $request->input('post_des'),
         ]);
 
-        // Trả về phản hồi sau khi lưu thành công
         return response()->json([
             'message' => 'Post added successfully',
             'redirect_url' => route('posts')  // Đường dẫn để chuyển hướng sau khi thêm
@@ -60,10 +57,23 @@ class PostController extends Controller
     }
     public function Delete_Post($id)
     {
-        $posts = Posts::where('id', $id)->delete();
+        $post = Posts::find($id);
+
+        if ($post && $post->post_image) {
+            $imagePath = public_path('storage/' . $post->post_image);
+
+            if (File::exists($imagePath)) {
+                unlink($imagePath); // Xóa file ảnh
+            }
+        }
+
+        $post->delete();
+
         Session::flash('success', 'Delete post successfully !');
+
         return redirect(route('posts'));
     }
+
     public function Detail_Post($id)
     {
         $post_item = Posts::where('id', $id)->first();
@@ -72,5 +82,15 @@ class PostController extends Controller
     public function Edit_Post()
     {
         return view('admin.post.edit_post');
+    }
+    public function Show_Blog()
+    {
+        $blog = Posts::all();
+        return view('pages.blog.all_post', compact('blog'));
+    }
+    public function Show_Blog_Detail($id)
+    {
+        $post = Posts::where('id', $id)->first();
+        return view('pages.blog.blog_detail', compact('post'));
     }
 }

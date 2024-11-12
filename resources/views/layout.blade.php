@@ -159,7 +159,7 @@
                                 <li class="menu-item-has-children">
                                     <a href="#" class=" {{ request()->is('blog*') ? 'active' : '' }}">Blog</a>
                                     <ul class="axil-submenu">
-                                        <li><a href="blog.html">Blog List</a></li>
+                                        <li><a href="{{ URL::to('/blog') }}">Blog List</a></li>
                                     </ul>
                                 </li>
                                 <li>

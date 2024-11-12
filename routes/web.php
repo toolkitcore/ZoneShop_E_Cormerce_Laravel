@@ -91,6 +91,13 @@ Route::get('/checkout-failed', function () {
     return view('pages.checkout.checkout_failed');
 })->name('checkout.failed');
 
+
+
+// BLOG 
+Route::get('/blog', [PostController::class, 'Show_Blog']);
+Route::get('/blog-detail/{id}', [PostController::class, 'Show_Blog_Detail']);
+
+
 //BACKEND
 Route::get('/admin', [AdminControllers::class, 'index']);
 Route::get('/dashboard', [AdminControllers::class, 'Show_Dashboard']);

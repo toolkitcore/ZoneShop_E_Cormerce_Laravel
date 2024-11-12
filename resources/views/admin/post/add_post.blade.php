@@ -95,25 +95,19 @@
         $(document).on('click', '#add_post', function(e) {
             e.preventDefault();
 
-            // Lấy nội dung từ Quill editor dưới dạng HTML
             var htmlContent = quill.root.innerHTML;
 
-            // Tạo đối tượng FormData từ form
             var formData = new FormData($('form')[0]);
 
-            // Thêm dữ liệu Quill editor vào FormData dưới dạng HTML
             formData.append('content', htmlContent);
 
-            // Thêm dữ liệu title, category_id và post_image vào FormData
             formData.append('post_title', $('#post_title').val());
             formData.append('category_id', $('#product-categories').val());
             formData.append('post_des', $('#post_des').val());
             formData.append('post_image', $('#myFileInput')[0].files[0]); // Lấy file ảnh đã chọn
 
-            // Lấy CSRF token từ meta tag
             var csrfToken = $('meta[name="csrf-token"]').attr('content');
 
-            // Gửi AJAX request để lưu post
             $.ajax({
                 url: '{{ route('posts.store') }}', // Đường dẫn tới route store trong Laravel
                 method: 'POST',
