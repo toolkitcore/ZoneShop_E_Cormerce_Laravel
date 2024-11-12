@@ -13,7 +13,7 @@ var quill = new Quill('#snow-editor', {
 });
 
 // Bubble theme
-var quill = new Quill('#bubble-editor', {
+var quill_content = new Quill('#bubble-editor', {
     theme: 'bubble'
 });
 

@@ -1535,6 +1535,8 @@
     <script src="{{ asset('public/BackEnd/js/pages/product-grid.js') }}"></script>
     <script src="{{ asset('public/BackEnd/js/pages/dashboard.js') }}"></script>
     <script src="{{ asset('public/BackEnd/js/components/extended-sweetalert.js') }}"></script>
+    <script src="{{ asset('public/BackEnd/js/components/form-quilljs.js ') }}"></script>
+
 
 
     @yield('scripts')

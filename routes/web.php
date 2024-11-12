@@ -13,6 +13,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\DetailProductController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductImagesController;
 use App\Http\Controllers\TransactionController;
@@ -186,12 +187,13 @@ Route::get('/confirm-ship/{transaction_id}', [TransactionController::class, 'Con
 Route::get('/confirm-completed/{transaction_id}', [TransactionController::class, 'Confirm_Completed']);
 Route::get('/cancel-order/{transaction_id}', [TransactionController::class, 'Cancel_Order']);
 
-
-
-
-
-
-
+// POST
+Route::get('/add-post', [PostController::class, 'Add_Post']);
+Route::post('/action-add-post', [PostController::class, 'Add_Post_Action'])->name('posts.store');
+Route::get('/list-post', [PostController::class, 'Show_List_Post'])->name('posts');
+Route::get('/edit-post', [PostController::class, 'Edit_Post']);
+Route::get('/delete-post/{id}', [PostController::class, 'Delete_Post']);
+Route::get('/post-details/{id}', [PostController::class, 'Detail_Post']);
 
 
 
