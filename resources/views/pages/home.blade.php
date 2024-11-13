@@ -9,11 +9,11 @@
                     <div class="col-lg-5 col-sm-6">
                         <div class="main-slider-content">
                             <div class="slider-content-activation-one">
-                                @foreach ($products as $item)
+                                @foreach ($slider_home as $item)
                                     <div class="single-slide slick-slide" data-sal="slide-up" data-sal-delay="400"
                                         data-sal-duration="800">
                                         <span class="subtitle"><i class="fas fa-fire"></i> Hot Deal In This Week</span>
-                                        <h1 class="title">{{ $item->product_name }}</h1>
+                                        <h1 class="title">{{ $item->product->product_name }}</h1>
                                         <div class="slide-action">
                                             <div class="shop-btn">
                                                 <a href="shop.html" class="axil-btn btn-bg-white"><i
@@ -136,14 +136,14 @@
                     <div class="col-lg-7 col-sm-6">
                         <div class="main-slider-large-thumb">
                             <div class="slider-thumb-activation-one axil-slick-dots">
-                                @foreach ($products as $item)
+                                @foreach ($slider_home as $item)
                                     <div class="single-slide slick-slide" data-sal="slide-up" data-sal-delay="600"
                                         data-sal-duration="1500">
-                                        <img src="{{ asset($item->product_image) }}" alt="Product">
+                                        <img src="{{ asset($item->slider_image) }}" alt="Product">
                                         <div class="product-price">
                                             <span class="text">From</span>
                                             <span
-                                                class="price-amount">{{ number_format($item->product_price_selling) . ' VND' }}</span>
+                                                class="price-amount">{{ number_format($item->product->product_price_selling) . ' VND' }}</span>
                                         </div>
                                     </div>
                                 @endforeach

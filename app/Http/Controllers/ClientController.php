@@ -7,6 +7,7 @@ use App\Models\Brand_Product;
 use App\Models\Category_Product;
 use App\Models\Product;
 use App\Models\Product_Attributes;
+use App\Models\SliderHome;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -31,7 +32,8 @@ class ClientController extends Controller
     {
         $products = Product::with('productImages', 'category')->take(8)->get();
         $categories = Category_Product::whereNotNull('category_parent_id')->get();
-        return view('pages.home', compact('categories', 'products'));
+        $slider_home = SliderHome::with('product')->get();
+        return view('pages.home', compact('categories', 'products', 'slider_home'));
     }
 
     // Show page Product detail

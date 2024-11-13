@@ -20,6 +20,7 @@ use App\Http\Controllers\ProductImagesController;
 use App\Http\Controllers\SliderHomeController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\WishlistController;
+use App\Mail\ContactMail;
 use App\Mail\HelloMail;
 use Illuminate\Support\Facades\Mail;
 
@@ -102,6 +103,21 @@ Route::get('/blog-detail/{id}', [PostController::class, 'Show_Blog_Detail']);
 // COMMENT
 Route::post('/send-message', [CommentController::class, 'Send_Comment'])->name('send_comment');
 
+// CONTACT
+Route::post('/contact', function (Illuminate\Http\Request $request) {
+    $details = [
+        'name' => $request->input('name'),
+        'phone' => $request->input('phone'),
+        'email' => $request->input('email'),
+        'message' => $request->input('message')
+    ];
+
+    Mail::to('hoangductrinh2k5@gmail.com')->send(new ContactMail($details));
+
+    return response()->json([
+        'success' => 'Email sent successfully!',
+    ]);
+})->name('contact');
 
 //BACKEND
 Route::get('/admin', [AdminControllers::class, 'index']);

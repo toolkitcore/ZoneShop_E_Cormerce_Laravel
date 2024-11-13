@@ -6,7 +6,7 @@
         <div class="axil-breadcrumb-area">
             <div class="container">
                 <div class="row align-items-center">
-                    <div class="col-lg-6 col-md-8">
+                    <div class="col-lg-12 col-md-12">
                         <div class="inner">
                             <ul class="axil-breadcrumb">
                                 <li class="axil-breadcrumb-item"><a href="{{ URL::to('trang-chu') }}">Home</a></li>
@@ -18,13 +18,6 @@
                             <h1 class="title">All Products Of
                                 <span class="text-primary">{{ $category->category_name }}</span>
                             </h1>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-4">
-                        <div class="inner">
-                            <div class="bradcrumb-thumb">
-                                <img src="assets/images/product/product-45.png" alt="Image">
-                            </div>
                         </div>
                     </div>
                 </div>

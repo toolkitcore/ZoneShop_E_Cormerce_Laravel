@@ -6,7 +6,7 @@
         <div class="axil-breadcrumb-area">
             <div class="container">
                 <div class="row align-items-center">
-                    <div class="col-lg-6 col-md-8">
+                    <div class="col-lg-12 col-md-12">
                         <div class="inner">
                             <ul class="axil-breadcrumb">
                                 <li class="axil-breadcrumb-item"><a href="{{ URL::to('trang-chu') }}">Home</a></li>
@@ -14,13 +14,6 @@
                                 <li class="axil-breadcrumb-item active" aria-current="page">About Us</li>
                             </ul>
                             <h1 class="title">About Our Store</h1>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-4">
-                        <div class="inner">
-                            <div class="bradcrumb-thumb">
-                                <img src="{{ asset('public/BackEnd/images/product/product-45.png') }}" alt="Image">
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -35,7 +28,7 @@
                     <div class="col-xl-4 col-lg-6">
                         <div class="about-thumbnail">
                             <div class="thumbnail">
-                                <img src="{{ asset('public/BackEnd/images/about/about-01.png') }}" alt="About Us">
+                                <img src="{{ asset('public/FrontEnd/images/about/about-01.png') }}" alt="About Us">
                             </div>
                         </div>
                     </div>
@@ -74,7 +67,7 @@
                     <div class="col-lg-4">
                         <div class="about-info-box">
                             <div class="thumb">
-                                <img src="{{ asset('public/BackEnd/images/about/shape-01.png') }}" alt="Shape">
+                                <img src="{{ asset('public/FrontEnd/images/about/shape-01.png') }}" alt="Shape">
                             </div>
                             <div class="content">
                                 <h6 class="title">40,000+ Happy Customer</h6>
@@ -86,7 +79,7 @@
                     <div class="col-lg-4">
                         <div class="about-info-box">
                             <div class="thumb">
-                                <img src="{{ asset('public/BackEnd/images/about/shape-02.png') }}" alt="Shape">
+                                <img src="{{ asset('public/FrontEnd/images/about/shape-02.png') }}" alt="Shape">
                             </div>
                             <div class="content">
                                 <h6 class="title">16 Years of Experiences</h6>
@@ -98,7 +91,7 @@
                     <div class="col-lg-4">
                         <div class="about-info-box">
                             <div class="thumb">
-                                <img src="{{ asset('public/BackEnd/images/about/shape-03.png') }}" alt="Shape">
+                                <img src="{{ asset('public/FrontEnd/images/about/shape-03.png') }}" alt="Shape">
                             </div>
                             <div class="content">
                                 <h6 class="title">12 Awards Won</h6>
@@ -123,7 +116,7 @@
                     <div class="team-slide-activation slick-layout-wrapper--20 axil-slick-arrow  arrow-top-slide">
                         <div class="slick-single-layout">
                             <div class="axil-team-member">
-                                <div class="thumbnail"><img src="{{ asset('public/BackEnd/images/team/team-01.png') }}"
+                                <div class="thumbnail"><img src="{{ asset('public/FrontEnd/images/team/team-01.png') }}"
                                         alt="Cody Fisher"></div>
                                 <div class="team-content">
                                     <span class="subtitle">Founder</span>
@@ -133,7 +126,7 @@
                         </div>
                         <div class="slick-single-layout">
                             <div class="axil-team-member">
-                                <div class="thumbnail"><img src="{{ asset('public/BackEnd/images/team/team-02.png') }}"
+                                <div class="thumbnail"><img src="{{ asset('public/FrontEnd/images/team/team-02.png') }}"
                                         alt="Cody Fisher"></div>
                                 <div class="team-content">
                                     <span class="subtitle">CEO</span>
@@ -143,7 +136,7 @@
                         </div>
                         <div class="slick-single-layout">
                             <div class="axil-team-member">
-                                <div class="thumbnail"><img src="{{ asset('public/BackEnd/images/team/team-03.png') }}"
+                                <div class="thumbnail"><img src="{{ asset('public/FrontEnd/images/team/team-03.png') }}"
                                         alt="Cody Fisher"></div>
                                 <div class="team-content">
                                     <span class="subtitle">Designer</span>
@@ -153,7 +146,7 @@
                         </div>
                         <div class="slick-single-layout">
                             <div class="axil-team-member">
-                                <div class="thumbnail"><img src="{{ asset('public/BackEnd/images/team/team-04.png') }}"
+                                <div class="thumbnail"><img src="{{ asset('public/FrontEnd/images/team/team-04.png') }}"
                                         alt="Cody Fisher"></div>
                                 <div class="team-content">
                                     <span class="subtitle">Designer</span>
@@ -163,7 +156,7 @@
                         </div>
                         <div class="slick-single-layout">
                             <div class="axil-team-member">
-                                <div class="thumbnail"><img src="{{ asset('public/BackEnd/images/team/team-02.png') }}"
+                                <div class="thumbnail"><img src="{{ asset('public/FrontEnd/images/team/team-02.png') }}"
                                         alt="Cody Fisher"></div>
                                 <div class="team-content">
                                     <span class="subtitle">Designer</span>
@@ -183,7 +176,7 @@
                 <div class="row align-items-center mb--80 mb_sm--60">
                     <div class="col-lg-5">
                         <div class="about-thumbnail">
-                            <img src="{{ asset('public/BackEnd/images/about/about-02.png') }}" alt="about">
+                            <img src="{{ asset('public/FrontEnd/images/about/about-02.png') }}" alt="about">
                         </div>
                     </div>
                     <div class="col-lg-7">
@@ -201,7 +194,7 @@
                 <div class="row align-items-center">
                     <div class="col-lg-5 order-lg-2">
                         <div class="about-thumbnail">
-                            <img src="{{ asset('public/BackEnd/images/about/about-03.png') }}" alt="about">
+                            <img src="{{ asset('public/FrontEnd/images/about/about-03.png') }}" alt="about">
                         </div>
                     </div>
                     <div class="col-lg-7 order-lg-1">
