@@ -11,6 +11,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\DetailProductController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PostController;
@@ -96,6 +97,9 @@ Route::get('/checkout-failed', function () {
 // BLOG 
 Route::get('/blog', [PostController::class, 'Show_Blog']);
 Route::get('/blog-detail/{id}', [PostController::class, 'Show_Blog_Detail']);
+
+// COMMENT
+Route::post('/send-message', [CommentController::class, 'Send_Comment'])->name('send_comment');
 
 
 //BACKEND

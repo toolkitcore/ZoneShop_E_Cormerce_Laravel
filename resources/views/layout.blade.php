@@ -661,6 +661,16 @@
 
 </html>
 <script type="text/javascript">
+    function showToast(text, options) {
+        Toastify({
+            text: text,
+            gravity: options.gravity,
+            position: options.position,
+            duration: options.duration,
+            close: false,
+            backgroundColor: options.backgroundColor,
+        }).showToast();
+    }
     $(document).on('click', '.quick-view-button', function(e) {
         e.preventDefault();
         var product_id = $(this).data('id');

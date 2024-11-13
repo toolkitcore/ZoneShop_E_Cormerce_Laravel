@@ -91,7 +91,7 @@ class PostController extends Controller
     }
     public function Show_Blog_Detail($id)
     {
-        $post = Posts::where('id', $id)->first();
+        $post = Posts::where('id', $id)->with(['comments', 'comments.user'])->first();
 
         if (!$post) {
             return redirect('blog');
