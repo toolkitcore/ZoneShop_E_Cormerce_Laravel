@@ -995,7 +995,7 @@
                         </div>
                     </li>
 
-                    <li class="menu-title mt-2">Other</li>
+                    <li class="menu-title mt-2">Pages</li>
 
                     <li class="nav-item">
                         <a class="nav-link menu-arrow" href="#sidebarCoupons" data-bs-toggle="collapse"
@@ -1003,15 +1003,15 @@
                             <span class="nav-icon">
                                 <iconify-icon icon="solar:leaf-bold-duotone"></iconify-icon>
                             </span>
-                            <span class="nav-text"> Coupons </span>
+                            <span class="nav-text"> Sliders </span>
                         </a>
                         <div class="collapse" id="sidebarCoupons">
                             <ul class="nav sub-navbar-nav">
                                 <li class="sub-nav-item">
-                                    <a class="sub-nav-link" href="coupons-list.html">List</a>
+                                    <a class="sub-nav-link" href="{{ URL::to('all-sliders') }}">List</a>
                                 </li>
                                 <li class="sub-nav-item">
-                                    <a class="sub-nav-link" href="coupons-add.html">Add</a>
+                                    <a class="sub-nav-link" href="{{ URL::to('add-sliders') }}">Add</a>
                                 </li>
                             </ul>
                         </div>

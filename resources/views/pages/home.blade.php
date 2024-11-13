@@ -9,44 +9,20 @@
                     <div class="col-lg-5 col-sm-6">
                         <div class="main-slider-content">
                             <div class="slider-content-activation-one">
-                                <div class="single-slide slick-slide" data-sal="slide-up" data-sal-delay="400"
-                                    data-sal-duration="800">
-                                    <span class="subtitle"><i class="fas fa-fire"></i> Hot Deal In This Week</span>
-                                    <h1 class="title">Roco Wireless Headphone</h1>
-                                    <div class="slide-action">
-                                        <div class="shop-btn">
-                                            <a href="shop.html" class="axil-btn btn-bg-white"><i
-                                                    class="fal fa-shopping-cart"></i>Shop Now</a>
-                                        </div>
-                                        <div class="item-rating">
-                                            <div class="thumb">
-                                                <ul>
-                                                    <li><img src="{{ asset('public/FrontEnd/images/others/author1.png') }}"
-                                                            alt="Author"></li>
-                                                    <li><img src="{{ asset('public/FrontEnd/images/others/author2.png') }}"
-                                                            alt="Author"></li>
-                                                    <li><img src="{{ asset('public/FrontEnd/images/others/author3.png') }}"
-                                                            alt="Author"></li>
-                                                    <li><img src="{{ asset('public/FrontEnd/images/others/author4.png') }}"
-                                                            alt="Author"></li>
-                                                </ul>
-                                            </div>
-                                            <div class="content">
-                                                <span class="rating-icon">
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fal fa-star"></i>
-                                                </span>
-                                                <span class="review-text">
-                                                    <span>100+</span> Reviews
-                                                </span>
+                                @foreach ($products as $item)
+                                    <div class="single-slide slick-slide" data-sal="slide-up" data-sal-delay="400"
+                                        data-sal-duration="800">
+                                        <span class="subtitle"><i class="fas fa-fire"></i> Hot Deal In This Week</span>
+                                        <h1 class="title">{{ $item->product_name }}</h1>
+                                        <div class="slide-action">
+                                            <div class="shop-btn">
+                                                <a href="shop.html" class="axil-btn btn-bg-white"><i
+                                                        class="fal fa-shopping-cart"></i>Shop Now</a>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="single-slide slick-slide">
+                                @endforeach
+                                {{-- <div class="single-slide slick-slide">
                                     <span class="subtitle"><i class="fas fa-fire"></i> Hot Deal In This Week</span>
                                     <h1 class="title">Smart Digital Watch</h1>
                                     <div class="slide-action">
@@ -153,47 +129,46 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-7 col-sm-6">
                         <div class="main-slider-large-thumb">
                             <div class="slider-thumb-activation-one axil-slick-dots">
-                                <div class="single-slide slick-slide" data-sal="slide-up" data-sal-delay="600"
-                                    data-sal-duration="1500">
-                                    <img src="{{ asset('public/FrontEnd/images/product/product-38.png') }}"
-                                        alt="Product">
-                                    <div class="product-price">
-                                        <span class="text">From</span>
-                                        <span class="price-amount">$49.00</span>
+                                @foreach ($products as $item)
+                                    <div class="single-slide slick-slide" data-sal="slide-up" data-sal-delay="600"
+                                        data-sal-duration="1500">
+                                        <img src="{{ asset($item->product_image) }}" alt="Product">
+                                        <div class="product-price">
+                                            <span class="text">From</span>
+                                            <span
+                                                class="price-amount">{{ number_format($item->product_price_selling) . ' VND' }}</span>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="single-slide slick-slide" data-sal="slide-up" data-sal-delay="600"
+                                @endforeach
+                                {{-- <div class="single-slide slick-slide" data-sal="slide-up" data-sal-delay="600"
                                     data-sal-duration="1500">
-                                    <img src="{{ asset('public/FrontEnd/images/product/product-39.png') }}"
-                                        alt="Product">
+                                    <img src="{{ asset('public/FrontEnd/images/product/product-39.png') }}" alt="Product">
                                     <div class="product-price">
                                         <span class="text">From</span>
                                         <span class="price-amount">$49.00</span>
                                     </div>
                                 </div>
                                 <div class="single-slide slick-slide">
-                                    <img src="{{ asset('public/FrontEnd/images/product/product-38.png') }}"
-                                        alt="Product">
+                                    <img src="{{ asset('public/FrontEnd/images/product/product-38.png') }}" alt="Product">
                                     <div class="product-price">
                                         <span class="text">From</span>
                                         <span class="price-amount">$49.00</span>
                                     </div>
                                 </div>
                                 <div class="single-slide slick-slide">
-                                    <img src="{{ asset('public/FrontEnd/images/product/product-39.png') }}"
-                                        alt="Product">
+                                    <img src="{{ asset('public/FrontEnd/images/product/product-39.png') }}" alt="Product">
                                     <div class="product-price">
                                         <span class="text">From</span>
                                         <span class="price-amount">$49.00</span>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>
@@ -217,8 +192,7 @@
                 <div class="categrie-product-activation slick-layout-wrapper--15 axil-slick-arrow  arrow-top-slide">
                     @foreach ($categories as $item)
                         <div class="slick-single-layout">
-                            <div class="categrie-product" data-sal="zoom-out" data-sal-delay="200"
-                                data-sal-duration="500">
+                            <div class="categrie-product" data-sal="zoom-out" data-sal-delay="200" data-sal-duration="500">
                                 <a href="{{ URL::to('danh-muc-san-pham-' . $item->category_id) }}">
                                     <img class="img-fluid" src="{{ 'public/uploads/category/' . $item->category_image }}"
                                         alt="product categorie">
@@ -1381,8 +1355,7 @@
                                 <div class="poster-content">
                                     <div class="inner">
                                         <h3 class="title">Rich sound, <br> for less.</h3>
-                                        <span class="sub-title">Collections <i
-                                                class="fal fa-long-arrow-right"></i></span>
+                                        <span class="sub-title">Collections <i class="fal fa-long-arrow-right"></i></span>
                                     </div>
                                 </div>
                                 <!-- End .poster-content -->

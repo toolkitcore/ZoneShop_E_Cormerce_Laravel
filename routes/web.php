@@ -17,6 +17,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductImagesController;
+use App\Http\Controllers\SliderHomeController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\WishlistController;
 use App\Mail\HelloMail;
@@ -207,6 +208,12 @@ Route::get('/delete-post/{id}', [PostController::class, 'Delete_Post']);
 Route::get('/post-details/{id}', [PostController::class, 'Detail_Post']);
 
 
+//SLIDER HOME
+
+Route::get('/all-sliders', [SliderHomeController::class, 'All_Slider']);
+Route::get('/add-sliders', [SliderHomeController::class, 'Add_Slider']);
+Route::post('/add-slider-action', [SliderHomeController::class, 'Add_Slider_Action']);
+Route::get('/delete-slider/{id}', [SliderHomeController::class, 'Delete_Slider']);
 
 
 
