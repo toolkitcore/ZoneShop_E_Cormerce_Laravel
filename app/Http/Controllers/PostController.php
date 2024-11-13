@@ -85,12 +85,25 @@ class PostController extends Controller
     }
     public function Show_Blog()
     {
-        $blog = Posts::all();
-        return view('pages.blog.all_post', compact('blog'));
+        $blog = Posts::orderBy('created_at', 'desc')->paginate(4);
+        $blog_Latest  = Posts::orderBy('created_at', 'desc')->take(3)->get();
+        return view('pages.blog.all_post', compact('blog', 'blog_Latest'));
     }
     public function Show_Blog_Detail($id)
     {
         $post = Posts::where('id', $id)->first();
-        return view('pages.blog.blog_detail', compact('post'));
+
+        if (!$post) {
+            return redirect('blog');
+        }
+
+        $post_related = Posts::where('category', $post->category)
+            ->where('id', '!=', $post->id)
+            ->get();
+        $blog_Latest = Posts::orderBy('created_at', 'desc')
+            ->take(3)
+            ->get();
+
+        return view('pages.blog.blog_detail', compact('post', 'blog_Latest', 'post_related'));
     }
 }

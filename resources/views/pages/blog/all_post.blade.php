@@ -29,12 +29,14 @@
                             <div class="content-blog mt--60">
                                 <div class="inner">
                                     <div class="thumbnail">
-                                        <a href="blog-details.html">
+                                        <a href="{{ URL::to('blog-detail/' . $blog_item->id) }}">
                                             <img src="{{ asset($blog_item->post_image) }}" alt="Blog Images">
                                         </a>
                                     </div>
                                     <div class="content">
-                                        <h4 class="title"><a href="blog-details.html">{{ $blog_item->title }}</a></h4>
+                                        <h4 class="title"><a
+                                                href="{{ URL::to('blog-detail/' . $blog_item->id) }}">{{ $blog_item->title }}</a>
+                                        </h4>
                                         <p>{{ $blog_item->post_des }}</p>
                                         <div class="read-more-btn">
                                             <a class="axil-btn btn-bg-primary"
@@ -52,139 +54,28 @@
                             <!-- Start Single Widget  -->
                             <div class="axil-single-widget mt--40">
                                 <h6 class="widget-title">Latest Posts</h6>
-
-                                <!-- Start Single Post List  -->
-                                <div class="content-blog post-list-view mb--20">
-                                    <div class="thumbnail">
-                                        <a href="blog-details.html">
-                                            <img src="assets/images/blog/blog-04.png" alt="Blog Images">
-                                        </a>
-                                    </div>
-                                    <div class="content">
-                                        <h6 class="title"><a href="blog-details.html">Dubai’s FRAME Offers its Take on
-                                                the</a></h6>
-                                        <div class="axil-post-meta">
-                                            <div class="post-meta-content">
-                                                <ul class="post-meta-list">
-                                                    <li>Mar 27, 2022</li>
-                                                    <li>300k Views</li>
-                                                </ul>
+                                @foreach ($blog_Latest as $item)
+                                    <div class="content-blog post-list-view mb--20">
+                                        <div class="thumbnail">
+                                            <a href="{{ URL::to('blog-detail/' . $item->id) }}">
+                                                <img src="{{ asset($item->post_image) }}" alt="Blog Images">
+                                            </a>
+                                        </div>
+                                        <div class="content">
+                                            <h6 class="title"><a
+                                                    href="{{ URL::to('blog-detail/' . $item->id) }}">{{ $item->title }}</a>
+                                            </h6>
+                                            <div class="axil-post-meta">
+                                                <div class="post-meta-content">
+                                                    <ul class="post-meta-list">
+                                                        <li>{{ $item->created_at }}</li>
+                                                    </ul>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <!-- End Single Post List  -->
-
-                                <!-- Start Single Post List  -->
-                                <div class="content-blog post-list-view mb--20">
-                                    <div class="thumbnail">
-                                        <a href="blog-details.html">
-                                            <img src="assets/images/blog/blog-05.png" alt="Blog Images">
-                                        </a>
-                                    </div>
-                                    <div class="content">
-                                        <h6 class="title"><a href="blog-details.html">Apple presents App Best of 2020
-                                                winners</a></h6>
-                                        <div class="axil-post-meta">
-                                            <div class="post-meta-content">
-                                                <ul class="post-meta-list">
-                                                    <li>Mar 20, 2022</li>
-                                                    <li>300k Views</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- End Single Post List  -->
-
-                                <!-- Start Single Post List  -->
-                                <div class="content-blog post-list-view">
-                                    <div class="thumbnail">
-                                        <a href="blog-details.html">
-                                            <img src="assets/images/blog/blog-06.png" alt="Blog Images">
-                                        </a>
-                                    </div>
-                                    <div class="content">
-                                        <h6 class="title"><a href="blog-details.html">Gallaudet University innovation in
-                                                education</a></h6>
-                                        <div class="axil-post-meta">
-                                            <div class="post-meta-content">
-                                                <ul class="post-meta-list">
-                                                    <li>Mar 15, 2022</li>
-                                                    <li>300k Views</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- End Single Post List  -->
-
+                                @endforeach
                             </div>
-                            <!-- End Single Widget  -->
-                            <!-- Start Single Widget  -->
-                            <div class="axil-single-widget mt--40">
-                                <h6 class="widget-title">Recent Viewed Products</h6>
-                                <ul class="product_list_widget recent-viewed-product">
-                                    <!-- Start Single product_list  -->
-                                    <li>
-                                        <div class="thumbnail">
-                                            <a href="blog-details.html">
-                                                <img src="assets/images/product/product-12.jpg" alt="Blog Images">
-                                            </a>
-                                        </div>
-                                        <div class="content">
-                                            <h6 class="title"><a href="blog-details.html">Men's Fashion Tshirt</a></h6>
-                                            <div class="product-meta-content">
-                                                <span class="woocommerce-Price-amount amount">
-                                                    <del>$30</del>
-                                                    $20
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <!-- End Single product_list  -->
-                                    <!-- Start Single product_list  -->
-                                    <li>
-                                        <div class="thumbnail">
-                                            <a href="blog-details.html">
-                                                <img src="assets/images/product/product-10.jpg" alt="Blog Images">
-                                            </a>
-                                        </div>
-                                        <div class="content">
-                                            <h6 class="title"><a href="blog-details.html">Nike Shoes</a></h6>
-                                            <div class="product-meta-content">
-                                                <span class="woocommerce-Price-amount amount">
-                                                    <del>$200</del>
-                                                    $150
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <!-- End Single product_list  -->
-                                    <!-- Start Single product_list  -->
-                                    <li>
-                                        <div class="thumbnail">
-                                            <a href="blog-details.html">
-                                                <img src="assets/images/product/product-11.jpg" alt="Blog Images">
-                                            </a>
-                                        </div>
-                                        <div class="content">
-                                            <h6 class="title"><a href="blog-details.html">Addidas Shoes</a></h6>
-                                            <div class="product-meta-content">
-                                                <span class="woocommerce-Price-amount amount">
-                                                    <del>$300</del>
-                                                    $200
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <!-- End Single product_list  -->
-                                </ul>
-
-                            </div>
-                            <!-- End Single Widget  -->
-
-                            <!-- Start Single Widget  -->
                             <div class="axil-single-widget mt--40 widget_search">
                                 <h6 class="widget-title">Search</h6>
                                 <form class="blog-search" action="#">
@@ -192,54 +83,21 @@
                                     <input type="text" placeholder="Search">
                                 </form>
                             </div>
-                            <!-- End Single Widget  -->
 
                             <!-- Start Single Widget  -->
-                            <div class="axil-single-widget mt--40 widget_archive">
-                                <h6 class="widget-title">Archives List</h6>
-                                <ul>
-                                    <li><a href="#">January 2020</a></li>
-                                    <li><a href="#">February 2020</a></li>
-                                    <li><a href="#">March 2020</a></li>
-                                    <li><a href="#">April 2020</a></li>
-                                </ul>
-                            </div>
-                            <!-- End Single Widget  -->
-
-                            <!-- Start Single Widget  -->
-                            <div class="axil-single-widget mt--40 widget_archive_dropdown">
-                                <h6 class="widget-title">Archives Dropdown</h6>
-                                <select>
-                                    <option>Select Month</option>
-                                    <option>April 2020 (4)</option>
-                                    <option>May 2020 (4)</option>
-                                    <option>June 2020 (4)</option>
-                                    <option>July 2020 (4)</option>
-                                </select>
-                            </div>
-                            <!-- End Single Widget  -->
-
-                            <!-- Start Single Widget  -->
-                            <div class="axil-single-widget mt--40 widget_tag_cloud">
+                            {{-- <div class="axil-single-widget mt--40 widget_tag_cloud">
                                 <h6 class="widget-title">Tags</h6>
                                 <div class="tagcloud">
                                     <a href="#">Design</a>
-                                    <a href="#">HTML</a>
-                                    <a href="#">Graphic</a>
-                                    <a href="#">Development</a>
-                                    <a href="#">UI/UX Design</a>
-                                    <a href="#">eCommerce</a>
-                                    <a href="#">CSS</a>
-                                    <a href="#">JS</a>
                                 </div>
-                            </div>
+                            </div> --}}
                             <!-- End Single Widget  -->
 
                         </aside>
                         <!-- End Sidebar Area -->
                     </div>
                 </div>
-                <div class="post-pagination">
+                {{-- <div class="post-pagination">
                     <nav class="navigation pagination" aria-label="Products">
                         <ul class="page-numbers">
                             <li><span aria-current="page" class="page-numbers current">1</span></li>
@@ -250,7 +108,9 @@
                             <li><a class="next page-numbers" href="#"><i class="fal fa-arrow-right"></i></a></li>
                         </ul>
                     </nav>
-                </div>
+                </div> --}}
+                {{ $blog->links('vendor.pagination.custom') }}
+
                 <!-- End post-pagination -->
             </div>
             <!-- End .container -->

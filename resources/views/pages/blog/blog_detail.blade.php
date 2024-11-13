@@ -11,10 +11,8 @@
                             <div class="post-thumbnail">
                                 <img src="{{ asset($post->post_image) }}" alt="blog Images">
                             </div>
-                            <!-- End .thumbnail -->
                         </div>
                     </div>
-                    <!-- End .content-blog -->
                 </div>
             </div>
             <!-- End .single-post -->
@@ -221,72 +219,27 @@
                                 <!-- Start Single Widget  -->
                                 <div class="axil-single-widget mt--40">
                                     <h6 class="widget-title">Latest Posts</h6>
-
-                                    <!-- Start Single Post List  -->
-                                    <div class="content-blog post-list-view mb--20">
-                                        <div class="thumbnail">
-                                            <a href="blog-details.html">
-                                                <img src="assets/images/blog/blog-04.png" alt="Blog Images">
-                                            </a>
-                                        </div>
-                                        <div class="content">
-                                            <h6 class="title"><a href="blog-details.html">Dubai’s FRAME Offers its Take
-                                                    on the</a></h6>
-                                            <div class="axil-post-meta">
-                                                <div class="post-meta-content">
-                                                    <ul class="post-meta-list">
-                                                        <li>Mar 27, 2022</li>
-                                                        <li>300k Views</li>
-                                                    </ul>
+                                    @foreach ($blog_Latest as $item)
+                                        <div class="content-blog post-list-view mb--20">
+                                            <div class="thumbnail">
+                                                <a href="{{ URL::to('blog-detail/' . $item->id) }}">
+                                                    <img src="{{ asset($item->post_image) }}" alt="Blog Images">
+                                                </a>
+                                            </div>
+                                            <div class="content">
+                                                <h6 class="title"><a
+                                                        href="{{ URL::to('blog-detail/' . $item->id) }}">{{ $item->title }}</a>
+                                                </h6>
+                                                <div class="axil-post-meta">
+                                                    <div class="post-meta-content">
+                                                        <ul class="post-meta-list">
+                                                            <li>{{ $item->created_at }}</li>
+                                                        </ul>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <!-- End Single Post List  -->
-
-                                    <!-- Start Single Post List  -->
-                                    <div class="content-blog post-list-view mb--20">
-                                        <div class="thumbnail">
-                                            <a href="blog-details.html">
-                                                <img src="assets/images/blog/blog-05.png" alt="Blog Images">
-                                            </a>
-                                        </div>
-                                        <div class="content">
-                                            <h6 class="title"><a href="blog-details.html">Apple presents App Best of 2020
-                                                    winners</a></h6>
-                                            <div class="axil-post-meta">
-                                                <div class="post-meta-content">
-                                                    <ul class="post-meta-list">
-                                                        <li>Mar 20, 2022</li>
-                                                        <li>300k Views</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Single Post List  -->
-
-                                    <!-- Start Single Post List  -->
-                                    <div class="content-blog post-list-view">
-                                        <div class="thumbnail">
-                                            <a href="blog-details.html">
-                                                <img src="assets/images/blog/blog-06.png" alt="Blog Images">
-                                            </a>
-                                        </div>
-                                        <div class="content">
-                                            <h6 class="title"><a href="blog-details.html">Gallaudet University innovation
-                                                    in education</a></h6>
-                                            <div class="axil-post-meta">
-                                                <div class="post-meta-content">
-                                                    <ul class="post-meta-list">
-                                                        <li>Mar 15, 2022</li>
-                                                        <li>300k Views</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Single Post List  -->
+                                    @endforeach
 
                                 </div>
                                 <!-- Start Single Widget  -->
@@ -298,7 +251,7 @@
                                     </form>
                                 </div>
                                 <!-- Start Single Widget  -->
-                                <div class="axil-single-widget mt--40 widget_tag_cloud">
+                                {{-- <div class="axil-single-widget mt--40 widget_tag_cloud">
                                     <h6 class="widget-title">Tags</h6>
                                     <div class="tagcloud">
                                         <a href="#">Design</a>
@@ -310,7 +263,7 @@
                                         <a href="#">CSS</a>
                                         <a href="#">JS</a>
                                     </div>
-                                </div>
+                                </div> --}}
                                 <!-- End Single Widget  -->
 
                             </aside>
@@ -330,142 +283,27 @@
                     <h3 class="mb--25">Related Blog</h3>
                 </div>
                 <div class="related-blog-activation slick-layout-wrapper--15 axil-slick-arrow  arrow-top-slide">
-                    <div class="slick-single-layout">
-                        <div class="content-blog">
-                            <div class="inner">
-                                <div class="axil-gallery-activation axil-slick-arrow arrow-between-side">
-                                    <!-- Start Single Thumb  -->
-                                    <div class="thumbnail">
-                                        <a href="blog-details.html">
-                                            <img src="assets/images/blog/blog-07.png" alt="Blog Images">
-                                        </a>
+                    @foreach ($post_related as $item)
+                        <div class="slick-single-layout">
+                            <div class="content-blog">
+                                <div class="inner">
+                                    <div class="axil-gallery-activation axil-slick-arrow arrow-between-side">
+                                        <div class="thumbnail">
+                                            <a href="{{ URL::to('blog-detail/' . $item->id) }}">
+                                                <img src="{{ asset($item->post_image) }}" alt="Blog Images">
+                                            </a>
+                                        </div>
                                     </div>
-                                    <!-- End Single Thumb  -->
-                                </div>
-                                <div class="content">
-                                    <h5 class="title"><a href="blog-details.html">With an Irreverent Twist, AMBUSH®
-                                            Highlights Converse's Outdoor Heritage</a></h5>
-                                    <div class="axil-post-meta">
-                                        <div class="post-author-avatar">
-                                            <img src="assets/images/blog/author-image-1.png" alt="Author Images">
-                                        </div>
-                                        <div class="post-meta-content">
-                                            <h6 class="author-title">
-                                                <a href="#">Leslie Alexander</a>
-                                            </h6>
-                                            <ul class="post-meta-list">
-                                                <li>Feb 17, 2019</li>
-                                                <li>300k Views</li>
-                                            </ul>
-                                        </div>
+                                    <div class="content">
+                                        <h5 class="title"><a
+                                                href="{{ URL::to('blog-detail/' . $item->id) }}">{{ $item->title }}</a>
+                                        </h5>
+                                        <p>{{ $item->post_des }}</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- End .slick-single-layout -->
-                    <div class="slick-single-layout">
-                        <div class="content-blog">
-                            <div class="inner">
-                                <div class="axil-gallery-activation axil-slick-arrow arrow-between-side">
-                                    <!-- Start Single Thumb  -->
-                                    <div class="thumbnail">
-                                        <a href="blog-details.html">
-                                            <img src="assets/images/blog/blog-08.png" alt="Blog Images">
-                                        </a>
-                                    </div>
-                                    <!-- End Single Thumb  -->
-                                </div>
-                                <div class="content">
-                                    <h5 class="title"><a href="blog-details.html">UCLA Athletics Reaches Multi-Year
-                                            Agreement with NIKE, Inc. and Jordan Brand</a></h5>
-                                    <div class="axil-post-meta">
-                                        <div class="post-author-avatar">
-                                            <img src="assets/images/blog/author-image-2.png" alt="Author Images">
-                                        </div>
-                                        <div class="post-meta-content">
-                                            <h6 class="author-title">
-                                                <a href="#">Julian Vinn</a>
-                                            </h6>
-                                            <ul class="post-meta-list">
-                                                <li>Mar 28, 2020</li>
-                                                <li>200k Views</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End .slick-single-layout -->
-                    <div class="slick-single-layout">
-                        <div class="content-blog">
-                            <div class="inner">
-                                <div class="axil-gallery-activation axil-slick-arrow arrow-between-side">
-                                    <!-- Start Single Thumb  -->
-                                    <div class="thumbnail">
-                                        <a href="blog-details.html">
-                                            <img src="assets/images/blog/blog-09.png" alt="Blog Images">
-                                        </a>
-                                    </div>
-                                    <!-- End Single Thumb  -->
-                                </div>
-                                <div class="content">
-                                    <h5 class="title"><a href="blog-details.html">An oral history of the AIM away
-                                            message by the people who were there</a></h5>
-                                    <div class="axil-post-meta">
-                                        <div class="post-author-avatar">
-                                            <img src="assets/images/blog/author-image-3.png" alt="Author Images">
-                                        </div>
-                                        <div class="post-meta-content">
-                                            <h6 class="author-title">
-                                                <a href="#">Ariana Grande</a>
-                                            </h6>
-                                            <ul class="post-meta-list">
-                                                <li>Apr 20, 2021</li>
-                                                <li>500k Views</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End .slick-single-layout -->
-                    <div class="slick-single-layout">
-                        <div class="content-blog">
-                            <div class="inner">
-                                <div class="axil-gallery-activation axil-slick-arrow arrow-between-side">
-                                    <!-- Start Single Thumb  -->
-                                    <div class="thumbnail">
-                                        <a href="blog-details.html">
-                                            <img src="assets/images/blog/blog-08.png" alt="Blog Images">
-                                        </a>
-                                    </div>
-                                    <!-- End Single Thumb  -->
-                                </div>
-                                <div class="content">
-                                    <h5 class="title"><a href="blog-details.html">UCLA Athletics Reaches Multi-Year
-                                            Agreement with NIKE, Inc. and Jordan Brand</a></h5>
-                                    <div class="axil-post-meta">
-                                        <div class="post-author-avatar">
-                                            <img src="assets/images/blog/author-image-2.png" alt="Author Images">
-                                        </div>
-                                        <div class="post-meta-content">
-                                            <h6 class="author-title">
-                                                <a href="#">Julian Vinn</a>
-                                            </h6>
-                                            <ul class="post-meta-list">
-                                                <li>Mar 28, 2020</li>
-                                                <li>200k Views</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End .slick-single-layout -->
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -498,21 +336,18 @@
     <script>
         var quill = new Quill('#snow-editor1', {
             theme: 'snow',
-            readOnly: true, // Đặt chế độ chỉ đọc
+            readOnly: true,
             modules: {
-                'toolbar': false // Tắt toolbar
+                'toolbar': false
             }
         });
 
-        // Lấy dữ liệu từ backend
         var content = {!! json_encode($post->content) !!};
         if (typeof content === 'object') {
-            quill.setContents(content); // Nếu là Delta (Quill format), set trực tiếp
+            quill.setContents(content);
         } else {
             quill.root.innerHTML = content; // Nếu là HTML, gán trực tiếp vào editor
         }
-
-        // Sau khi Quill editor được khởi tạo, hiển thị nội dung HTML vào phần tử khác
         var htmlContent = quill.root.innerHTML; // Lấy HTML từ Quill
         document.getElementById('post-content').innerHTML = htmlContent; // Hiển thị vào phần tử #post-content
     </script>
