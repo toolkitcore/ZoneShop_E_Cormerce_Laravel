@@ -215,6 +215,15 @@ Route::get('/confirm-ship/{transaction_id}', [TransactionController::class, 'Con
 Route::get('/confirm-completed/{transaction_id}', [TransactionController::class, 'Confirm_Completed']);
 Route::get('/cancel-order/{transaction_id}', [TransactionController::class, 'Cancel_Order']);
 
+// ORDERS->INVOICES
+Route::get('/order/invoice/{transaction_id}', [OrderController::class, 'View_Invoice']);
+Route::get('/order/invoice/{transaction_id}/generate', [OrderController::class, 'Download_Invoice']);
+
+
+
+
+
+
 // POST
 Route::get('/add-post', [PostController::class, 'Add_Post']);
 Route::post('/action-add-post', [PostController::class, 'Add_Post_Action'])->name('posts.store');

@@ -9,6 +9,8 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Carbon;
 
 class OrderController extends Controller
 {
@@ -169,5 +171,39 @@ class OrderController extends Controller
             ->with(['orders', 'orders.product', 'deliveryAddress'])
             ->first();
         return view('pages.order.order_detail', compact('transaction'));
+    }
+
+    // INVOICES
+    public function View_Invoice($transaction_id)
+    {
+        $transaction = Transaction::where('transaction_id', $transaction_id)
+            ->with([
+                'pickupAddress',
+                'deliveryAddress',
+                'orders',
+                'orders.product'
+            ])
+            ->first();
+        return view('admin.invoice.invoice-generate', compact('transaction'));
+    }
+    public function Download_Invoice($transaction_id)
+    {
+        $transaction = Transaction::where('transaction_id', $transaction_id)
+            ->with([
+                'pickupAddress',
+                'deliveryAddress',
+                'orders',
+                'orders.product'
+            ])
+            ->first();
+
+        $data = ['transaction' => $transaction];
+        $html = view('admin.invoice.invoice-generate', $data)->render();
+        $html = mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8');
+        $pdf = Pdf::loadView('admin.invoice.invoice-generate', $data)
+            ->setOption('default_font', 'DejaVuSans');  // Use a font that supports special characters
+
+        $today_Date = Carbon::now()->format('d-m-Y');
+        return $pdf->download('invoice' . $transaction_id . '-' . $today_Date . '.pdf');
     }
 }

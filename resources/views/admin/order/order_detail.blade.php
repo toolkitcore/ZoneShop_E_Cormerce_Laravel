@@ -267,6 +267,19 @@
                                         </div>
                                     @endif
 
+                                    <div class="card-invoices">
+                                        <a class="btn btn-primary"
+                                            href="{{ URL::to('order/invoice/' . $transaction_item->transaction_id) }}"
+                                            target="_blank">
+                                            <iconify-icon icon="hugeicons:view" wtransaction_idth="1.2em"
+                                                height="1.2em"></iconify-icon> View invoice</a>
+                                        <a class="btn btn-primary"
+                                            href="{{ URL::to('order/invoice/' . $transaction_item->transaction_id . '/generate') }}">
+                                            <iconify-icon icon="material-symbols:download" width="1.2em"
+                                                height="1.2em"></iconify-icon>
+                                            Dowload Invoice
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                             <div class="card">
