@@ -118,11 +118,25 @@
                     'X-CSRF-TOKEN': csrfToken // Thêm CSRF token vào header
                 },
                 success: function(response) {
-                    alert('Post added successfully');
+                    // alert('Post added successfully');
+                    showToast('Post added successfully', {
+                        gravity: 'top',
+                        position: 'right',
+                        duration: 5000,
+                        close: true,
+                        backgroundColor: '#28a745'
+                    });
                     window.location.href = response.redirect_url; // Điều hướng đến trang mới nếu cần
                 },
                 error: function(xhr, status, error) {
-                    alert('Error: ' + error);
+                    // alert('Error: ' + error);
+                    showToast(error, {
+                        gravity: 'top',
+                        position: 'right',
+                        duration: 5000,
+                        close: true,
+                        backgroundColor: '#dc3545'
+                    });
                 }
             });
         });

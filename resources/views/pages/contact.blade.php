@@ -121,9 +121,13 @@
                         $('#contact-message').val('')
                     },
                     error: function(xhr, status, error) {
-                        alert(
-                            'Failed to send message. Please try again.'
-                        );
+                        showToast('Failed to send message. Please try again', {
+                            gravity: 'top',
+                            position: 'right',
+                            duration: 5000,
+                            close: true,
+                            backgroundColor: '#dc3545'
+                        });
                     }
                 });
             });

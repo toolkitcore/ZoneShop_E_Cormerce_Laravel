@@ -263,11 +263,23 @@
                                     'en-US') +
                                 ' VND';
                         } else {
-                            alert('Không có phí ship được xác định.')
+                            showToast('Not caculator shipping !!', {
+                                gravity: 'top',
+                                position: 'right',
+                                duration: 5000,
+                                close: true,
+                                backgroundColor: '#dc3545'
+                            });
                         }
                     })
                     .catch(error => {
-                        alert('Có lỗi xảy ra: ' + error.message)
+                        showToast(error.message, {
+                            gravity: 'top',
+                            position: 'right',
+                            duration: 5000,
+                            close: true,
+                            backgroundColor: '#dc3545'
+                        });
                     });
             }
         }
@@ -301,7 +313,7 @@
                     payment: $('input[name="payment"]:checked').val(),
                     _token: $('input[name="_token"]').val() // CSRF token
                 };
-                console.log(data);
+                // console.log(data);
 
 
                 // Validate form fields
@@ -314,7 +326,13 @@
                 }
 
                 if (!isValid) {
-                    alert("Please fill in all required fields.");
+                    showToast('Please fill in all required fields', {
+                        gravity: 'top',
+                        position: 'right',
+                        duration: 5000,
+                        close: true,
+                        backgroundColor: '#ffcc00'
+                    });
                     return;
                 }
                 $.ajax({
@@ -327,8 +345,14 @@
                         }
                     },
                     error: function(xhr, status, error) {
-                        alert("An error occurred while processing checkout.");
-                        console.log(xhr.responseText);
+                        showToast('An error occurred while processing checkout', {
+                            gravity: 'top',
+                            position: 'right',
+                            duration: 5000,
+                            close: true,
+                            backgroundColor: '#dc3545'
+                        });
+                        // console.log(xhr.responseText);
                     }
                 });
             });
@@ -381,7 +405,13 @@
                 }
 
                 if (!isValid) {
-                    alert("Please fill in all required fields.");
+                    showToast('Please fill in all required fields', {
+                        gravity: 'top',
+                        position: 'right',
+                        duration: 5000,
+                        close: true,
+                        backgroundColor: '#ffcc00'
+                    });
                     return;
                 }
 
@@ -394,12 +424,24 @@
                         if (response.code == '00') {
                             window.location.href = response.data;
                         } else {
-                            alert("Có lỗi xảy ra, vui lòng thử lại!");
+                            showToast('Error!! Please try again !!!', {
+                                gravity: 'top',
+                                position: 'right',
+                                duration: 5000,
+                                close: true,
+                                backgroundColor: '#dc3545'
+                            });
                         }
                     },
                     error: function(xhr, status, error) {
-                        console.log(error);
-                        alert("Có lỗi xảy ra, vui lòng thử lại!");
+                        // console.log(error);
+                        showToast('Error!! Please try again !!!', {
+                            gravity: 'top',
+                            position: 'right',
+                            duration: 5000,
+                            close: true,
+                            backgroundColor: '#dc3545'
+                        });
                     }
                 });
             });

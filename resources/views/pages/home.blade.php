@@ -1436,7 +1436,13 @@
 
                 },
                 error: function() {
-                    alert('Lỗi rồi nha cu');
+                    showToast('Error please try again !', {
+                        gravity: 'top',
+                        position: 'right',
+                        duration: 5000,
+                        close: true,
+                        backgroundColor: '#dc3545'
+                    });
                 }
             });
         });

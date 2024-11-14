@@ -78,7 +78,13 @@
                     });
                 },
                 error: function(xhr, status, error) {
-                    alert('Error adding product to wishlist:', error);
+                    showToast('Error adding product to wishlist:', {
+                        gravity: 'top',
+                        position: 'right',
+                        duration: 5000,
+                        close: true,
+                        backgroundColor: '#dc3545'
+                    });
                     console.log(xhr.responseText); // Log the entire response for more details
                 }
             });

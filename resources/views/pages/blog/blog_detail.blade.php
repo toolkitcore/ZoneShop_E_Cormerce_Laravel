@@ -330,7 +330,13 @@
                         $('#content_message').val('');
                     },
                     error: function(xhr, status, error) {
-                        alert("There was an error sending the message.");
+                        showToast('There was an error sending the message', {
+                            gravity: 'top',
+                            position: 'right',
+                            duration: 5000,
+                            close: true,
+                            backgroundColor: '#dc3545'
+                        });
                     }
                 });
             });

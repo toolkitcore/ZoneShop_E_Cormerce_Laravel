@@ -660,10 +660,6 @@
                                                 <a class="sub-nav-link" href="{{ URL::to('product-images') }}">List
                                                     Product Images</a>
                                             </li>
-                                            <li class="sub-nav-item">
-                                                <a class="sub-nav-link" href="{{ URL::to('add-images') }}">Add
-                                                    Images</a>
-                                            </li>
                                         </ul>
                                     </div>
                                 </li>
@@ -777,53 +773,6 @@
                         </div>
                     </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link menu-arrow" href="#sidebarInventory" data-bs-toggle="collapse"
-                            role="button" aria-expanded="false" aria-controls="sidebarInventory">
-                            <span class="nav-icon">
-                                <iconify-icon icon="solar:box-bold-duotone"></iconify-icon>
-                            </span>
-                            <span class="nav-text"> Inventory </span>
-                        </a>
-                        <div class="collapse" id="sidebarInventory">
-                            <ul class="nav sub-navbar-nav">
-
-                                <li class="sub-nav-item">
-                                    <a class="sub-nav-link" href="inventory-warehouse.html">Warehouse</a>
-                                </li>
-                                <li class="sub-nav-item">
-                                    <a class="sub-nav-link" href="inventory-received-orders.html">Received Orders</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link menu-arrow" href="#sidebarOrders" data-bs-toggle="collapse"
-                            role="button" aria-expanded="false" aria-controls="sidebarOrders">
-                            <span class="nav-icon">
-                                <iconify-icon icon="solar:bag-smile-bold-duotone"></iconify-icon>
-                            </span>
-                            <span class="nav-text"> Orders </span>
-                        </a>
-                        <div class="collapse" id="sidebarOrders">
-                            <ul class="nav sub-navbar-nav">
-
-                                <li class="sub-nav-item">
-                                    <a class="sub-nav-link" href="orders-list.html">List</a>
-                                </li>
-                                <li class="sub-nav-item">
-                                    <a class="sub-nav-link" href="order-detail.html">Details</a>
-                                </li>
-                                <li class="sub-nav-item">
-                                    <a class="sub-nav-link" href="order-cart.html">Cart</a>
-                                </li>
-                                <li class="sub-nav-item">
-                                    <a class="sub-nav-link" href="order-checkout.html">Check Out</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
 
                     <li class="nav-item">
                         <a class="nav-link menu-arrow" href="#sidebarPurchases" data-bs-toggle="collapse"
@@ -831,41 +780,15 @@
                             <span class="nav-icon">
                                 <iconify-icon icon="solar:card-send-bold-duotone"></iconify-icon>
                             </span>
-                            <span class="nav-text"> Purchases </span>
+                            <span class="nav-text"> Blogs </span>
                         </a>
                         <div class="collapse" id="sidebarPurchases">
                             <ul class="nav sub-navbar-nav">
                                 <li class="sub-nav-item">
-                                    <a class="sub-nav-link" href="purchase-list.html">List</a>
+                                    <a class="sub-nav-link" href="{{ URL::to('list-post') }}">List Post</a>
                                 </li>
                                 <li class="sub-nav-item">
-                                    <a class="sub-nav-link" href="purchase-order.html">Order</a>
-                                </li>
-                                <li class="sub-nav-item">
-                                    <a class="sub-nav-link" href="purchase-returns.html">Return</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link menu-arrow" href="#sidebarAttributes" data-bs-toggle="collapse"
-                            role="button" aria-expanded="false" aria-controls="sidebarAttributes">
-                            <span class="nav-icon">
-                                <iconify-icon icon="solar:confetti-minimalistic-bold-duotone"></iconify-icon>
-                            </span>
-                            <span class="nav-text"> Attributes </span>
-                        </a>
-                        <div class="collapse" id="sidebarAttributes">
-                            <ul class="nav sub-navbar-nav">
-                                <li class="sub-nav-item">
-                                    <a class="sub-nav-link" href="{{ URL::to('all-attribute-product') }}">List</a>
-                                </li>
-                                <li class="sub-nav-item">
-                                    <a class="sub-nav-link" href="{{ URL::to('edit-attribute-product') }}">Edit</a>
-                                </li>
-                                <li class="sub-nav-item">
-                                    <a class="sub-nav-link" href="{{ URL::to('add-attribute-product') }}">Create</a>
+                                    <a class="sub-nav-link" href="{{ URL::to('add-post') }}">Create Post</a>
                                 </li>
                             </ul>
                         </div>
@@ -975,21 +898,18 @@
                             <span class="nav-icon">
                                 <iconify-icon icon="solar:shop-bold-duotone"></iconify-icon>
                             </span>
-                            <span class="nav-text"> Sellers </span>
+                            <span class="nav-text"> Blogs </span>
                         </a>
                         <div class="collapse" id="sidebarSellers">
                             <ul class="nav sub-navbar-nav">
                                 <li class="sub-nav-item">
-                                    <a class="sub-nav-link" href="seller-list.html">List</a>
+                                    <a class="sub-nav-link" href="seller-list.html">List post</a>
                                 </li>
                                 <li class="sub-nav-item">
                                     <a class="sub-nav-link" href="seller-details.html">Details</a>
                                 </li>
                                 <li class="sub-nav-item">
-                                    <a class="sub-nav-link" href="seller-edit.html">Edit</a>
-                                </li>
-                                <li class="sub-nav-item">
-                                    <a class="sub-nav-link" href="seller-add.html">Create</a>
+                                    <a class="sub-nav-link" href="seller-edit.html">Create post</a>
                                 </li>
                             </ul>
                         </div>

@@ -136,7 +136,13 @@
                             }
                         },
                         error: function(xhr) {
-                            alert("Error: " + xhr.responseJSON.error || "Failed to add user");
+                            showToast('Failed to add user', {
+                                gravity: 'top',
+                                position: 'right',
+                                duration: 5000,
+                                close: true,
+                                backgroundColor: '#dc3545'
+                            });
                         }
                     });
 

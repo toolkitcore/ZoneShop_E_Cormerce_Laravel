@@ -137,7 +137,7 @@
                 let result = $("#province option:selected").text() +
                     " | " + $("#district option:selected").text() + " | " +
                     $("#ward option:selected").text();
-                alert(result);
+                // alert(result);
             }
         }
     </script>
