@@ -279,6 +279,10 @@
                                                 height="1.2em"></iconify-icon>
                                             Dowload Invoice
                                         </a>
+                                        <a class="btn btn-primary"
+                                            href="{{ URL::to('order/invoice/' . $transaction_item->transaction_id . '/mail') }}">
+                                            Send Invoice
+                                        </a>
                                     </div>
                                 </div>
                             </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\InvoiceOrderMail;
 use App\Models\Address;
 use App\Models\Orders;
 use App\Models\Transaction;
@@ -11,6 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Mail;
 
 class OrderController extends Controller
 {
@@ -205,5 +207,36 @@ class OrderController extends Controller
 
         $today_Date = Carbon::now()->format('d-m-Y');
         return $pdf->download('invoice' . $transaction_id . '-' . $today_Date . '.pdf');
+    }
+    public function Send_Invoice($transaction_id)
+    {
+        // Retrieve the transaction with related data
+        $transaction = Transaction::where('transaction_id', $transaction_id)
+            ->with([
+                'pickupAddress',
+                'deliveryAddress',
+                'orders',
+                'orders.product'
+            ])
+            ->first();
+
+        if (!$transaction) {
+            // Handle case when transaction is not found
+            return redirect('order-detail/' . $transaction_id)
+                ->with('message', 'Transaction not found!');
+        }
+
+        try {
+            // Send the invoice email
+            Mail::to($transaction->deliveryAddress->email)->send(new InvoiceOrderMail($transaction));
+
+            // Return a success message after sending the email
+            return redirect('order-detail/' . $transaction_id)
+                ->with('message', 'Invoice message has been sent to ' . $transaction->deliveryAddress->email);
+        } catch (\Throwable $th) {
+            // Return an error message if something goes wrong
+            return redirect('order-detail/' . $transaction_id)
+                ->with('message', 'Something went wrong while sending the email!');
+        }
     }
 }

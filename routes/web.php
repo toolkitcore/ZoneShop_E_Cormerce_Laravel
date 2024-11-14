@@ -218,6 +218,7 @@ Route::get('/cancel-order/{transaction_id}', [TransactionController::class, 'Can
 // ORDERS->INVOICES
 Route::get('/order/invoice/{transaction_id}', [OrderController::class, 'View_Invoice']);
 Route::get('/order/invoice/{transaction_id}/generate', [OrderController::class, 'Download_Invoice']);
+Route::get('/order/invoice/{transaction_id}/mail', [OrderController::class, 'Send_Invoice']);
 
 
 
