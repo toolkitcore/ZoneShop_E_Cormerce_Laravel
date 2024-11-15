@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Address;
 use App\Models\Brand_Product;
 use App\Models\Category_Product;
+use App\Models\PosterHome;
 use App\Models\Product;
 use App\Models\Product_Attributes;
 use App\Models\SliderHome;
@@ -33,7 +34,16 @@ class ClientController extends Controller
         $products = Product::with('productImages', 'category')->take(8)->get();
         $categories = Category_Product::whereNotNull('category_parent_id')->get();
         $slider_home = SliderHome::with('product')->get();
-        return view('pages.home', compact('categories', 'products', 'slider_home'));
+        $poster_home = PosterHome::where('poster_status', '=', 1)->get();
+        return view(
+            'pages.home',
+            compact(
+                'categories',
+                'products',
+                'slider_home',
+                'poster_home'
+            )
+        );
     }
 
     // Show page Product detail
@@ -88,6 +98,7 @@ class ClientController extends Controller
         $address_default = Address::where('user_id', $user_id)->first();
         $transaction_list = Transaction::where('user_id', $user_id)
             ->with('orders')
+            ->orderBy('transaction_id', 'desc')
             ->get();
 
         return view('pages.account.show_account', compact('transaction_list', 'address_default'));

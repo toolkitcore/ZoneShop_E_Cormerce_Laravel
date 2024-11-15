@@ -915,7 +915,7 @@
                         </div>
                     </li>
 
-                    <li class="menu-title mt-2">Pages</li>
+                    <li class="menu-title">Pages</li>
 
                     <li class="nav-item">
                         <a class="nav-link menu-arrow" href="#sidebarCoupons" data-bs-toggle="collapse"
@@ -936,15 +936,27 @@
                             </ul>
                         </div>
                     </li>
-
                     <li class="nav-item">
-                        <a class="nav-link" href="pages-review.html">
+                        <a class="nav-link menu-arrow" href="#sidebarPoster" data-bs-toggle="collapse"
+                            role="button" aria-expanded="false" aria-controls="sidebarPoster">
                             <span class="nav-icon">
-                                <iconify-icon icon="solar:chat-square-like-bold-duotone"></iconify-icon>
+                                <iconify-icon icon="solar:leaf-bold-duotone"></iconify-icon>
                             </span>
-                            <span class="nav-text"> Reviews </span>
+                            <span class="nav-text">Posters </span>
                         </a>
+                        <div class="collapse" id="sidebarPoster">
+                            <ul class="nav sub-navbar-nav">
+                                <li class="sub-nav-item">
+                                    <a class="sub-nav-link" href="{{ URL::to('all-poster') }}">List</a>
+                                </li>
+                                <li class="sub-nav-item">
+                                    <a class="sub-nav-link" href="{{ URL::to('add-poster') }}">Add</a>
+                                </li>
+                            </ul>
+                        </div>
                     </li>
+
+
 
                     <li class="menu-title mt-2">Other Apps</li>
 

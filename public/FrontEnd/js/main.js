@@ -798,12 +798,15 @@
                 infinite: true,
                 slidesToShow: 1,
                 slidesToScroll: 1,
-                arrows: true,
-                dots: false,
-                speed: 500,
+                arrows: false,              // Hiển thị nút mũi tên
+                dots: false,               // Không hiển thị chấm chỉ mục
+                autoplay: true,            // Tự động chạy slideshow
+                speed: 500,                // Thời gian chuyển ảnh: 500ms
+                autoplaySpeed: 3000,       // Thời gian giữa các ảnh: 5 giây
                 prevArrow: '<button class="slide-arrow prev-arrow"><i class="fal fa-long-arrow-left"></i></button>',
                 nextArrow: '<button class="slide-arrow next-arrow"><i class="fal fa-long-arrow-right"></i></button>',
             });
+            
 
             $('#quick-view-modal').on('shown.bs.modal', function (event) {
                 $('.slick-slider').slick('setPosition');

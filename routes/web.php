@@ -15,6 +15,7 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\DetailProductController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\PosterHomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductImagesController;
 use App\Http\Controllers\SliderHomeController;
@@ -242,7 +243,13 @@ Route::get('/add-sliders', [SliderHomeController::class, 'Add_Slider']);
 Route::post('/add-slider-action', [SliderHomeController::class, 'Add_Slider_Action']);
 Route::get('/delete-slider/{id}', [SliderHomeController::class, 'Delete_Slider']);
 
-
+// POSTER HOME 
+Route::get('/all-poster', [PosterHomeController::class, 'All_Poster']);
+Route::get('/add-poster', [PosterHomeController::class, 'Add_Poster']);
+Route::post('/add-poster-action', [PosterHomeController::class, 'Add_Poster_Action']);
+Route::get('/delete-poster/{id}', [PosterHomeController::class, 'Delete_Poster']);
+Route::get('/active-poster/{id}', [PosterHomeController::class, 'Set_Active_Poster']);
+Route::get('/unactive-poster/{id}', [PosterHomeController::class, 'Set_UnActive_Poster']);
 
 
 Route::get('/', function () {
