@@ -13,6 +13,7 @@ use App\Models\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\DB;
 
 class ClientController extends Controller
 {
@@ -35,13 +36,40 @@ class ClientController extends Controller
         $categories = Category_Product::whereNotNull('category_parent_id')->get();
         $slider_home = SliderHome::with('product')->get();
         $poster_home = PosterHome::where('poster_status', '=', 1)->get();
+        $topSellingProducts = DB::table('tbl_transactions')
+            ->join('tbl_orders', 'tbl_orders.transaction_id', '=', 'tbl_transactions.transaction_id')
+            ->join('tbl_product', 'tbl_orders.product_id', '=', 'tbl_product.product_id')
+            ->where('tbl_transactions.transaction_status', '=', 5)
+            ->select(
+                'tbl_product.product_id',
+                'tbl_product.product_image',
+                'tbl_product.product_name',
+                'tbl_product.product_price_selling',
+                'tbl_product.product_price_original',
+                DB::raw('SUM(tbl_orders.order_qty) as total_qty')
+            )
+            ->groupBy(
+                'tbl_product.product_id',
+                'tbl_product.product_name',
+                'tbl_product.product_image',
+                'tbl_product.product_price_selling',
+                'tbl_product.product_price_original',
+            )
+            ->orderByDesc('total_qty') // Orders by the total quantity in descending order
+            ->get();
+
+
+
+
+
         return view(
             'pages.home',
             compact(
                 'categories',
                 'products',
                 'slider_home',
-                'poster_home'
+                'poster_home',
+                'topSellingProducts'
             )
         );
     }
