@@ -39,6 +39,10 @@
                                         @endif
                                     </span>
                                 </h5>
+                                @if ($transaction->transaction_status == 0 && $transaction->transaction_payment == 'pay_online')
+                                    <a href="{{ URL::to('pay-online-retry/' . $transaction->transaction_id) }}"
+                                        class="btn btn-primary btn-lg">Payment here</a>
+                                @endif
 
                             </div>
                         </div>

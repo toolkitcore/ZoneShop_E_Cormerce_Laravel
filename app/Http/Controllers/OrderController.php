@@ -163,7 +163,13 @@ class OrderController extends Controller
     }
     public function Order_Detail(Request $request, $transaction_id)
     {
-        $transaction_item = Transaction::where('transaction_id', $transaction_id)->with(['orders', 'orders.product', 'deliveryAddress'])->first();
+        $transaction_item = Transaction::where('transaction_id', $transaction_id)
+            ->with([
+                'orders',
+                'orders.product',
+                'deliveryAddress'
+            ])
+            ->first();
         return view('admin.order.order_detail', compact('transaction_item'));
     }
     public function Show_Order_Detail_fe($transaction_id)

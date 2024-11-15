@@ -81,6 +81,7 @@ Route::get('/checkout-confirm-page', [OrderController::class, 'Checkout_Confirm'
 Route::get('/checkout-confirm', [CheckoutController::class, 'vnpay_confirm']);
 Route::get('/checkout-pay', [OrderController::class, 'Checkout_Pay'])->name('checkout_pay');
 Route::post('/pay-online', [CheckoutController::class, 'vnpay_payment'])->name('pay-online');
+Route::get('/pay-online-retry/{transaction_id}', [CheckoutController::class, 'vnpay_payment_retry'])->name('pay-online-retry');
 
 //Order detail
 Route::get('/view-order-detail/{transaction_id}', [OrderController::class, 'Show_Order_Detail_fe']);

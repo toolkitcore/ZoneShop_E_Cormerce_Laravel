@@ -5,6 +5,7 @@
     $user = Auth::user();
     $name_account = Auth::check() ? Auth::user()->name : 'Name';
     $email_account = Auth::check() ? Auth::user()->email : 'Email';
+    $created_at = Auth::check() ? Auth::user()->created_at : 'Not date';
     ?>
 
     <main class="main-wrapper">
@@ -33,11 +34,12 @@
                     <div class="axil-dashboard-author">
                         <div class="media">
                             <div class="thumbnail">
-                                <img src="{{ asset('public/FrontEnd/images/product/author1.png') }}" alt="Hello Annie">
+                                <img src="{{ asset('public/uploads/User/user-2.png') }}" alt="pic" width="80px">
                             </div>
                             <div class="media-body">
                                 <h5 class="title mb-0">Hello {{ $name_account }}</h5>
-                                <span class="joining-date">eTrade Member Since Sep 2020</span>
+                                <span class="joining-date">Zoneshop Member Since
+                                    {{ date('Y-m-d', strtotime($created_at)) }}</span>
                             </div>
                         </div>
                     </div>
@@ -50,8 +52,6 @@
                                             role="tab" aria-selected="true"><i class="fas fa-th-large"></i>Dashboard</a>
                                         <a class="nav-item nav-link" data-bs-toggle="tab" href="#nav-orders" role="tab"
                                             aria-selected="false"><i class="fas fa-shopping-basket"></i>Orders</a>
-                                        <a class="nav-item nav-link" data-bs-toggle="tab" href="#nav-address" role="tab"
-                                            aria-selected="false"><i class="fas fa-home"></i>Addresses</a>
                                         <a class="nav-item nav-link" data-bs-toggle="tab" href="#nav-account" role="tab"
                                             aria-selected="false"><i class="fas fa-user"></i>Account Details</a>
                                         <a href="{{ route('logout') }}" class="nav-item nav-link"
@@ -127,48 +127,6 @@
                                                     @endforeach
                                                 </tbody>
                                             </table>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tab-pane fade" id="nav-address" role="tabpanel">
-                                    <div class="axil-dashboard-address">
-                                        <p class="notice-text">The following addresses will be used on the checkout page by
-                                            default.</p>
-                                        <div class="row row--30">
-                                            <div class="col-lg-12">
-                                                <div class="address-info mb--40">
-                                                    @if ($address_default == null)
-                                                        <div
-                                                            class="addrss-header d-flex align-items-center justify-content-between">
-                                                            <h4 class="title mb-0">Shipping Address</h4>
-                                                        </div>
-                                                        <ul class="address-details">
-                                                            <h4 class="text-primary">Address is null</h4>
-                                                            <a href="{{ URL::to('address-user') }}"
-                                                                class="axil-btn btn-bg-primary viewcart-btn">Add
-                                                                Address</a>
-
-                                                        </ul>
-                                                    @else
-                                                        <div
-                                                            class="addrss-header d-flex align-items-center justify-content-between">
-                                                            <h4 class="title mb-0">Shipping Address</h4>
-                                                            <a href="{{ URL::to('edit-address-user') }}"
-                                                                class="address-edit"><i class="far fa-edit"></i></a>
-                                                        </div>
-                                                        {{-- @foreach ($address_default as $item) --}}
-                                                        <ul class="address-details">
-                                                            <li>{{ 'Name: ' . $address_default->fullname }}</li>
-                                                            <li>{{ 'Email: ' . $address_default->email }}</li>
-                                                            <li>{{ 'Phone: ' . $address_default->phone }}</li>
-                                                            <li class="mt--30">
-                                                                {{ 'Address: ' . $address_default->address . ', ' . $address_default->ward . ', ' . $address_default->district . ', ' . $address_default->province . ', ' }}
-                                                            </li>
-                                                        </ul>
-                                                        {{-- @endforeach --}}
-                                                    @endif
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
