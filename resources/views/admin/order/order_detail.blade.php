@@ -267,23 +267,26 @@
                                         </div>
                                     @endif
 
-                                    <div class="card-invoices">
-                                        <a class="btn btn-primary"
-                                            href="{{ URL::to('order/invoice/' . $transaction_item->transaction_id) }}"
-                                            target="_blank">
-                                            <iconify-icon icon="hugeicons:view" wtransaction_idth="1.2em"
-                                                height="1.2em"></iconify-icon> View invoice</a>
-                                        <a class="btn btn-primary"
-                                            href="{{ URL::to('order/invoice/' . $transaction_item->transaction_id . '/generate') }}">
-                                            <iconify-icon icon="material-symbols:download" width="1.2em"
-                                                height="1.2em"></iconify-icon>
-                                            Dowload Invoice
-                                        </a>
-                                        <a class="btn btn-primary"
-                                            href="{{ URL::to('order/invoice/' . $transaction_item->transaction_id . '/mail') }}">
-                                            Send Invoice
-                                        </a>
-                                    </div>
+                                    @if ($transaction_item->transaction_status >= 2 && $transaction_item->transaction_status <= 6)
+                                        <div class="card-invoices">
+                                            <a class="btn btn-primary"
+                                                href="{{ URL::to('order/invoice/' . $transaction_item->transaction_id) }}"
+                                                target="_blank">
+                                                <iconify-icon icon="hugeicons:view" wtransaction_idth="1.2em"
+                                                    height="1.2em"></iconify-icon> View invoice</a>
+                                            <a class="btn btn-primary"
+                                                href="{{ URL::to('order/invoice/' . $transaction_item->transaction_id . '/generate') }}">
+                                                <iconify-icon icon="material-symbols:download" width="1.2em"
+                                                    height="1.2em"></iconify-icon>
+                                                Dowload Invoice
+                                            </a>
+                                            <a class="btn btn-primary"
+                                                href="{{ URL::to('order/invoice/' . $transaction_item->transaction_id . '/mail') }}">
+                                                Send Invoice
+                                            </a>
+                                        </div>
+                                    @else
+                                    @endif
                                 </div>
                             </div>
                             <div class="card">

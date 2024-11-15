@@ -3,7 +3,7 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Invoice #6</title>
+    <title>Invoice Detail</title>
 
     <style>
         html,
@@ -114,7 +114,8 @@
                 <th width="50%" colspan="2" class="text-end company-data">
                     <span>Invoice Id: #{{ $transaction->transaction_id }}</span> <br>
                     <span>Date: {{ date('d/ m /Y') }}</span> <br>
-                    <span>Address: #555, Main road, shivaji nagar, Bangalore, India</span> <br>
+                    <span>{{ 'Address: ' . $transaction->pickupAddress->address . ', ' . $transaction->pickupAddress->ward . ', ' . $transaction->pickupAddress->district . ', ' . $transaction->pickupAddress->province }}</span>
+                    <br>
                 </th>
             </tr>
             <tr class="bg-blue">
@@ -180,7 +181,7 @@
         <tbody>
             @foreach ($transaction->orders as $item)
                 <tr>
-                    <td width="10%">16</td>
+                    <td width="10%">{{ $item->product->product_id }}</td>
                     <td>
                         {{ $item->order_product_name }}
                     </td>

@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\InvoiceOrderMail;
 use App\Models\Transaction;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session as FacadesSession;
 
 class TransactionController extends Controller
@@ -15,12 +17,31 @@ class TransactionController extends Controller
     }
     public function Confirm_Order($transaction_id)
     {
-        $transaction = Transaction::where('transaction_id', $transaction_id)->first();
+        $transaction_item = Transaction::where('transaction_id', $transaction_id)->first();
 
-        if ($transaction) {
-            $transaction->update([
+        if ($transaction_item) {
+            $transaction_item->update([
                 'transaction_status' => 2,
             ]);
+            $transaction = Transaction::where('transaction_id', $transaction_id)
+                ->with([
+                    'pickupAddress',
+                    'deliveryAddress',
+                    'orders',
+                    'orders.product'
+                ])
+                ->first();
+
+            if (!$transaction) {
+                Session::flash('error', 'Something Went Wrong !!!');
+            } else {
+                try {
+                    Mail::to($transaction->deliveryAddress->email)->send(new InvoiceOrderMail($transaction));
+                    Session::flash('success', 'Send Mail Invoice Successfully !');
+                } catch (\Throwable $th) {
+                    Session::flash('error', 'Something Went Wrong !!');
+                }
+            }
         }
         Session::flash('success', 'Confirm Order Successfully !!!');
         return redirect('order-detail/' . $transaction_id);
