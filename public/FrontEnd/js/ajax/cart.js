@@ -23,7 +23,7 @@ $(document).ready(function() {
                 success: function(response) {
                     document.querySelector(".cart-quantity").value = quantity;
                     $('.total-all').text(response.total + ' VND');
-                    $('#subtotal-' + rowid).text(response.subtotal + ' VND');
+                    $('#subtotal-' + rowid).text(response.subtotal.toLocaleString('en-US') + ' VND');
                 },
                 error: function(xhr) {
                     console.log(xhr.responseText); // Hiển thị lỗi nếu có
@@ -32,7 +32,6 @@ $(document).ready(function() {
         }
     });
     
-
     // Ajax clear cart
     $('.cart-clear').on('click', function(event) {
         event.preventDefault();

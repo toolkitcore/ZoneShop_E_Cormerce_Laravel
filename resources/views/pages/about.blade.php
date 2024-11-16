@@ -103,72 +103,6 @@
                 </div>
             </div>
         </div>
-        <!-- End About Area  -->
-
-        <!-- Start Team Area  -->
-        <div class="axil-team-area bg-wild-sand">
-            <div class="team-left-fullwidth">
-                <div class="container ml--xxl-0">
-                    <div class="section-title-wrapper">
-                        <span class="title-highlighter highlighter-primary"> <i class="fas fa-users"></i> Our Team</span>
-                        <h3 class="title">Expart Management Team</h3>
-                    </div>
-                    <div class="team-slide-activation slick-layout-wrapper--20 axil-slick-arrow  arrow-top-slide">
-                        <div class="slick-single-layout">
-                            <div class="axil-team-member">
-                                <div class="thumbnail"><img src="{{ asset('public/FrontEnd/images/team/team-01.png') }}"
-                                        alt="Cody Fisher"></div>
-                                <div class="team-content">
-                                    <span class="subtitle">Founder</span>
-                                    <h5 class="title">Rosalina D. Willson</h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="slick-single-layout">
-                            <div class="axil-team-member">
-                                <div class="thumbnail"><img src="{{ asset('public/FrontEnd/images/team/team-02.png') }}"
-                                        alt="Cody Fisher"></div>
-                                <div class="team-content">
-                                    <span class="subtitle">CEO</span>
-                                    <h5 class="title">Ukolilix X. Xilanorix</h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="slick-single-layout">
-                            <div class="axil-team-member">
-                                <div class="thumbnail"><img src="{{ asset('public/FrontEnd/images/team/team-03.png') }}"
-                                        alt="Cody Fisher"></div>
-                                <div class="team-content">
-                                    <span class="subtitle">Designer</span>
-                                    <h5 class="title">Alonso M. Miklonax</h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="slick-single-layout">
-                            <div class="axil-team-member">
-                                <div class="thumbnail"><img src="{{ asset('public/FrontEnd/images/team/team-04.png') }}"
-                                        alt="Cody Fisher"></div>
-                                <div class="team-content">
-                                    <span class="subtitle">Designer</span>
-                                    <h5 class="title">Alonso M. Miklonax</h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="slick-single-layout">
-                            <div class="axil-team-member">
-                                <div class="thumbnail"><img src="{{ asset('public/FrontEnd/images/team/team-02.png') }}"
-                                        alt="Cody Fisher"></div>
-                                <div class="team-content">
-                                    <span class="subtitle">Designer</span>
-                                    <h5 class="title">Alonso M. Miklonax</h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End Team Area  -->
 
         <!-- Start About Area  -->
         <div class="axil-about-area about-style-2">
@@ -212,26 +146,5 @@
             </div>
         </div>
         <!-- End About Area  -->
-
-        <!-- Start Axil Newsletter Area  -->
-        <div class="axil-newsletter-area axil-section-gap">
-            <div class="container">
-                <div class="etrade-newsletter-wrapper bg_image bg_image--5">
-                    <div class="newsletter-content">
-                        <span class="title-highlighter highlighter-primary2"><i
-                                class="fas fa-envelope-open"></i>Newsletter</span>
-                        <h2 class="title mb--40 mb_sm--30">Get weekly update</h2>
-                        <div class="input-group newsletter-form">
-                            <div class="position-relative newsletter-inner mb--15">
-                                <input placeholder="example@gmail.com" type="text">
-                            </div>
-                            <button type="submit" class="axil-btn mb--15">Subscribe</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- End .container -->
-        </div>
-        <!-- End Axil Newsletter Area  -->
     </main>
 @endsection

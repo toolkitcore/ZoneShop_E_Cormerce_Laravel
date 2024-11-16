@@ -21,32 +21,40 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($wishlistItems as $value)
-                                <tr class="wishlist-item-{{ $value->id }}" data-product-id="{{ $value->id }}">
-                                    <td class="product-remove">
-                                        <a href="#" class="remove-wishlist" data-rowid="{{ $value->rowId }}">
-                                            <i class="fal fa-times"></i>
-                                        </a>
-                                    </td>
-                                    <td class="product-thumbnail">
-                                        <a href="single-product.html">
-                                            <img src="{{ asset($value->options->image) }}"
-                                                alt="{{ $value->options->image }}">
-                                        </a>
-                                        <p>{{ $value->image }}</p>
-                                    </td>
-                                    <td class="product-title"><a href="single-product.html">{{ $value->name }}</a></td>
-                                    <td class="product-price" data-title="Price"><span
-                                            class="currency-symbol"></span>{{ number_format($value->price) . ' VND' }}
-                                    </td>
-                                    <td class="product-stock-status" data-title="Status">In Stock</td>
-                                    <td class="product-add-cart">
-                                        <a href="cart.html" class="axil-btn btn-outline add-cart-item"
-                                            data-product-id="{{ $value->id }}">Add to
-                                            Cart</a>
+                            @if ($wishlistItems == null || $wishlistItems->isEmpty())
+                                <tr>
+                                    <td colspan="6">
+                                        <p class="text-center text-primary">NOT PRODUCT WISHLIST</p>
                                     </td>
                                 </tr>
-                            @endforeach
+                            @else
+                                @foreach ($wishlistItems as $value)
+                                    <tr class="wishlist-item-{{ $value->id }}" data-product-id="{{ $value->id }}">
+                                        <td class="product-remove">
+                                            <a href="#" class="remove-wishlist" data-rowid="{{ $value->rowId }}">
+                                                <i class="fal fa-times"></i>
+                                            </a>
+                                        </td>
+                                        <td class="product-thumbnail">
+                                            <a href="single-product.html">
+                                                <img src="{{ asset($value->options->image) }}"
+                                                    alt="{{ $value->options->image }}">
+                                            </a>
+                                            <p>{{ $value->image }}</p>
+                                        </td>
+                                        <td class="product-title"><a href="single-product.html">{{ $value->name }}</a></td>
+                                        <td class="product-price" data-title="Price"><span
+                                                class="currency-symbol"></span>{{ number_format($value->price) . ' VND' }}
+                                        </td>
+                                        <td class="product-stock-status" data-title="Status">In Stock</td>
+                                        <td class="product-add-cart">
+                                            <a href="cart.html" class="axil-btn btn-outline add-cart-item"
+                                                data-product-id="{{ $value->id }}">Add to
+                                                Cart</a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            @endif
                         </tbody>
                     </table>
                 </div>

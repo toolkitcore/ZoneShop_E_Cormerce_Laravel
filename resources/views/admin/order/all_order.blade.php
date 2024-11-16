@@ -214,11 +214,11 @@
                                                         Offline
                                                     @endif
                                                 </td>
-                                                <td> {{ number_format($item->transaction_amount) }}</td>
+                                                <td> {{ number_format($item->transaction_amount) . ' VND' }}</td>
                                                 <td>
-                                                    @if ($item->transaction_payment == 'pay_offline')
-                                                        <span class="badge bg-light text-dark  px-2 py-1 fs-13">
-                                                            Unpaid
+                                                    @if ($item->transaction_payment == 'pay_offline' && $item->transaction_status == 5)
+                                                        <span class="badge bg-success text-light  px-2 py-1 fs-13">
+                                                            Paid
                                                         </span>
                                                     @elseif($item->transaction_payment == 'pay_online' && $item->transaction_status >= 1 && $item->transaction_status <= 5)
                                                         <span class="badge bg-success text-light  px-2 py-1 fs-13">

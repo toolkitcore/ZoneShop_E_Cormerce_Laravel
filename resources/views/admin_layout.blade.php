@@ -677,23 +677,6 @@
                         <div class="collapse" id="sidebarOrders">
                             <ul class="nav sub-navbar-nav">
                                 <li class="sub-nav-item">
-                                    <a class="sub-nav-link menu-arrow" href="#sidebarItemOrderSubItem1"
-                                        data-bs-toggle="collapse" role="button" aria-expanded="false"
-                                        aria-controls="sidebarItemOrderSubItem1">
-                                        <span> Transactions </span>
-                                    </a>
-                                    <div class="collapse" id="sidebarItemOrderSubItem1">
-                                        <ul class="nav sub-navbar-nav">
-                                            <li class="sub-nav-item">
-                                                <a class="sub-nav-link" href="#">List Attribute</a>
-                                            </li>
-                                            <li class="sub-nav-item">
-                                                <a class="sub-nav-link" href="#">Add Attribute</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li class="sub-nav-item">
                                     <a class="sub-nav-link menu-arrow" href="#sidebarItemOrderSubItem2"
                                         data-bs-toggle="collapse" role="button" aria-expanded="false"
                                         aria-controls="sidebarItemOrderSubItem2">
@@ -789,29 +772,6 @@
                                 </li>
                                 <li class="sub-nav-item">
                                     <a class="sub-nav-link" href="{{ URL::to('add-post') }}">Create Post</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link menu-arrow" href="#sidebarInvoice" data-bs-toggle="collapse"
-                            role="button" aria-expanded="false" aria-controls="sidebarInvoice">
-                            <span class="nav-icon">
-                                <iconify-icon icon="solar:bill-list-bold-duotone"></iconify-icon>
-                            </span>
-                            <span class="nav-text"> Invoices </span>
-                        </a>
-                        <div class="collapse" id="sidebarInvoice">
-                            <ul class="nav sub-navbar-nav">
-                                <li class="sub-nav-item">
-                                    <a class="sub-nav-link" href="invoice-list.html">List</a>
-                                </li>
-                                <li class="sub-nav-item">
-                                    <a class="sub-nav-link" href="invoice-details.html">Details</a>
-                                </li>
-                                <li class="sub-nav-item">
-                                    <a class="sub-nav-link" href="invoice-add.html">Create</a>
                                 </li>
                             </ul>
                         </div>
