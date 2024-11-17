@@ -12,6 +12,7 @@ use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DetailProductController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PostController;
@@ -259,6 +260,10 @@ Route::get('/review-product', [ReviewsController::class, 'Show_Review_Product'])
 Route::get('/active-review/{id}', [ReviewsController::class, 'Set_Active_Review']);
 Route::get('/unactive-review/{id}', [ReviewsController::class, 'Set_UnActive_Review']);
 Route::get('/delete-review/{id}', [ReviewsController::class, 'Delete_Review']);
+
+// CUSTOMERS
+Route::get('/show-customer', [CustomerController::class, 'Show_Customer']);
+Route::get('/detail-customer/{id}', [CustomerController::class, 'Show_Customer_Detail']);
 
 
 

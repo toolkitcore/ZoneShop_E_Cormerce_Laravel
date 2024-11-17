@@ -313,7 +313,7 @@
                     payment: $('input[name="payment"]:checked').val(),
                     _token: $('input[name="_token"]').val() // CSRF token
                 };
-                // console.log(data);
+                console.log(data);
 
 
                 // Validate form fields
