@@ -776,15 +776,26 @@
                             </ul>
                         </div>
                     </li>
-
                     <li class="nav-item">
-                        <a class="nav-link" href="settings.html">
+                        <a class="nav-link menu-arrow" href="#sidebarReview" data-bs-toggle="collapse"
+                            role="button" aria-expanded="false" aria-controls="sidebarReview">
                             <span class="nav-icon">
-                                <iconify-icon icon="solar:settings-bold-duotone"></iconify-icon>
+                                <iconify-icon icon="solar:card-send-bold-duotone"></iconify-icon>
                             </span>
-                            <span class="nav-text"> Settings </span>
+                            <span class="nav-text"> Reviews </span>
                         </a>
+                        <div class="collapse" id="sidebarReview">
+                            <ul class="nav sub-navbar-nav">
+                                <li class="sub-nav-item">
+                                    <a class="sub-nav-link" href="{{ URL::to('review-product') }}">List Review</a>
+                                </li>
+                                {{-- <li class="sub-nav-item">
+                                    <a class="sub-nav-lin   k" href="{{ URL::to('add-post') }}">Create Post</a>
+                                </li> --}}
+                            </ul>
+                        </div>
                     </li>
+
 
                     <li class="menu-title mt-2">Users</li>
 

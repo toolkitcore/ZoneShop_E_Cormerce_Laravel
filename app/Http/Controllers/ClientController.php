@@ -8,6 +8,7 @@ use App\Models\Category_Product;
 use App\Models\PosterHome;
 use App\Models\Product;
 use App\Models\Product_Attributes;
+use App\Models\Reviews;
 use App\Models\SliderHome;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
@@ -36,6 +37,7 @@ class ClientController extends Controller
         $categories = Category_Product::whereNotNull('category_parent_id')->get();
         $slider_home = SliderHome::with('product')->get();
         $poster_home = PosterHome::where('poster_status', '=', 1)->get();
+        $feed_back = Reviews::with('user')->take(5)->get();
         $topSellingProducts = DB::table('tbl_transactions')
             ->join('tbl_orders', 'tbl_orders.transaction_id', '=', 'tbl_transactions.transaction_id')
             ->join('tbl_product', 'tbl_orders.product_id', '=', 'tbl_product.product_id')
@@ -58,10 +60,6 @@ class ClientController extends Controller
             ->orderByDesc('total_qty') // Orders by the total quantity in descending order
             ->get();
 
-
-
-
-
         return view(
             'pages.home',
             compact(
@@ -69,7 +67,8 @@ class ClientController extends Controller
                 'products',
                 'slider_home',
                 'poster_home',
-                'topSellingProducts'
+                'topSellingProducts',
+                'feed_back'
             )
         );
     }
@@ -87,8 +86,20 @@ class ClientController extends Controller
         $product_related = Product::where('category_id', $product->category_id)
             ->where('product_id', '!=', $product->product_id)
             ->get();
+        $review_product = Reviews::where('product_id', $product_id)->get();
+        $review_product_count = Reviews::where('product_id', $product_id)->count();
+        $average_rate = Reviews::where('product_id', $product_id)->avg('rating');
 
-        return view('pages.single_product', compact('product', 'product_related'));
+        return view(
+            'pages.single_product',
+            compact(
+                'product',
+                'product_related',
+                'review_product',
+                'review_product_count',
+                'average_rate',
+            )
+        );
     }
 
     // Show page all product

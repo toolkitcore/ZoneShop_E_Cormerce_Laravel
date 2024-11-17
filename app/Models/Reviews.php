@@ -16,7 +16,6 @@ class Reviews extends Model
         'user_id',
         'rating',
         'review',
-        'image_url',
         'is_approved',
         'transaction_id',
     ];

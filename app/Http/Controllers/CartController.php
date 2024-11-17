@@ -29,7 +29,7 @@ class CartController extends Controller
             ]);
             Cart::setGlobalTax(0);
             Session::flash('success', 'Add cart Successfully !');
-            return redirect('gio-hang')->with('success', 'Sản phẩm đã được thêm vào giỏ hàng thành công!');
+            return redirect('gio-hang')->with('success', 'Added to Cart successfully!');
         }
 
         return redirect()->back()->with('error', 'Không tìm thấy sản phẩm.');

@@ -21,7 +21,7 @@ $(document).ready(function() {
                     quantity: quantity
                 },
                 success: function(response) {
-                    document.querySelector(".cart-quantity").value = quantity;
+                    $('.cart-quantity[data-rowid="' + rowid + '"]').val(quantity);
                     $('.total-all').text(response.total + ' VND');
                     $('#subtotal-' + rowid).text(response.subtotal.toLocaleString('en-US') + ' VND');
                 },

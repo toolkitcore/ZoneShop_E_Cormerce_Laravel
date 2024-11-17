@@ -666,91 +666,19 @@
                 <!-- End .section-title -->
                 <div
                     class="testimonial-slick-activation testimonial-style-one-wrapper slick-layout-wrapper--20 axil-slick-arrow arrow-top-slide">
-                    <div class="slick-single-layout testimonial-style-one">
-                        <div class="review-speech">
-                            <p>“ It’s amazing how much easier it has been to
-                                meet new people and create instantly non
-                                connections. I have the exact same personal
-                                the only thing that has changed is my mind
-                                set and a few behaviors. “</p>
-                        </div>
-                        <div class="media">
-                            <div class="thumbnail">
-                                <img src="{{ asset('public/FrontEnd/images/testimonial/image-1.png') }}"
-                                    alt="testimonial image">
+                    @foreach ($feed_back as $item)
+                        <div class="slick-single-layout testimonial-style-one">
+                            <div class="review-speech">
+                                <p>“ {{ $item->review }}“</p>
                             </div>
-                            <div class="media-body">
-                                <span class="designation">Head Of Idea</span>
-                                <h6 class="title">James C. Anderson</h6>
+                            <div class="media">
+                                <div class="media-body">
+                                    <span class="designation">Head Of Idea</span>
+                                    <h6 class="title">{{ $item->user->name }}</h6>
+                                </div>
                             </div>
                         </div>
-                        <!-- End .thumbnail -->
-                    </div>
-                    <!-- End .slick-single-layout -->
-                    <div class="slick-single-layout testimonial-style-one">
-                        <div class="review-speech">
-                            <p>“ It’s amazing how much easier it has been to
-                                meet new people and create instantly non
-                                connections. I have the exact same personal
-                                the only thing that has changed is my mind
-                                set and a few behaviors. “</p>
-                        </div>
-                        <div class="media">
-                            <div class="thumbnail">
-                                <img src="{{ asset('public/FrontEnd/images/testimonial/image-2.png') }}"
-                                    alt="testimonial image">
-                            </div>
-                            <div class="media-body">
-                                <span class="designation">Head Of Idea</span>
-                                <h6 class="title">James C. Anderson</h6>
-                            </div>
-                        </div>
-                        <!-- End .thumbnail -->
-                    </div>
-                    <!-- End .slick-single-layout -->
-                    <div class="slick-single-layout testimonial-style-one">
-                        <div class="review-speech">
-                            <p>“ It’s amazing how much easier it has been to
-                                meet new people and create instantly non
-                                connections. I have the exact same personal
-                                the only thing that has changed is my mind
-                                set and a few behaviors. “</p>
-                        </div>
-                        <div class="media">
-                            <div class="thumbnail">
-                                <img src="{{ asset('public/FrontEnd/images/testimonial/image-3.png') }}"
-                                    alt="testimonial image">
-                            </div>
-                            <div class="media-body">
-                                <span class="designation">Head Of Idea</span>
-                                <h6 class="title">James C. Anderson</h6>
-                            </div>
-                        </div>
-                        <!-- End .thumbnail -->
-                    </div>
-                    <!-- End .slick-single-layout -->
-                    <div class="slick-single-layout testimonial-style-one">
-                        <div class="review-speech">
-                            <p>“ It’s amazing how much easier it has been to
-                                meet new people and create instantly non
-                                connections. I have the exact same personal
-                                the only thing that has changed is my mind
-                                set and a few behaviors. “</p>
-                        </div>
-                        <div class="media">
-                            <div class="thumbnail">
-                                <img src="{{ asset('public/FrontEnd/images/testimonial/image-2.png') }}"
-                                    alt="testimonial image">
-                            </div>
-                            <div class="media-body">
-                                <span class="designation">Head Of Idea</span>
-                                <h6 class="title">James C. Anderson</h6>
-                            </div>
-                        </div>
-                        <!-- End .thumbnail -->
-                    </div>
-                    <!-- End .slick-single-layout -->
-
+                    @endforeach
                 </div>
             </div>
         </div>

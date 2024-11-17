@@ -254,6 +254,15 @@ Route::get('/active-poster/{id}', [PosterHomeController::class, 'Set_Active_Post
 Route::get('/unactive-poster/{id}', [PosterHomeController::class, 'Set_UnActive_Poster']);
 
 
+// REVIEW PRODUCT
+Route::get('/review-product', [ReviewsController::class, 'Show_Review_Product']);
+Route::get('/active-review/{id}', [ReviewsController::class, 'Set_Active_Review']);
+Route::get('/unactive-review/{id}', [ReviewsController::class, 'Set_UnActive_Review']);
+Route::get('/delete-review/{id}', [ReviewsController::class, 'Delete_Review']);
+
+
+
+
 Route::get('/', function () {
     return view('welcome');
 });

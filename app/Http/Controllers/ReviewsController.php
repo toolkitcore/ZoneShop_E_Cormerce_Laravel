@@ -6,6 +6,7 @@ use App\Models\Reviews;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class ReviewsController extends Controller
 {
@@ -37,5 +38,30 @@ class ReviewsController extends Controller
         $review->save();
 
         return response()->json(['status' => 'success']);
+    }
+    public function Show_Review_Product()
+    {
+        $list_review = Reviews::with(['product', 'user'])->get();
+        return view('admin.review.show_review', compact('list_review'));
+    }
+    public function Set_Active_Review($id)
+    {
+        Reviews::where('id', $id)->update(['is_approved' => true]);
+
+        Session::flash('success', 'Active the review successfully!');
+        return Redirect('/review-product');
+    }
+    public function Set_UnActive_Review($id)
+    {
+        Reviews::where('id', $id)->update(['is_approved' => false]);
+
+        Session::flash('success', 'UnActive the review successfully!');
+        return Redirect('/review-product');
+    }
+    public function Delete_Review($id)
+    {
+        Reviews::where('id', $id)->delete();
+        Session::flash('success', 'Delete review successfully!');
+        return redirect('review-product');
     }
 }
