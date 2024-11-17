@@ -22,7 +22,7 @@
     ============================================ -->
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.0/min/dropzone.min.css">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.3/jquery-ui.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
@@ -573,6 +573,7 @@
     <script src="{{ asset('public/FrontEnd/js/vendor/isotope.pkgd.min.js') }}"></script>
     <script src="{{ asset('public/FrontEnd/js/vendor/counterup.js') }}"></script>
     <script src="{{ asset('public/FrontEnd/js/vendor/waypoints.min.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
 
     <!-- Main JS -->
     <script src="{{ asset('public/FrontEnd/js/main.js') }}"></script>

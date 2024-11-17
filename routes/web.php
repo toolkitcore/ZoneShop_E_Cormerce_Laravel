@@ -18,6 +18,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\PosterHomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductImagesController;
+use App\Http\Controllers\ReviewsController;
 use App\Http\Controllers\SliderHomeController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\WishlistController;
@@ -67,12 +68,6 @@ Route::post('/save-address', [AddressController::class, 'Save_address'])->name('
 Route::get('/edit-address-user', [AddressController::class, 'Edit_address']);
 Route::post('/update-address', [AddressController::class, 'Update_address']);
 
-//MAILER
-// Route::get('/mailer', function () {
-//     Mail::to('hoangductrinh2k5@gmail.com')
-//         ->send(new HelloMail);
-// });
-
 //CHECKOUT
 Route::get('/show-checkout', [OrderController::class, 'Show_checkout'])->name('show_checkout');
 Route::post('/process-checkout', [OrderController::class, 'Process_checkout'])->name('process_checkout');
@@ -98,7 +93,7 @@ Route::get('/checkout-failed', function () {
 
 
 
-// BLOG 
+// BLOG
 Route::get('/blog', [PostController::class, 'Show_Blog']);
 Route::get('/blog-detail/{id}', [PostController::class, 'Show_Blog_Detail']);
 
@@ -120,6 +115,13 @@ Route::post('/contact', function (Illuminate\Http\Request $request) {
         'success' => 'Email sent successfully!',
     ]);
 })->name('contact');
+
+// REVIEWS PRODUCT
+Route::get('/show-review/{transaction_id}', [ReviewsController::class, 'Show_review']);
+Route::post('/submit-review', [ReviewsController::class, 'Store_Review'])->name('product.review.store');
+
+
+
 
 //BACKEND
 Route::get('/admin', [AdminControllers::class, 'index']);

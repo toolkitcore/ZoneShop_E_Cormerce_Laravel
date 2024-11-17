@@ -43,7 +43,10 @@
                                     <a href="{{ URL::to('pay-online-retry/' . $transaction->transaction_id) }}"
                                         class="btn btn-primary btn-lg">Payment here</a>
                                 @endif
-
+                                @if ($transaction->transaction_status == 5)
+                                    <a href="{{ URL::to('show-review/' . $transaction->transaction_id) }}"
+                                        class="btn btn-primary btn-lg">Review Product</a>
+                                @endif
                             </div>
                         </div>
                         <div class="col-lg-7">
@@ -95,6 +98,5 @@
                 </form>
             </div>
         </div>
-
     </main>
 @endsection
