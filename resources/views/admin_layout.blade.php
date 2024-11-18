@@ -780,7 +780,7 @@
                         <a class="nav-link menu-arrow" href="#sidebarReview" data-bs-toggle="collapse"
                             role="button" aria-expanded="false" aria-controls="sidebarReview">
                             <span class="nav-icon">
-                                <iconify-icon icon="solar:card-send-bold-duotone"></iconify-icon>
+                                <iconify-icon icon="solar:dialog-2-bold-duotone"></iconify-icon>
                             </span>
                             <span class="nav-text"> Reviews </span>
                         </a>

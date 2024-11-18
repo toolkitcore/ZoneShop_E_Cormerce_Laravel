@@ -257,7 +257,7 @@
 
 
 
-    <div class="service-area">
+    {{-- <div class="service-area">
         <div class="container">
             <div class="row row-cols-xl-4 row-cols-sm-2 row-cols-1 row--20">
                 <div class="col">
@@ -306,7 +306,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     <footer class="axil-footer-area footer-style-2">
         <div class="footer-top separator-top">
