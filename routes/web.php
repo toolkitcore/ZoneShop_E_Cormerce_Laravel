@@ -261,6 +261,12 @@ Route::get('/active-review/{id}', [ReviewsController::class, 'Set_Active_Review'
 Route::get('/unactive-review/{id}', [ReviewsController::class, 'Set_UnActive_Review']);
 Route::get('/delete-review/{id}', [ReviewsController::class, 'Delete_Review']);
 
+Route::get('/all-feedback', [ReviewsController::class, 'Show_FeedBack']);
+Route::get('/add-feedback', [ReviewsController::class, 'Add_FeedBack']);
+Route::get('/set-active-feedback/{id}', [ReviewsController::class, 'Set_Active_Feedback']);
+Route::get('/set-unactive-feedback/{id}', [ReviewsController::class, 'Set_UnActive_Feedback']);
+Route::get('/delete-feedback/{id}', [ReviewsController::class, 'Delete_Feedback']);
+
 // CUSTOMERS
 Route::get('/show-customer', [CustomerController::class, 'Show_Customer']);
 Route::get('/detail-customer/{id}', [CustomerController::class, 'Show_Customer_Detail']);

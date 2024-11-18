@@ -42,9 +42,9 @@
                 @endforeach
 
                 @if ($productReviewed)
-                    <div class="axil-order-summery order-checkout-summery">
+                    <div class="axil-order-summery order-checkout-summery mt-3">
                         <div class="axil-checkout-billing">
-                            <h4 class="title mb--40">Review product {{ $item->product_id }}</h4>
+                            <h4 class="title mb--40">Review product</h4>
                             <h6> {{ 'Product: ' . $item->order_product_name . ' x ' . $item->order_qty }}
                             </h6>
                             <h3 class="text-primary"> The product has been evaluated</h3>

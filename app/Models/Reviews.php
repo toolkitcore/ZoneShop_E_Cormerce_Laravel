@@ -17,6 +17,7 @@ class Reviews extends Model
         'rating',
         'review',
         'is_approved',
+        'is_featured',
         'transaction_id',
     ];
 

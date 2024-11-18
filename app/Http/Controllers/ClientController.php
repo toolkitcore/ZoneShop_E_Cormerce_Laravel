@@ -37,7 +37,7 @@ class ClientController extends Controller
         $categories = Category_Product::whereNotNull('category_parent_id')->get();
         $slider_home = SliderHome::with('product')->get();
         $poster_home = PosterHome::where('poster_status', '=', 1)->get();
-        $feed_back = Reviews::with('user')->take(5)->get();
+        $feed_back = Reviews::where('is_featured', true)->with('user')->get();
         $topSellingProducts = DB::table('tbl_transactions')
             ->join('tbl_orders', 'tbl_orders.transaction_id', '=', 'tbl_transactions.transaction_id')
             ->join('tbl_product', 'tbl_orders.product_id', '=', 'tbl_product.product_id')

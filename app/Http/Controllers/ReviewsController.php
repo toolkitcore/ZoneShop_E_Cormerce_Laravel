@@ -64,4 +64,35 @@ class ReviewsController extends Controller
         Session::flash('success', 'Delete review successfully!');
         return redirect('review-product');
     }
+    public function Show_FeedBack()
+    {
+        $list_feedback = Reviews::where('is_featured', 1)->with(['user', 'product'])->get();
+        return view('admin.pages.feedback.show_feedback', compact('list_feedback'));
+    }
+    public function Add_FeedBack()
+    {
+        $list_feedback = Reviews::with(['user', 'product'])->orderBy('rating', 'desc')->get();
+        return view('admin.pages.feedback.add_feedback', compact('list_feedback'));
+    }
+    public function Set_Active_Feedback($id)
+    {
+        Reviews::where('id', $id)->update(['is_featured' => true]);
+
+        Session::flash('success', 'Active the feedback successfully!');
+        return Redirect('/add-feedback');
+    }
+    public function Set_UnActive_Feedback($id)
+    {
+        Reviews::where('id', $id)->update(['is_featured' => false]);
+
+        Session::flash('success', 'UnActive the fe  edback successfully!');
+        return Redirect('/add-feedback');
+    }
+    public function Delete_Feedback($id)
+    {
+        Reviews::where('id', $id)->update(['is_featured' => false]);
+
+        Session::flash('success', 'UnActive the fe  feeedback successfully!');
+        return Redirect('/all-feedback');
+    }
 }

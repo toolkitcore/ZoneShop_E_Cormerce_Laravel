@@ -901,6 +901,25 @@
                             </ul>
                         </div>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link menu-arrow" href="#sidebarFeedBack" data-bs-toggle="collapse"
+                            role="button" aria-expanded="false" aria-controls="sidebarFeedBack">
+                            <span class="nav-icon">
+                                <iconify-icon icon="solar:leaf-bold-duotone"></iconify-icon>
+                            </span>
+                            <span class="nav-text">FeedBacks </span>
+                        </a>
+                        <div class="collapse" id="sidebarFeedBack">
+                            <ul class="nav sub-navbar-nav">
+                                <li class="sub-nav-item">
+                                    <a class="sub-nav-link" href="{{ URL::to('all-feedback') }}">List</a>
+                                </li>
+                                <li class="sub-nav-item">
+                                    <a class="sub-nav-link" href="{{ URL::to('add-feedback') }}">Add</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
 
 
 
