@@ -17,8 +17,19 @@ use Illuminate\Support\Facades\Redirect;
 
 class AttributesProductController extends Controller
 {
+    public function AuthLogin()
+    {
+        $admin_id = Session::get('admin_id');
+        if ($admin_id) {
+            return redirect('dashboard');
+        } else {
+            return redirect('admin')->send();
+        }
+    }
     public function Show_Attribute_Product()
     {
+        $this->AuthLogin();
+
         // Lấy tất cả các category product kèm theo các attributes
         $categories = Category_Product::with('attributes')->get();
 
@@ -28,17 +39,22 @@ class AttributesProductController extends Controller
 
     public function Add_Attribute_Product()
     {
+        $this->AuthLogin();
         $categories = Category_Product::all();
         return view('admin.attribute.add_attribute_product', compact('categories'));
     }
     public function Edit_Attribute_Product($category_id)
     {
+        $this->AuthLogin();
+
         $attributes = Attributes::where('category_id', $category_id)->get();
         $category_item = Category_Product::where('category_id', $category_id)->first();
         return view('admin.attribute.edit_attribute_product', compact('attributes', 'category_item'));
     }
     public function Add_attribute_action(Request $request)
     {
+        $this->AuthLogin();
+
         $checklistAttributes = $request->attribute_name;
         if ($checklistAttributes) {
             $result = validateAttributesText($checklistAttributes);
@@ -68,6 +84,8 @@ class AttributesProductController extends Controller
     }
     public function Add_attribute_choice_action(Request $request, $category_id)
     {
+        $this->AuthLogin();
+
         $checklistAttributes = $request->attribute_name;
         if ($checklistAttributes) {
             $result = validateAttributesText($checklistAttributes);
@@ -97,6 +115,8 @@ class AttributesProductController extends Controller
     }
     public function Add_Attribute_Choice($category_id)
     {
+        $this->AuthLogin();
+
         $category_item = Category_Product::where('category_id', $category_id)->first();
         return view('admin.attribute.add_attribute_choice', compact('category_item'));
     }
@@ -108,6 +128,7 @@ class AttributesProductController extends Controller
         //     'attribute_name' => 'required|string|max:255',
         //     'category_id' => 'required|integer|exists:categories,category_id', // Kiểm tra category_id
         // ]);
+        $this->AuthLogin();
 
         $attribute = Attributes::find($request->attribute_id);
 
@@ -125,6 +146,8 @@ class AttributesProductController extends Controller
     }
     public function Delete_attribute_action(Request $request)
     {
+        $this->AuthLogin();
+
         $attribute = Attributes::find($request->attribute_id);
         if (!$attribute) {
             return response()->json(['success' => false, 'message' => 'Attribute not found.']);
@@ -141,6 +164,8 @@ class AttributesProductController extends Controller
     }
     public function Delete_list_attribute_action($category_id)
     {
+        $this->AuthLogin();
+
         $deletedCount = Attributes::where('category_id', $category_id)->delete();
         if ($deletedCount > 0) {
             Session::flash('success', 'Delete list attributes successfully!');
@@ -152,6 +177,8 @@ class AttributesProductController extends Controller
 
     public function Add_attribute_action_detail(Request $request)
     {
+        $this->AuthLogin();
+
         if ($request->attribute_name != '') {
             Attributes::create([
                 'attribute_name' => $request->attribute_name,

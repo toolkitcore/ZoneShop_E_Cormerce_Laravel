@@ -11,13 +11,24 @@ use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
+    public function AuthLogin()
+    {
+        $admin_id = Session::get('admin_id');
+        if ($admin_id) {
+            return redirect('dashboard');
+        } else {
+            return redirect('admin')->send();
+        }
+    }
     public function Add_Post()
     {
+        $this->AuthLogin();
         $category = Category_Product::whereNull('category_parent_id')->get();
         return view('admin.post.add_post', compact('category'));
     }
     public function Add_Post_Action(Request $request)
     {
+        $this->AuthLogin();
         $data = $request->all();
 
         if ($request->hasFile('post_image')) {
@@ -52,11 +63,13 @@ class PostController extends Controller
 
     public function Show_List_Post()
     {
+        $this->AuthLogin();
         $posts = Posts::paginate(6);
         return view('admin.post.list_post', compact('posts'));
     }
     public function Delete_Post($id)
     {
+        $this->AuthLogin();
         $post = Posts::find($id);
 
         if ($post && $post->post_image) {
@@ -76,11 +89,13 @@ class PostController extends Controller
 
     public function Detail_Post($id)
     {
+        $this->AuthLogin();
         $post_item = Posts::where('id', $id)->first();
         return view('admin.post.post_detail', compact('post_item'));
     }
     public function Edit_Post()
     {
+        $this->AuthLogin();
         return view('admin.post.edit_post');
     }
     public function Show_Blog()

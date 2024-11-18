@@ -18,6 +18,15 @@ use Illuminate\Support\Facades\DB;
 
 class ClientController extends Controller
 {
+    // public function AuthLogin()
+    // {
+    //     $admin_id = Session::get('admin_id');
+    //     if ($admin_id) {
+    //         return redirect('dashboard');
+    //     } else {
+    //         return redirect('admin')->send();
+    //     }
+    // }
     // show page About
     public function Show_About()
     {

@@ -9,6 +9,15 @@ use Illuminate\Support\Facades\Session;
 
 class CartController extends Controller
 {
+    public function AuthLogin()
+    {
+        $admin_id = Session::get('admin_id');
+        if ($admin_id) {
+            return redirect('dashboard');
+        } else {
+            return redirect('admin')->send();
+        }
+    }
     public function Add_to_cart(Request $request)
     {
         $product_id = $request->product_id_hidden;

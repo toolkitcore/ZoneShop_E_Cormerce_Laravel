@@ -12,19 +12,31 @@ use Illuminate\Support\Facades\Redirect;
 
 class CategoryController extends Controller
 {
+    public function AuthLogin()
+    {
+        $admin_id = Session::get('admin_id');
+        if ($admin_id) {
+            return redirect('dashboard');
+        } else {
+            return redirect('admin')->send();
+        }
+    }
     public function Show_Category()
     {
+        $this->AuthLogin();
         $categories = Category_Product::paginate(6);
         return view('admin.category.all_category_product', compact('categories'));
     }
     public function Add_Category()
     {
+        $this->AuthLogin();
         $categories = Category_Product::whereNull('category_parent_id')->get();
         return view('admin.category.add_category_product', compact('categories'));
     }
 
     public function CheckNumberSortOrderCategory($number_check, $category_parent_id)
     {
+        $this->AuthLogin();
         $categories = Category_Product::where('category_parent_id', $category_parent_id)->get();
         $maxSortOrder = 0;
         $isNumberInList = false;
@@ -49,6 +61,7 @@ class CategoryController extends Controller
 
     public function Add_Category_Action(Request $request)
     {
+        $this->AuthLogin();
         $data = new Category_Product();
         $data->category_name = $request->category_name;
 
@@ -81,13 +94,14 @@ class CategoryController extends Controller
         // Lưu thông báo vào session để hiển thị sau redirect
         Session::flash('success', 'Add Category Successfully!');
 
-        return Redirect::to('add-category-product');
+        return redirect('add-category-product');
     }
 
 
     // SET STATUS FOR CATEGORY
     public function Set_Active_category_product($category_id)
     {
+        $this->AuthLogin();
         Category_Product::where('category_id', $category_id)->update(['category_status' => 1]);
 
         Session::flash('success', 'Activate the category product successfurlly!');
@@ -95,6 +109,7 @@ class CategoryController extends Controller
     }
     public function Set_UnActive_category_product($category_id)
     {
+        $this->AuthLogin();
         Category_Product::where('category_id', $category_id)->update(['category_status' => 0]);
 
         Session::flash('success', 'Uctivate the category product successfurlly!');
@@ -103,7 +118,7 @@ class CategoryController extends Controller
     //show page edit category 
     public function Edit_Category_product($caterory_id)
     {
-
+        $this->AuthLogin();
         $edit_category_product = Category_Product::where('category_id', $caterory_id)->get();
         $categories = Category_Product::all();
 
@@ -117,6 +132,7 @@ class CategoryController extends Controller
 
     public function Update_Category_product(Request $request, $category_id)
     {
+        $this->AuthLogin();
         $data = array();
         $data['category_name'] = $request->category_name;
         $data['category_desc'] = $request->category_desc;
@@ -138,15 +154,16 @@ class CategoryController extends Controller
 
             DB::table('tbl_category_product')->where('category_id', $category_id)->update($data);
             Session::flash('success', 'Update the Category product Successfully !');
-            return Redirect::to('all-category-product');
+            return redirect('all-category-product');
         }
 
         DB::table('tbl_category_product')->where('category_id', $category_id)->update($data);
         Session::flash('success', 'Update the Category product Successfully !');
-        return Redirect::to('all-category-product');
+        return redirect('all-category-product');
     }
     public function Delete_Category_product($category_id)
     {
+        $this->AuthLogin();
         Category_Product::where('category_id', $category_id)->delete();
         Session::flash('success', 'Delete the Category Product Successfully');
         return Redirect('all-category-product');
@@ -154,6 +171,7 @@ class CategoryController extends Controller
 
     public function Filter_Category_Root()
     {
+        $this->AuthLogin();
         $category_root = Category_Product::whereNull('category_parent_id')->get();
         Redirect('all-category-product')->with('category_root', $category_root);
     }

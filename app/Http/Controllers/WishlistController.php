@@ -9,6 +9,15 @@ use Illuminate\Support\Facades\Session;
 
 class WishlistController extends Controller
 {
+    public function AuthLogin()
+    {
+        $admin_id = Session::get('admin_id');
+        if ($admin_id) {
+            return redirect('dashboard');
+        } else {
+            return redirect('admin')->send();
+        }
+    }
     public function Show_Wishlist()
     {
         $wishlistItems = Cart::instance('wishlist')->content();

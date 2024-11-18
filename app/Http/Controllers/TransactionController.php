@@ -11,12 +11,23 @@ use Illuminate\Support\Facades\Session as FacadesSession;
 
 class TransactionController extends Controller
 {
+    public function AuthLogin()
+    {
+        $admin_id = Session::get('admin_id');
+        if ($admin_id) {
+            return redirect('dashboard');
+        } else {
+            return redirect('admin')->send();
+        }
+    }
     public function Show_Transaction()
     {
+        $this->AuthLogin();
         return view('admin.order.transaction.show_transaction');
     }
     public function Confirm_Order($transaction_id)
     {
+        $this->AuthLogin();
         $transaction_item = Transaction::where('transaction_id', $transaction_id)->first();
 
         if ($transaction_item) {
@@ -48,6 +59,7 @@ class TransactionController extends Controller
     }
     public function Confirm_Package($transaction_id)
     {
+        $this->AuthLogin();
         $transaction = Transaction::where('transaction_id', $transaction_id)->first();
 
         if ($transaction) {
@@ -60,6 +72,7 @@ class TransactionController extends Controller
     }
     public function Confirm_Ship($transaction_id)
     {
+        $this->AuthLogin();
         $transaction = Transaction::where('transaction_id', $transaction_id)->first();
 
         if ($transaction) {
@@ -72,6 +85,7 @@ class TransactionController extends Controller
     }
     public function Confirm_Completed($transaction_id)
     {
+        $this->AuthLogin();
         $transaction = Transaction::where('transaction_id', $transaction_id)->first();
 
         if ($transaction) {
@@ -84,6 +98,7 @@ class TransactionController extends Controller
     }
     public function Cancel_Order($transaction_id)
     {
+        $this->AuthLogin();
         $transaction = Transaction::where('transaction_id', $transaction_id)->first();
 
         if ($transaction) {
