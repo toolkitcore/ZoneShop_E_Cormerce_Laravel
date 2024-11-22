@@ -9,15 +9,15 @@
             <div class="row">
                 <!-- @foreach ($categories as $category)
     <div class="col-md-6 col-xl-3">
-                                                                                    <div class="card">
-                                                                                        <div class="card-body text-center">
-                                                                                            <div class="rounded bg-secondary-subtle d-flex align-items-center justify-content-center mx-auto">
-                                                                                                <img src="{{ asset('public/uploads/category/' . $category->category_image) }}" alt="" class="avatar-xl">
+                                                                                            <div class="card">
+                                                                                                <div class="card-body text-center">
+                                                                                                    <div class="rounded bg-secondary-subtle d-flex align-items-center justify-content-center mx-auto">
+                                                                                                        <img src="{{ asset('public/uploads/category/' . $category->category_image) }}" alt="" class="avatar-xl">
+                                                                                                    </div>
+                                                                                                    <h4 class="mt-3 mb-0">{{ $category->category_name }}</h4>
+                                                                                                </div>
                                                                                             </div>
-                                                                                            <h4 class="mt-3 mb-0">{{ $category->category_name }}</h4>
                                                                                         </div>
-                                                                                    </div>
-                                                                                </div>
     @endforeach -->
             </div>
 
@@ -27,7 +27,7 @@
                         <div class="card-header d-flex justify-content-between align-items-center gap-1">
                             <h4 class="card-title flex-grow-1">All Categories List</h4>
 
-                            <a href="{{ URL::to('/add-category-product') }}" class="btn btn-sm btn-primary">
+                            <a href="{{ URL::to('admin/add-category-product') }}" class="btn btn-sm btn-primary">
                                 Add Category
                             </a>
 
@@ -38,7 +38,7 @@
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end">
                                     <!-- item-->
-                                    <a href="{{ URL::to('/filter-category-root') }}" class="dropdown-item">Root</a>
+                                    <a href="{{ URL::to('admin/filter-category-root') }}" class="dropdown-item">Root</a>
                                     <!-- item-->
                                 </div>
                             </div>
@@ -107,7 +107,7 @@
                                                     <?php
                                             if ($category->category_status == 0) {
                                             ?>
-                                                    <a href="{{ URL::to('/active-category-product/' . $category->category_id) }}"
+                                                    <a href="{{ URL::to('admin/active-category-product/' . $category->category_id) }}"
                                                         class="btn btn-light btn-sm">
                                                         <iconify-icon icon="solar:eye-broken"
                                                             class="align-middle fs-18"></iconify-icon>
@@ -115,7 +115,7 @@
                                                     <?php
                                             } else {
                                             ?>
-                                                    <a href="{{ URL::to('/unactive-category-product/' . $category->category_id) }}"
+                                                    <a href="{{ URL::to('admin/unactive-category-product/' . $category->category_id) }}"
                                                         class="btn btn-primary btn-sm">
                                                         <iconify-icon icon="solar:eye-broken"
                                                             class="align-middle fs-18"></iconify-icon>
@@ -127,13 +127,13 @@
                                                 <td>
                                                     <div class="d-flex gap-2">
                                                         <!-- EDIT CATEGORY -->
-                                                        <a href="{{ URL::to('/edit-category-product/' . $category->category_id) }}"
+                                                        <a href="{{ URL::to('admin/edit-category-product/' . $category->category_id) }}"
                                                             class="btn btn-soft-primary btn-sm">
                                                             <iconify-icon icon="solar:pen-2-broken"
                                                                 class="align-middle fs-18"></iconify-icon>
                                                         </a>
                                                         <!-- DELETE CATEGORY -->
-                                                        <a href="{{ URL::to('/delete-category-product/' . $category->category_id) }}"
+                                                        <a href="{{ URL::to('admin/delete-category-product/' . $category->category_id) }}"
                                                             class="btn btn-soft-danger btn-sm delete-confirm"><iconify-icon
                                                                 icon="solar:trash-bin-minimalistic-2-broken"
                                                                 class="align-middle fs-18"></iconify-icon></a>

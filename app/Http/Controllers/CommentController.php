@@ -10,15 +10,7 @@ use Illuminate\Support\Facades\Session;
 
 class CommentController extends Controller
 {
-    public function AuthLogin()
-    {
-        $admin_id = Session::get('admin_id');
-        if ($admin_id) {
-            return redirect('dashboard');
-        } else {
-            return redirect('admin')->send();
-        }
-    }
+
     public function Send_Comment(Request $request)
     {
 

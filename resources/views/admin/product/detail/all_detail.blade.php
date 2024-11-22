@@ -194,7 +194,7 @@
 
             $.ajax({
                 type: 'get',
-                url: "{{ URL::to('search') }}",
+                url: "{{ URL::to('admin/search') }}",
                 data: {
                     'search': $value,
                 },

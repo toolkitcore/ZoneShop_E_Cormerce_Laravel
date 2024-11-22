@@ -36,14 +36,14 @@
                                                         <iconify-icon icon="mdi:done-outline" width="1.2em" height="1.2em"
                                                             style="color: #21c434"></iconify-icon>
                                                     </a>
-                                                    <a href="{{ URL::to('edit-detail-product/' . $product_item->product_id) }}"
+                                                    <a href="{{ URL::to('admin/edit-detail-product/' . $product_item->product_id) }}"
                                                         class="btn btn-primary update-attribute mt-2">Edit</a>
                                                 @break
                                             @endif
                                         @endforeach
 
                                         @if (!$hasAttributeValue)
-                                            <a href="{{ URL::to('add-detail-product/' . $product_item->product_id) }}"
+                                            <a href="{{ URL::to('admin/add-detail-product/' . $product_item->product_id) }}"
                                                 class="btn btn-primary update-attribute mt-2">Add detail product</a>
                                         @endif
                                     </div>

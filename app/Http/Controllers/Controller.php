@@ -10,14 +10,6 @@ use Illuminate\Support\Facades\Session;
 
 class Controller extends BaseController
 {
-    public function AuthLogin()
-    {
-        $admin_id = Session::get('admin_id');
-        if ($admin_id) {
-            return redirect('dashboard');
-        } else {
-            return redirect('admin')->send();
-        }
-    }
+
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 }

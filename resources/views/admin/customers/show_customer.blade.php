@@ -154,7 +154,7 @@
                                                 @endif
                                                 <td>
                                                     <div class="d-flex gap-2">
-                                                        <a href="{{ URL::to('detail-customer/' . $item->user->id) }}"
+                                                        <a href="{{ URL::to('admin/detail-customer/' . $item->user->id) }}"
                                                             class="btn btn-light btn-sm"><iconify-icon
                                                                 icon="solar:eye-broken"
                                                                 class="align-middle fs-18"></iconify-icon></a>

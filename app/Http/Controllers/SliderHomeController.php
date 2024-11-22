@@ -9,24 +9,16 @@ use Illuminate\Support\Facades\Session;
 
 class SliderHomeController extends Controller
 {
-    public function AuthLogin()
-    {
-        $admin_id = Session::get('admin_id');
-        if ($admin_id) {
-            return redirect('dashboard');
-        } else {
-            return redirect('admin')->send();
-        }
-    }
+
     public function All_Slider()
     {
-        $this->AuthLogin();
+
         $sliders = SliderHome::with('product')->get();
         return view('admin.pages.sliders.all_slider', compact('sliders'));
     }
     public function Add_Slider()
     {
-        $this->AuthLogin();
+
         $list_slider = SliderHome::all();
         $usedProductIds = $list_slider->pluck('product_id')->toArray();
         $products = Product::whereNotIn('product_id', $usedProductIds)->get();
@@ -35,7 +27,7 @@ class SliderHomeController extends Controller
 
     public function Add_Slider_Action(Request $request)
     {
-        $this->AuthLogin();
+
         if ($request->input('product_id') == null) {
             Session::flash('error', 'Please choice product');
             return redirect()->back()->withInput();
@@ -68,7 +60,7 @@ class SliderHomeController extends Controller
     }
     public function Delete_Slider($id)
     {
-        $this->AuthLogin();
+
         $slider = SliderHome::where('id', $id)->delete();
         Session::flash('success', 'Delete item successfully!');
         return redirect('all-sliders');

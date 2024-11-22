@@ -7,7 +7,7 @@
         <div class="container-xxl">
             <div class="row">
                 <div class="col-lg-12">
-                    <form action="{{ URL::to('/update-attribute-action') }}" method="post" id="attributes-form">
+                    <form action="{{ URL::to('admin/update-attribute-action') }}" method="post" id="attributes-form">
                         @csrf
                         <div class="card">
                             <div class="card-header">
@@ -93,7 +93,7 @@
             const category_id = {{ $category_item->category_id }};
 
             // Gửi dữ liệu đến máy chủ bằng AJAX
-            fetch('{{ URL::to('/update-attribute-action') }}', {
+            fetch('{{ URL::to('admin/update-attribute-action') }}', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -134,7 +134,7 @@
             const attributeName = document.getElementById(`add_attribute_name`).value;
             const category_id = {{ $category_item->category_id }};
 
-            fetch('{{ URL::to('/add-attribute-action-detail') }}', {
+            fetch('{{ URL::to('admin/add-attribute-action-detail') }}', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -174,7 +174,7 @@
 
 
         function deleteAttribute(attributeId) {
-            fetch('{{ URL::to('/delete-attribute-action') }}', {
+            fetch('{{ URL::to('admin/delete-attribute-action') }}', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

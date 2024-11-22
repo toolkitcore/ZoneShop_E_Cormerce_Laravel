@@ -9,30 +9,22 @@ use Illuminate\Support\Facades\Session;
 
 class PosterHomeController extends Controller
 {
-    public function AuthLogin()
-    {
-        $admin_id = Session::get('admin_id');
-        if ($admin_id) {
-            return redirect('dashboard');
-        } else {
-            return redirect('admin')->send();
-        }
-    }
+
     public function All_Poster()
     {
-        $this->AuthLogin();
+
         $posters = PosterHome::all();
         return view('admin.pages.posters.all_poster', compact('posters'));
     }
     public function Add_Poster()
     {
-        $this->AuthLogin();
+
         return view('admin.pages.posters.add_poster');
     }
 
     public function Add_Poster_Action(Request $request)
     {
-        $this->AuthLogin();
+
         $poster = new PosterHome();
 
         $get_image = $request->file('product_image');
@@ -61,14 +53,14 @@ class PosterHomeController extends Controller
     }
     public function Delete_Poster($id)
     {
-        $this->AuthLogin();
+
         PosterHome::where('id', $id)->delete();
         Session::flash('success', 'Delete poster successfully!');
         return redirect('all-poster');
     }
     public function Set_Active_Poster($id)
     {
-        $this->AuthLogin();
+
         PosterHome::where('id', $id)->update(['poster_status' => 1]);
 
         Session::flash('success', 'Active the poster successfurlly!');
@@ -76,7 +68,7 @@ class PosterHomeController extends Controller
     }
     public function Set_UnActive_Poster($id)
     {
-        $this->AuthLogin();
+
         PosterHome::where('id', $id)->update(['poster_status' => 0]);
 
         Session::flash('success', 'UnActive the poster successfurlly!');

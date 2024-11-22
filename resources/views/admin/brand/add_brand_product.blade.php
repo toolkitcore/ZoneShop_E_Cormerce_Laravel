@@ -11,7 +11,7 @@
                     <h2 class="text-center text-primary">ADD BRAND</h2>
                 </div>
 
-                <form action="{{ URL::to('/add-brand-action') }}" method="post" enctype="multipart/form-data">
+                <form action="{{ URL::to('admin/add-brand-action') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="col-xl-12 col-lg-12">
                         <form action="">

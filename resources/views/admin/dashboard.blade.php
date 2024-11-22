@@ -472,7 +472,7 @@
                                     Recent Orders
                                 </h4>
 
-                                <a href="{{ URL::to('all-order') }}" class="btn btn-sm btn-soft-primary">
+                                <a href="{{ URL::to('admin/all-order') }}" class="btn btn-sm btn-soft-primary">
                                     Show all
                                 </a>
                             </div>

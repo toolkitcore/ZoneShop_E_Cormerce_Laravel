@@ -8,7 +8,7 @@
                 <div class="col-xl-12 col-lg-12">
                     <h2 class="text-center text-primary">EDIT PRODUCT DETAIL</h2>
                 </div>
-                <form action="{{ URL::to('/update-detail-action/' . $Product->product_id) }}" method="post"
+                <form action="{{ URL::to('admin/update-detail-action/' . $Product->product_id) }}" method="post"
                     enctype="multipart/form-data">
                     @csrf
                     <div class="col-xl-12 col-lg-12">

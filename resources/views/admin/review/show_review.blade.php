@@ -11,7 +11,7 @@
                         <div class="card-header d-flex justify-content-between align-items-center gap-1">
                             <h4 class="card-title flex-grow-1">All Products </h4>
 
-                            <a href="{{ URL::to('/add-product') }}" class="btn btn-sm btn-primary">
+                            <a href="{{ URL::to('admin/add-product') }}" class="btn btn-sm btn-primary">
                                 Add Product
                             </a>
 
@@ -71,7 +71,7 @@
                                                     <?php
                                                         if ($item->is_approved == false) {
                                                         ?>
-                                                    <a href="{{ URL::to('/active-review/' . $item->id) }}"
+                                                    <a href="{{ URL::to('admin/active-review/' . $item->id) }}"
                                                         class="btn btn-light btn-sm">
                                                         <iconify-icon icon="solar:eye-broken"
                                                             class="align-middle fs-18"></iconify-icon>
@@ -90,7 +90,7 @@
                                                 </td>
                                                 <td>
                                                     <div class="d-flex gap-2">
-                                                        <a href="{{ URL::to('delete-review/' . $item->id) }}"
+                                                        <a href="{{ URL::to('admin/delete-review/' . $item->id) }}"
                                                             class="btn btn-soft-danger btn-sm delete-confirm">
                                                             <iconify-icon icon="solar:trash-bin-minimalistic-2-broken"
                                                                 class="align-middle fs-18"></iconify-icon>

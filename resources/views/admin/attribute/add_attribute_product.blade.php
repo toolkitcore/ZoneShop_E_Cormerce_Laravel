@@ -9,7 +9,7 @@
 
             <div class="row">
                 <div class="col-lg-12">
-                    <form action="{{ URL::to('/add-attribute-action') }}" method="post">
+                    <form action="{{ URL::to('admin/add-attribute-action') }}" method="post">
                         @csrf
                         <div class="card">
                             <div class="card-header">

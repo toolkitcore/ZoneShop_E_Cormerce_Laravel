@@ -14,7 +14,7 @@
                     <h2 class="text-center text-primary">ADD CATEGORY</h2>
                 </div>
 
-                <form action="{{ URL::to('/add-category-action') }}" method="post" enctype="multipart/form-data">
+                <form action="{{ URL::to('admin/add-category-action') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="col-xl-12 col-lg-12">
                         <form action="">

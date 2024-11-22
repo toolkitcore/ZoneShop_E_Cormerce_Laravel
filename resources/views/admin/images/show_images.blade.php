@@ -11,7 +11,7 @@
                         <div class="card-header d-flex justify-content-between align-items-center gap-1">
                             <h4 class="card-title flex-grow-1">All Images List</h4>
 
-                            <a href="{{ URL::to('/add-product-image') }}" class="btn btn-sm btn-primary">
+                            <a href="{{ URL::to('admin/add-product-image') }}" class="btn btn-sm btn-primary">
                                 Add Product Images
                             </a>
 

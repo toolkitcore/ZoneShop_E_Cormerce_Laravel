@@ -8,7 +8,7 @@
                 </div>
 
                 @foreach ($edit_brand_product as $brand_item)
-                    <form action="{{ URL::to('/update-brand-action/' . $brand_item->brand_id) }}" method="post"
+                    <form action="{{ URL::to('admin/update-brand-action/' . $brand_item->brand_id) }}" method="post"
                         enctype="multipart/form-data">
                         @csrf
                         <div class="col-xl-12 col-lg-12">

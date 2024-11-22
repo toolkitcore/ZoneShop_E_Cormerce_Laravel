@@ -8,7 +8,7 @@
             <div class="row">
 
                 <div class="col-xl-11 col-lg-11">
-                    <form id="delete-form" action="{{ URL::to('/delete-product-images-choice') }}" method="post">
+                    <form id="delete-form" action="{{ URL::to('admin/delete-product-images-choice') }}" method="post">
                         @csrf
                         <div class="card">
                             <div class="card-header">
@@ -30,7 +30,7 @@
                         <div class="p-3 bg-light mb-3 rounded">
                             <div class="row justify-content-end g-2">
                                 <div class="col-lg-2">
-                                    <a href="{{ URL::to('/product-images') }}"
+                                    <a href="{{ URL::to('admin/product-images') }}"
                                         class="btn btn-outline-secondary w-100">Back</a>
                                 </div>
                                 <div class="col-lg-2">

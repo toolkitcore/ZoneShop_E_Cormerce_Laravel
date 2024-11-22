@@ -25,7 +25,7 @@
                 </div>
 
                 @foreach ($edit_category_product as $category_item)
-                    <form action="{{ URL::to('/update-category-action/' . $category_item->category_id) }}" method="post"
+                    <form action="{{ URL::to('admin/update-category-action/' . $category_item->category_id) }}" method="post"
                         enctype="multipart/form-data">
                         @csrf
                         <div class="col-xl-12 col-lg-12">
@@ -46,7 +46,7 @@
                                 if ($category_item->category_image != '') {
                                 ?>
                                         <img id="imagePreview"
-                                            src="{{ URL::to('public/uploads/category/' . $category_item->category_image) }}"
+                                            src="{{ URL::to('admin/public/uploads/category/' . $category_item->category_image) }}"
                                             alt="{{ 'uploads/category/' . $category_item->category_image }}"
                                             width="300" />
                                         <?php

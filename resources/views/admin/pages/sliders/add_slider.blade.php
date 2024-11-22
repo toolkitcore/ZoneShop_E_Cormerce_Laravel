@@ -8,7 +8,7 @@
 
             <div class="row">
                 <div class="col-xl-12 col-lg-12">
-                    <form action="{{ URL::to('/add-slider-action') }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ URL::to('admin/add-slider-action') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="card">
                             <div class="card-header">

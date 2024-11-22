@@ -10,15 +10,7 @@ use Illuminate\Support\Facades\Session;
 
 class ReviewsController extends Controller
 {
-    public function AuthLogin()
-    {
-        $admin_id = Session::get('admin_id');
-        if ($admin_id) {
-            return redirect('dashboard');
-        } else {
-            return redirect('admin')->send();
-        }
-    }
+
     public function Show_review($transaction_id)
     {
         $user_id = Auth::user()->id;
@@ -50,13 +42,13 @@ class ReviewsController extends Controller
     }
     public function Show_Review_Product()
     {
-        $this->AuthLogin();
+
         $list_review = Reviews::with(['product', 'user'])->orderBy('id', 'desc')->get();
         return view('admin.review.show_review', compact('list_review'));
     }
     public function Set_Active_Review($id)
     {
-        $this->AuthLogin();
+
         Reviews::where('id', $id)->update(['is_approved' => true]);
 
         Session::flash('success', 'Active the review successfully!');
@@ -64,7 +56,7 @@ class ReviewsController extends Controller
     }
     public function Set_UnActive_Review($id)
     {
-        $this->AuthLogin();
+
         Reviews::where('id', $id)->update(['is_approved' => false]);
 
         Session::flash('success', 'UnActive the review successfully!');
@@ -72,26 +64,26 @@ class ReviewsController extends Controller
     }
     public function Delete_Review($id)
     {
-        $this->AuthLogin();
+
         Reviews::where('id', $id)->delete();
         Session::flash('success', 'Delete review successfully!');
         return redirect('review-product');
     }
     public function Show_FeedBack()
     {
-        $this->AuthLogin();
+
         $list_feedback = Reviews::where('is_featured', 1)->with(['user', 'product'])->get();
         return view('admin.pages.feedback.show_feedback', compact('list_feedback'));
     }
     public function Add_FeedBack()
     {
-        $this->AuthLogin();
+
         $list_feedback = Reviews::with(['user', 'product'])->orderBy('rating', 'desc')->get();
         return view('admin.pages.feedback.add_feedback', compact('list_feedback'));
     }
     public function Set_Active_Feedback($id)
     {
-        $this->AuthLogin();
+
         Reviews::where('id', $id)->update(['is_featured' => true]);
 
         Session::flash('success', 'Active the feedback successfully!');
@@ -99,7 +91,7 @@ class ReviewsController extends Controller
     }
     public function Set_UnActive_Feedback($id)
     {
-        $this->AuthLogin();
+
         Reviews::where('id', $id)->update(['is_featured' => false]);
 
         Session::flash('success', 'UnActive the fe  edback successfully!');
@@ -107,7 +99,7 @@ class ReviewsController extends Controller
     }
     public function Delete_Feedback($id)
     {
-        $this->AuthLogin();
+
         Reviews::where('id', $id)->update(['is_featured' => false]);
 
         Session::flash('success', 'UnActive the fe  feeedback successfully!');

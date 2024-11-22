@@ -207,13 +207,7 @@
                                             <a href="{{ URL::to('account') }}">My Account</a>
                                         </li>
                                         <li>
-                                            <a href="#">Initiate return</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Support</a>
-                                        </li>
-                                        <li>
-                                            <a href="{{ URL::to('/admin') }}">Adminstrator</a>
+                                            <a href="{{ URL::to('/admin/login') }}">Adminstrator</a>
                                         </li>
                                     </ul>
                                     @auth

@@ -10,19 +10,11 @@ use Illuminate\Support\Facades\Session;
 
 class AddressController extends Controller
 {
-    public function AuthLogin()
-    {
-        $admin_id = Session::get('admin_id');
-        if ($admin_id) {
-            return redirect('dashboard');
-        } else {
-            return redirect('admin')->send();
-        }
-    }
+
 
     public function Show_Address_Pickup()
     {
-        $this->AuthLogin();
+
         $address = Address::where('user_id', null)->get();
         if ($address->isEmpty()) {
             $address = null;
@@ -33,7 +25,7 @@ class AddressController extends Controller
 
     public function addAddress(Request $request)
     {
-        $this->AuthLogin();
+
         $address = Address::create([
             // 'user_id' => null,
             'address_type' => 'pickup',
@@ -49,7 +41,7 @@ class AddressController extends Controller
     }
     public function DeleteAddress(Request $request)
     {
-        $this->AuthLogin();
+
         $addresses = Address::where('address_type', 'pickup')->where('user_id', null)->get();
 
         if ($addresses->isEmpty()) {

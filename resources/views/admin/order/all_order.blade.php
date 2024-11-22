@@ -278,7 +278,7 @@
                                                 </td>
                                                 <td>
                                                     <div class="d-flex gap-2">
-                                                        <a href="{{ URL::to('order-detail/' . $item->transaction_id) }}"
+                                                        <a href="{{ URL::to('admin/order-detail/' . $item->transaction_id) }}"
                                                             class="btn btn-soft-primary btn-sm">
                                                             <iconify-icon icon="solar:eye-broken"
                                                                 class="align-middle fs-18">

@@ -11,7 +11,7 @@
                         <div class="card-header d-flex justify-content-between align-items-center gap-1">
                             <h4 class="card-title flex-grow-1">Select reviews to display on the homepage </h4>
 
-                            <a href="{{ URL::to('/add-feedback') }}" class="btn btn-sm btn-primary">
+                            <a href="{{ URL::to('admin/add-feedback') }}" class="btn btn-sm btn-primary">
                                 Add item
                             </a>
                         </div>
@@ -40,7 +40,7 @@
                                                 </td>
                                                 <td>
                                                     <div class="d-flex gap-2">
-                                                        <a href="{{ URL::to('delete-feedback/' . $item->id) }}"
+                                                        <a href="{{ URL::to('admin/delete-feedback/' . $item->id) }}"
                                                             class="btn btn-soft-danger btn-sm delete-confirm">
                                                             <iconify-icon icon="solar:trash-bin-minimalistic-2-broken"
                                                                 class="align-middle fs-18"></iconify-icon>

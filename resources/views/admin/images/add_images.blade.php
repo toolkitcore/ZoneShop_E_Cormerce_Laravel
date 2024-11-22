@@ -15,7 +15,7 @@
                             </h4>
                         </div>
                         <div class="card-body">
-                            <form action="{{ URL::to('/upload-product-images/' . $product_item->product_id) }}"
+                            <form action="{{ URL::to('admin/upload-product-images/' . $product_item->product_id) }}"
                                 method="post" class="dropzone" id="myDragAndDropUploader" data-plugin="dropzone"
                                 data-previews-container="#file-previews"
                                 data-upload-preview-template="#uploadPreviewTemplate" enctype="multipart/form-data">
@@ -37,7 +37,8 @@
                     <div class="p-3 bg-light mb-3 rounded">
                         <div class="row justify-content-end g-2">
                             <div class="col-lg-2">
-                                <a href="{{ URL::to('/product-images') }}" class="btn btn-outline-secondary w-100">Back</a>
+                                <a href="{{ URL::to('admin/product-images') }}"
+                                    class="btn btn-outline-secondary w-100">Back</a>
                             </div>
                             <div class="col-lg-2">
                                 <a href="#!" type="submit" id="uploadBtn"

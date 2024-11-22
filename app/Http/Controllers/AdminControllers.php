@@ -28,7 +28,7 @@ class AdminControllers extends Controller
     // }
     public function index()
     {
-        // $this->AuthLogin();
+        //  
         $revenueData = DB::table(
             DB::raw(
                 '(SELECT 1 AS month UNION ALL
@@ -213,7 +213,7 @@ class AdminControllers extends Controller
     //login -> dashboard    
     public function Dashboard(Request $request)
     {
-        // $this->AuthLogin();
+        //  
         // $admin_email = $request->admin_email;
         // $admin_password = md5($request->admin_password);
 
@@ -233,7 +233,7 @@ class AdminControllers extends Controller
     }
     public function Logout()
     {
-        // $this->AuthLogin();
+        //  
         // Session::put('admin_name', null);
         // Session::put('admin_id', null);
         // Session::flash('success', 'Logout Successfully !');
@@ -241,7 +241,7 @@ class AdminControllers extends Controller
     }
     public function Show_profile()
     {
-        // $this->AuthLogin();
+        //  
         return view('admin.profile_admin');
     }
 }

@@ -15,25 +15,17 @@ use Illuminate\Support\Facades\Session;
 
 class ProductController extends Controller
 {
-    public function AuthLogin()
-    {
-        $admin_id = Session::get('admin_id');
-        if ($admin_id) {
-            return redirect('dashboard');
-        } else {
-            return redirect('admin')->send();
-        }
-    }
+
     public function Show_Product()
     {
-        $this->AuthLogin();
+
         $products = Product::with(['brand', 'category'])->paginate(6);
 
         return view('admin.product.all_product', compact('products'));
     }
     public function Add_Product()
     {
-        $this->AuthLogin();
+
         $Categories = Category_Product::all();
         $Brands = Brand_Product::all();
         return view('admin.product.add_product')
@@ -42,7 +34,7 @@ class ProductController extends Controller
     }
     public function Add_Product_Action(Request $request)
     {
-        $this->AuthLogin();
+
         // dd($request->all());
 
         $data = new Product();
@@ -78,7 +70,7 @@ class ProductController extends Controller
     }
     public function Set_Active_product($product_id)
     {
-        $this->AuthLogin();
+
         Product::where('product_id', $product_id)->update(['product_status' => 1]);
 
         Session::flash('success', 'Active the product successfurlly!');
@@ -86,7 +78,7 @@ class ProductController extends Controller
     }
     public function Set_UnActive_product($product_id)
     {
-        $this->AuthLogin();
+
         Product::where('product_id', $product_id)->update(['product_status' => 0]);
 
         Session::flash('success', 'UnActive the product successfurlly!');
@@ -95,7 +87,7 @@ class ProductController extends Controller
     public function Edit_product($product_id)
     {
 
-        $this->AuthLogin();
+
         $edit_product = Product::where('product_id', $product_id)->get();
         $categories = Category_Product::all();
         $brands = Brand_Product::all();
@@ -112,7 +104,7 @@ class ProductController extends Controller
     public function Update_product(Request $request, $product_id)
     {
 
-        $this->AuthLogin();
+
         $data = array();
         $data['product_name'] = $request->product_name;
         $data['product_description'] = $request->product_description;
@@ -142,14 +134,14 @@ class ProductController extends Controller
     }
     public function Delete_product($product_id)
     {
-        $this->AuthLogin();
+
         Product::where('product_id', $product_id)->delete();
         Session::flash('success', 'Delete the Product Successfully');
         return Redirect('all-product');
     }
     public function Product_detail($product_id)
     {
-        $this->AuthLogin();
+
         $product = Product::where('product_id', $product_id)
             ->where('product_status', '=', '1')
             ->with('brand', 'category', 'productAttributes')

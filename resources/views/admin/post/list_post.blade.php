@@ -11,7 +11,7 @@
                         <div class="card-header d-flex justify-content-between align-items-center gap-1">
                             <h4 class="card-title flex-grow-1">All posts </h4>
 
-                            <a href="{{ URL::to('/add-post') }}" class="btn btn-sm btn-primary">
+                            <a href="{{ URL::to('admin/add-post') }}" class="btn btn-sm btn-primary">
                                 Add Post
                             </a>
 
@@ -77,18 +77,18 @@
                                                 <td>
                                                     <div class="d-flex gap-2">
                                                         <!-- EDIT product -->
-                                                        <a href="{{ URL::to('edit-post/' . $post_item->id) }}"
+                                                        <a href="{{ URL::to('admin/edit-post/' . $post_item->id) }}"
                                                             class="btn btn-soft-primary btn-sm">
                                                             <iconify-icon icon="solar:pen-2-broken"
                                                                 class="align-middle fs-18"></iconify-icon>
                                                         </a>
-                                                        <a href="{{ URL::to('post-details/' . $post_item->id) }}"
+                                                        <a href="{{ URL::to('admin/post-details/' . $post_item->id) }}"
                                                             class="btn btn-soft-primary btn-sm">
                                                             <iconify-icon icon="fluent-emoji-high-contrast:glasses"
                                                                 class="align-middle fs-18"></iconify-icon>
                                                         </a>
                                                         <!-- DELETE product -->
-                                                        <a href="{{ URL::to('delete-post/' . $post_item->id) }}"
+                                                        <a href="{{ URL::to('admin/delete-post/' . $post_item->id) }}"
                                                             class="btn btn-soft-danger btn-sm delete-confirm">
                                                             <iconify-icon icon="solar:trash-bin-minimalistic-2-broken"
                                                                 class="align-middle fs-18"></iconify-icon>

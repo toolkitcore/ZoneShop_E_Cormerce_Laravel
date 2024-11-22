@@ -9,7 +9,8 @@
 
             <div class="row">
                 <div class="col-lg-12">
-                    <form action="{{ URL::to('add-attribute-choice-action/' . $category_item->category_id) }}" method="post">
+                    <form action="{{ URL::to('admin/add-attribute-choice-action/' . $category_item->category_id) }}"
+                        method="post">
                         @csrf
                         <div class="card">
                             <div class="card-header">

@@ -11,7 +11,7 @@
                         <div class="card-header d-flex justify-content-between align-items-center gap-1">
                             <h4 class="card-title flex-grow-1">All Products </h4>
 
-                            <a href="{{ URL::to('/add-product') }}" class="btn btn-sm btn-primary">
+                            <a href="{{ URL::to('admin/add-product') }}" class="btn btn-sm btn-primary">
                                 Add Product
                             </a>
 
@@ -99,7 +99,7 @@
                                                     <?php
                                                         if ($product->product_status == 0) {
                                                         ?>
-                                                    <a href="{{ URL::to('/active-product/' . $product->product_id) }}"
+                                                    <a href="{{ URL::to('admin/active-product/' . $product->product_id) }}"
                                                         class="btn btn-light btn-sm">
                                                         <iconify-icon icon="solar:eye-broken"
                                                             class="align-middle fs-18"></iconify-icon>
@@ -107,7 +107,7 @@
                                                     <?php
                                                         } else {
                                                         ?>
-                                                    <a href="{{ URL::to('/unactive-product/' . $product->product_id) }}"
+                                                    <a href="{{ URL::to('admin/unactive-product/' . $product->product_id) }}"
                                                         class="btn btn-primary btn-sm">
                                                         <iconify-icon icon="solar:eye-broken"
                                                             class="align-middle fs-18"></iconify-icon>
@@ -119,18 +119,18 @@
                                                 <td>
                                                     <div class="d-flex gap-2">
                                                         <!-- EDIT product -->
-                                                        <a href="{{ URL::to('edit-product/' . $product->product_id) }}"
+                                                        <a href="{{ URL::to('admin/edit-product/' . $product->product_id) }}"
                                                             class="btn btn-soft-primary btn-sm">
                                                             <iconify-icon icon="solar:pen-2-broken"
                                                                 class="align-middle fs-18"></iconify-icon>
                                                         </a>
-                                                        <a href="{{ URL::to('product-details/' . $product->product_id) }}"
+                                                        <a href="{{ URL::to('admin/product-details/' . $product->product_id) }}"
                                                             class="btn btn-soft-primary btn-sm">
                                                             <iconify-icon icon="fluent-emoji-high-contrast:glasses"
                                                                 class="align-middle fs-18"></iconify-icon>
                                                         </a>
                                                         <!-- DELETE product -->
-                                                        <a href="{{ URL::to('delete-product/' . $product->product_id) }}"
+                                                        <a href="{{ URL::to('admin/delete-product/' . $product->product_id) }}"
                                                             class="btn btn-soft-danger btn-sm delete-confirm">
                                                             <iconify-icon icon="solar:trash-bin-minimalistic-2-broken"
                                                                 class="align-middle fs-18"></iconify-icon>

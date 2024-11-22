@@ -11,18 +11,10 @@ use Illuminate\Support\Facades\Session;
 
 class CustomerController extends Controller
 {
-    public function AuthLogin()
-    {
-        $admin_id = Session::get('admin_id');
-        if ($admin_id) {
-            return redirect('dashboard');
-        } else {
-            return redirect('admin')->send();
-        }
-    }
+
     public function Show_Customer()
     {
-        $this->AuthLogin();
+
         $count_customers = Transaction::distinct('user_id')->count('user_id');
         $count_order = Orders::count('product_id');
         $count_invoice = Transaction::sum('transaction_amount');
@@ -39,7 +31,7 @@ class CustomerController extends Controller
     }
     public function Show_Customer_Detail($id)
     {
-        $this->AuthLogin();
+
         $user = User::where('id', $id)->first();
         $transaction = Transaction::where('user_id', $id)
             ->with(['orders', 'user', 'deliveryAddress'])

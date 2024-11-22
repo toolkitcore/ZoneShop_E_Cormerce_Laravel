@@ -12,32 +12,24 @@ use Illuminate\Support\Facades\Redirect;
 
 class BrandController extends Controller
 {
-    public function AuthLogin()
-    {
-        $admin_id = Session::get('admin_id');
-        if ($admin_id) {
-            return redirect('dashboard');
-        } else {
-            return redirect('admin')->send();
-        }
-    }
+
     public function Show_Brand()
     {
-        $this->AuthLogin();
+
 
         $brands = Brand_Product::paginate(6);
         return view('admin.brand.all_brand_product', compact('brands'));
     }
     public function Add_Brand()
     {
-        $this->AuthLogin();
+
         $brands = Brand_Product::all();
         return view('admin.brand.add_brand_product', compact('brands'));
     }
 
     public function Add_Brand_Action(Request $request)
     {
-        $this->AuthLogin();
+
         $data = new Brand_Product();
         $data->brand_name = $request->brand_name;
         $data->brand_desc = $request->brand_desc;
@@ -50,7 +42,7 @@ class BrandController extends Controller
     // SET STATUS FOR brand 
     public function Set_Active_Brand_Product($brand_id)
     {
-        $this->AuthLogin();
+
         Brand_Product::where('brand_id', $brand_id)->update(['brand_status' => 1]);
 
         Session::flash('success', 'Activate the brand product successfurlly!');
@@ -58,7 +50,7 @@ class BrandController extends Controller
     }
     public function Set_UnActive_Brand_Product($brand_id)
     {
-        $this->AuthLogin();
+
         Brand_Product::where('brand_id', $brand_id)->update(['brand_status' => 0]);
 
         Session::flash('success', 'Unactive the brand product successfurlly!');
@@ -67,7 +59,7 @@ class BrandController extends Controller
     //show page edit brand 
     public function Edit_Brand_Product($brand_id)
     {
-        $this->AuthLogin();
+
         $edit_Brand_Product = Brand_Product::where('brand_id', $brand_id)->get();
         $brands = Brand_Product::all();
 
@@ -81,7 +73,7 @@ class BrandController extends Controller
 
     public function Update_Brand_Product(Request $request, $brand_id)
     {
-        $this->AuthLogin();
+
         $data = array();
         $data['brand_name'] = $request->brand_name;
         $data['brand_desc'] = $request->brand_desc;
@@ -92,7 +84,7 @@ class BrandController extends Controller
     }
     public function Delete_Brand_Product($brand_id)
     {
-        $this->AuthLogin();
+
         Brand_Product::where('brand_id', $brand_id)->delete();
         Session::flash('success', 'Delete the brand Product Successfully');
         return Redirect('all-brand-product');

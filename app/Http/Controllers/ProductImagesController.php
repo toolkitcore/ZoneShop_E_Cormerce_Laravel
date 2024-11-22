@@ -11,25 +11,17 @@ use Illuminate\Support\Facades\Session;
 
 class ProductImagesController extends Controller
 {
-    public function AuthLogin()
-    {
-        $admin_id = Session::get('admin_id');
-        if ($admin_id) {
-            return redirect('dashboard');
-        } else {
-            return redirect('admin')->send();
-        }
-    }
+
     public function Show_Images()
     {
-        $this->AuthLogin();
+
         $product_images = Product_Images::with('product')->get();
         $products = Product::orderBy('category_id', 'asc')->with('category')->get();
         return view('admin.images.show_images', compact('product_images', 'products'));
     }
     public function Add_Images($product_id)
     {
-        $this->AuthLogin();
+
         $product_item = Product::where('product_id', $product_id)->first();
         return view('admin.images.add_images', compact('product_item'));
     }
@@ -38,7 +30,7 @@ class ProductImagesController extends Controller
     public function Upload_Image_Product(Request $request, $product_id)
     {
 
-        $this->AuthLogin();
+
         if ($request->hasFile('file')) {
 
             $uploadPath = "public/uploads/images/product/";
@@ -62,14 +54,14 @@ class ProductImagesController extends Controller
     }
     public function Delete_images($product_id)
     {
-        $this->AuthLogin();
+
         $list_images_of_product = Product_Images::where('product_id', $product_id)->get();
         $product_item = Product::where('product_id', $product_id)->first();
         return view('admin.images.delete_images', compact('product_item', 'list_images_of_product'));
     }
     public function Delete_choice(Request $request)
     {
-        $this->AuthLogin();
+
         $imageIds = $request->input('image_ids');
 
         if ($imageIds) {

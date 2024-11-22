@@ -11,7 +11,7 @@
 
             <div class="row">
                 @foreach ($edit_product as $product_item)
-                    <form action="{{ URL::to('/update-product-action/' . $product_item->product_id) }}" method="post"
+                    <form action="{{ URL::to('admin/update-product-action/' . $product_item->product_id) }}" method="post"
                         enctype="multipart/form-data">
                         @csrf
                         <div class="col-xl-9 col-lg-8 ">

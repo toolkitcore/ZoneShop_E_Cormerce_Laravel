@@ -17,19 +17,10 @@ use Illuminate\Support\Facades\Redirect;
 
 class DetailProductController extends Controller
 {
-    public function AuthLogin()
-    {
-        $admin_id = Session::get('admin_id');
-        if ($admin_id) {
-            return redirect('dashboard');
-        } else {
-            return redirect('admin')->send();
-        }
-    }
 
     public function Show_Detail_Product()
     {
-        $this->AuthLogin();
+
         $products = Product::all();
         $product_count = Product::count();
         $categories = Category_Product::whereNotNull('category_parent_id')->get();
@@ -46,7 +37,7 @@ class DetailProductController extends Controller
 
     public function Add_Detail_Product($product_id)
     {
-        $this->AuthLogin();
+
         $Product = Product::with(['category'])->where('product_id', $product_id)->first();
         if ($Product) {
             $category = Category_Product::with('attributes')->where('category_id', $Product->category_id)->first();
@@ -57,7 +48,7 @@ class DetailProductController extends Controller
     }
     public function Edit_Detail_Product($product_id)
     {
-        $this->AuthLogin();
+
         $Product = Product::with('category', 'productAttributes.attribute')
             ->where('product_id', $product_id)
             ->first();
@@ -75,13 +66,13 @@ class DetailProductController extends Controller
 
     public function Edit_Attribute_Product($category_id)
     {
-        $this->AuthLogin();
+
         return view('admin.product.detail.edit_detail');
     }
     public function Add_detail_action(Request $request, $product_id)
     {
 
-        $this->AuthLogin();
+
         $attributes = $request->input('attribute_values');
 
         foreach ($attributes as $attributeID => $value) {
@@ -97,7 +88,7 @@ class DetailProductController extends Controller
     public function Update_Detail_action(Request $request, $product_id)
     {
 
-        $this->AuthLogin();
+
         $attributes = $request->input('attribute_values');
 
         foreach ($attributes as $attributeID => $value) {
@@ -117,7 +108,7 @@ class DetailProductController extends Controller
 
     public function search(Request $request)
     {
-        $this->AuthLogin();
+
         $output = "";
         $products = Product::where('product_name', 'Like', '%' . $request->search . '%')
             ->orWhere('product_price_selling', 'Like', '%' . $request->search . '%')
@@ -145,7 +136,7 @@ class DetailProductController extends Controller
 
     public function getData(Request $request)
     {
-        $this->AuthLogin();
+
         // dd($request->all());
         $query = Product::where('product_status', 1);
 
@@ -197,7 +188,7 @@ class DetailProductController extends Controller
 
     public function Product_Details($product_id)
     {
-        $this->AuthLogin();
+
         $product_details = Product_Attributes::where('product_id', $product_id)->with('attribute')->get();
         $product_item = Product::where('product_id', $product_id)->first();
         $product_images = Product_Images::where('product_id', $product_id)->get();
@@ -209,7 +200,7 @@ class DetailProductController extends Controller
     }
     public function Show_add_detail_product()
     {
-        $this->AuthLogin();
+
         $products = Product::with('productAttributes', 'category', 'brand')->get();
         return view('admin.product.detail.add_page', compact('products'));
     }

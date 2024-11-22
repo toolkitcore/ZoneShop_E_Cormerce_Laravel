@@ -91,7 +91,7 @@
                 </div> --}}
 
                 <div class="col-xl-12 col-lg-12 ">
-                    <form action="{{ URL::to('/add-product-action') }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ URL::to('admin/add-product-action') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="card">
                             <div class="card-header">

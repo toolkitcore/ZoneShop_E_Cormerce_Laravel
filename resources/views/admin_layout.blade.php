@@ -96,7 +96,7 @@
 
                                     @if ($oder_confirm == 0)
                                     @else
-                                        <a href="{{ URL::to('order-confirm') }}"
+                                        <a href="{{ URL::to('admin/order-confirm') }}"
                                             class="dropdown-item py-3 border-bottom">
                                             <div class="d-flex">
                                                 <div class="flex-shrink-0">
@@ -118,7 +118,7 @@
                                     @endif
                                     @if ($oder_success == 0)
                                     @else
-                                        <a href="{{ URL::to('order-confirm') }}"
+                                        <a href="{{ URL::to('admin/order-confirm') }}"
                                             class="dropdown-item py-3 border-bottom">
                                             <div class="d-flex">
                                                 <div class="flex-shrink-0">
@@ -142,7 +142,7 @@
                                     @if ($review_product_count == 0)
                                     @else
                                         @foreach ($review_product as $item)
-                                            <a href="{{ URL::to('review-product') }}"
+                                            <a href="{{ URL::to('admin/review-product') }}"
                                                 class="dropdown-item py-3 border-bottom">
                                                 <div class="d-flex">
                                                     <div class="flex-shrink-0">
@@ -212,7 +212,7 @@
                             <div class="dropdown-menu dropdown-menu-end">
                                 <!-- item-->
                                 <h6 class="dropdown-header">Welcome Zoneshop !</h6>
-                                <a class="dropdown-item" href="{{ URL::to('/profile-admin') }}">
+                                <a class="dropdown-item" href="{{ URL::to('admin/profile-admin') }}">
                                     <i class="bx bx-user-circle text-muted fs-18 align-middle me-1"></i><span
                                         class="align-middle">Profile</span>
                                 </a>
@@ -554,7 +554,7 @@
                     <li class="menu-title">General</li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ URL::to('/dashboard') }}">
+                        <a class="nav-link" href="{{ URL::to('admin/dashboard') }}">
                             <span class="nav-icon">
                                 <iconify-icon icon="solar:widget-5-bold-duotone"></iconify-icon>
                             </span>
@@ -582,11 +582,13 @@
                                         <ul class="nav sub-navbar-nav">
                                             <li class="sub-nav-item">
                                                 <a class="sub-nav-link"
-                                                    href="{{ URL::to('all-attribute-product') }}">List Attribute</a>
+                                                    href="{{ URL::to('admin/all-attribute-product') }}">List
+                                                    Attribute</a>
                                             </li>
                                             <li class="sub-nav-item">
                                                 <a class="sub-nav-link"
-                                                    href="{{ URL::to('add-attribute-product') }}">Add Attribute</a>
+                                                    href="{{ URL::to('admin/add-attribute-product') }}">Add
+                                                    Attribute</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -601,11 +603,12 @@
                                         <ul class="nav sub-navbar-nav">
                                             <li class="sub-nav-item">
                                                 <a class="sub-nav-link"
-                                                    href="{{ URL::to('all-detail-product') }}">List Product Detail</a>
+                                                    href="{{ URL::to('admin/all-detail-product') }}">List Product
+                                                    Detail</a>
                                             </li>
                                             <li class="sub-nav-item">
                                                 <a class="sub-nav-link"
-                                                    href="{{ URL::to('add-detail-product-page') }}">Add Product
+                                                    href="{{ URL::to('admin/add-detail-product-page') }}">Add Product
                                                     Detail</a>
                                             </li>
                                         </ul>
@@ -620,11 +623,12 @@
                                     <div class="collapse" id="sidebarItemDemoSubItem3">
                                         <ul class="nav sub-navbar-nav">
                                             <li class="sub-nav-item">
-                                                <a class="sub-nav-link" href="{{ URL::to('all-product') }}">List
+                                                <a class="sub-nav-link"
+                                                    href="{{ URL::to('admin/all-product') }}">List
                                                     Product</a>
                                             </li>
                                             <li class="sub-nav-item">
-                                                <a class="sub-nav-link" href="{{ URL::to('add-product') }}">Add
+                                                <a class="sub-nav-link" href="{{ URL::to('admin/add-product') }}">Add
                                                     Product</a>
                                             </li>
                                         </ul>
@@ -639,7 +643,8 @@
                                     <div class="collapse" id="sidebarItemDemoSubItem4">
                                         <ul class="nav sub-navbar-nav">
                                             <li class="sub-nav-item">
-                                                <a class="sub-nav-link" href="{{ URL::to('product-images') }}">List
+                                                <a class="sub-nav-link"
+                                                    href="{{ URL::to('admin/product-images') }}">List
                                                     Product Images</a>
                                             </li>
                                         </ul>
@@ -667,11 +672,12 @@
                                     <div class="collapse" id="sidebarItemOrderSubItem2">
                                         <ul class="nav sub-navbar-nav">
                                             <li class="sub-nav-item">
-                                                <a class="sub-nav-link" href="{{ URL::to('order-confirm') }}">Order
+                                                <a class="sub-nav-link"
+                                                    href="{{ URL::to('admin/order-confirm') }}">Order
                                                     Confirm</a>
                                             </li>
                                             <li class="sub-nav-item">
-                                                <a class="sub-nav-link" href="{{ URL::to('all-order') }}">List
+                                                <a class="sub-nav-link" href="{{ URL::to('admin/all-order') }}">List
                                                     Order</a>
                                             </li>
 
@@ -688,7 +694,7 @@
                                         <ul class="nav sub-navbar-nav">
                                             <li class="sub-nav-item">
                                                 <a class="sub-nav-link"
-                                                    href="{{ URL::to('address-pickup') }}">Address Pickup</a>
+                                                    href="{{ URL::to('admin/address-pickup') }}">Address Pickup</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -708,11 +714,11 @@
                         <div class="collapse" id="sidebarCategory">
                             <ul class="nav sub-navbar-nav">
                                 <li class="sub-nav-item">
-                                    <a class="sub-nav-link" href="{{ URL::to('/all-category-product') }}">List
+                                    <a class="sub-nav-link" href="{{ URL::to('admin/all-category-product') }}">List
                                         Category</a>
                                 </li>
                                 <li class="sub-nav-item">
-                                    <a class="sub-nav-link" href="{{ URL::to('/add-category-product') }}">Add
+                                    <a class="sub-nav-link" href="{{ URL::to('admin/add-category-product') }}">Add
                                         Category</a>
                                 </li>
                             </ul>
@@ -729,10 +735,12 @@
                         <div class="collapse" id="sidebarBrand">
                             <ul class="nav sub-navbar-nav">
                                 <li class="sub-nav-item">
-                                    <a class="sub-nav-link" href="{{ URL::to('/all-brand-product') }}">List Brand</a>
+                                    <a class="sub-nav-link" href="{{ URL::to('admin/all-brand-product') }}">List
+                                        Brand</a>
                                 </li>
                                 <li class="sub-nav-item">
-                                    <a class="sub-nav-link" href="{{ URL::to('/add-brand-product') }}">Add Brand</a>
+                                    <a class="sub-nav-link" href="{{ URL::to('admin/add-brand-product') }}">Add
+                                        Brand</a>
                                 </li>
                             </ul>
                         </div>
@@ -750,10 +758,10 @@
                         <div class="collapse" id="sidebarPurchases">
                             <ul class="nav sub-navbar-nav">
                                 <li class="sub-nav-item">
-                                    <a class="sub-nav-link" href="{{ URL::to('list-post') }}">List Post</a>
+                                    <a class="sub-nav-link" href="{{ URL::to('admin/list-post') }}">List Post</a>
                                 </li>
                                 <li class="sub-nav-item">
-                                    <a class="sub-nav-link" href="{{ URL::to('add-post') }}">Create Post</a>
+                                    <a class="sub-nav-link" href="{{ URL::to('admin/add-post') }}">Create Post</a>
                                 </li>
                             </ul>
                         </div>
@@ -769,10 +777,11 @@
                         <div class="collapse" id="sidebarReview">
                             <ul class="nav sub-navbar-nav">
                                 <li class="sub-nav-item">
-                                    <a class="sub-nav-link" href="{{ URL::to('review-product') }}">List Review</a>
+                                    <a class="sub-nav-link" href="{{ URL::to('admin/review-product') }}">List
+                                        Review</a>
                                 </li>
                                 {{-- <li class="sub-nav-item">
-                                    <a class="sub-nav-lin   k" href="{{ URL::to('add-post') }}">Create Post</a>
+                                    <a class="sub-nav-lin   k" href="{{   URL::to('admin/add-post') }}">Create Post</a>
                                 </li> --}}
                             </ul>
                         </div>
@@ -782,7 +791,7 @@
                     <li class="menu-title mt-2">Users</li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ URL::to('/profile-admin') }}">
+                        <a class="nav-link" href="{{ URL::to('admin/profile-admin') }}">
                             <span class="nav-icon">
                                 <iconify-icon icon="solar:chat-square-like-bold-duotone"></iconify-icon>
                             </span>
@@ -836,7 +845,7 @@
                             <ul class="nav sub-navbar-nav">
 
                                 <li class="sub-nav-item">
-                                    <a class="sub-nav-link" href="{{ URL::to('show-customer') }}">List</a>
+                                    <a class="sub-nav-link" href="{{ URL::to('admin/show-customer') }}">List</a>
                                 </li>
 
                             </ul>
@@ -855,10 +864,10 @@
                         <div class="collapse" id="sidebarCoupons">
                             <ul class="nav sub-navbar-nav">
                                 <li class="sub-nav-item">
-                                    <a class="sub-nav-link" href="{{ URL::to('all-sliders') }}">List</a>
+                                    <a class="sub-nav-link" href="{{ URL::to('admin/all-sliders') }}">List</a>
                                 </li>
                                 <li class="sub-nav-item">
-                                    <a class="sub-nav-link" href="{{ URL::to('add-sliders') }}">Add</a>
+                                    <a class="sub-nav-link" href="{{ URL::to('admin/add-sliders') }}">Add</a>
                                 </li>
                             </ul>
                         </div>
@@ -873,10 +882,10 @@
                         <div class="collapse" id="sidebarPoster">
                             <ul class="nav sub-navbar-nav">
                                 <li class="sub-nav-item">
-                                    <a class="sub-nav-link" href="{{ URL::to('all-poster') }}">List</a>
+                                    <a class="sub-nav-link" href="{{ URL::to('admin/all-poster') }}">List</a>
                                 </li>
                                 <li class="sub-nav-item">
-                                    <a class="sub-nav-link" href="{{ URL::to('add-poster') }}">Add</a>
+                                    <a class="sub-nav-link" href="{{ URL::to('admin/add-poster') }}">Add</a>
                                 </li>
                             </ul>
                         </div>
@@ -891,10 +900,10 @@
                         <div class="collapse" id="sidebarFeedBack">
                             <ul class="nav sub-navbar-nav">
                                 <li class="sub-nav-item">
-                                    <a class="sub-nav-link" href="{{ URL::to('all-feedback') }}">List</a>
+                                    <a class="sub-nav-link" href="{{ URL::to('admin/all-feedback') }}">List</a>
                                 </li>
                                 <li class="sub-nav-item">
-                                    <a class="sub-nav-link" href="{{ URL::to('add-feedback') }}">Add</a>
+                                    <a class="sub-nav-link" href="{{ URL::to('admin/add-feedback') }}">Add</a>
                                 </li>
                             </ul>
                         </div>

@@ -36,13 +36,13 @@
                                     <?php
                                             if ($item->is_featured == 0) {
                                             ?>
-                                    <a href="{{ URL::to('set-active-feedback/' . $item->id) }}" type="button"
+                                    <a href="{{ URL::to('admin/set-active-feedback/' . $item->id) }}" type="button"
                                         class="btn btn-soft-danger avatar-sm d-inline-flex align-items-center justify-content-center fs-20 rounded-circle">
                                         <iconify-icon icon="solar:heart-broken"></iconify-icon></a>
                                     <?php
                                             } else {
                                             ?>
-                                    <a href="{{ URL::to('set-unactive-feedback/' . $item->id) }}" type="button"
+                                    <a href="{{ URL::to('admin/set-unactive-feedback/' . $item->id) }}" type="button"
                                         class="btn btn-soft-danger avatar-sm d-inline-flex align-items-center justify-content-center fs-20 rounded-circle"
                                         style="color: var(--bs-btn-hover-color);
                                                 background-color: var(--bs-btn-hover-bg);

@@ -17,15 +17,7 @@ use Illuminate\Support\Facades\Session;
 
 class OrderController extends Controller
 {
-    public function AuthLogin()
-    {
-        $admin_id = Session::get('admin_id');
-        if ($admin_id) {
-            return redirect('dashboard');
-        } else {
-            return redirect('admin')->send();
-        }
-    }
+
     public function Show_checkout()
     {
         if (!auth()->check()) {
@@ -40,7 +32,7 @@ class OrderController extends Controller
     }
     public function Show_Order()
     {
-        $this->AuthLogin();
+
         return view('admin.order.all_order');
     }
 
@@ -157,7 +149,7 @@ class OrderController extends Controller
 
     public function Show_All_Order()
     {
-        $this->AuthLogin();
+
         $transaction_item = Transaction::with([
             'orders',
             'orders.product',
@@ -167,7 +159,7 @@ class OrderController extends Controller
     }
     public function Order_Confirm()
     {
-        $this->AuthLogin();
+
         $order_item = Transaction::where('transaction_status', 0)
             ->orWhere('transaction_status', 1)
             ->with('orders')
@@ -176,7 +168,7 @@ class OrderController extends Controller
     }
     public function Order_Detail(Request $request, $transaction_id)
     {
-        $this->AuthLogin();
+
         $transaction_item = Transaction::where('transaction_id', $transaction_id)
             ->with([
                 'orders',
@@ -198,7 +190,7 @@ class OrderController extends Controller
     // INVOICES
     public function View_Invoice($transaction_id)
     {
-        $this->AuthLogin();
+
         $transaction = Transaction::where('transaction_id', $transaction_id)
             ->with([
                 'pickupAddress',
@@ -211,7 +203,7 @@ class OrderController extends Controller
     }
     public function Download_Invoice($transaction_id)
     {
-        $this->AuthLogin();
+
         $transaction = Transaction::where('transaction_id', $transaction_id)
             ->with([
                 'pickupAddress',
@@ -232,7 +224,7 @@ class OrderController extends Controller
     }
     public function Send_Invoice($transaction_id)
     {
-        $this->AuthLogin();
+
         // Retrieve the transaction with related data
         $transaction = Transaction::where('transaction_id', $transaction_id)
             ->with([

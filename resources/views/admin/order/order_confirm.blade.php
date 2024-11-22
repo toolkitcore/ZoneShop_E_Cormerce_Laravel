@@ -90,7 +90,7 @@
                                                         Waiting ...
                                                     @else
                                                         <div class="d-flex gap-2">
-                                                            <a href="{{ URL::to('confirm-order/' . $item->transaction_id) }}"
+                                                            <a href="{{ URL::to('admin/confirm-order/' . $item->transaction_id) }}"
                                                                 class="btn btn-soft-success btn-sm">
                                                                 <iconify-icon icon="solar:check-circle-bold"
                                                                     class="align-middle fs-18"></iconify-icon>
@@ -100,13 +100,13 @@
                                                 </td>
                                                 <td>
                                                     <div class="d-flex gap-2">
-                                                        <a href="{{ URL::to('order-detail/' . $item->transaction_id) }}"
+                                                        <a href="{{ URL::to('admin/order-detail/' . $item->transaction_id) }}"
                                                             class="btn btn-primary btn-sm">
                                                             <iconify-icon icon="solar:eye-broken"
                                                                 class="align-middle fs-18">
                                                             </iconify-icon>
                                                         </a>
-                                                        <a href="{{ URL::to('cancel-order/' . $item->transaction_id) }}"
+                                                        <a href="{{ URL::to('admin/cancel-order/' . $item->transaction_id) }}"
                                                             class="btn btn-danger btn-sm">
                                                             <iconify-icon icon="solar:trash-bin-minimalistic-2-broken"
                                                                 class="align-middle fs-18">

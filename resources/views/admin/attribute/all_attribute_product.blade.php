@@ -69,17 +69,17 @@
                                                 </td>
                                                 <td>
                                                     <div class="d-flex gap-2">
-                                                        <a href="{{ URL::to('add-attribute-choice/' . $category_item->category_id) }}"
+                                                        <a href="{{ URL::to('admin/add-attribute-choice/' . $category_item->category_id) }}"
                                                             class="btn btn-soft-primary btn-sm">
                                                             <iconify-icon icon="material-symbols-light:add"
                                                                 class="align-middle fs-18"></iconify-icon>
                                                         </a>
-                                                        <a href="{{ URL::to('edit-attribute-product/' . $category_item->category_id) }}"
+                                                        <a href="{{ URL::to('admin/edit-attribute-product/' . $category_item->category_id) }}"
                                                             class="btn btn-soft-primary btn-sm">
                                                             <iconify-icon icon="solar:pen-2-broken"
                                                                 class="align-middle fs-18"></iconify-icon>
                                                         </a>
-                                                        <a href="{{ URL::to('delete-list-attribute-action/' . $category_item->category_id) }}"
+                                                        <a href="{{ URL::to('admin/delete-list-attribute-action/' . $category_item->category_id) }}"
                                                             class="btn btn-soft-danger btn-sm delete-confirm">
                                                             <iconify-icon icon="solar:trash-bin-minimalistic-2-broken"
                                                                 class="align-middle fs-18"></iconify-icon>

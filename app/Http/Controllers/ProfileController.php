@@ -12,15 +12,7 @@ use Illuminate\Support\Facades\Session;
 
 class ProfileController extends Controller
 {
-    public function AuthLogin()
-    {
-        $admin_id = Session::get('admin_id');
-        if ($admin_id) {
-            return redirect('dashboard');
-        } else {
-            return redirect('admin')->send();
-        }
-    }
+
     /**
      * Display the user's profile form.
      */
