@@ -51,7 +51,7 @@ class ReviewsController extends Controller
     public function Show_Review_Product()
     {
         $this->AuthLogin();
-        $list_review = Reviews::with(['product', 'user'])->get();
+        $list_review = Reviews::with(['product', 'user'])->orderBy('id', 'desc')->get();
         return view('admin.review.show_review', compact('list_review'));
     }
     public function Set_Active_Review($id)

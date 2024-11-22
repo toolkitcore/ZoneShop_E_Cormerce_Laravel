@@ -167,7 +167,7 @@ class AdminControllers extends Controller
             ->get();
         $transactionStatuses = DB::table(DB::raw('(SELECT 0 AS transaction_status 
                                                     UNION 
-                                                    SELECT 1 
+                                                    SELECT 1
                                                     UNION 
                                                     SELECT 2 
                                                     UNION 

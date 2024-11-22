@@ -75,9 +75,13 @@
                                 aria-expanded="false">
                                 <iconify-icon icon="solar:bell-bing-bold-duotone"
                                     class="fs-24 align-middle"></iconify-icon>
-                                <span
-                                    class="position-absolute topbar-badge fs-10 translate-middle badge bg-danger rounded-pill">3<span
-                                        class="visually-hidden">unread messages</span></span>
+                                @if ($oder_confirm + $oder_success + $review_product_count == 0)
+                                @else
+                                    <span
+                                        class="position-absolute topbar-badge fs-10 translate-middle badge bg-danger rounded-pill">{{ $oder_confirm + $oder_success + $review_product_count }}
+                                        <span class="visually-hidden">unread messages</span>
+                                    </span>
+                                @endif
                             </button>
                             <div class="dropdown-menu py-0 dropdown-lg dropdown-menu-end"
                                 aria-labelledby="page-header-notifications-dropdown">
@@ -86,99 +90,92 @@
                                         <div class="col">
                                             <h6 class="m-0 fs-16 fw-semibold"> Notifications</h6>
                                         </div>
-                                        <div class="col-auto">
-                                            <a href="javascript: void(0);" class="text-dark text-decoration-underline">
-                                                <small>Clear All</small>
-                                            </a>
-                                        </div>
                                     </div>
                                 </div>
                                 <div data-simplebar style="max-height: 280px;">
-                                    <!-- Item -->
-                                    <a href="javascript:void(0);" class="dropdown-item py-3 border-bottom text-wrap">
-                                        <div class="d-flex">
-                                            <div class="flex-shrink-0">
-                                                <img src="{{ asset('public/uploads/profile/admin_profile.png') }}"
-                                                    class="img-fluid me-2 avatar-sm rounded-circle" alt="avatar-1" />
-                                            </div>
-                                            <div class="flex-grow-1">
-                                                <p class="mb-0"><span class="fw-medium">Josephine Thompson
-                                                    </span>commented on admin panel <span>" Wow 😍! this admin looks
-                                                        good and awesome design"</span></p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <!-- Item -->
-                                    <a href="javascript:void(0);" class="dropdown-item py-3 border-bottom">
-                                        <div class="d-flex">
-                                            <div class="flex-shrink-0">
-                                                <div class="avatar-sm me-2">
-                                                    <span
-                                                        class="avatar-title bg-soft-info text-info fs-20 rounded-circle">
-                                                        D
-                                                    </span>
+
+                                    @if ($oder_confirm == 0)
+                                    @else
+                                        <a href="{{ URL::to('order-confirm') }}"
+                                            class="dropdown-item py-3 border-bottom">
+                                            <div class="d-flex">
+                                                <div class="flex-shrink-0">
+                                                    <div class="avatar-sm me-2">
+                                                        <span
+                                                            class="avatar-title bg-soft-warning text-warning fs-20 rounded-circle">
+                                                            <iconify-icon
+                                                                icon="iconamoon:comment-dots-duotone"></iconify-icon>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div class="flex-grow-1">
+                                                    <p class="mb-0 fw-semibold text-wrap">You have received
+                                                        <b>{{ $oder_confirm }}</b> orders. Please confirm the orders
+                                                    </p>
                                                 </div>
                                             </div>
-                                            <div class="flex-grow-1">
-                                                <p class="mb-0 fw-semibold">Donoghue Susan</p>
-                                                <p class="mb-0 text-wrap">
-                                                    Hi, How are you? What about our next meeting
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <!-- Item -->
-                                    <a href="javascript:void(0);" class="dropdown-item py-3 border-bottom">
-                                        <div class="d-flex">
-                                            <div class="flex-shrink-0">
-                                                <img src="{{ asset('public/BackEnd/images/users/avatar-3.jpg') }}"
-                                                    class="img-fluid me-2 avatar-sm rounded-circle" alt="avatar-3" />
-                                            </div>
-                                            <div class="flex-grow-1">
-                                                <p class="mb-0 fw-semibold">Jacob Gines</p>
-                                                <p class="mb-0 text-wrap">Answered to your comment on the cash flow
-                                                    forecast's graph 🔔.</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <!-- Item -->
-                                    <a href="javascript:void(0);" class="dropdown-item py-3 border-bottom">
-                                        <div class="d-flex">
-                                            <div class="flex-shrink-0">
-                                                <div class="avatar-sm me-2">
-                                                    <span
-                                                        class="avatar-title bg-soft-warning text-warning fs-20 rounded-circle">
-                                                        <iconify-icon
-                                                            icon="iconamoon:comment-dots-duotone"></iconify-icon>
-                                                    </span>
+                                        </a>
+                                    @endif
+                                    @if ($oder_success == 0)
+                                    @else
+                                        <a href="{{ URL::to('order-confirm') }}"
+                                            class="dropdown-item py-3 border-bottom">
+                                            <div class="d-flex">
+                                                <div class="flex-shrink-0">
+                                                    <div class="avatar-sm me-2">
+                                                        <span
+                                                            class="avatar-title bg-soft-warning text-warning fs-20 rounded-circle">
+                                                            <iconify-icon
+                                                                icon="iconamoon:comment-dots-duotone"></iconify-icon>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div class="flex-grow-1">
+                                                    <p class="mb-0 fw-semibold text-wrap">
+                                                        <b>{{ $oder_success }}</b> orders have been paid. Please check
+                                                        and confirm the orders.
+                                                    </p>
                                                 </div>
                                             </div>
-                                            <div class="flex-grow-1">
-                                                <p class="mb-0 fw-semibold text-wrap">You have received <b>20</b> new
-                                                    messages in the
-                                                    conversation</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <!-- Item -->
-                                    <a href="javascript:void(0);" class="dropdown-item py-3 border-bottom">
-                                        <div class="d-flex">
-                                            <div class="flex-shrink-0">
-                                                <img src="{{ asset('public/BackEnd/images/users/avatar-5.jpg') }}"
-                                                    class="img-fluid me-2 avatar-sm rounded-circle" alt="avatar-5" />
-                                            </div>
-                                            <div class="flex-grow-1">
-                                                <p class="mb-0 fw-semibold">Shawn Bunch</p>
-                                                <p class="mb-0 text-wrap">
-                                                    Commented on Admin
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="text-center py-3">
-                                    <a href="javascript:void(0);" class="btn btn-primary btn-sm">View All Notification
-                                        <i class="bx bx-right-arrow-alt ms-1"></i></a>
+                                        </a>
+                                    @endif
+                                    @if ($review_product_count == 0)
+                                    @else
+                                        @foreach ($review_product as $item)
+                                            <a href="{{ URL::to('review-product') }}"
+                                                class="dropdown-item py-3 border-bottom">
+                                                <div class="d-flex">
+                                                    <div class="flex-shrink-0">
+                                                        <div class="avatar-sm me-2">
+                                                            <span
+                                                                class="avatar-title bg-soft-info text-info fs-20 rounded-circle">
+                                                                {{ substr($item->user->name, 0, 1) }}
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex-grow-1">
+                                                        <p class="mb-0 fw-semibold">{{ $item->user->name }}</p>
+                                                        <p class="mb-0 fw-semibold">
+                                                        <ul class="d-flex text-warning m-0 fs-18  list-unstyled">
+                                                            @for ($i = 1; $i <= 5; $i++)
+                                                                @if ($i <= $item->rating)
+                                                                    <i class="bx bxs-star"></i>
+                                                                @else
+                                                                    <i class="bx bx-star"></i> <!-- Sao trống -->
+                                                                @endif
+                                                            @endfor
+                                                        </ul>
+                                                        </p>
+
+                                                        <p class="mb-0 text-wrap">
+                                                            The user has given a low rating for the product. Please
+                                                            review the order.
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        @endforeach
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -193,7 +190,7 @@
                             </button>
                         </div>
 
-                        <!-- Activity -->
+                        {{-- <!-- Activity -->
                         <div class="topbar-item d-none d-md-flex">
                             <button type="button" class="topbar-button" id="theme-settings-btn"
                                 data-bs-toggle="offcanvas" data-bs-target="#theme-activity-offcanvas"
@@ -201,7 +198,7 @@
                                 <iconify-icon icon="solar:clock-circle-bold-duotone"
                                     class="fs-24 align-middle"></iconify-icon>
                             </button>
-                        </div>
+                        </div> --}}
 
                         <!-- User -->
                         <div class="dropdown topbar-item">
@@ -214,29 +211,11 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
                                 <!-- item-->
-                                <h6 class="dropdown-header">Welcome Gaston!</h6>
+                                <h6 class="dropdown-header">Welcome Zoneshop !</h6>
                                 <a class="dropdown-item" href="{{ URL::to('/profile-admin') }}">
                                     <i class="bx bx-user-circle text-muted fs-18 align-middle me-1"></i><span
                                         class="align-middle">Profile</span>
                                 </a>
-                                <a class="dropdown-item" href="apps-chat.html">
-                                    <i class="bx bx-message-dots text-muted fs-18 align-middle me-1"></i><span
-                                        class="align-middle">Messages</span>
-                                </a>
-
-                                <a class="dropdown-item" href="pages-pricing.html">
-                                    <i class="bx bx-wallet text-muted fs-18 align-middle me-1"></i><span
-                                        class="align-middle">Pricing</span>
-                                </a>
-                                <a class="dropdown-item" href="pages-faqs.html">
-                                    <i class="bx bx-help-circle text-muted fs-18 align-middle me-1"></i><span
-                                        class="align-middle">Help</span>
-                                </a>
-                                <a class="dropdown-item" href="auth-lock-screen.html">
-                                    <i class="bx bx-lock text-muted fs-18 align-middle me-1"></i><span
-                                        class="align-middle">Lock screen</span>
-                                </a>
-
                                 <div class="dropdown-divider my-1"></div>
 
                                 <a class="dropdown-item text-danger" href="{{ URL::to('/log-out') }}">
