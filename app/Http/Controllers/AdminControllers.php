@@ -13,22 +13,22 @@ use App\Models\Transaction;
 
 class AdminControllers extends Controller
 {
-    public function AuthLogin()
-    {
-        $admin_id = Session::get('admin_id');
-        if ($admin_id) {
-            return Redirect::to('dashboard');
-        } else {
-            return redirect('admin')->send();
-        }
-    }
+    // public function AuthLogin()
+    // {
+    //     $admin_id = Session::get('admin_id');
+    //     if ($admin_id) {
+    //         return Redirect::to('dashboard');
+    //     } else {
+    //         return redirect('admin')->send();
+    //     }
+    // }
+    // public function index()
+    // {
+    //     return view('admin_login');
+    // }
     public function index()
     {
-        return view('admin_login');
-    }
-    public function Show_Dashboard()
-    {
-        $this->AuthLogin();
+        // $this->AuthLogin();
         $revenueData = DB::table(
             DB::raw(
                 '(SELECT 1 AS month UNION ALL
@@ -213,35 +213,35 @@ class AdminControllers extends Controller
     //login -> dashboard    
     public function Dashboard(Request $request)
     {
-        $this->AuthLogin();
-        $admin_email = $request->admin_email;
-        $admin_password = md5($request->admin_password);
+        // $this->AuthLogin();
+        // $admin_email = $request->admin_email;
+        // $admin_password = md5($request->admin_password);
 
-        $result = Admin::where('admin_email', $admin_email)
-            ->where('admin_password', $admin_password)
-            ->first();
+        // $result = Admin::where('admin_email', $admin_email)
+        //     ->where('admin_password', $admin_password)
+        //     ->first();
 
-        if ($result) {
-            Session::put('admin_name', $result->admin_name);
-            Session::put('admin_id', $result->admin_id);
-            Session::flash('success', 'Login Successfully !');
-            return redirect('/dashboard');
-        } else {
-            Session::flash('error', 'Password or Username invalid! Please enter again !');
-            return redirect('/admin');
-        }
+        // if ($result) {
+        //     Session::put('admin_name', $result->admin_name);
+        //     Session::put('admin_id', $result->admin_id);
+        //     Session::flash('success', 'Login Successfully !');
+        //     return redirect('/dashboard');
+        // } else {
+        //     Session::flash('error', 'Password or Username invalid! Please enter again !');
+        //     return redirect('/admin');
+        // }
     }
     public function Logout()
     {
-        $this->AuthLogin();
-        Session::put('admin_name', null);
-        Session::put('admin_id', null);
-        Session::flash('success', 'Logout Successfully !');
-        return redirect('/admin');
+        // $this->AuthLogin();
+        // Session::put('admin_name', null);
+        // Session::put('admin_id', null);
+        // Session::flash('success', 'Logout Successfully !');
+        // return redirect('/admin');
     }
     public function Show_profile()
     {
-        $this->AuthLogin();
+        // $this->AuthLogin();
         return view('admin.profile_admin');
     }
 }

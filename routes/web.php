@@ -125,8 +125,8 @@ Route::post('/submit-review', [ReviewsController::class, 'Store_Review'])->name(
 
 
 //BACKEND
-Route::get('/admin', [AdminControllers::class, 'index']);
-Route::get('/dashboard', [AdminControllers::class, 'Show_Dashboard']);
+// Route::get('/admin', [AdminControllers::class, 'index']);
+Route::get('/dashboard', [AdminControllers::class, 'index']);
 Route::post('/admin-dashboard', [AdminControllers::class, 'Dashboard']);
 Route::get('/log-out', [AdminControllers::class, 'Logout']);
 Route::get('/profile-admin', [AdminControllers::class, 'Show_profile']);
@@ -292,3 +292,14 @@ Route::middleware('auth')->group(function () {
 
 
 require __DIR__ . '/auth.php';
+
+// Route admin
+Route::prefix('admin')->middleware(['auth:admin', 'verified'])->group(function () {
+    Route::get('/dashboard', [AdminControllers::class, 'index'])->name('admin.dashboard');
+});
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('account.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+require __DIR__ . '/adminauth.php';

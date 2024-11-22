@@ -3,24 +3,41 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 
-class Admin extends Model
+class Admin extends Authenticatable
 {
-    use HasFactory;
-
-    // Định nghĩa bảng tương ứng
-    protected $table = 'tbl_admin';
-
-    // Các thuộc tính có thể gán hàng loạt
+    use HasApiTokens, HasFactory, Notifiable;
+    protected $guard = 'admin';
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
     protected $fillable = [
-        'admin_email',
-        'admin_password',
-        'admin_roles',
-        'admin_name',
-        'admin_phone',
-        'admin_img',
-        'admin_status',
-        'admin_remember_token',
+        'name',
+        'email',
+        'password',
+    ];
+
+    /**
+     * The attributes that should be hidden for serialization.
+     *
+     * @var array<int, string>
+     */
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'email_verified_at' => 'datetime',
     ];
 }

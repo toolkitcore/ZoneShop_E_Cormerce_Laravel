@@ -218,10 +218,13 @@
                                 </a>
                                 <div class="dropdown-divider my-1"></div>
 
-                                <a class="dropdown-item text-danger" href="{{ URL::to('/log-out') }}">
-                                    <i class="bx bx-log-out fs-18 align-middle me-1"></i><span
-                                        class="align-middle">Logout</span>
-                                </a>
+                                <form method="POST" action="{{ route('admin.logout') }}">
+                                    @csrf
+                                    <button class="dropdown-item text-danger" type="submit">
+                                        <i class="bx bx-log-out fs-18 align-middle me-1"></i>
+                                        <span class="align-middle">Logout</span>
+                                    </button>
+                                </form>
                             </div>
                         </div>
 
