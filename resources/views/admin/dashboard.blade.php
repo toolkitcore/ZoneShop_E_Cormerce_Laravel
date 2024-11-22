@@ -8,15 +8,46 @@
 
             <!-- Start here.... -->
             <div class="row">
-                <div class="col-xxl-5">
+                <div class="col-xxl-12">
                     <div class="row">
-                        <div class="col-12">
+                        {{-- <div class="col-12">
                             <div class="alert alert-primary text-truncate mb-3" role="alert">
                                 We regret to inform you that our server is currently experiencing technical difficulties.
                             </div>
-                        </div>
+                        </div> --}}
+                        <div class="col-md-4">
+                            <div class="card overflow-hidden">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="avatar-md bg-soft-primary rounded">
+                                                <i class="bx bx-award avatar-title fs-24 text-primary"></i>
+                                            </div>
+                                        </div> <!-- end col -->
+                                        <div class="col-6 text-end">
+                                            <p class="text-muted mb-0 text-truncate">Transaction</p>
+                                            <h3 class="text-dark mt-1 mb-0">{{ $currentMonthTransactions }}</h3>
+                                        </div> <!-- end col -->
+                                    </div> <!-- end row-->
+                                </div> <!-- end card body -->
+                                <div class="card-footer py-2 bg-light bg-opacity-50">
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <div>
+                                            @if ($percentageChange_transaction <= 0)
+                                                <span class="text-danger"> <i class="bx bxs-down-arrow fs-12"></i>
+                                                    {{ $percentageChange_transaction }}%</span>
+                                            @else
+                                                <span class="text-success"> <i class="bx bxs-up-arrow fs-12"></i>
+                                                    {{ $percentageChange_transaction }}%</span>
+                                            @endif
+                                            <span class="text-muted ms-1 fs-12">Last Month</span>
+                                        </div>
 
-                        <div class="col-md-6">
+                                    </div>
+                                </div> <!-- end card body -->
+                            </div> <!-- end card -->
+                        </div> <!-- end col -->
+                        <div class="col-md-4">
                             <div class="card overflow-hidden">
                                 <div class="card-body">
                                     <div class="row">
@@ -28,74 +59,29 @@
                                         </div> <!-- end col -->
                                         <div class="col-6 text-end">
                                             <p class="text-muted mb-0 text-truncate">Total Orders</p>
-                                            <h3 class="text-dark mt-1 mb-0">13, 647</h3>
+                                            <h3 class="text-dark mt-1 mb-0">{{ $currentWeekOrders }}</h3>
                                         </div> <!-- end col -->
                                     </div> <!-- end row-->
                                 </div> <!-- end card body -->
                                 <div class="card-footer py-2 bg-light bg-opacity-50">
                                     <div class="d-flex align-items-center justify-content-between">
                                         <div>
-                                            <span class="text-success"> <i class="bx bxs-up-arrow fs-12"></i> 2.3%</span>
+                                            @if ($percentageChange <= 0)
+                                                <span class="text-danger"> <i class="bx bxs-down-arrow fs-12"></i>
+                                                    {{ $percentageChange }}%</span>
+                                            @else
+                                                <span class="text-success"> <i class="bx bxs-up-arrow fs-12"></i>
+                                                    {{ $percentageChange }}%</span>
+                                            @endif
+
                                             <span class="text-muted ms-1 fs-12">Last Week</span>
                                         </div>
-                                        <a href="#!" class="text-reset fw-semibold fs-12">View More</a>
+
                                     </div>
                                 </div> <!-- end card body -->
                             </div> <!-- end card -->
                         </div> <!-- end col -->
-                        <div class="col-md-6">
-                            <div class="card overflow-hidden">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-6">
-                                            <div class="avatar-md bg-soft-primary rounded">
-                                                <i class="bx bx-award avatar-title fs-24 text-primary"></i>
-                                            </div>
-                                        </div> <!-- end col -->
-                                        <div class="col-6 text-end">
-                                            <p class="text-muted mb-0 text-truncate">New Leads</p>
-                                            <h3 class="text-dark mt-1 mb-0">9, 526</h3>
-                                        </div> <!-- end col -->
-                                    </div> <!-- end row-->
-                                </div> <!-- end card body -->
-                                <div class="card-footer py-2 bg-light bg-opacity-50">
-                                    <div class="d-flex align-items-center justify-content-between">
-                                        <div>
-                                            <span class="text-success"> <i class="bx bxs-up-arrow fs-12"></i> 8.1%</span>
-                                            <span class="text-muted ms-1 fs-12">Last Month</span>
-                                        </div>
-                                        <a href="#!" class="text-reset fw-semibold fs-12">View More</a>
-                                    </div>
-                                </div> <!-- end card body -->
-                            </div> <!-- end card -->
-                        </div> <!-- end col -->
-                        <div class="col-md-6">
-                            <div class="card overflow-hidden">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-6">
-                                            <div class="avatar-md bg-soft-primary rounded">
-                                                <i class="bx bxs-backpack avatar-title fs-24 text-primary"></i>
-                                            </div>
-                                        </div> <!-- end col -->
-                                        <div class="col-6 text-end">
-                                            <p class="text-muted mb-0 text-truncate">Deals</p>
-                                            <h3 class="text-dark mt-1 mb-0">976</h3>
-                                        </div> <!-- end col -->
-                                    </div> <!-- end row-->
-                                </div> <!-- end card body -->
-                                <div class="card-footer py-2 bg-light bg-opacity-50">
-                                    <div class="d-flex align-items-center justify-content-between">
-                                        <div>
-                                            <span class="text-danger"> <i class="bx bxs-down-arrow fs-12"></i> 0.3%</span>
-                                            <span class="text-muted ms-1 fs-12">Last Month</span>
-                                        </div>
-                                        <a href="#!" class="text-reset fw-semibold fs-12">View More</a>
-                                    </div>
-                                </div> <!-- end card body -->
-                            </div> <!-- end card -->
-                        </div> <!-- end col -->
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <div class="card overflow-hidden">
                                 <div class="card-body">
                                     <div class="row">
@@ -105,47 +91,195 @@
                                             </div>
                                         </div> <!-- end col -->
                                         <div class="col-6 text-end">
-                                            <p class="text-muted mb-0 text-truncate">Booked Revenue</p>
-                                            <h3 class="text-dark mt-1 mb-0">$123.6k</h3>
+                                            <p class="text-muted mb-0 text-truncate">Revenue</p>
+                                            <h3 class="text-dark mt-1 mb-0">
+                                                {{ number_format($currentMonthRevenue) . ' VND' }}
+                                            </h3>
                                         </div> <!-- end col -->
                                     </div> <!-- end row-->
                                 </div> <!-- end card body -->
                                 <div class="card-footer py-2 bg-light bg-opacity-50">
                                     <div class="d-flex align-items-center justify-content-between">
                                         <div>
-                                            <span class="text-danger"> <i class="bx bxs-down-arrow fs-12"></i> 10.6%</span>
+                                            @if ($percentageChange_revenue <= 0)
+                                                <span class="text-danger"> <i class="bx bxs-down-arrow fs-12"></i>
+                                                    {{ $percentageChange_revenue }}%</span>
+                                            @else
+                                                <span class="text-success"> <i class="bx bxs-up-arrow fs-12"></i>
+                                                    {{ $percentageChange_revenue }}%</span>
+                                            @endif
                                             <span class="text-muted ms-1 fs-12">Last Month</span>
                                         </div>
-                                        <a href="#!" class="text-reset fw-semibold fs-12">View More</a>
+
                                     </div>
                                 </div> <!-- end card body -->
                             </div> <!-- end card -->
                         </div> <!-- end col -->
+                        <div class="col-md-4">
+                            <div class="card overflow-hidden">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="avatar-md bg-soft-primary rounded">
+                                                <i class="bx bxs-user avatar-title fs-24 text-primary"></i>
+                                            </div>
+                                        </div> <!-- end col -->
+                                        <div class="col-6 text-end">
+                                            <p class="text-muted mb-0 text-truncate">User</p>
+                                            <h3 class="text-dark mt-1 mb-0">{{ $currentMonthUsers }}</h3>
+                                        </div> <!-- end col -->
+                                    </div> <!-- end row-->
+                                </div> <!-- end card body -->
+                                <div class="card-footer py-2 bg-light bg-opacity-50">
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <div>
+                                            @if ($percentageChange_Users <= 0)
+                                                <span class="text-danger"> <i class="bx bxs-down-arrow fs-12"></i>
+                                                    {{ $percentageChange_Users }}%</span>
+                                            @else
+                                                <span class="text-success"> <i class="bx bxs-up-arrow fs-12"></i>
+                                                    {{ $percentageChange_Users }}%</span>
+                                            @endif
+                                            <span class="text-muted ms-1 fs-12">Last Month</span>
+                                        </div>
+
+                                    </div>
+                                </div> <!-- end card body -->
+                            </div> <!-- end card -->
+                        </div> <!-- end col -->
+                        <div class="col-md-4">
+                            <div class="card overflow-hidden">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="avatar-md bg-soft-primary rounded">
+                                                <i class="bx bx-message-rounded-dots avatar-title text-primary fs-24"></i>
+                                            </div>
+                                        </div> <!-- end col -->
+                                        <div class="col-6 text-end">
+                                            <p class="text-muted mb-0 text-truncate">Comments</p>
+                                            <h3 class="text-dark mt-1 mb-0">{{ $currentMonthComments }}</h3>
+                                        </div> <!-- end col -->
+                                    </div> <!-- end row-->
+                                </div> <!-- end card body -->
+                                <div class="card-footer py-2 bg-light bg-opacity-50">
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <div>
+                                            @if ($percentageChange_comments <= 0)
+                                                <span class="text-danger"> <i class="bx bxs-down-arrow fs-12"></i>
+                                                    {{ $percentageChange_comments }}%</span>
+                                            @else
+                                                <span class="text-success"> <i class="bx bxs-up-arrow fs-12"></i>
+                                                    {{ $percentageChange_comments }}%</span>
+                                            @endif
+                                            <span class="text-muted ms-1 fs-12">Last Month</span>
+                                        </div>
+
+                                    </div>
+                                </div> <!-- end card body -->
+                            </div> <!-- end card -->
+                        </div> <!-- end col -->
+                        <div class="col-md-4">
+                            <div class="card overflow-hidden">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="avatar-md bg-soft-primary rounded">
+                                                <i class="bx bx-x avatar-title text-primary fs-24"></i>
+                                            </div>
+                                        </div> <!-- end col -->
+                                        <div class="col-6 text-end">
+                                            <p class="text-muted mb-0 text-truncate">Cancelled Order</p>
+                                            <h3 class="text-dark mt-1 mb-0">{{ $currentMonthCancelledOrders }}</h3>
+                                        </div> <!-- end col -->
+                                    </div> <!-- end row-->
+                                </div> <!-- end card body -->
+                                <div class="card-footer py-2 bg-light bg-opacity-50">
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <div>
+                                            @if ($percentageChange_Cancel_Order >= 0)
+                                                <span class="text-danger"> <i class="bx bxs-down-arrow fs-12"></i>
+                                                    {{ $percentageChange_Cancel_Order }}%</span>
+                                            @else
+                                                <span class="text-success"> <i class="bx bxs-up-arrow fs-12"></i>
+                                                    {{ $percentageChange_Cancel_Order }}%</span>
+                                            @endif
+                                            <span class="text-muted ms-1 fs-12">Last Month</span>
+                                        </div>
+
+                                    </div>
+                                </div> <!-- end card body -->
+                            </div> <!-- end card -->
+                        </div> <!-- end col -->
+
                     </div> <!-- end row -->
                 </div> <!-- end col -->
 
-                <div class="col-xxl-7">
+                <div class="col-xxl-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title mb-3  anchor" id="simple_pie">Best-selling products</h4>
+                            <div dir="ltr">
+                                <div id="simple-pie" class="apex-charts"></div>
+                            </div>
+                        </div>
+                        <!-- end card body-->
+                    </div>
+                </div>
+                <div class="col-xxl-6">
                     <div class="card">
                         <div class="card-body">
                             <div class="d-flex justify-content-between align-items-center">
-                                <h4 class="card-title">Performance</h4>
+                                <h4 class="card-title">Order</h4>
                                 <div>
-                                    <button type="button" class="btn btn-sm btn-outline-light">ALL</button>
-                                    <button type="button" class="btn btn-sm btn-outline-light">1M</button>
-                                    <button type="button" class="btn btn-sm btn-outline-light">6M</button>
-                                    <button type="button" class="btn btn-sm btn-outline-light active">1Y</button>
+                                    <button type="button"
+                                        class="btn btn-sm btn-outline-light">{{ date('Y') }}</button>
                                 </div>
                             </div> <!-- end card-title-->
 
                             <div dir="ltr">
-                                <div id="dash-performance-chart" class="apex-charts"></div>
+                                <div id="dash-performance-chart-order" class="apex-charts"></div>
                             </div>
                         </div> <!-- end card body -->
                     </div> <!-- end card -->
-                </div> <!-- end col -->
+                </div>
+                <div class="col-xxl-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h4 class="card-title anchor" id="datalables">
+                                    Order status<a class="anchor-link" href="#datalables">#</a>
+                                </h4>
+                                <div>
+                                    <button type="button"
+                                        class="btn btn-sm btn-outline-light">{{ date('Y') }}</button>
+                                </div>
+                            </div>
+                            <div id="datalables-bar" class="apex-charts"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xxl-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h4 class="card-title">Revenue</h4>
+                                <div>
+                                    <button type="button"
+                                        class="btn btn-sm btn-outline-light">{{ date('Y') }}</button>
+                                </div>
+                            </div> <!-- end card-title-->
+
+                            <div dir="ltr">
+                                <div id="dash-performance-chart-revenue" class="apex-charts"></div>
+                            </div>
+                        </div> <!-- end card body -->
+                    </div> <!-- end card -->
+                </div>
+
             </div> <!-- end row -->
 
-            <div class="row">
+            {{-- <div class="row">
                 <div class="col-lg-4">
                     <div class="card">
                         <div class="card-body">
@@ -327,7 +461,7 @@
                         </div> <!-- end card body -->
                     </div> <!-- end card-->
                 </div> <!-- end col-->
-            </div> <!-- end row -->
+            </div> <!-- end row --> --}}
 
             <div class="row">
                 <div class="col">
@@ -338,8 +472,8 @@
                                     Recent Orders
                                 </h4>
 
-                                <a href="#!" class="btn btn-sm btn-soft-primary">
-                                    <i class="bx bx-plus me-1"></i>Create Order
+                                <a href="{{ URL::to('all-order') }}" class="btn btn-sm btn-soft-primary">
+                                    Show all
                                 </a>
                             </div>
                         </div>
@@ -355,16 +489,13 @@
                                             Date
                                         </th>
                                         <th>
-                                            Product
-                                        </th>
-                                        <th>
                                             Customer Name
                                         </th>
                                         <th>
                                             Email ID
                                         </th>
                                         <th>
-                                            Phone No.
+                                            Phone
                                         </th>
                                         <th>
                                             Address
@@ -379,108 +510,71 @@
                                 </thead>
                                 <!-- end thead-->
                                 <tbody>
-                                    <tr>
-                                        <td class="ps-3">
-                                            <a href="order-detail.html">#RB5625</a>
-                                        </td>
-                                        <td>29 April 2024</td>
-                                        <td>
-                                            <img src="{{ 'public/BackEnd/images/products/product-1(1).png' }}"
-                                                alt="product-1(1)" class="img-fluid avatar-sm">
-                                        </td>
-                                        <td>
-                                            <a href="#!">Anna M. Hines</a>
-                                        </td>
-                                        <td>hoangductrinh2k5@mail.com</td>
-                                        <td>(+84)848720575</td>
-                                        <td>Burr Ridge/Illinois</td>
-                                        <td>Credit Card</td>
-                                        <td>
-                                            <i class="bx bxs-circle text-success me-1"></i>Completed
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="ps-3">
-                                            <a href="order-detail.html">#RB9652</a>
-                                        </td>
-                                        <td>25 April 2024</td>
-                                        <td>
-                                            <img src="{{ 'public/BackEnd/images/products/product-4.png' }}"
-                                                alt="product-4" class="img-fluid avatar-sm">
-                                        </td>
-                                        <td>
-                                            <a href="#!">Judith H. Fritsche</a>
-                                        </td>
-                                        <td>judith.fritsche.com</td>
-                                        <td>(+57)-305-5579-759</td>
-                                        <td>SULLIVAN/Kentucky</td>
-                                        <td>Credit Card</td>
-                                        <td>
-                                            <i class="bx bxs-circle text-success me-1"></i>Completed
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="ps-3">
-                                            <a href="order-detail.html">#RB5984</a>
-                                        </td>
-                                        <td>25 April 2024</td>
-                                        <td>
-                                            <img src="{{ 'public/BackEnd/images/products/product-5.png' }}"
-                                                alt="product-5" class="img-fluid avatar-sm">
-                                        </td>
-                                        <td>
-                                            <a href="#!">Peter T. Smith</a>
-                                        </td>
-                                        <td>peter.smith@mail.com</td>
-                                        <td>(+33)-655-5187-93</td>
-                                        <td>Yreka/California</td>
-                                        <td>Pay Pal</td>
-                                        <td>
-                                            <i class="bx bxs-circle text-success me-1"></i>Completed
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="ps-3">
-                                            <a href="order-detail.html">#RB3625</a>
-                                        </td>
-                                        <td>21 April 2024</td>
-                                        <td>
-                                            <img src="{{ 'public/BackEnd/images/products/product-6.png' }}"
-                                                alt="product-6" class="img-fluid avatar-sm">
-                                        </td>
-                                        <td>
-                                            <a href="#!">Emmanuel J. Delcid</a>
-                                        </td>
-                                        <td>
-                                            emmanuel.delicid@mail.com
-                                        </td>
-                                        <td>(+30)-693-5553-637</td>
-                                        <td>Atlanta/Georgia</td>
-                                        <td>Pay Pal</td>
-                                        <td>
-                                            <i class="bx bxs-circle text-primary me-1"></i>Processing
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="ps-3">
-                                            <a href="order-detail.html">#RB8652</a>
-                                        </td>
-                                        <td>18 April 2024</td>
-                                        <td>
-                                            <img src="{{ 'public/BackEnd/images/products/product-1(2).png' }}"
-                                                alt="product-1(2)" class="img-fluid avatar-sm">
-                                        </td>
-                                        <td>
-                                            <a href="#!">William J. Cook</a>
-                                        </td>
-                                        <td>william.cook@mail.com</td>
-                                        <td>(+91)-855-5446-150</td>
-                                        <td>Rosenberg/Texas</td>
-                                        <td>Credit Card</td>
-                                        <td>
-                                            <i class="bx bxs-circle text-primary me-1"></i>Processing
-                                        </td>
-                                    </tr>
+                                    @foreach ($transaction_item as $item)
+                                        <tr>
+                                            <td class="ps-3">
+                                                <a href="order-detail.html">#{{ $item->transaction_id }}</a>
+                                            </td>
+                                            <td>{{ $item->created_at }}</td>
+                                            <td>
+                                                <a href="#!">{{ $item->deliveryAddress->fullname }}</a>
+                                            </td>
+                                            <td>{{ $item->deliveryAddress->email }}</td>
+                                            <td>{{ $item->deliveryAddress->phone }}</td>
+                                            <td>{{ $item->deliveryAddress->province }}</td>
+                                            <td>
+                                                @if ($item->transaction_payment == 'pay_online')
+                                                    Online
+                                                @else
+                                                    Offline
+                                                @endif
+                                            </td>
+                                            <td>
+                                                @if ($item->transaction_status == 0 && $item->transaction_payment == 'pay_offline')
+                                                    <span
+                                                        class="badge border border-warning text-warning  px-2 py-1 fs-13">
+                                                        Wait confirm
+                                                    </span>
+                                                @elseif($item->transaction_status == 0 && $item->transaction_payment == 'pay_online')
+                                                    <span
+                                                        class="badge border border-secondary text-secondary  px-2 py-1 fs-13">
+                                                        Paying
+                                                    </span>
+                                                @elseif($item->transaction_status == 1 && $item->transaction_payment == 'pay_online')
+                                                    <span
+                                                        class="badge border border-warning text-warning  px-2 py-1 fs-13">
+                                                        Wait confirm
+                                                    </span>
+                                                @elseif($item->transaction_status == 2)
+                                                    <span
+                                                        class="badge border border-success text-success  px-2 py-1 fs-13">
+                                                        Confirmed
+                                                    </span>
+                                                @elseif($item->transaction_status == 3)
+                                                    <span
+                                                        class="badge border border-warning text-warning  px-2 py-1 fs-13">
+                                                        Packaging
+                                                    </span>
+                                                @elseif($item->transaction_status == 4)
+                                                    <span
+                                                        class="badge border border-success text-success  px-2 py-1 fs-13">
+                                                        Shipping
+                                                    </span>
+                                                @elseif($item->transaction_status == 5)
+                                                    <span
+                                                        class="badge border border-success text-success  px-2 py-1 fs-13">
+                                                        Completed
+                                                    </span>
+                                                @elseif($item->transaction_status == 6)
+                                                    <span class="badge border border-danger text-danger  px-2 py-1 fs-13">
+                                                        Canceled
+                                                    </span>
+                                                @endif
+
+                                            </td>
+                                        </tr>
+                                    @endforeach
+
                                 </tbody>
                                 <!-- end tbody -->
                             </table>
@@ -493,31 +587,11 @@
                                 <div class="col-sm">
                                     <div class="text-muted">
                                         Showing
-                                        <span class="fw-semibold">5</span>
+                                        <span class="fw-semibold">{{ Count($transaction_item) }}</span>
                                         of
-                                        <span class="fw-semibold">90,521</span>
+                                        <span class="fw-semibold">{{ $transaction_count }}</span>
                                         orders
                                     </div>
-                                </div>
-
-                                <div class="col-sm-auto">
-                                    <ul class="pagination m-0">
-                                        <li class="page-item">
-                                            <a href="#" class="page-link"><i class="bx bx-left-arrow-alt"></i></a>
-                                        </li>
-                                        <li class="page-item active">
-                                            <a href="#" class="page-link">1</a>
-                                        </li>
-                                        <li class="page-item">
-                                            <a href="#" class="page-link">2</a>
-                                        </li>
-                                        <li class="page-item">
-                                            <a href="#" class="page-link">3</a>
-                                        </li>
-                                        <li class="page-item">
-                                            <a href="#" class="page-link"><i class="bx bx-right-arrow-alt"></i></a>
-                                        </li>
-                                    </ul>
                                 </div>
                             </div>
                         </div>
@@ -530,20 +604,529 @@
         </div>
         <!-- End Container Fluid -->
 
-        <!-- ========== Footer Start ========== -->
-        <footer class="footer">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-12 text-center">
-                        <script>
-                            document.write(new Date().getFullYear())
-                        </script> &copy; ZoneShop. Crafted by <iconify-icon icon="iconamoon:heart-duotone"
-                            class="fs-18 align-middle text-danger"></iconify-icon> <a href="#"
-                            class="fw-bold footer-text" target="_blank">Techzaa</a>
-                    </div>
-                </div>
-            </div>
-        </footer>
-        <!-- ========== Footer End ========== -->
     </div>
+    <!-- ApexCharts Library -->
+@endsection
+
+@section('scripts')
+    <script>
+        const transactionStatuses = @json($transactionStatuses);
+        const total_status = transactionStatuses.map(item => item.total_transactions);
+        console.log(total_status);
+
+        var colors = [
+            "#1c84ee",
+            "#ff6c2f",
+            "#53389f",
+            "#7f56da",
+            "#f9b931",
+            "#28a745",
+            "#ef5f5f"
+        ];
+        var options = {
+            chart: {
+                height: 450,
+                type: "bar",
+                toolbar: {
+                    show: false,
+                },
+            },
+            plotOptions: {
+                bar: {
+                    barHeight: "100%",
+                    distributed: true,
+                    horizontal: true,
+                    dataLabels: {
+                        position: "bottom",
+                    },
+                },
+            },
+            colors: colors,
+            dataLabels: {
+                enabled: true,
+                textAnchor: "start",
+                style: {
+                    colors: ["#fff"],
+                },
+                formatter: function(val, opt) {
+                    return opt.w.globals.labels[opt.dataPointIndex] + ":  " + val;
+                },
+                offsetX: 0,
+                dropShadow: {
+                    enabled: false,
+                },
+            },
+            series: [{
+                data: total_status,
+            }, ],
+            stroke: {
+                width: 0,
+                colors: ["#fff"],
+            },
+            xaxis: {
+                categories: [
+                    "Wait Confirm",
+                    "Wait Payment",
+                    "Confirmed",
+                    "Pakaging",
+                    "Shipping",
+                    "Completed",
+                    "Cancel"
+                ],
+            },
+            yaxis: {
+                labels: {
+                    show: false,
+                },
+            },
+            grid: {
+                borderColor: "#f1f3fa",
+            },
+
+            tooltip: {
+                theme: "dark",
+                x: {
+                    show: false,
+                },
+                y: {
+                    title: {
+                        formatter: function() {
+                            return "";
+                        },
+                    },
+                },
+            },
+        };
+
+        var chart = new ApexCharts(document.querySelector("#datalables-bar"), options);
+
+        chart.render();
+
+
+
+
+        const categories = @json($categories);
+        const category_name = categories.map(data => data.category_name);
+        const percentage = categories.map(item => parseFloat(item.percentage));
+        console.log(categories);
+
+        var colors = ["#1c84ee", "#7f56da", "#ff6c2f"];
+        var options = {
+            chart: {
+                height: 320,
+                type: 'pie',
+            },
+            series: percentage,
+            labels: category_name,
+            colors: colors,
+            legend: {
+                show: true,
+                position: 'bottom',
+                horizontalAlign: 'center',
+                verticalAlign: 'middle',
+                floating: false,
+                fontSize: '14px',
+                offsetX: 0,
+                offsetY: 7
+            },
+            responsive: [{
+                breakpoint: 600,
+                options: {
+                    chart: {
+                        height: 240
+                    },
+                    legend: {
+                        show: false
+                    },
+                }
+            }]
+
+        }
+        var chart = new ApexCharts(
+            document.querySelector("#simple-pie"),
+            options
+        );
+        chart.render();
+        var options = {
+            chart: {
+                height: 292,
+                type: 'radialBar',
+            },
+            plotOptions: {
+                radialBar: {
+                    startAngle: -135,
+                    endAngle: 135,
+                    dataLabels: {
+                        name: {
+                            fontSize: '14px',
+                            color: "undefined",
+                            offsetY: 100
+                        },
+                        value: {
+                            offsetY: 55,
+                            fontSize: '20px',
+                            color: undefined,
+                            formatter: function(val) {
+                                return val + "%";
+                            }
+                        }
+                    },
+                    track: {
+                        background: "rgba(170,184,197, 0.2)",
+                        margin: 0
+                    },
+                }
+            },
+            fill: {
+                gradient: {
+                    enabled: true,
+                    shade: 'dark',
+                    shadeIntensity: 0.2,
+                    inverseColors: false,
+                    opacityFrom: 1,
+                    opacityTo: 1,
+                    stops: [0, 50, 65, 91]
+                },
+            },
+            stroke: {
+                dashArray: 4
+            },
+            colors: ["#ff6c2f", "#22c55e"],
+            series: [65.2],
+            labels: ['Returning Customer'],
+            responsive: [{
+                breakpoint: 380,
+                options: {
+                    chart: {
+                        height: 180
+                    }
+                }
+            }],
+            grid: {
+                padding: {
+                    top: 0,
+                    right: 0,
+                    bottom: 0,
+                    left: 0
+                }
+            }
+        }
+        var chart = new ApexCharts(
+            document.querySelector("#conversions"),
+            options
+        );
+        chart.render();
+        const revenueData = @json($revenueData);
+
+
+        // Chuyển đổi dữ liệu từ Laravel thành mảng doanh thu (Revenue)
+        const revenueValues = revenueData.map(data => data.total_revenue);
+        const transactionCounts = revenueData.map(item => item.transaction_count);
+
+
+        var options_revenue = {
+            series: [{
+                name: "Revenue",
+                type: "bar",
+                data: revenueValues,
+            }, ],
+            chart: {
+                height: 313,
+                type: "line",
+                toolbar: {
+                    show: false,
+                },
+            },
+            stroke: {
+                dashArray: [0, 0],
+                width: [0, 2],
+                curve: 'smooth'
+            },
+            fill: {
+                opacity: [1, 1],
+                type: ['solid', 'gradient'],
+                gradient: {
+                    type: "vertical",
+                    inverseColors: false,
+                    opacityFrom: 0.5,
+                    opacityTo: 0,
+                    stops: [0, 90]
+                },
+            },
+            markers: {
+                size: [0, 0],
+                strokeWidth: 2,
+                hover: {
+                    size: 4,
+                },
+            },
+            xaxis: {
+                categories: [
+                    "Jan",
+                    "Feb",
+                    "Mar",
+                    "Apr",
+                    "May",
+                    "Jun",
+                    "Jul",
+                    "Aug",
+                    "Sep",
+                    "Oct",
+                    "Nov",
+                    "Dec",
+                ],
+                axisTicks: {
+                    show: false,
+                },
+                axisBorder: {
+                    show: false,
+                },
+            },
+            yaxis: {
+                min: 0,
+                axisBorder: {
+                    show: false,
+                }
+            },
+            grid: {
+                show: true,
+                strokeDashArray: 3,
+                xaxis: {
+                    lines: {
+                        show: false,
+                    },
+                },
+                yaxis: {
+                    lines: {
+                        show: true,
+                    },
+                },
+                padding: {
+                    top: 0,
+                    right: -2,
+                    bottom: 0,
+                    left: 10,
+                },
+            },
+            legend: {
+                show: true,
+                horizontalAlign: "center",
+                offsetX: 0,
+                offsetY: 5,
+                markers: {
+                    width: 9,
+                    height: 9,
+                    radius: 6,
+                },
+                itemMargin: {
+                    horizontal: 10,
+                    vertical: 0,
+                },
+            },
+            plotOptions: {
+                bar: {
+                    columnWidth: "30%",
+                    barHeight: "70%",
+                    borderRadius: 3,
+                },
+            },
+            colors: ["#ff6c2f", "#22c55e"],
+            tooltip: {
+                shared: true,
+                y: [{
+                        formatter: function(y) {
+                            if (typeof y !== "undefined") {
+                                return y.toLocaleString("vi-VN") + " VND";
+                            }
+                            return y;
+                        },
+                    },
+                    {
+                        formatter: function(y) {
+                            if (typeof y !== "undefined") {
+                                return y.toFixed(0) + " Item";
+                            }
+                            return y;
+                        },
+                    },
+                ],
+            },
+        }
+        var chart = new ApexCharts(
+            document.querySelector("#dash-performance-chart-revenue"),
+            options_revenue
+        );
+        chart.render();
+
+        var options_order = {
+            series: [{
+                name: "Order",
+                type: "area",
+                data: transactionCounts,
+            }],
+            chart: {
+                height: 313,
+                type: "line",
+                toolbar: {
+                    show: false,
+                },
+            },
+            stroke: {
+                dashArray: [0],
+                width: [2], // Đường biểu đồ dày hơn
+                curve: 'smooth'
+            },
+            fill: {
+                opacity: [0], // Không tô màu bên trong
+                type: ['solid'], // Loại bỏ gradient
+            },
+            markers: {
+                size: [0],
+                strokeWidth: 2,
+                hover: {
+                    size: 4,
+                },
+            },
+            xaxis: {
+                categories: [
+                    "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+                    "Jul", "Aug", "Sep", "Oct", "Nov", "Dec",
+                ],
+                axisTicks: {
+                    show: false,
+                },
+                axisBorder: {
+                    show: false,
+                },
+            },
+            yaxis: {
+                min: 0,
+                axisBorder: {
+                    show: false,
+                }
+            },
+            grid: {
+                show: true,
+                strokeDashArray: 3,
+                xaxis: {
+                    lines: {
+                        show: false,
+                    },
+                },
+                yaxis: {
+                    lines: {
+                        show: true,
+                    },
+                },
+                padding: {
+                    top: 0,
+                    right: -2,
+                    bottom: 0,
+                    left: 10,
+                },
+            },
+            legend: {
+                show: true,
+                horizontalAlign: "center",
+                offsetX: 0,
+                offsetY: 5,
+                markers: {
+                    width: 9,
+                    height: 9,
+                    radius: 6,
+                },
+                itemMargin: {
+                    horizontal: 10,
+                    vertical: 0,
+                },
+            },
+            plotOptions: {
+                bar: {
+                    columnWidth: "30%",
+                    barHeight: "70%",
+                    borderRadius: 3,
+                },
+            },
+            colors: ["#22c55e"], // Màu đường biểu đồ
+            tooltip: {
+                shared: true,
+                y: [{
+                    formatter: function(y) {
+                        if (typeof y !== "undefined") {
+                            return y.toFixed(0) + " Item";
+                        }
+                        return y;
+                    },
+                }],
+            },
+        };
+
+        var chart = new ApexCharts(
+            document.querySelector("#dash-performance-chart-order"),
+            options_order
+        );
+        chart.render();
+        class VectorMap {
+
+
+            initWorldMapMarker() {
+                const map = new jsVectorMap({
+                    map: 'world',
+                    selector: '#world-map-markers',
+                    zoomOnScroll: true,
+                    zoomButtons: false,
+                    markersSelectable: true,
+                    markers: [{
+                            name: "Canada",
+                            coords: [56.1304, -106.3468]
+                        },
+                        {
+                            name: "Brazil",
+                            coords: [-14.2350, -51.9253]
+                        },
+                        {
+                            name: "Russia",
+                            coords: [61, 105]
+                        },
+                        {
+                            name: "China",
+                            coords: [35.8617, 104.1954]
+                        },
+                        {
+                            name: "United States",
+                            coords: [37.0902, -95.7129]
+                        }
+                    ],
+                    markerStyle: {
+                        initial: {
+                            fill: "#7f56da"
+                        },
+                        selected: {
+                            fill: "#22c55e"
+                        }
+                    },
+                    labels: {
+                        markers: {
+                            render: marker => marker.name
+                        }
+                    },
+                    regionStyle: {
+                        initial: {
+                            fill: 'rgba(169,183,197, 0.3)',
+                            fillOpacity: 1,
+                        },
+                    },
+                });
+            }
+
+            init() {
+                this.initWorldMapMarker();
+            }
+
+        }
+
+        document.addEventListener('DOMContentLoaded', function(e) {
+            new VectorMap().init();
+        });
+    </script>
 @endsection

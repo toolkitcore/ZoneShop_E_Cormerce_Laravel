@@ -16,8 +16,9 @@
                                         <h1 class="title">{{ $item->product->product_name }}</h1>
                                         <div class="slide-action">
                                             <div class="shop-btn">
-                                                <a href="shop.html" class="axil-btn btn-bg-white"><i
-                                                        class="fal fa-shopping-cart"></i>Shop Now</a>
+                                                <a href="{{ URL::to('san-pham-' . $item->product_id) }}"
+                                                    class="axil-btn btn-bg-white"><i class="fal fa-shopping-cart"></i>Shop
+                                                    Now</a>
                                             </div>
                                         </div>
                                     </div>

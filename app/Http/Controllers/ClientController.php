@@ -77,7 +77,7 @@ class ClientController extends Controller
                 'slider_home',
                 'poster_home',
                 'topSellingProducts',
-                'feed_back'
+                'feed_back',
             )
         );
     }
