@@ -126,9 +126,9 @@ Route::post('/submit-review', [ReviewsController::class, 'Store_Review'])->name(
 
 
 
-Route::get('/', function () {
-    return view('trang-chu');
-});
+// Route::get('/', function () {
+//     return view('trang-chu');
+// });
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
