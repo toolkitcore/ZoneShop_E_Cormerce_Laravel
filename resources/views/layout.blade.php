@@ -572,17 +572,10 @@
     <!-- Main JS -->
     <script src="{{ asset('public/FrontEnd/js/main.js') }}"></script>
     <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
-    <style>
-        df-messenger {
-            position: fixed !important;
-            bottom: 20px;
-            left: 20px;
-            z-index: 1000;
-        }
-    </style>
-    <df-messenger intent="WELCOME" chat-icon="https://example.com/path-to-your-icon.png"
-        chat-title="Zoneshop Support" agent-id="c00a8896-8d6e-4e52-9a4a-a06904c43956"
-        language-code="en"></df-messenger>
+    <df-messenger intent="WELCOME"
+        chat-icon="https://github.com/DucTrinh244/Wallpapers/blob/main/zoneshop/icon/chatbox.png?raw=true"
+        chat-title="Zoneshop Support" agent-id="c00a8896-8d6e-4e52-9a4a-a06904c43956" language-code="en">
+    </df-messenger>
 </body>
 
 </html>

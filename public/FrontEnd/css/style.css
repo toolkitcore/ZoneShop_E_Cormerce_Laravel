@@ -2449,25 +2449,25 @@ input[type="submit"]:hover {
     color: var(--color-white);
 }
 .back-to-top.show {
-    bottom: 40px;
-    right: 40px;
+    bottom: 87px;
+    right: 25px;
     opacity: 1;
     transform: scale(1);
 }
 @media only screen and (max-width: 575px) {
     .back-to-top.show {
-        bottom: 10px;
-        right: 10px;
+        bottom: 87px;
+        right: 26px;
     }
 }
 .back-to-top.show:hover {
     color: var(--color-white);
-    bottom: 45px;
+    bottom: 94px;
     opacity: 1;
 }
 @media only screen and (max-width: 575px) {
     .back-to-top.show:hover {
-        bottom: 10px;
+        bottom: 93px;
     }
 }
 .axil-breadcrumb-area {
