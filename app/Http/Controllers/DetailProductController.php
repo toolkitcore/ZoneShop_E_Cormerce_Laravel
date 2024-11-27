@@ -21,10 +21,14 @@ class DetailProductController extends Controller
     public function Show_Detail_Product()
     {
 
-        $products = Product::all();
-        $product_count = Product::count();
-        $categories = Category_Product::whereNotNull('category_parent_id')->get();
-        $brands = Brand_Product::all();
+        $products = Product::where('product_status', '=', 1)
+            ->where('product_quantity', '>=', 1)->get();
+        $product_count = Product::where('product_status', '=', 1)
+            ->where('product_quantity', '>=', 1)->count();
+        $categories = Category_Product::whereNotNull('category_parent_id')
+            ->where('category_status', '=', 1)
+            ->get();
+        $brands = Brand_Product::where('brand_status', '=', 1)->get();
 
         return view('admin.product.detail.all_detail', compact(
             'products',
@@ -83,7 +87,7 @@ class DetailProductController extends Controller
             ]);
         }
         Session::flash('success', 'Product details added successfully!');
-        return redirect('add-detail-product-page');
+        return redirect('admin/add-detail-product-page');
     }
     public function Update_Detail_action(Request $request, $product_id)
     {
@@ -103,7 +107,7 @@ class DetailProductController extends Controller
             );
         }
         Session::flash('success', 'Product details udpated successfully!');
-        return redirect('add-detail-product-page');
+        return redirect('admin/add-detail-product-page');
     }
 
     public function search(Request $request)

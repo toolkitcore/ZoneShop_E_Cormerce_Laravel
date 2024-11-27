@@ -57,7 +57,7 @@
                                                 <div class="pro-qty">
                                                     <input type="number" class="quantity-input cart-quantity"
                                                         value="{{ $v_content->qty }}" data-rowId="{{ $v_content->rowId }}"
-                                                        readonly>
+                                                        data-product="{{ $v_content->id }}" readonly>
                                                 </div>
                                             </td>
                                             <td class="product-subtotal" data-title="Subtotal">

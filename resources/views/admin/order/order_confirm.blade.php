@@ -14,20 +14,6 @@
                             <div>
                                 <h4 class="card-title">All Order Confirm</h4>
                             </div>
-                            <div class="dropdown">
-                                <a href="#" class="dropdown-toggle btn btn-sm btn-outline-light rounded"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    This Month
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-end">
-                                    <!-- item-->
-                                    <a href="#!" class="dropdown-item">Download</a>
-                                    <!-- item-->
-                                    <a href="#!" class="dropdown-item">Export</a>
-                                    <!-- item-->
-                                    <a href="#!" class="dropdown-item">Import</a>
-                                </div>
-                            </div>
                         </div>
                         <div class="card-body p-0">
                             <div class="table-responsive">
@@ -89,29 +75,34 @@
                                                     @if ($item->transaction_status == 0 && $item->transaction_payment == 'pay_online')
                                                         Waiting ...
                                                     @else
-                                                        <div class="d-flex gap-2">
-                                                            <a href="{{ URL::to('admin/confirm-order/' . $item->transaction_id) }}"
-                                                                class="btn btn-soft-success btn-sm">
-                                                                <iconify-icon icon="solar:check-circle-bold"
-                                                                    class="align-middle fs-18"></iconify-icon>
-                                                            </a>
-                                                        </div>
+                                                        @can('edit order list')
+                                                            <div class="d-flex gap-2">
+                                                                <a href="{{ URL::to('admin/confirm-order/' . $item->transaction_id) }}"
+                                                                    class="btn btn-soft-success btn-sm">
+                                                                    <iconify-icon icon="solar:check-circle-bold"
+                                                                        class="align-middle fs-18"></iconify-icon>
+                                                                </a>
+                                                            </div>
+                                                        @endcan
                                                     @endif
                                                 </td>
                                                 <td>
                                                     <div class="d-flex gap-2">
+
                                                         <a href="{{ URL::to('admin/order-detail/' . $item->transaction_id) }}"
                                                             class="btn btn-primary btn-sm">
                                                             <iconify-icon icon="solar:eye-broken"
                                                                 class="align-middle fs-18">
                                                             </iconify-icon>
                                                         </a>
-                                                        <a href="{{ URL::to('admin/cancel-order/' . $item->transaction_id) }}"
-                                                            class="btn btn-danger btn-sm">
-                                                            <iconify-icon icon="solar:trash-bin-minimalistic-2-broken"
-                                                                class="align-middle fs-18">
-                                                            </iconify-icon>
-                                                        </a>
+                                                        @can('edit order list')
+                                                            <a href="{{ URL::to('admin/cancel-order/' . $item->transaction_id) }}"
+                                                                class="btn btn-danger btn-sm">
+                                                                <iconify-icon icon="solar:trash-bin-minimalistic-2-broken"
+                                                                    class="align-middle fs-18">
+                                                                </iconify-icon>
+                                                            </a>
+                                                        @endcan
                                                     </div>
                                                 </td>
                                             </tr>

@@ -85,7 +85,17 @@ class CartController extends Controller
     {
         $rowId = $request->input('rowid');
         $quantity = $request->input('quantity');
+        $product = $request->input('product');
 
+        // dump($product);
+        if ($quantity > Product::where('product_id', $product)->first()->product_quantity) {
+            $total = Cart::subtotal(0);
+            return response()->json([
+                'error' => true,
+                'total' => $total,
+                'subtotal' => Cart::get($rowId)->subtotal,
+            ]);
+        }
         Cart::update($rowId, $quantity);
 
         $total = Cart::subtotal(0);

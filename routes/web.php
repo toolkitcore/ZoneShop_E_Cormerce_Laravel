@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\AdminControllers;
 use App\Http\Controllers\AttributesProductController;
+use App\Http\Controllers\AuthorizationController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CartController;
@@ -22,6 +23,7 @@ use App\Http\Controllers\ProductImagesController;
 use App\Http\Controllers\ReviewsController;
 use App\Http\Controllers\SliderHomeController;
 use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\WishlistController;
 use App\Mail\ContactMail;
 use App\Mail\HelloMail;
@@ -156,139 +158,208 @@ Route::prefix('admin')->middleware(['auth:admin'])->group(function () {
     Route::get('/profile-admin', [AdminControllers::class, 'Show_profile']);
 
     //CATEGORY PRODUCTS
-    Route::get('/all-category-product', [CategoryController::class, 'Show_Category']);
-    Route::get('/add-category-product', [CategoryController::class, 'Add_Category']);
-    Route::post('/add-category-action', [CategoryController::class, 'Add_Category_Action']);
-    Route::get('/delete-category-product/{category_id}', [CategoryController::class, 'Delete_Category_product']);
-
-    Route::get('/edit-category-product/{caterory_id}', [CategoryController::class, 'Edit_Category_product']);
-    Route::post('/update-category-action/{caterory_id}', [CategoryController::class, 'Update_Category_product']);
-
-    Route::get('/active-category-product/{caterory_id}', [CategoryController::class, 'Set_Active_category_product']);
-    Route::get('/unactive-category-product/{caterory_id}', [CategoryController::class, 'Set_UnActive_category_product']);
-    Route::get('/filter-category-root', [CategoryController::class, 'Filter_Category_Root']);
+    Route::get('/all-category-product', [CategoryController::class, 'Show_Category'])->middleware('permission:publish category');
+    Route::group(['middleware' => ['permission:add category']], function () {
+        Route::get('/add-category-product', [CategoryController::class, 'Add_Category']);
+        Route::post('/add-category-action', [CategoryController::class, 'Add_Category_Action']);
+    });
+    Route::get('/delete-category-product/{category_id}', [CategoryController::class, 'Delete_Category_product'])->middleware('permission:delete category');
+    Route::group(['middleware' => ['permission:edit category']], function () {
+        Route::get('/edit-category-product/{caterory_id}', [CategoryController::class, 'Edit_Category_product']);
+        Route::post('/update-category-action/{caterory_id}', [CategoryController::class, 'Update_Category_product']);
+        Route::get('/active-category-product/{caterory_id}', [CategoryController::class, 'Set_Active_category_product']);
+        Route::get('/unactive-category-product/{caterory_id}', [CategoryController::class, 'Set_UnActive_category_product']);
+        Route::get('/filter-category-root', [CategoryController::class, 'Filter_Category_Root']);
+    });
 
     //BRAND PRODUCTS
-    Route::get('/all-brand-product', [BrandController::class, 'Show_Brand']);
-    Route::get('/add-brand-product', [BrandController::class, 'Add_Brand']);
-    Route::post('/add-brand-action', [BrandController::class, 'Add_Brand_Action']);
-    Route::get('/delete-brand-product/{brand_id}', [BrandController::class, 'Delete_Brand_product']);
+    Route::get('/all-brand-product', [BrandController::class, 'Show_Brand'])->middleware('permission:publish brand');
 
-    Route::get('/edit-brand-product/{brand_id}', [BrandController::class, 'Edit_Brand_product']);
-    Route::post('/update-brand-action/{brand_id}', [BrandController::class, 'Update_Brand_product']);
-
-    Route::get('/active-brand-product/{brand_id}', [BrandController::class, 'Set_Active_Brand_product']);
-    Route::get('/unactive-brand-product/{brand_id}', [BrandController::class, 'Set_UnActive_Brand_product']);
+    Route::group(['middleware' => ['permission:add brand']], function () {
+        Route::get('/add-brand-product', [BrandController::class, 'Add_Brand']);
+        Route::post('/add-brand-action', [BrandController::class, 'Add_Brand_Action']);
+    });
+    Route::get('/delete-brand-product/{brand_id}', [BrandController::class, 'Delete_Brand_product'])->middleware('permission:delete brand');
+    Route::group(['middleware' => ['permission:edit brand']], function () {
+        Route::get('/edit-brand-product/{brand_id}', [BrandController::class, 'Edit_Brand_product']);
+        Route::post('/update-brand-action/{brand_id}', [BrandController::class, 'Update_Brand_product']);
+        Route::get('/active-brand-product/{brand_id}', [BrandController::class, 'Set_Active_Brand_product']);
+        Route::get('/unactive-brand-product/{brand_id}', [BrandController::class, 'Set_UnActive_Brand_product']);
+    });
 
     // PRODUCTS
-    Route::get('/all-product', [ProductController::class, 'Show_Product']);
-    Route::get('/add-product', [ProductController::class, 'Add_Product']);
-    Route::get('/edit-product/{product_id}', [ProductController::class, 'Edit_Product']);
-    Route::post('/add-product-action', [ProductController::class, 'Add_Product_Action']);
-    Route::get('/active-product/{product_id}', [ProductController::class, 'Set_Active_product']);
-    Route::get('/unactive-product/{product_id}', [ProductController::class, 'Set_UnActive_product']);
-    Route::post('/update-product-action/{product_id}', [ProductController::class, 'Update_Product']);
-    Route::get('/delete-product/{product_id}', [ProductController::class, 'Delete_Product']);
+    Route::get('/all-product', [ProductController::class, 'Show_Product'])->middleware('permission:publish product');
+    Route::group(['middleware' => ['permission:add product']], function () {
+        Route::get('/add-product', [ProductController::class, 'Add_Product']);
+        Route::post('/add-product-action', [ProductController::class, 'Add_Product_Action']);
+    });
+    Route::group(['middleware' => ['permission:edit product']], function () {
+        Route::get('/edit-product/{product_id}', [ProductController::class, 'Edit_Product']);
+        Route::get('/active-product/{product_id}', [ProductController::class, 'Set_Active_product']);
+        Route::get('/unactive-product/{product_id}', [ProductController::class, 'Set_UnActive_product']);
+        Route::post('/update-product-action/{product_id}', [ProductController::class, 'Update_Product']);
+    });
+    Route::get('/delete-product/{product_id}', [ProductController::class, 'Delete_Product'])->middleware('permission:delete product');
 
     // ATTRIBUTES PRODUCTS
-    Route::get('/all-attribute-product', [AttributesProductController::class, 'Show_Attribute_Product']);
-    Route::get('/add-attribute-product', [AttributesProductController::class, 'Add_Attribute_Product']);
-    Route::get('/add-attribute-choice/{category_id}', [AttributesProductController::class, 'Add_Attribute_Choice']);
-    Route::get('/edit-attribute-product/{category_id}', [AttributesProductController::class, 'Edit_Attribute_Product']);
-    Route::post('/add-attribute-action', [AttributesProductController::class, 'Add_attribute_action']);
-    Route::post('/add-attribute-choice-action/{category_id}', [AttributesProductController::class, 'Add_attribute_choice_action']);
-    Route::post('/add-attribute-action-detail', [AttributesProductController::class, 'Add_attribute_action_detail']);
-    Route::post('/delete-attribute-action', [AttributesProductController::class, 'Delete_attribute_action']);
-    Route::get('/delete-list-attribute-action/{category_id}', [AttributesProductController::class, 'Delete_list_attribute_action']);
-    Route::post('/update-attribute-action', [AttributesProductController::class, 'Update_Attribute_Action']);
+    Route::get('/all-attribute-product', [AttributesProductController::class, 'Show_Attribute_Product'])->middleware('permission:publish product attribute');
+    Route::group(['middleware' => ['permission:add product']], function () {
+        Route::get('/add-attribute-product', [AttributesProductController::class, 'Add_Attribute_Product']);
+        Route::get('/add-attribute-choice/{category_id}', [AttributesProductController::class, 'Add_Attribute_Choice']);
+        Route::post('/add-attribute-action', [AttributesProductController::class, 'Add_attribute_action']);
+        Route::post('/add-attribute-choice-action/{category_id}', [AttributesProductController::class, 'Add_attribute_choice_action']);
+        Route::post('/add-attribute-action-detail', [AttributesProductController::class, 'Add_attribute_action_detail']);
+    });
+    Route::group(['middleware' => ['permission:edit product attribute']], function () {
+        Route::get('/edit-attribute-product/{category_id}', [AttributesProductController::class, 'Edit_Attribute_Product']);
+        Route::post('/update-attribute-action', [AttributesProductController::class, 'Update_Attribute_Action']);
+    });
+    Route::group(['middleware' => ['permission:delete product attribute']], function () {
+        Route::post('/delete-attribute-action', [AttributesProductController::class, 'Delete_attribute_action']);
+        Route::get('/delete-list-attribute-action/{category_id}', [AttributesProductController::class, 'Delete_list_attribute_action']);
+    });
 
     // PRODUCTS DETAIL
-    Route::get('/all-detail-product', [DetailProductController::class, 'Show_Detail_Product']);
-    Route::get('/add-detail-product/{product_idv}', [DetailProductController::class, 'Add_Detail_Product']);
-    Route::get('/edit-detail-product/{product_id}', [DetailProductController::class, 'Edit_Detail_Product']);
-    Route::get('/add-detail-product-page', [DetailProductController::class, 'Show_add_detail_product']);
-    Route::post('/add-detail-action/{product_id}', [DetailProductController::class, 'Add_Detail_action']);
-    Route::post('/update-detail-action/{product_id}', [DetailProductController::class, 'Update_Detail_action']);
-    Route::get('/product-details/{product_id}', [DetailProductController::class, 'Product_Details']);
-    Route::get('/search', [DetailProductController::class, 'search']);
-    Route::post('/get-data', [DetailProductController::class, 'getData'])->name('get_data');
+    Route::group(['middleware' => ['permission:publish product detail']], function () {
+        Route::get('/all-detail-product', [DetailProductController::class, 'Show_Detail_Product'])->middleware('permission:publish product detail');
+        Route::get('/product-details/{product_id}', [DetailProductController::class, 'Product_Details']);
+        Route::get('/search', [DetailProductController::class, 'search']);
+        Route::post('/get-data', [DetailProductController::class, 'getData'])->name('get_data');
+    });
+    Route::group(['middleware' => ['permission:add product attribute']], function () {
+        Route::get('/add-detail-product/{product_id}', [DetailProductController::class, 'Add_Detail_Product']);
+        Route::get('/add-detail-product-page', [DetailProductController::class, 'Show_add_detail_product']);
+        Route::post('/add-detail-action/{product_id}', [DetailProductController::class, 'Add_Detail_action']);
+    });
+    Route::group(['middleware' => ['permission:edit product attribute']], function () {
+        Route::get('/edit-detail-product/{product_id}', [DetailProductController::class, 'Edit_Detail_Product']);
+        Route::post('/update-detail-action/{product_id}', [DetailProductController::class, 'Update_Detail_action']);
+    });
 
-    //PRODUCT IMAGES 
-    Route::get('/product-images', [ProductImagesController::class, 'Show_Images']);
-    Route::get('/add-product-images/{product_id}', [ProductImagesController::class, 'Add_Images']);
-    Route::post('/upload-product-images/{product_id}', [ProductImagesController::class, 'Upload_Image_Product']);
-    Route::get('/delete-product-images/{product_id}', [ProductImagesController::class, 'Delete_images']);
-    Route::post('/delete-product-images-choice', [ProductImagesController::class, 'Delete_choice']);
+    //PRODUCT IMAGES
+
+    Route::get('/product-images', [ProductImagesController::class, 'Show_Images'])->middleware('permission:publish product image');
+    Route::group(['middleware' => ['permission:add product image']], function () {
+        Route::get('/add-product-images/{product_id}', [ProductImagesController::class, 'Add_Images']);
+        Route::post('/upload-product-images/{product_id}', [ProductImagesController::class, 'Upload_Image_Product']);
+    });
+    Route::group(['middleware' => ['permission:delete product image']], function () {
+        Route::get('/delete-product-images/{product_id}', [ProductImagesController::class, 'Delete_images']);
+        Route::post('/delete-product-images-choice', [ProductImagesController::class, 'Delete_choice']);
+    });
+
 
 
     //ADDRESS PICKUP
-    Route::get('/address-pickup', [AddressController::class, 'Show_Address_Pickup'])->name('show_address_pickup');
-    Route::post('/add-address-pickup', [AddressController::class, 'addAddress'])->name('add_address_pickup');
-    Route::post('/delete-address', [AddressController::class, 'DeleteAddress'])->name('delete_address');
-
-
-    //TRANSACTIONS
-    Route::get('/show-transaction', [TransactionController::class, 'Show_Transaction'])->name('show_transaction');
+    Route::get('/address-pickup', [AddressController::class, 'Show_Address_Pickup'])->name('show_address_pickup')->middleware('permission:publish order address');
+    Route::post('/add-address-pickup', [AddressController::class, 'addAddress'])->name('add_address_pickup')->middleware('permission:edit order address');
+    Route::post('/delete-address', [AddressController::class, 'DeleteAddress'])->name('delete_address')->middleware('permission:edit order address');
 
 
     //ORDERS
-    Route::get('/show-order', [OrderController::class, 'Show_Order'])->name('show_order');
-    Route::get('/all-order', [OrderController::class, 'Show_All_Order'])->name('all_order');
-    Route::get('/order-confirm', [OrderController::class, 'Order_Confirm'])->name('order_confirm');
-    Route::get('/order-detail/{transaction_id}', [OrderController::class, 'Order_Detail'])->name('order_detail');
-    Route::get('/order-delete/{transaction_id}', [OrderController::class, 'Order_Delete'])->name('order_delete');
+    // Route::get('/show-order', [OrderController::class, 'Show_Order'])->name('show_order');
+    Route::group(['middleware' => ['permission:publish order list']], function () {
+        Route::get('/all-order', [OrderController::class, 'Show_All_Order'])->name('all_order');
+        Route::get('/order-confirm', [OrderController::class, 'Order_Confirm'])->name('order_confirm');
+        Route::get('/order-detail/{transaction_id}', [OrderController::class, 'Order_Detail'])->name('order_detail');
+    });
 
-    Route::get('/confirm-order/{transaction_id}', [TransactionController::class, 'Confirm_Order']);
-    Route::get('/confirm-package/{transaction_id}', [TransactionController::class, 'Confirm_Package']);
-    Route::get('/confirm-ship/{transaction_id}', [TransactionController::class, 'Confirm_Ship']);
-    Route::get('/confirm-completed/{transaction_id}', [TransactionController::class, 'Confirm_Completed']);
-    Route::get('/cancel-order/{transaction_id}', [TransactionController::class, 'Cancel_Order']);
+    Route::group(['middleware' => ['permission:edit order list']], function () {
+        Route::get('/confirm-order/{transaction_id}', [TransactionController::class, 'Confirm_Order']);
+        Route::get('/confirm-package/{transaction_id}', [TransactionController::class, 'Confirm_Package']);
+        Route::get('/confirm-ship/{transaction_id}', [TransactionController::class, 'Confirm_Ship']);
+        Route::get('/confirm-completed/{transaction_id}', [TransactionController::class, 'Confirm_Completed']);
+        Route::get('/cancel-order/{transaction_id}', [TransactionController::class, 'Cancel_Order']);
+        // ORDERS->INVOICES
+        Route::get('/order/invoice/{transaction_id}', [OrderController::class, 'View_Invoice']);
+        Route::get('/order/invoice/{transaction_id}/generate', [OrderController::class, 'Download_Invoice']);
+        Route::get('/order/invoice/{transaction_id}/mail', [OrderController::class, 'Send_Invoice']);
+    });
 
-    // ORDERS->INVOICES
-    Route::get('/order/invoice/{transaction_id}', [OrderController::class, 'View_Invoice']);
-    Route::get('/order/invoice/{transaction_id}/generate', [OrderController::class, 'Download_Invoice']);
-    Route::get('/order/invoice/{transaction_id}/mail', [OrderController::class, 'Send_Invoice']);
 
     // POST
-    Route::get('/add-post', [PostController::class, 'Add_Post']);
-    Route::post('/action-add-post', [PostController::class, 'Add_Post_Action'])->name('posts.store');
-    Route::get('/list-post', [PostController::class, 'Show_List_Post'])->name('posts');
-    Route::get('/edit-post', [PostController::class, 'Edit_Post']);
-    Route::get('/delete-post/{id}', [PostController::class, 'Delete_Post']);
-    Route::get('/post-details/{id}', [PostController::class, 'Detail_Post']);
+    Route::group(['middleware' => ['permission:publish blog']], function () {
+        Route::get('/list-post', [PostController::class, 'Show_List_Post'])->name('posts');
+        Route::get('/post-details/{id}', [PostController::class, 'Detail_Post']);
+    });
+    Route::group(['middleware' => ['permission:add blog']], function () {
+        Route::get('/add-post', [PostController::class, 'Add_Post']);
+        Route::post('/action-add-post', [PostController::class, 'Add_Post_Action'])->name('posts.store');
+    });
+    Route::get('/edit-post', [PostController::class, 'Edit_Post'])->middleware('permission:edit blog');
+    Route::get('/delete-post/{id}', [PostController::class, 'Delete_Post'])->middleware('permission:delete blog');
 
 
     //SLIDER HOME
 
-    Route::get('/all-sliders', [SliderHomeController::class, 'All_Slider']);
-    Route::get('/add-sliders', [SliderHomeController::class, 'Add_Slider']);
-    Route::post('/add-slider-action', [SliderHomeController::class, 'Add_Slider_Action']);
-    Route::get('/delete-slider/{id}', [SliderHomeController::class, 'Delete_Slider']);
+    Route::get('/all-sliders', [SliderHomeController::class, 'All_Slider'])->middleware('permission:publish slider');
+    Route::group(['middleware' => ['permission:add slider']], function () {
+        Route::get('/add-sliders', [SliderHomeController::class, 'Add_Slider']);
+        Route::post('/add-slider-action', [SliderHomeController::class, 'Add_Slider_Action']);
+    });
+    Route::get('/delete-slider/{id}', [SliderHomeController::class, 'Delete_Slider'])->middleware('permission:delete slider');
 
     // POSTER HOME 
-    Route::get('/all-poster', [PosterHomeController::class, 'All_Poster']);
-    Route::get('/add-poster', [PosterHomeController::class, 'Add_Poster']);
-    Route::post('/add-poster-action', [PosterHomeController::class, 'Add_Poster_Action']);
-    Route::get('/delete-poster/{id}', [PosterHomeController::class, 'Delete_Poster']);
-    Route::get('/active-poster/{id}', [PosterHomeController::class, 'Set_Active_Poster']);
-    Route::get('/unactive-poster/{id}', [PosterHomeController::class, 'Set_UnActive_Poster']);
+    Route::group(['middleware' => ['permission:publish poster']], function () {
+        Route::get('/active-poster/{id}', [PosterHomeController::class, 'Set_Active_Poster']);
+        Route::get('/unactive-poster/{id}', [PosterHomeController::class, 'Set_UnActive_Poster']);
+        Route::get('/all-poster', [PosterHomeController::class, 'All_Poster']);
+    });
+    Route::group(['middleware' => ['permission:add poster']], function () {
+        Route::get('/add-poster', [PosterHomeController::class, 'Add_Poster']);
+        Route::post('/add-poster-action', [PosterHomeController::class, 'Add_Poster_Action']);
+    });
+    Route::get('/delete-poster/{id}', [PosterHomeController::class, 'Delete_Poster'])->middleware('permission:delete poster');
 
 
     // REVIEW PRODUCT
-    Route::get('/review-product', [ReviewsController::class, 'Show_Review_Product']);
-    Route::get('/active-review/{id}', [ReviewsController::class, 'Set_Active_Review']);
-    Route::get('/unactive-review/{id}', [ReviewsController::class, 'Set_UnActive_Review']);
-    Route::get('/delete-review/{id}', [ReviewsController::class, 'Delete_Review']);
+    Route::group(['middleware' => ['permission:publish review']], function () {
+        Route::get('/review-product', [ReviewsController::class, 'Show_Review_Product']);
+        Route::get('/active-review/{id}', [ReviewsController::class, 'Set_Active_Review']);
+        Route::get('/unactive-review/{id}', [ReviewsController::class, 'Set_UnActive_Review']);
+    });
+    Route::get('/delete-review/{id}', [ReviewsController::class, 'Delete_Review'])->middleware('permission:delete review');
 
-    Route::get('/all-feedback', [ReviewsController::class, 'Show_FeedBack']);
-    Route::get('/add-feedback', [ReviewsController::class, 'Add_FeedBack']);
-    Route::get('/set-active-feedback/{id}', [ReviewsController::class, 'Set_Active_Feedback']);
-    Route::get('/set-unactive-feedback/{id}', [ReviewsController::class, 'Set_UnActive_Feedback']);
-    Route::get('/delete-feedback/{id}', [ReviewsController::class, 'Delete_Feedback']);
+    // FEEDBACK
+    Route::group(['middleware' => ['permission:publish feedback']], function () {
+        Route::get('/all-feedback', [ReviewsController::class, 'Show_FeedBack']);
+        Route::get('/set-active-feedback/{id}', [ReviewsController::class, 'Set_Active_Feedback']);
+        Route::get('/set-unactive-feedback/{id}', [ReviewsController::class, 'Set_UnActive_Feedback']);
+    });
+    Route::get('/add-feedback', [ReviewsController::class, 'Add_FeedBack'])->middleware('permission:add feedback');
+    Route::get('/delete-feedback/{id}', [ReviewsController::class, 'Delete_Feedback'])->middleware('permission:delete feedback');
 
     // CUSTOMERS
-    Route::get('/show-customer', [CustomerController::class, 'Show_Customer']);
-    Route::get('/detail-customer/{id}', [CustomerController::class, 'Show_Customer_Detail']);
+    Route::group(['middleware' => ['permission:publish order list']], function () {
+        Route::get('/show-customer', [CustomerController::class, 'Show_Customer']);
+        Route::get('/detail-customer/{id}', [CustomerController::class, 'Show_Customer_Detail']);
+    });
+
+    // AUTHORIZATION
+    Route::group(['middleware' => ['role:admin']], function () {
+        // ACCOUNT
+        Route::get('/all-account', [AdminControllers::class, 'Show_Account']);
+        Route::get('/add-account', [AdminControllers::class, 'Add_Account']);
+        Route::post('/add-account-action', [AdminControllers::class, 'Add_Account_Action']);
+        Route::get('/roles-to-account/{id}', [AdminControllers::class, 'Add_Role_Account']);
+        Route::post('/role-account-action/{id}', [AdminControllers::class, 'Add_Role_Account_Action']);
+        Route::get('/delete-account/{id}', [AdminControllers::class, 'Delete_Account_Action']);
+        Route::get('/active-account/{id}', [AdminControllers::class, 'Set_Active_Account']);
+        Route::get('/unactive-account/{id}', [AdminControllers::class, 'Set_UnActive_Account']);
+
+
+        // ROLE
+        Route::get('/all-roles', [AuthorizationController::class, 'Show_All_Roles']);
+        Route::get('/detail-roles/{id}', [AuthorizationController::class, 'Detail_Roles']);
+        Route::get('/add-roles', [AuthorizationController::class, 'Add_Roles']);
+        Route::post('/add-roles-action', [AuthorizationController::class, 'Add_Roles_Action']);
+        Route::get('/delete-roles-action/{id}', [AuthorizationController::class, 'Delete_Roles']);
+        Route::get('/edit-roles-action/{id}', [AuthorizationController::class, 'Update_Roles']);
+        Route::post('/update-roles-action/{id}', [AuthorizationController::class, 'Update_Roles_Action']);
+
+        // PERMISSION
+        Route::get('/all-permission', [AuthorizationController::class, 'Show_Permissions']);
+    });
 });
 // Route::middleware('auth')->group(function () {
 //     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -296,3 +367,4 @@ Route::prefix('admin')->middleware(['auth:admin'])->group(function () {
 //     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 // });
 require __DIR__ . '/adminauth.php';
+Route::get('/home', [UserController::class, 'index']);

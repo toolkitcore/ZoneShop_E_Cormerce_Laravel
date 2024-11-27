@@ -79,7 +79,7 @@
                                                     <?php
                                                         } else {
                                                         ?>
-                                                    <a href="{{ URL::to('/unactive-review/' . $item->id) }}"
+                                                    <a href="{{ URL::to('admin/unactive-review/' . $item->id) }}"
                                                         class="btn btn-primary btn-sm">
                                                         <iconify-icon icon="solar:eye-broken"
                                                             class="align-middle fs-18"></iconify-icon>
@@ -89,13 +89,15 @@
                                                     ?>
                                                 </td>
                                                 <td>
-                                                    <div class="d-flex gap-2">
-                                                        <a href="{{ URL::to('admin/delete-review/' . $item->id) }}"
-                                                            class="btn btn-soft-danger btn-sm delete-confirm">
-                                                            <iconify-icon icon="solar:trash-bin-minimalistic-2-broken"
-                                                                class="align-middle fs-18"></iconify-icon>
-                                                        </a>
-                                                    </div>
+                                                    @can('delete review')
+                                                        <div class="d-flex gap-2">
+                                                            <a href="{{ URL::to('admin/delete-review/' . $item->id) }}"
+                                                                class="btn btn-soft-danger btn-sm delete-confirm">
+                                                                <iconify-icon icon="solar:trash-bin-minimalistic-2-broken"
+                                                                    class="align-middle fs-18"></iconify-icon>
+                                                            </a>
+                                                        </div>
+                                                    @endcan
                                                 </td>
                                             </tr>
                                         @endforeach

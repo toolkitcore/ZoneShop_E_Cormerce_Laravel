@@ -304,7 +304,7 @@
                             @endforeach
                         </div>
                     </div>
-                    <!-- End .slick-single-layout -->
+                    {{-- <!-- End .slick-single-layout -->
                     <div class="slick-single-layout">
                         <div class="row row--15">
                             <div class="col-xl-3 col-lg-4 col-sm-6 col-12 mb--30">
@@ -643,7 +643,7 @@
 
                         </div>
                     </div>
-                    <!-- End .slick-single-layout -->
+                    <!-- End .slick-single-layout --> --}}
                 </div>
                 <div class="row">
                     <div class="col-lg-12 text-center mt--20 mt_sm--0">

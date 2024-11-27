@@ -11,36 +11,19 @@
                         <div class="card-header d-flex justify-content-between align-items-center gap-1">
                             <h4 class="card-title flex-grow-1">All Products </h4>
 
-                            <a href="{{ URL::to('admin/add-product') }}" class="btn btn-sm btn-primary">
-                                Add Product
-                            </a>
-
-                            <div class="dropdown">
-                                <a href="#" class="dropdown-toggle btn btn-sm btn-outline-light"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    This Month
+                            @can('add product')
+                                <a href="{{ URL::to('admin/add-product') }}" class="btn btn-sm btn-primary">
+                                    Add Product
                                 </a>
-                                <div class="dropdown-menu dropdown-menu-end">
-                                    <!-- item-->
-                                    <a href="#!" class="dropdown-item">Download</a>
-                                    <!-- item-->
-                                    <a href="#!" class="dropdown-item">Export</a>
-                                    <!-- item-->
-                                    <a href="#!" class="dropdown-item">Import</a>
-                                </div>
-                            </div>
+                            @endcan
+
+
                         </div>
                         <div>
                             <div class="table-responsive">
                                 <table class="table align-middle mb-0 table-hover table-centered">
                                     <thead class="bg-light-subtle">
                                         <tr>
-                                            <th style="width: 20px;">
-                                                <div class="form-check">
-                                                    <input type="checkbox" class="form-check-input" id="customCheck1">
-                                                    <label class="form-check-label" for="customCheck1"></label>
-                                                </div>
-                                            </th>
                                             <th>Products</th>
                                             <th>Description</th>
                                             <th>Price Original</th>
@@ -55,12 +38,6 @@
                                     <tbody>
                                         @foreach ($products as $product)
                                             <tr>
-                                                <td>
-                                                    <div class="form-check">
-                                                        <input type="checkbox" class="form-check-input" id="customCheck2">
-                                                        <label class="form-check-label" for="customCheck2"></label>
-                                                    </div>
-                                                </td>
                                                 <td>
                                                     <div class="d-flex align-items-center gap-2">
                                                         <div
@@ -119,22 +96,26 @@
                                                 <td>
                                                     <div class="d-flex gap-2">
                                                         <!-- EDIT product -->
-                                                        <a href="{{ URL::to('admin/edit-product/' . $product->product_id) }}"
-                                                            class="btn btn-soft-primary btn-sm">
-                                                            <iconify-icon icon="solar:pen-2-broken"
-                                                                class="align-middle fs-18"></iconify-icon>
-                                                        </a>
+                                                        @can('edit product')
+                                                            <a href="{{ URL::to('admin/edit-product/' . $product->product_id) }}"
+                                                                class="btn btn-soft-primary btn-sm">
+                                                                <iconify-icon icon="solar:pen-2-broken"
+                                                                    class="align-middle fs-18"></iconify-icon>
+                                                            </a>
+                                                        @endcan
                                                         <a href="{{ URL::to('admin/product-details/' . $product->product_id) }}"
                                                             class="btn btn-soft-primary btn-sm">
                                                             <iconify-icon icon="fluent-emoji-high-contrast:glasses"
                                                                 class="align-middle fs-18"></iconify-icon>
                                                         </a>
                                                         <!-- DELETE product -->
-                                                        <a href="{{ URL::to('admin/delete-product/' . $product->product_id) }}"
-                                                            class="btn btn-soft-danger btn-sm delete-confirm">
-                                                            <iconify-icon icon="solar:trash-bin-minimalistic-2-broken"
-                                                                class="align-middle fs-18"></iconify-icon>
-                                                        </a>
+                                                        @can('delete product')
+                                                            <a href="{{ URL::to('admin/delete-product/' . $product->product_id) }}"
+                                                                class="btn btn-soft-danger btn-sm delete-confirm">
+                                                                <iconify-icon icon="solar:trash-bin-minimalistic-2-broken"
+                                                                    class="align-middle fs-18"></iconify-icon>
+                                                            </a>
+                                                        @endcan
                                                     </div>
                                                 </td>
                                             </tr>

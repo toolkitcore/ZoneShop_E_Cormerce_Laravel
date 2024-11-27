@@ -11,24 +11,11 @@
                         <div class="card-header d-flex justify-content-between align-items-center gap-1">
                             <h4 class="card-title flex-grow-1">All Images List</h4>
 
-                            <a href="{{ URL::to('admin/add-product-image') }}" class="btn btn-sm btn-primary">
-                                Add Product Images
-                            </a>
-
-                            <div class="dropdown">
-                                <a href="#" class="dropdown-toggle btn btn-sm btn-outline-light"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    This Month
+                            @can('add product image')
+                                <a href="{{ URL::to('admin/add-product-image') }}" class="btn btn-sm btn-primary">
+                                    Add Product Images
                                 </a>
-                                <div class="dropdown-menu dropdown-menu-end">
-                                    <!-- item-->
-                                    <a href="#!" class="dropdown-item">Download</a>
-                                    <!-- item-->
-                                    <a href="#!" class="dropdown-item">Export</a>
-                                    <!-- item-->
-                                    <a href="#!" class="dropdown-item">Import</a>
-                                </div>
-                            </div>
+                            @endcan
                         </div>
                         <div>
                             <div class="table-responsive">
@@ -61,16 +48,21 @@
                                                 </td>
                                                 <td>
                                                     <div class="d-flex gap-2">
-                                                        <a href="{{ 'add-product-images/' . $item->product_id }}"
-                                                            class="btn btn-soft-primary btn-sm">
-                                                            <iconify-icon icon="material-symbols-light:add"
-                                                                class="align-middle fs-18"></iconify-icon>
-                                                        </a>
+                                                        @can('add product image')
+                                                            <a href="{{ 'add-product-images/' . $item->product_id }}"
+                                                                class="btn btn-soft-primary btn-sm">
+                                                                <iconify-icon icon="material-symbols-light:add"
+                                                                    class="align-middle fs-18"></iconify-icon>
+                                                            </a>
+                                                        @endcan
                                                         <!-- DELETE Images -->
-                                                        <a href="{{ 'delete-product-images/' . $item->product_id }}"
-                                                            class="btn btn-soft-danger btn-sm"><iconify-icon
-                                                                icon="solar:trash-bin-minimalistic-2-broken"
-                                                                class="align-middle fs-18"></iconify-icon></a>
+                                                        @can('delete product image')
+                                                            <a href="{{ 'delete-product-images/' . $item->product_id }}"
+                                                                class="btn btn-soft-danger btn-sm"><iconify-icon
+                                                                    icon="solar:trash-bin-minimalistic-2-broken"
+                                                                    class="align-middle fs-18"></iconify-icon>
+                                                            </a>
+                                                        @endcan
                                                     </div>
                                                 </td>
                                             </tr>

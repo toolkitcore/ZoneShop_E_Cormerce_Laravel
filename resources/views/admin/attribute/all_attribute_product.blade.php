@@ -14,20 +14,6 @@
                             <div>
                                 <h4 class="card-title">All Attribute List</h4>
                             </div>
-                            <div class="dropdown">
-                                <a href="#" class="dropdown-toggle btn btn-sm btn-outline-light rounded"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    This Month
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-end">
-                                    <!-- item-->
-                                    <a href="#!" class="dropdown-item">Download</a>
-                                    <!-- item-->
-                                    <a href="#!" class="dropdown-item">Export</a>
-                                    <!-- item-->
-                                    <a href="#!" class="dropdown-item">Import</a>
-                                </div>
-                            </div>
                         </div>
                         <div>
                             <div class="table-responsive">
@@ -69,21 +55,28 @@
                                                 </td>
                                                 <td>
                                                     <div class="d-flex gap-2">
-                                                        <a href="{{ URL::to('admin/add-attribute-choice/' . $category_item->category_id) }}"
-                                                            class="btn btn-soft-primary btn-sm">
-                                                            <iconify-icon icon="material-symbols-light:add"
-                                                                class="align-middle fs-18"></iconify-icon>
-                                                        </a>
-                                                        <a href="{{ URL::to('admin/edit-attribute-product/' . $category_item->category_id) }}"
-                                                            class="btn btn-soft-primary btn-sm">
-                                                            <iconify-icon icon="solar:pen-2-broken"
-                                                                class="align-middle fs-18"></iconify-icon>
-                                                        </a>
-                                                        <a href="{{ URL::to('admin/delete-list-attribute-action/' . $category_item->category_id) }}"
-                                                            class="btn btn-soft-danger btn-sm delete-confirm">
-                                                            <iconify-icon icon="solar:trash-bin-minimalistic-2-broken"
-                                                                class="align-middle fs-18"></iconify-icon>
-                                                        </a>
+
+                                                        @can('add product attribute')
+                                                            <a href="{{ URL::to('admin/add-attribute-choice/' . $category_item->category_id) }}"
+                                                                class="btn btn-soft-primary btn-sm">
+                                                                <iconify-icon icon="material-symbols-light:add"
+                                                                    class="align-middle fs-18"></iconify-icon>
+                                                            </a>
+                                                        @endcan
+                                                        @can('edit product attribute')
+                                                            <a href="{{ URL::to('admin/edit-attribute-product/' . $category_item->category_id) }}"
+                                                                class="btn btn-soft-primary btn-sm">
+                                                                <iconify-icon icon="solar:pen-2-broken"
+                                                                    class="align-middle fs-18"></iconify-icon>
+                                                            </a>
+                                                        @endcan
+                                                        @can('delete product attribute')
+                                                            <a href="{{ URL::to('admin/delete-list-attribute-action/' . $category_item->category_id) }}"
+                                                                class="btn btn-soft-danger btn-sm delete-confirm">
+                                                                <iconify-icon icon="solar:trash-bin-minimalistic-2-broken"
+                                                                    class="align-middle fs-18"></iconify-icon>
+                                                            </a>
+                                                        @endcan
 
                                                     </div>
                                                 </td>

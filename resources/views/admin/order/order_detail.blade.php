@@ -236,58 +236,60 @@
                                         </div>
                                     @endif
                                 </div>
-                                <div
-                                    class="card-footer d-flex flex-wrap align-items-center justify-content-between bg-light-subtle gap-2">
-                                    @if ($transaction_item->transaction_status == 0 && $transaction_item->transaction_payment == 'pay_offline')
-                                        <div>
-                                            <a href="{{ URL::to('admin/confirm-order/' . $transaction_item->transaction_id) }}"
-                                                class="btn btn-primary">Confirm Order</a>
-                                        </div>
-                                    @elseif ($transaction_item->transaction_status == 1 && $transaction_item->transaction_payment == 'pay_online')
-                                        <div>
-                                            <a href="{{ URL::to('admin/confirm-order/' . $transaction_item->transaction_id) }}"
-                                                class="btn btn-primary">Confirm Order</a>
-                                        </div>
-                                    @elseif($transaction_item->transaction_status == 2)
-                                        <div>
-                                            <a href="{{ URL::to('admin/confirm-package/' . $transaction_item->transaction_id) }}"
-                                                class="btn btn-primary">Confirm
-                                                Package</a>
-                                        </div>
-                                    @elseif($transaction_item->transaction_status == 3)
-                                        <div>
-                                            <a href="{{ URL::to('admin/confirm-ship/' . $transaction_item->transaction_id) }}"
-                                                class="btn btn-primary">Confirm Ship</a>
-                                        </div>
-                                    @elseif($transaction_item->transaction_status == 4)
-                                        <div>
-                                            <a href="{{ URL::to('admin/confirm-completed/' . $transaction_item->transaction_id) }}"
-                                                class="btn btn-primary">Confirm
-                                                Completed</a>
-                                        </div>
-                                    @endif
+                                @can('edit order list')
+                                    <div
+                                        class="card-footer d-flex flex-wrap align-items-center justify-content-between bg-light-subtle gap-2">
+                                        @if ($transaction_item->transaction_status == 0 && $transaction_item->transaction_payment == 'pay_offline')
+                                            <div>
+                                                <a href="{{ URL::to('admin/confirm-order/' . $transaction_item->transaction_id) }}"
+                                                    class="btn btn-primary">Confirm Order</a>
+                                            </div>
+                                        @elseif ($transaction_item->transaction_status == 1 && $transaction_item->transaction_payment == 'pay_online')
+                                            <div>
+                                                <a href="{{ URL::to('admin/confirm-order/' . $transaction_item->transaction_id) }}"
+                                                    class="btn btn-primary">Confirm Order</a>
+                                            </div>
+                                        @elseif($transaction_item->transaction_status == 2)
+                                            <div>
+                                                <a href="{{ URL::to('admin/confirm-package/' . $transaction_item->transaction_id) }}"
+                                                    class="btn btn-primary">Confirm
+                                                    Package</a>
+                                            </div>
+                                        @elseif($transaction_item->transaction_status == 3)
+                                            <div>
+                                                <a href="{{ URL::to('admin/confirm-ship/' . $transaction_item->transaction_id) }}"
+                                                    class="btn btn-primary">Confirm Ship</a>
+                                            </div>
+                                        @elseif($transaction_item->transaction_status == 4)
+                                            <div>
+                                                <a href="{{ URL::to('admin/confirm-completed/' . $transaction_item->transaction_id) }}"
+                                                    class="btn btn-primary">Confirm
+                                                    Completed</a>
+                                            </div>
+                                        @endif
 
-                                    @if ($transaction_item->transaction_status >= 2 && $transaction_item->transaction_status <= 6)
-                                        <div class="card-invoices">
-                                            <a class="btn btn-primary"
-                                                href="{{ URL::to('admin/order/invoice/' . $transaction_item->transaction_id) }}"
-                                                target="_blank">
-                                                <iconify-icon icon="hugeicons:view" wtransaction_idth="1.2em"
-                                                    height="1.2em"></iconify-icon> View invoice</a>
-                                            <a class="btn btn-primary"
-                                                href="{{ URL::to('admin/order/invoice/' . $transaction_item->transaction_id . '/generate') }}">
-                                                <iconify-icon icon="material-symbols:download" width="1.2em"
-                                                    height="1.2em"></iconify-icon>
-                                                Dowload Invoice
-                                            </a>
-                                            <a class="btn btn-primary"
-                                                href="{{ URL::to('admin/order/invoice/' . $transaction_item->transaction_id . '/mail') }}">
-                                                Send Invoice
-                                            </a>
-                                        </div>
-                                    @else
-                                    @endif
-                                </div>
+                                        @if ($transaction_item->transaction_status >= 2 && $transaction_item->transaction_status <= 6)
+                                            <div class="card-invoices">
+                                                <a class="btn btn-primary"
+                                                    href="{{ URL::to('admin/order/invoice/' . $transaction_item->transaction_id) }}"
+                                                    target="_blank">
+                                                    <iconify-icon icon="hugeicons:view" wtransaction_idth="1.2em"
+                                                        height="1.2em"></iconify-icon> View invoice</a>
+                                                <a class="btn btn-primary"
+                                                    href="{{ URL::to('admin/order/invoice/' . $transaction_item->transaction_id . '/generate') }}">
+                                                    <iconify-icon icon="material-symbols:download" width="1.2em"
+                                                        height="1.2em"></iconify-icon>
+                                                    Dowload Invoice
+                                                </a>
+                                                <a class="btn btn-primary"
+                                                    href="{{ URL::to('admin/order/invoice/' . $transaction_item->transaction_id . '/mail') }}">
+                                                    Send Invoice
+                                                </a>
+                                            </div>
+                                        @else
+                                        @endif
+                                    </div>
+                                @endcan
                             </div>
                             <div class="card">
                                 <div class="card-header">

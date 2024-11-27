@@ -56,7 +56,7 @@ class PosterHomeController extends Controller
 
         PosterHome::where('id', $id)->delete();
         Session::flash('success', 'Delete poster successfully!');
-        return redirect('all-poster');
+        return redirect('admin/all-poster');
     }
     public function Set_Active_Poster($id)
     {
@@ -64,7 +64,7 @@ class PosterHomeController extends Controller
         PosterHome::where('id', $id)->update(['poster_status' => 1]);
 
         Session::flash('success', 'Active the poster successfurlly!');
-        return Redirect('/all-poster');
+        return Redirect('admin/all-poster');
     }
     public function Set_UnActive_Poster($id)
     {
@@ -72,6 +72,6 @@ class PosterHomeController extends Controller
         PosterHome::where('id', $id)->update(['poster_status' => 0]);
 
         Session::flash('success', 'UnActive the poster successfurlly!');
-        return Redirect('/all-poster');
+        return Redirect('admin/all-poster');
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Mail\InvoiceOrderMail;
 use App\Models\Address;
 use App\Models\Orders;
+use App\Models\Product;
 use App\Models\Transaction;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use GuzzleHttp\Client;
@@ -26,6 +27,14 @@ class OrderController extends Controller
         $user_id = Auth::user()->id;
         $address_user = Address::where('user_id', $user_id)->first();
         if (!$address_user) {
+        }
+        $content = Cart::content();
+        foreach ($content as $key => $value) {
+            if ($value->qty > Product::where('product_id', $value->id)->first()->product_quantity) {
+                // Session::flash('success', 'The quantity of products:' . $value->name . '
+                //  is insufficient!');
+                return redirect('gio-hang')->with('warning', 'The quantity of products: ' . $value->name . ' is insufficient!');
+            };
         }
         $address_pickup = Address::where('address_type', 'pickup')->get();
         return view('pages.checkout.show_checkout', compact('address_pickup'));
@@ -237,7 +246,7 @@ class OrderController extends Controller
 
         if (!$transaction) {
             // Handle case when transaction is not found
-            return redirect('order-detail/' . $transaction_id)
+            return redirect('admin/order-detail/' . $transaction_id)
                 ->with('message', 'Transaction not found!');
         }
 
@@ -246,11 +255,11 @@ class OrderController extends Controller
             Mail::to($transaction->deliveryAddress->email)->send(new InvoiceOrderMail($transaction));
 
             // Return a success message after sending the email
-            return redirect('order-detail/' . $transaction_id)
+            return redirect('admin/order-detail/' . $transaction_id)
                 ->with('message', 'Invoice message has been sent to ' . $transaction->deliveryAddress->email);
         } catch (\Throwable $th) {
             // Return an error message if something goes wrong
-            return redirect('order-detail/' . $transaction_id)
+            return redirect('admin/order-detail/' . $transaction_id)
                 ->with('message', 'Something went wrong while sending the email!');
         }
     }

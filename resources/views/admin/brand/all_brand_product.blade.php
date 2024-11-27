@@ -10,15 +10,15 @@
             <div class="row">
                 <!-- @foreach ($brands as $brand)
     <div class="col-md-6 col-xl-3">
-                                        <div class="card">
-                                            <div class="card-body text-center">
-                                                <div class="rounded bg-secondary-subtle d-flex align-items-center justify-content-center mx-auto">
-                                                    <img src="{{ asset('public/uploads/brand/' . $brand->brand_image) }}" alt="" class="avatar-xl">
-                                                </div>
-                                                <h4 class="mt-3 mb-0">{{ $brand->brand_name }}</h4>
-                                            </div>
-                                        </div>
-                                    </div>
+                                                                        <div class="card">
+                                                                            <div class="card-body text-center">
+                                                                                <div class="rounded bg-secondary-subtle d-flex align-items-center justify-content-center mx-auto">
+                                                                                    <img src="{{ asset('public/uploads/brand/' . $brand->brand_image) }}" alt="" class="avatar-xl">
+                                                                                </div>
+                                                                                <h4 class="mt-3 mb-0">{{ $brand->brand_name }}</h4>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
     @endforeach -->
             </div>
 
@@ -28,24 +28,11 @@
                         <div class="card-header d-flex justify-content-between align-items-center gap-1">
                             <h4 class="card-title flex-grow-1">All Brand List</h4>
 
-                            <a href="{{ URL::to('admin/add-brand-product') }}" class="btn btn-sm btn-primary">
-                                Add Brand
-                            </a>
-
-                            <div class="dropdown">
-                                <a href="#" class="dropdown-toggle btn btn-sm btn-outline-light"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    This Month
+                            @can('add brand')
+                                <a href="{{ URL::to('admin/add-brand-product') }}" class="btn btn-sm btn-primary">
+                                    Add Brand
                                 </a>
-                                <div class="dropdown-menu dropdown-menu-end">
-                                    <!-- item-->
-                                    <a href="#!" class="dropdown-item">Download</a>
-                                    <!-- item-->
-                                    <a href="#!" class="dropdown-item">Export</a>
-                                    <!-- item-->
-                                    <a href="#!" class="dropdown-item">Import</a>
-                                </div>
-                            </div>
+                            @endcan
                         </div>
                         <div>
                             <div class="table-responsive">
@@ -109,17 +96,21 @@
                                                 </td>
                                                 <td>
                                                     <div class="d-flex gap-2">
-                                                        <!-- EDIT brand -->
-                                                        <a href="{{ URL::to('admin/edit-brand-product/' . $brand->brand_id) }}"
-                                                            class="btn btn-soft-primary btn-sm">
-                                                            <iconify-icon icon="solar:pen-2-broken"
-                                                                class="align-middle fs-18"></iconify-icon>
-                                                        </a>
-                                                        <!-- DELETE brand -->
-                                                        <a href="{{ URL::to('admin/delete-brand-product/' . $brand->brand_id) }}"
-                                                            class="btn btn-soft-danger btn-sm delete-confirm"><iconify-icon
-                                                                icon="solar:trash-bin-minimalistic-2-broken"
-                                                                class="align-middle fs-18"></iconify-icon></a>
+                                                        @can('edit brand')
+                                                            <!-- EDIT brand -->
+                                                            <a href="{{ URL::to('admin/edit-brand-product/' . $brand->brand_id) }}"
+                                                                class="btn btn-soft-primary btn-sm">
+                                                                <iconify-icon icon="solar:pen-2-broken"
+                                                                    class="align-middle fs-18"></iconify-icon>
+                                                            </a>
+                                                        @endcan
+                                                        @can('delete brand')
+                                                            <!-- DELETE brand -->
+                                                            <a href="{{ URL::to('admin/delete-brand-product/' . $brand->brand_id) }}"
+                                                                class="btn btn-soft-danger btn-sm delete-confirm"><iconify-icon
+                                                                    icon="solar:trash-bin-minimalistic-2-broken"
+                                                                    class="align-middle fs-18"></iconify-icon></a>
+                                                        @endcan
                                                     </div>
                                                 </td>
                                             </tr>

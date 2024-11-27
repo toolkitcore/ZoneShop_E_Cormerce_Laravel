@@ -108,12 +108,10 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="text-md-end mt-3 mt-md-0">
-                                        <button type="button" class="btn btn-outline-secondary me-1"><i
-                                                class="bx bx-cog me-1"></i>More Setting</button>
-                                        <button type="button" class="btn btn-outline-secondary me-1"><i
-                                                class="bx bx-filter-alt me-1"></i> Filters</button>
-                                        <a href="{{ 'add-product' }}" class="btn btn-success me-1"><i
-                                                class="bx bx-plus"></i> New Product</a>
+                                        @can('add product')
+                                            <a href="{{ 'add-product' }}" class="btn btn-success me-1"><i
+                                                    class="bx bx-plus"></i> New Product</a>
+                                        @endcan
                                     </div>
                                 </div>
                             </div>

@@ -9,6 +9,7 @@ $(document).ready(function() {
     $(document).on('click', '.qtybtn', function() {
         let quantityInput = $(this).siblings('.cart-quantity');
         let rowid = quantityInput.data('rowid');
+        let product = quantityInput.data('product');
         let quantity = parseInt(quantityInput.val());
     
         if (!isNaN(quantity) && quantity > 0) {
@@ -18,15 +19,28 @@ $(document).ready(function() {
                 data: {
                     _token: $('meta[name="csrf-token"]').attr('content'),
                     rowid: rowid,
-                    quantity: quantity
+                    quantity: quantity,
+                    product: product
                 },
                 success: function(response) {
+                    if (response.success) {
+
                     $('.cart-quantity[data-rowid="' + rowid + '"]').val(quantity);
                     $('.total-all').text(response.total + ' VND');
                     $('#subtotal-' + rowid).text(response.subtotal.toLocaleString('en-US') + ' VND');
+                    }else if (response.error){
+                        showToast('Insufficient product quantity !', {
+                            gravity: 'top',
+                            position: 'right',
+                            duration: 5000,
+                            close: true,
+                            backgroundColor: '#ffcc00'
+                        });
+                    }
                 },
                 error: function(xhr) {
                     console.log(xhr.responseText); // Hiển thị lỗi nếu có
+                   
                 }
             });
         }

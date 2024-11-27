@@ -11,9 +11,11 @@
                         <div class="card-header d-flex justify-content-between align-items-center gap-1">
                             <h4 class="card-title flex-grow-1">All Product of Sliders </h4>
 
-                            <a href="{{ URL::to('admin/add-sliders') }}" class="btn btn-sm btn-primary">
-                                Add item
-                            </a>
+                            @can('add slider')
+                                <a href="{{ URL::to('admin/add-sliders') }}" class="btn btn-sm btn-primary">
+                                    Add item
+                                </a>
+                            @endcan
                         </div>
                         <div>
                             <div class="table-responsive">
@@ -47,13 +49,15 @@
                                                     {{ number_format($item->product->product_price_selling) . ' VND' }}
                                                 </td>
                                                 <td>
-                                                    <div class="d-flex gap-2">
-                                                        <a href="{{ URL::to('admin/delete-slider/' . $item->id) }}"
-                                                            class="btn btn-soft-danger btn-sm delete-confirm">
-                                                            <iconify-icon icon="solar:trash-bin-minimalistic-2-broken"
-                                                                class="align-middle fs-18"></iconify-icon>
-                                                        </a>
-                                                    </div>
+                                                    @can('delete slider')
+                                                        <div class="d-flex gap-2">
+                                                            <a href="{{ URL::to('admin/delete-slider/' . $item->id) }}"
+                                                                class="btn btn-soft-danger btn-sm delete-confirm">
+                                                                <iconify-icon icon="solar:trash-bin-minimalistic-2-broken"
+                                                                    class="align-middle fs-18"></iconify-icon>
+                                                            </a>
+                                                        </div>
+                                                    @endcan
                                                 </td>
                                             </tr>
                                         @endforeach

@@ -238,7 +238,7 @@ class CheckoutController extends Controller
 
                 return redirect()->route('checkout.success');
             } else {
-                $transaction->transaction_status = 7;
+                $transaction->transaction_status = 6;
                 $transaction->save();
 
                 return redirect()->route('checkout.failed');

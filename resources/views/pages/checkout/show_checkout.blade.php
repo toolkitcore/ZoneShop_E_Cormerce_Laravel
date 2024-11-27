@@ -335,6 +335,20 @@
                     });
                     return;
                 }
+                var phoneNumber = document.getElementById("phone-number").value;
+
+                // Kiểm tra nếu số điện thoại có đúng 10 chữ số
+                var phoneRegex = /^\d{10}$/;
+                if (!phoneRegex.test(phoneNumber)) {
+                    showToast('Phone number must be exactly 10 digits.', {
+                        gravity: 'top',
+                        position: 'right',
+                        duration: 5000,
+                        close: true,
+                        backgroundColor: '#ffcc00'
+                    });
+                    return;
+                }
                 $.ajax({
                     url: '{{ URL::to('process-checkout') }}', // Path to your controller
                     type: 'POST',
@@ -402,6 +416,20 @@
                         isValid = false;
                         break;
                     }
+                }
+                var phoneNumber = document.getElementById("phone-number").value;
+
+                // Kiểm tra nếu số điện thoại có đúng 10 chữ số
+                var phoneRegex = /^\d{10}$/;
+                if (!phoneRegex.test(phoneNumber)) {
+                    showToast('Phone number must be exactly 10 digits.', {
+                        gravity: 'top',
+                        position: 'right',
+                        duration: 5000,
+                        close: true,
+                        backgroundColor: '#ffcc00'
+                    });
+                    return;
                 }
 
                 if (!isValid) {

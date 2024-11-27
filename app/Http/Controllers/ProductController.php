@@ -18,7 +18,6 @@ class ProductController extends Controller
 
     public function Show_Product()
     {
-
         $products = Product::with(['brand', 'category'])->paginate(6);
 
         return view('admin.product.all_product', compact('products'));
@@ -74,7 +73,7 @@ class ProductController extends Controller
         Product::where('product_id', $product_id)->update(['product_status' => 1]);
 
         Session::flash('success', 'Active the product successfurlly!');
-        return Redirect('/all-product');
+        return Redirect('admin/all-product');
     }
     public function Set_UnActive_product($product_id)
     {
@@ -82,7 +81,7 @@ class ProductController extends Controller
         Product::where('product_id', $product_id)->update(['product_status' => 0]);
 
         Session::flash('success', 'UnActive the product successfurlly!');
-        return Redirect('/all-product');
+        return Redirect('admin/all-product');
     }
     public function Edit_product($product_id)
     {
@@ -125,19 +124,19 @@ class ProductController extends Controller
 
             DB::table('tbl_product')->where('product_id', $product_id)->update($data);
             Session::flash('success', 'Update the Product Successfully !');
-            return redirect('all-product');
+            return redirect('admin/all-product');
         }
 
         DB::table('tbl_product')->where('product_id', $product_id)->update($data);
         Session::flash('success', 'Update the product Successfully !');
-        return redirect('all-product');
+        return redirect('admin/all-product');
     }
     public function Delete_product($product_id)
     {
 
         Product::where('product_id', $product_id)->delete();
         Session::flash('success', 'Delete the Product Successfully');
-        return Redirect('all-product');
+        return Redirect('admin/all-product');
     }
     public function Product_detail($product_id)
     {

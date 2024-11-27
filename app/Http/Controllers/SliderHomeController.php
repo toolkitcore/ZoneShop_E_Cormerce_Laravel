@@ -63,6 +63,6 @@ class SliderHomeController extends Controller
 
         $slider = SliderHome::where('id', $id)->delete();
         Session::flash('success', 'Delete item successfully!');
-        return redirect('all-sliders');
+        return redirect('admin/all-sliders');
     }
 }

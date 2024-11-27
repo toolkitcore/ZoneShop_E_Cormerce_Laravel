@@ -9,15 +9,15 @@
             <div class="row">
                 <!-- @foreach ($categories as $category)
     <div class="col-md-6 col-xl-3">
-                                                                                            <div class="card">
-                                                                                                <div class="card-body text-center">
-                                                                                                    <div class="rounded bg-secondary-subtle d-flex align-items-center justify-content-center mx-auto">
-                                                                                                        <img src="{{ asset('public/uploads/category/' . $category->category_image) }}" alt="" class="avatar-xl">
-                                                                                                    </div>
-                                                                                                    <h4 class="mt-3 mb-0">{{ $category->category_name }}</h4>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
+                                                                                                                                                                            <div class="card">
+                                                                                                                                                                                <div class="card-body text-center">
+                                                                                                                                                                                    <div class="rounded bg-secondary-subtle d-flex align-items-center justify-content-center mx-auto">
+                                                                                                                                                                                        <img src="{{ asset('public/uploads/category/' . $category->category_image) }}" alt="" class="avatar-xl">
+                                                                                                                                                                                    </div>
+                                                                                                                                                                                    <h4 class="mt-3 mb-0">{{ $category->category_name }}</h4>
+                                                                                                                                                                                </div>
+                                                                                                                                                                            </div>
+                                                                                                                                                                        </div>
     @endforeach -->
             </div>
 
@@ -27,21 +27,12 @@
                         <div class="card-header d-flex justify-content-between align-items-center gap-1">
                             <h4 class="card-title flex-grow-1">All Categories List</h4>
 
-                            <a href="{{ URL::to('admin/add-category-product') }}" class="btn btn-sm btn-primary">
-                                Add Category
-                            </a>
-
-                            <div class="dropdown">
-                                <a href="#" class="dropdown-toggle btn btn-sm btn-outline-light"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    Filter Category
+                            @can('add category')
+                                <a href="{{ URL::to('admin/add-category-product') }}" class="btn btn-sm btn-primary">
+                                    Add Category
                                 </a>
-                                <div class="dropdown-menu dropdown-menu-end">
-                                    <!-- item-->
-                                    <a href="{{ URL::to('admin/filter-category-root') }}" class="dropdown-item">Root</a>
-                                    <!-- item-->
-                                </div>
-                            </div>
+                            @endcan
+
 
                         </div>
                         <div>
@@ -126,17 +117,21 @@
                                                 </td>
                                                 <td>
                                                     <div class="d-flex gap-2">
-                                                        <!-- EDIT CATEGORY -->
-                                                        <a href="{{ URL::to('admin/edit-category-product/' . $category->category_id) }}"
-                                                            class="btn btn-soft-primary btn-sm">
-                                                            <iconify-icon icon="solar:pen-2-broken"
-                                                                class="align-middle fs-18"></iconify-icon>
-                                                        </a>
-                                                        <!-- DELETE CATEGORY -->
-                                                        <a href="{{ URL::to('admin/delete-category-product/' . $category->category_id) }}"
-                                                            class="btn btn-soft-danger btn-sm delete-confirm"><iconify-icon
-                                                                icon="solar:trash-bin-minimalistic-2-broken"
-                                                                class="align-middle fs-18"></iconify-icon></a>
+                                                        @can('edit category')
+                                                            <!-- EDIT CATEGORY -->
+                                                            <a href="{{ URL::to('admin/edit-category-product/' . $category->category_id) }}"
+                                                                class="btn btn-soft-primary btn-sm">
+                                                                <iconify-icon icon="solar:pen-2-broken"
+                                                                    class="align-middle fs-18"></iconify-icon>
+                                                            </a>
+                                                        @endcan
+                                                        @can('delete category')
+                                                            <!-- DELETE CATEGORY -->
+                                                            <a href="{{ URL::to('admin/delete-category-product/' . $category->category_id) }}"
+                                                                class="btn btn-soft-danger btn-sm delete-confirm"><iconify-icon
+                                                                    icon="solar:trash-bin-minimalistic-2-broken"
+                                                                    class="align-middle fs-18"></iconify-icon></a>
+                                                        @endcan
                                                     </div>
                                                 </td>
                                             </tr>

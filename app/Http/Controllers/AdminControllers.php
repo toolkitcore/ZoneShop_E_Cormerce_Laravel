@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
 use App\Models\Admin; // Nhập khẩu model Admin
 use App\Models\Transaction;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Role;
+
+// use Spatie\Permission\Contracts\Role;
 
 class AdminControllers extends Controller
 {
@@ -241,7 +246,75 @@ class AdminControllers extends Controller
     }
     public function Show_profile()
     {
-        //  
-        return view('admin.profile_admin');
+        $id_account = Auth('admin')->user()->id;
+        $account = Admin::find($id_account);
+
+        $role_names = $account->getRoleNames()->first(); // Trả về một Collection
+        return view('admin.profile_admin', compact('role_names'));
+    }
+    public function Show_Account()
+    {
+        $accounts = Admin::with('roles')->orderBy('id', 'DESC')->get();
+        return view('admin.Authorization.account.all_account', compact('accounts'));
+    }
+    public function Add_Account()
+    {
+
+        return view('admin.Authorization.account.add_account');
+    }
+    public function Add_Account_Action(Request $request)
+    {
+
+        // Thêm tài khoản admin vào cơ sở dữ liệu
+        $admin = new Admin();
+        $admin->name = $request->fullname;
+        $admin->email = $request->email;
+        $admin->password = Hash::make($request->password);
+
+        if ($admin->save()) {
+            Session::flash('success', 'Add Account Successfully!');
+            return redirect('admin/add-account');
+        } else {
+            Session::flash('error', 'Add Account Failed!');
+            return redirect('admin/add-account');
+        }
+    }
+    public function Add_Role_Account($id)
+    {
+
+        $account = Admin::find($id);
+        $list_roles = Role::orderBy('id', 'DESC')->get();
+        $role_account = $account->roles->first();
+        return view('admin.Authorization.account.role_account', compact('account', 'list_roles', 'role_account'));
+    }
+    public function Add_Role_Account_Action(Request $request, $id)
+    {
+        $data = $request->all();
+        $admin = Admin::find($id);
+        // auth()->guard('admin')->user()->syncRoles(['admin']);
+        $admin->syncRoles($data['role']);
+        Session::flash('success', 'Set Role Successfully!');
+        return redirect('admin/roles-to-account/' . $id);
+    }
+    public function Delete_Account_Action($id)
+    {
+        $admin = Admin::find($id)->delete();
+        Session::flash('success', 'Delete Account Successfully!');
+        return redirect('admin/all-account');
+    }
+    public function Set_Active_Account($id)
+    {
+
+        Admin::where('id', $id)->update(['is_status' => 1]);
+
+        Session::flash('success', 'Active the Account successfully!');
+        return Redirect('admin/all-account');
+    }
+    public function Set_UnActive_Account($id)
+    {
+
+        Admin::where('id', $id)->update(['is_status' => 0]);
+        Session::flash('success', 'UnActive the Account successfully!');
+        return Redirect('admin/all-account');
     }
 }

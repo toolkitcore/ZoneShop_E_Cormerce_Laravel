@@ -20,54 +20,58 @@
                                                 Pickup:{{ ' ' . $address_item->address . ', ' . $address_item->ward . ', ' . $address_item->district . ', ' . $address_item->province }}</span>
                                         </div>
                                     </div>
-                                    <div class="card-footer border-top">
-                                        <button type="submit" class="btn btn-primary">Delete
-                                            address</button>
-                                    </div>
+                                    @can('edit order address')
+                                        <div class="card-footer border-top">
+                                            <button type="submit" class="btn btn-primary">Delete
+                                                address</button>
+                                        </div>
+                                    @endcan
                                 </div>
                             </form>
                         @endforeach
                     </div>
                 @else
-                    <div class="col-lg-12">
-                        <form id="addressForm">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h4 class="card-title">Add Information Address Pickup</h4>
+                    @can('edit order address')
+                        <div class="col-lg-12">
+                            <form id="addressForm">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4 class="card-title">Add Information Address Pickup</h4>
+                                    </div>
+                                    <div class="card-body row">
+                                        <div class="form-group mt-2 col-6">
+                                            <label for="receiverProvince">Province:</label>
+                                            <select id="receiverProvince" class="form-control"></select>
+                                        </div>
+                                        <div class="form-group mt-2 col-6">
+                                            <label for="receiverDistrict">District:</label>
+                                            <select id="receiverDistrict" class="form-control">
+                                                <option value="">Select District</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group mt-2 col-6">
+                                            <label for="receiverWard">Ward:</label>
+                                            <select id="receiverWard" class="form-control">
+                                                <option value="">Select Ward</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group mt-2 col-6">
+                                            <label for="address">Address:</label>
+                                            <input type="text" id="address" class="form-control"
+                                                placeholder="Enter specific address" required>
+                                        </div>
+                                        <div class="form-group mt-2 col-12">
+                                            <span id="address_yourchoice"></span>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer border-top">
+                                        <button type="button" id="getaddress" class="btn btn-primary">Add Address
+                                            Pickup</button>
+                                    </div>
                                 </div>
-                                <div class="card-body row">
-                                    <div class="form-group mt-2 col-6">
-                                        <label for="receiverProvince">Province:</label>
-                                        <select id="receiverProvince" class="form-control"></select>
-                                    </div>
-                                    <div class="form-group mt-2 col-6">
-                                        <label for="receiverDistrict">District:</label>
-                                        <select id="receiverDistrict" class="form-control">
-                                            <option value="">Select District</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group mt-2 col-6">
-                                        <label for="receiverWard">Ward:</label>
-                                        <select id="receiverWard" class="form-control">
-                                            <option value="">Select Ward</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group mt-2 col-6">
-                                        <label for="address">Address:</label>
-                                        <input type="text" id="address" class="form-control"
-                                            placeholder="Enter specific address" required>
-                                    </div>
-                                    <div class="form-group mt-2 col-12">
-                                        <span id="address_yourchoice"></span>
-                                    </div>
-                                </div>
-                                <div class="card-footer border-top">
-                                    <button type="button" id="getaddress" class="btn btn-primary">Add Address
-                                        Pickup</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
+                            </form>
+                        </div>
+                    @endcan
                 @endif
             </div>
         </div>

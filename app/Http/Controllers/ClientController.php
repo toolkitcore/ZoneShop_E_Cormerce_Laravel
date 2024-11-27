@@ -42,8 +42,12 @@ class ClientController extends Controller
     // Show page Home
     public function Show_Page_Home()
     {
-        $products = Product::with('productImages', 'category')->take(8)->get();
-        $categories = Category_Product::whereNotNull('category_parent_id')->get();
+        $products = Product::with('productImages', 'category')
+            ->where('product_status', '=', 1)
+            ->where('product_quantity', '>=', 1)
+            ->take(8)
+            ->get();
+        $categories = Category_Product::whereNotNull('category_parent_id')->where('category_status', '=', 1)->get();
         $slider_home = SliderHome::with('product')->get();
         $poster_home = PosterHome::where('poster_status', '=', 1)->get();
         $feed_back = Reviews::where('is_featured', true)->with('user')->get();
@@ -86,6 +90,8 @@ class ClientController extends Controller
     public function Show_Single_Product($product_id)
     {
         $product = Product::where('product_id', $product_id)
+            ->where('product_status', '=', 1)
+            ->where('product_quantity', '>=', 1)
             ->with('productImages', 'category', 'brand', 'productAttributes.attribute')
             ->first();
         if (!$product) {
@@ -93,6 +99,8 @@ class ClientController extends Controller
             return redirect()->route('trang-chu')->with('error', 'Sản phẩm không tồn tại.');
         }
         $product_related = Product::where('category_id', $product->category_id)
+            ->where('product_status', '=', 1)
+            ->where('product_quantity', '>=', 1)
             ->where('product_id', '!=', $product->product_id)
             ->get();
         $review_product = Reviews::where('product_id', $product_id)->get();
@@ -114,9 +122,12 @@ class ClientController extends Controller
     // Show page all product
     public function Show_List_Product()
     {
-        $products = Product::all();
-        $categories = Category_Product::whereNotNull('category_parent_id')->get();
-        $brands = Brand_Product::all();
+        $products = Product::where('product_status', '=', 1)
+            ->where('product_quantity', '>=', 1)->get();
+        $categories = Category_Product::whereNotNull('category_parent_id')
+            ->where('category_status', '=', 1)
+            ->get();
+        $brands = Brand_Product::where('brand_status', '=', 1)->get();
         return view('pages.all_product', compact('products', 'categories', 'brands'));
     }
 
@@ -124,6 +135,8 @@ class ClientController extends Controller
     public function Show_Category_Product($category_id)
     {
         $products = Product::where('category_id', $category_id)
+            ->where('product_status', '=', 1)
+            ->where('product_quantity', '>=', 1)
             ->with('category')
             ->get();
         $category = Category_Product::where('category_id', $category_id)->first();

@@ -37,7 +37,7 @@ class BrandController extends Controller
         $data->save();
 
         Session::flash('success', 'Add brand Successfully !');
-        return Redirect('add-brand-product');
+        return Redirect('admin/add-brand-product');
     }
     // SET STATUS FOR brand 
     public function Set_Active_Brand_Product($brand_id)
@@ -46,7 +46,7 @@ class BrandController extends Controller
         Brand_Product::where('brand_id', $brand_id)->update(['brand_status' => 1]);
 
         Session::flash('success', 'Activate the brand product successfurlly!');
-        return Redirect('/all-brand-product');
+        return Redirect('admin/all-brand-product');
     }
     public function Set_UnActive_Brand_Product($brand_id)
     {
@@ -54,7 +54,7 @@ class BrandController extends Controller
         Brand_Product::where('brand_id', $brand_id)->update(['brand_status' => 0]);
 
         Session::flash('success', 'Unactive the brand product successfurlly!');
-        return Redirect('/all-brand-product');
+        return Redirect('admin/all-brand-product');
     }
     //show page edit brand 
     public function Edit_Brand_Product($brand_id)
@@ -80,13 +80,13 @@ class BrandController extends Controller
 
         DB::table('tbl_Brand_Product')->where('brand_id', $brand_id)->update($data);
         Session::flash('success', 'Update the brand product Successfully !');
-        return redirect('all-brand-product');
+        return redirect('admin/all-brand-product');
     }
     public function Delete_Brand_Product($brand_id)
     {
 
         Brand_Product::where('brand_id', $brand_id)->delete();
         Session::flash('success', 'Delete the brand Product Successfully');
-        return Redirect('all-brand-product');
+        return Redirect('admin/all-brand-product');
     }
 }

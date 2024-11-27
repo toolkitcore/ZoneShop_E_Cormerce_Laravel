@@ -10,25 +10,11 @@
                     <div class="card">
                         <div class="card-header d-flex justify-content-between align-items-center gap-1">
                             <h4 class="card-title flex-grow-1">All posts </h4>
-
-                            <a href="{{ URL::to('admin/add-post') }}" class="btn btn-sm btn-primary">
-                                Add Post
-                            </a>
-
-                            <div class="dropdown">
-                                <a href="#" class="dropdown-toggle btn btn-sm btn-outline-light"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    This Month
+                            @can('add blog')
+                                <a href="{{ URL::to('admin/add-post') }}" class="btn btn-sm btn-primary">
+                                    Add Post
                                 </a>
-                                <div class="dropdown-menu dropdown-menu-end">
-                                    <!-- item-->
-                                    <a href="#!" class="dropdown-item">Download</a>
-                                    <!-- item-->
-                                    <a href="#!" class="dropdown-item">Export</a>
-                                    <!-- item-->
-                                    <a href="#!" class="dropdown-item">Import</a>
-                                </div>
-                            </div>
+                            @endcan
                         </div>
                         <div>
                             <div class="table-responsive">
@@ -77,22 +63,26 @@
                                                 <td>
                                                     <div class="d-flex gap-2">
                                                         <!-- EDIT product -->
-                                                        <a href="{{ URL::to('admin/edit-post/' . $post_item->id) }}"
-                                                            class="btn btn-soft-primary btn-sm">
-                                                            <iconify-icon icon="solar:pen-2-broken"
-                                                                class="align-middle fs-18"></iconify-icon>
-                                                        </a>
+                                                        @can('edit blog')
+                                                            <a href="{{ URL::to('admin/edit-post/' . $post_item->id) }}"
+                                                                class="btn btn-soft-primary btn-sm">
+                                                                <iconify-icon icon="solar:pen-2-broken"
+                                                                    class="align-middle fs-18"></iconify-icon>
+                                                            </a>
+                                                        @endcan
                                                         <a href="{{ URL::to('admin/post-details/' . $post_item->id) }}"
                                                             class="btn btn-soft-primary btn-sm">
                                                             <iconify-icon icon="fluent-emoji-high-contrast:glasses"
                                                                 class="align-middle fs-18"></iconify-icon>
                                                         </a>
                                                         <!-- DELETE product -->
-                                                        <a href="{{ URL::to('admin/delete-post/' . $post_item->id) }}"
-                                                            class="btn btn-soft-danger btn-sm delete-confirm">
-                                                            <iconify-icon icon="solar:trash-bin-minimalistic-2-broken"
-                                                                class="align-middle fs-18"></iconify-icon>
-                                                        </a>
+                                                        @can('delete blog')
+                                                            <a href="{{ URL::to('admin/delete-post/' . $post_item->id) }}"
+                                                                class="btn btn-soft-danger btn-sm delete-confirm">
+                                                                <iconify-icon icon="solar:trash-bin-minimalistic-2-broken"
+                                                                    class="align-middle fs-18"></iconify-icon>
+                                                            </a>
+                                                        @endcan
                                                     </div>
                                                 </td>
                                             </tr>

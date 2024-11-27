@@ -52,7 +52,7 @@ class ReviewsController extends Controller
         Reviews::where('id', $id)->update(['is_approved' => true]);
 
         Session::flash('success', 'Active the review successfully!');
-        return Redirect('/review-product');
+        return Redirect('admin/review-product');
     }
     public function Set_UnActive_Review($id)
     {
@@ -60,14 +60,14 @@ class ReviewsController extends Controller
         Reviews::where('id', $id)->update(['is_approved' => false]);
 
         Session::flash('success', 'UnActive the review successfully!');
-        return Redirect('/review-product');
+        return Redirect('admin/review-product');
     }
     public function Delete_Review($id)
     {
 
         Reviews::where('id', $id)->delete();
         Session::flash('success', 'Delete review successfully!');
-        return redirect('review-product');
+        return redirect('admin/review-product');
     }
     public function Show_FeedBack()
     {
@@ -87,7 +87,7 @@ class ReviewsController extends Controller
         Reviews::where('id', $id)->update(['is_featured' => true]);
 
         Session::flash('success', 'Active the feedback successfully!');
-        return Redirect('/add-feedback');
+        return Redirect('admin/add-feedback');
     }
     public function Set_UnActive_Feedback($id)
     {
@@ -95,7 +95,7 @@ class ReviewsController extends Controller
         Reviews::where('id', $id)->update(['is_featured' => false]);
 
         Session::flash('success', 'UnActive the fe  edback successfully!');
-        return Redirect('/add-feedback');
+        return Redirect('admin/add-feedback');
     }
     public function Delete_Feedback($id)
     {
@@ -103,6 +103,6 @@ class ReviewsController extends Controller
         Reviews::where('id', $id)->update(['is_featured' => false]);
 
         Session::flash('success', 'UnActive the fe  feeedback successfully!');
-        return Redirect('/all-feedback');
+        return Redirect('admin/all-feedback');
     }
 }

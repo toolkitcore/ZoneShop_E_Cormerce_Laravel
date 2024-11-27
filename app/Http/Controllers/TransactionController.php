@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\InvoiceOrderMail;
+use App\Models\Product;
 use App\Models\Transaction;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
@@ -34,6 +35,13 @@ class TransactionController extends Controller
                     'orders.product'
                 ])
                 ->first();
+            foreach ($transaction->orders as $order) {
+                $productModel = Product::find($order->product->product_id);
+                if ($productModel) {
+                    $productModel->product_quantity -= $order->order_qty;
+                    $productModel->save();
+                }
+            }
 
             if (!$transaction) {
                 Session::flash('error', 'Something Went Wrong !!!');
@@ -47,7 +55,7 @@ class TransactionController extends Controller
             }
         }
         Session::flash('success', 'Confirm Order Successfully !!!');
-        return redirect('order-detail/' . $transaction_id);
+        return redirect('admin/order-detail/' . $transaction_id);
     }
     public function Confirm_Package($transaction_id)
     {
@@ -60,7 +68,7 @@ class TransactionController extends Controller
             ]);
         }
         Session::flash('success', 'Confirm Package Order Successfully !!!');
-        return redirect('order-detail/' . $transaction_id);
+        return redirect('admin/order-detail/' . $transaction_id);
     }
     public function Confirm_Ship($transaction_id)
     {
@@ -73,7 +81,7 @@ class TransactionController extends Controller
             ]);
         }
         Session::flash('success', 'Confirm Shipping Order Successfully !!!');
-        return redirect('order-detail/' . $transaction_id);
+        return redirect('admin/order-detail/' . $transaction_id);
     }
     public function Confirm_Completed($transaction_id)
     {
@@ -86,7 +94,7 @@ class TransactionController extends Controller
             ]);
         }
         Session::flash('success', 'Completed Order Successfully !!!');
-        return redirect('order-detail/' . $transaction_id);
+        return redirect('admin/order-detail/' . $transaction_id);
     }
     public function Cancel_Order($transaction_id)
     {
@@ -97,8 +105,23 @@ class TransactionController extends Controller
             $transaction->update([
                 'transaction_status' => 6,
             ]);
+            $transaction = Transaction::where('transaction_id', $transaction_id)
+                ->with([
+                    'pickupAddress',
+                    'deliveryAddress',
+                    'orders',
+                    'orders.product'
+                ])
+                ->first();
+            foreach ($transaction->orders as $order) {
+                $productModel = Product::find($order->product->product_id);
+                if ($productModel) {
+                    $productModel->product_quantity += $order->order_qty;
+                    $productModel->save();
+                }
+            }
         }
         Session::flash('success', 'Cancel Order Successfully !!!');
-        return redirect('order-detail/' . $transaction_id);
+        return redirect('admin/order-detail/' . $transaction_id);
     }
 }

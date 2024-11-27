@@ -7,6 +7,8 @@ use App\Models\Reviews;
 use App\Models\Transaction;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Auth;
+
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -46,6 +48,9 @@ class AppServiceProvider extends ServiceProvider
                     ->whereDate('created_at', '=', now()->toDateString()) // Lọc theo ngày hiện tại
                     ->with(['user', 'product'])
                     ->get());
+        });
+        Auth::macro('admin', function () {
+            return Auth::guard('admin')->user();
         });
     }
 }

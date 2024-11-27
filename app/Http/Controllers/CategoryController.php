@@ -86,7 +86,7 @@ class CategoryController extends Controller
         // Lưu thông báo vào session để hiển thị sau redirect
         Session::flash('success', 'Add Category Successfully!');
 
-        return redirect('add-category-product');
+        return redirect('admin/add-category-product');
     }
 
 
@@ -97,7 +97,7 @@ class CategoryController extends Controller
         Category_Product::where('category_id', $category_id)->update(['category_status' => 1]);
 
         Session::flash('success', 'Activate the category product successfurlly!');
-        return Redirect('/all-category-product');
+        return Redirect('admin/all-category-product');
     }
     public function Set_UnActive_category_product($category_id)
     {
@@ -105,7 +105,7 @@ class CategoryController extends Controller
         Category_Product::where('category_id', $category_id)->update(['category_status' => 0]);
 
         Session::flash('success', 'Uctivate the category product successfurlly!');
-        return Redirect('/all-category-product');
+        return Redirect('admin/all-category-product');
     }
     //show page edit category 
     public function Edit_Category_product($caterory_id)
@@ -151,20 +151,20 @@ class CategoryController extends Controller
 
         DB::table('tbl_category_product')->where('category_id', $category_id)->update($data);
         Session::flash('success', 'Update the Category product Successfully !');
-        return redirect('all-category-product');
+        return redirect('admin/all-category-product');
     }
     public function Delete_Category_product($category_id)
     {
 
         Category_Product::where('category_id', $category_id)->delete();
         Session::flash('success', 'Delete the Category Product Successfully');
-        return Redirect('all-category-product');
+        return Redirect('admin/all-category-product');
     }
 
     public function Filter_Category_Root()
     {
 
         $category_root = Category_Product::whereNull('category_parent_id')->get();
-        Redirect('all-category-product')->with('category_root', $category_root);
+        Redirect('admin/all-category-product')->with('category_root', $category_root);
     }
 }

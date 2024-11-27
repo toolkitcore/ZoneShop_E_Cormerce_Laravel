@@ -79,9 +79,9 @@ class ProductImagesController extends Controller
                 }
             }
             Session::flash('success', 'Delete list images of product successfully!');
-            return Redirect('/product-images');
+            return Redirect('admin/product-images');
         }
         Session::flash('warning', 'There is no photo deleted');
-        return Redirect('/product-images');
+        return Redirect('admin/product-images');
     }
 }

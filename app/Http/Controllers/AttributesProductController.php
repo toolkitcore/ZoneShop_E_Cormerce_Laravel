@@ -56,7 +56,7 @@ class AttributesProductController extends Controller
                 $data->attribute_name = $result;
                 $data->save();
                 Session::flash('success', 'Add Attributes Successfully!');
-                return redirect('add-attribute-product');
+                return redirect('admin/add-attribute-product');
             } else if ($result !== false) {
                 foreach ($result as $key) {
                     $data = new Attributes();
@@ -65,13 +65,13 @@ class AttributesProductController extends Controller
                     $data->save();
                 }
                 Session::flash('success', 'Add Attributes Successfully!');
-                return redirect('add-attribute-product');
+                return redirect('admin/add-attribute-product');
             } else {
-                return redirect('add-attribute-product')->withInput(); // Trả về với input đã nhập
+                return redirect('admin/add-attribute-product')->withInput(); // Trả về với input đã nhập
             }
         } else {
             Session::flash('error', 'Please provide attributes.');
-            return redirect('add-attribute-product')->withInput(); // Trả về với input đã nhập
+            return redirect('admin/add-attribute-product')->withInput(); // Trả về với input đã nhập
         }
     }
     public function Add_attribute_choice_action(Request $request, $category_id)
@@ -87,7 +87,7 @@ class AttributesProductController extends Controller
                 $data->attribute_name = $result;
                 $data->save();
                 Session::flash('success', 'Add Attributes Successfully!');
-                return redirect('all-attribute-product');
+                return redirect('admin/all-attribute-product');
             } else if ($result !== false) {
                 foreach ($result as $key) {
                     $data = new Attributes();
@@ -96,13 +96,13 @@ class AttributesProductController extends Controller
                     $data->save();
                 }
                 Session::flash('success', 'Add Attributes Successfully!');
-                return redirect('all-attribute-product');
+                return redirect('admin/all-attribute-product');
             } else {
-                return redirect('all-attribute-product'); // Trả về với input đã nhập
+                return redirect('admin/all-attribute-product'); // Trả về với input đã nhập
             }
         } else {
             Session::flash('error', 'Please provide attributes.');
-            return redirect('all-attribute-product'); // Trả về với input đã nhập
+            return redirect('admin/all-attribute-product'); // Trả về với input đã nhập
         }
     }
     public function Add_Attribute_Choice($category_id)
@@ -164,7 +164,7 @@ class AttributesProductController extends Controller
         } else {
             Session::flash('error', 'No attributes found for this category!');
         }
-        return redirect('all-attribute-product');
+        return redirect('admin/all-attribute-product');
     }
 
     public function Add_attribute_action_detail(Request $request)

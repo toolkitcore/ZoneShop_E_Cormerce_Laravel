@@ -552,7 +552,6 @@
                 <ul class="navbar-nav" id="navbar-nav">
 
                     <li class="menu-title">General</li>
-
                     <li class="nav-item">
                         <a class="nav-link" href="{{ URL::to('admin/dashboard') }}">
                             <span class="nav-icon">
@@ -562,231 +561,302 @@
                         </a>
                     </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link menu-arrow" href="#sidebarProducts" data-bs-toggle="collapse"
-                            role="button" aria-expanded="false" aria-controls="sidebarProducts">
-                            <span class="nav-icon">
-                                <iconify-icon icon="solar:t-shirt-bold-duotone"></iconify-icon>
-                            </span>
-                            <span class="nav-text"> Products </span>
-                        </a>
-                        <div class="collapse" id="sidebarProducts">
-                            <ul class="nav sub-navbar-nav">
-                                <li class="sub-nav-item">
-                                    <a class="sub-nav-link menu-arrow" href="#sidebarItemDemoSubItem1"
-                                        data-bs-toggle="collapse" role="button" aria-expanded="false"
-                                        aria-controls="sidebarItemDemoSubItem1">
-                                        <span> Attributes </span>
-                                    </a>
-                                    <div class="collapse" id="sidebarItemDemoSubItem1">
-                                        <ul class="nav sub-navbar-nav">
-                                            <li class="sub-nav-item">
-                                                <a class="sub-nav-link"
-                                                    href="{{ URL::to('admin/all-attribute-product') }}">List
-                                                    Attribute</a>
-                                            </li>
-                                            <li class="sub-nav-item">
-                                                <a class="sub-nav-link"
-                                                    href="{{ URL::to('admin/add-attribute-product') }}">Add
-                                                    Attribute</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li class="sub-nav-item">
-                                    <a class="sub-nav-link menu-arrow" href="#sidebarItemDemoSubItem2"
-                                        data-bs-toggle="collapse" role="button" aria-expanded="false"
-                                        aria-controls="sidebarItemDemoSubItem2">
-                                        <span> Product Detail </span>
-                                    </a>
-                                    <div class="collapse" id="sidebarItemDemoSubItem2">
-                                        <ul class="nav sub-navbar-nav">
-                                            <li class="sub-nav-item">
-                                                <a class="sub-nav-link"
-                                                    href="{{ URL::to('admin/all-detail-product') }}">List Product
-                                                    Detail</a>
-                                            </li>
-                                            <li class="sub-nav-item">
-                                                <a class="sub-nav-link"
-                                                    href="{{ URL::to('admin/add-detail-product-page') }}">Add Product
-                                                    Detail</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li class="sub-nav-item">
-                                    <a class="sub-nav-link menu-arrow" href="#sidebarItemDemoSubItem3"
-                                        data-bs-toggle="collapse" role="button" aria-expanded="false"
-                                        aria-controls="sidebarItemDemoSubItem3">
-                                        <span> Products </span>
-                                    </a>
-                                    <div class="collapse" id="sidebarItemDemoSubItem3">
-                                        <ul class="nav sub-navbar-nav">
-                                            <li class="sub-nav-item">
-                                                <a class="sub-nav-link"
-                                                    href="{{ URL::to('admin/all-product') }}">List
-                                                    Product</a>
-                                            </li>
-                                            <li class="sub-nav-item">
-                                                <a class="sub-nav-link" href="{{ URL::to('admin/add-product') }}">Add
-                                                    Product</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li class="sub-nav-item">
-                                    <a class="sub-nav-link menu-arrow" href="#sidebarItemDemoSubItem4"
-                                        data-bs-toggle="collapse" role="button" aria-expanded="false"
-                                        aria-controls="sidebarItemDemoSubItem4">
-                                        <span> Images </span>
-                                    </a>
-                                    <div class="collapse" id="sidebarItemDemoSubItem4">
-                                        <ul class="nav sub-navbar-nav">
-                                            <li class="sub-nav-item">
-                                                <a class="sub-nav-link"
-                                                    href="{{ URL::to('admin/product-images') }}">List
-                                                    Product Images</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link menu-arrow" href="#sidebarOrders" data-bs-toggle="collapse"
-                            role="button" aria-expanded="false" aria-controls="sidebarOrders">
-                            <span class="nav-icon">
-                                <iconify-icon icon="solar:bag-smile-bold-duotone"></iconify-icon>
-                            </span>
-                            <span class="nav-text"> Orders </span>
-                        </a>
-                        <div class="collapse" id="sidebarOrders">
-                            <ul class="nav sub-navbar-nav">
-                                <li class="sub-nav-item">
-                                    <a class="sub-nav-link menu-arrow" href="#sidebarItemOrderSubItem2"
-                                        data-bs-toggle="collapse" role="button" aria-expanded="false"
-                                        aria-controls="sidebarItemOrderSubItem2">
-                                        <span> Orders </span>
-                                    </a>
-                                    <div class="collapse" id="sidebarItemOrderSubItem2">
-                                        <ul class="nav sub-navbar-nav">
-                                            <li class="sub-nav-item">
-                                                <a class="sub-nav-link"
-                                                    href="{{ URL::to('admin/order-confirm') }}">Order
-                                                    Confirm</a>
-                                            </li>
-                                            <li class="sub-nav-item">
-                                                <a class="sub-nav-link" href="{{ URL::to('admin/all-order') }}">List
-                                                    Order</a>
-                                            </li>
 
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li class="sub-nav-item">
-                                    <a class="sub-nav-link menu-arrow" href="#sidebarItemOrderSubItem3"
-                                        data-bs-toggle="collapse" role="button" aria-expanded="false"
-                                        aria-controls="sidebarItemOrderSubItem3">
-                                        <span> Address </span>
-                                    </a>
-                                    <div class="collapse" id="sidebarItemOrderSubItem3">
-                                        <ul class="nav sub-navbar-nav">
-                                            <li class="sub-nav-item">
-                                                <a class="sub-nav-link"
-                                                    href="{{ URL::to('admin/address-pickup') }}">Address Pickup</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
+                    @if (auth('admin')->user()->can('publish product attribute') ||
+                            auth('admin')->user()->can('add product attribute') ||
+                            auth('admin')->user()->can('publish product detail') ||
+                            auth('admin')->user()->can('add product detail') ||
+                            auth('admin')->user()->can('publish product') ||
+                            auth('admin')->user()->can('add product') ||
+                            auth('admin')->user()->can('add product image'))
+                        <li class="nav-item">
+                            <a class="nav-link menu-arrow" href="#sidebarProducts" data-bs-toggle="collapse"
+                                role="button" aria-expanded="false" aria-controls="sidebarProducts">
+                                <span class="nav-icon">
+                                    <iconify-icon icon="solar:t-shirt-bold-duotone"></iconify-icon>
+                                </span>
+                                <span class="nav-text"> Products </span>
+                            </a>
+                            <div class="collapse" id="sidebarProducts">
+                                <ul class="nav sub-navbar-nav">
+                                    @if (auth('admin')->user()->can('publish product attribute') || auth('admin')->user()->can('add product attribute'))
+                                        <li class="sub-nav-item">
+                                            <a class="sub-nav-link menu-arrow" href="#sidebarItemDemoSubItem1"
+                                                data-bs-toggle="collapse" role="button" aria-expanded="false"
+                                                aria-controls="sidebarItemDemoSubItem1">
+                                                <span> Attributes </span>
+                                            </a>
+                                            <div class="collapse" id="sidebarItemDemoSubItem1">
+                                                <ul class="nav sub-navbar-nav">
+                                                    @can('publish product attribute')
+                                                        <li class="sub-nav-item">
+                                                            <a class="sub-nav-link"
+                                                                href="{{ URL::to('admin/all-attribute-product') }}">List
+                                                                Attribute</a>
+                                                        </li>
+                                                    @endcan
+                                                    @can('add product attribute')
+                                                        <li class="sub-nav-item">
+                                                            <a class="sub-nav-link"
+                                                                href="{{ URL::to('admin/add-attribute-product') }}">Add
+                                                                Attribute</a>
+                                                        </li>
+                                                    @endcan
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    @endif
+                                    @if (auth('admin')->user()->can('publish product detail') || auth('admin')->user()->can('add product detail'))
+                                        <li class="sub-nav-item">
+                                            <a class="sub-nav-link menu-arrow" href="#sidebarItemDemoSubItem2"
+                                                data-bs-toggle="collapse" role="button" aria-expanded="false"
+                                                aria-controls="sidebarItemDemoSubItem2">
+                                                <span> Product Detail </span>
+                                            </a>
+                                            <div class="collapse" id="sidebarItemDemoSubItem2">
+                                                <ul class="nav sub-navbar-nav">
+                                                    @can('publish product detail')
+                                                        <li class="sub-nav-item">
+                                                            <a class="sub-nav-link"
+                                                                href="{{ URL::to('admin/all-detail-product') }}">List
+                                                                Product
+                                                                Detail</a>
+                                                        </li>
+                                                    @endcan
+                                                    @can('add product detail')
+                                                        <li class="sub-nav-item">
+                                                            <a class="sub-nav-link"
+                                                                href="{{ URL::to('admin/add-detail-product-page') }}">Add
+                                                                Product
+                                                                Detail</a>
+                                                        @endcan
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    @endif
+                                    @if (auth('admin')->user()->can('publish product') || auth('admin')->user()->can('add product'))
+                                        <li class="sub-nav-item">
+                                            <a class="sub-nav-link menu-arrow" href="#sidebarItemDemoSubItem3"
+                                                data-bs-toggle="collapse" role="button" aria-expanded="false"
+                                                aria-controls="sidebarItemDemoSubItem3">
+                                                <span> Products </span>
+                                            </a>
+                                            <div class="collapse" id="sidebarItemDemoSubItem3">
+                                                <ul class="nav sub-navbar-nav">
+                                                    @can('publish product')
+                                                        <li class="sub-nav-item">
+                                                            <a class="sub-nav-link"
+                                                                href="{{ URL::to('admin/all-product') }}">List
+                                                                Product</a>
+                                                        </li>
+                                                    @endcan
+                                                    @can('add product')
+                                                        <li class="sub-nav-item">
+                                                            <a class="sub-nav-link"
+                                                                href="{{ URL::to('admin/add-product') }}">Add
+                                                                Product</a>
+                                                        </li>
+                                                    @endcan
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    @endif
+                                    @if (auth('admin')->user()->can('add product image'))
+                                        <li class="sub-nav-item">
+                                            <a class="sub-nav-link menu-arrow" href="#sidebarItemDemoSubItem4"
+                                                data-bs-toggle="collapse" role="button" aria-expanded="false"
+                                                aria-controls="sidebarItemDemoSubItem4">
+                                                <span> Images </span>
+                                            </a>
+                                            <div class="collapse" id="sidebarItemDemoSubItem4">
+                                                <ul class="nav sub-navbar-nav">
+                                                    @can('add product image')
+                                                        <li class="sub-nav-item">
+                                                            <a class="sub-nav-link"
+                                                                href="{{ URL::to('admin/product-images') }}">List
+                                                                Product Images</a>
+                                                        </li>
+                                                    @endcan
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    @endif
+                                </ul>
+                            </div>
+                        </li>
+                    @endif
 
-                    <li class="nav-item">
-                        <a class="nav-link menu-arrow" href="#sidebarCategory" data-bs-toggle="collapse"
-                            role="button" aria-expanded="false" aria-controls="sidebarCategory">
-                            <span class="nav-icon">
-                                <iconify-icon icon="solar:clipboard-list-bold-duotone"></iconify-icon>
-                            </span>
-                            <span class="nav-text"> Category </span>
-                        </a>
-                        <div class="collapse" id="sidebarCategory">
-                            <ul class="nav sub-navbar-nav">
-                                <li class="sub-nav-item">
-                                    <a class="sub-nav-link" href="{{ URL::to('admin/all-category-product') }}">List
-                                        Category</a>
-                                </li>
-                                <li class="sub-nav-item">
-                                    <a class="sub-nav-link" href="{{ URL::to('admin/add-category-product') }}">Add
-                                        Category</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link menu-arrow" href="#sidebarBrand" data-bs-toggle="collapse" role="button"
-                            aria-expanded="false" aria-controls="sidebarBrand">
-                            <span class="nav-icon">
-                                <iconify-icon icon="solar:book-2-bold-duotone"></iconify-icon>
-                            </span>
-                            <span class="nav-text"> Brand </span>
-                        </a>
-                        <div class="collapse" id="sidebarBrand">
-                            <ul class="nav sub-navbar-nav">
-                                <li class="sub-nav-item">
-                                    <a class="sub-nav-link" href="{{ URL::to('admin/all-brand-product') }}">List
-                                        Brand</a>
-                                </li>
-                                <li class="sub-nav-item">
-                                    <a class="sub-nav-link" href="{{ URL::to('admin/add-brand-product') }}">Add
-                                        Brand</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
+                    @if (auth('admin')->user()->can('publish order confirm') ||
+                            auth('admin')->user()->can('publish order list') ||
+                            auth('admin')->user()->can('publish order list'))
+                        <li class="nav-item">
+                            <a class="nav-link menu-arrow" href="#sidebarOrders" data-bs-toggle="collapse"
+                                role="button" aria-expanded="false" aria-controls="sidebarOrders">
+                                <span class="nav-icon">
+                                    <iconify-icon icon="solar:bag-smile-bold-duotone"></iconify-icon>
+                                </span>
+                                <span class="nav-text"> Orders </span>
+                            </a>
+                            <div class="collapse" id="sidebarOrders">
+                                <ul class="nav sub-navbar-nav">
+                                    @if (auth('admin')->user()->can('publish order list'))
+                                        <li class="sub-nav-item">
+                                            <a class="sub-nav-link menu-arrow" href="#sidebarItemOrderSubItem2"
+                                                data-bs-toggle="collapse" role="button" aria-expanded="false"
+                                                aria-controls="sidebarItemOrderSubItem2">
+                                                <span> Orders </span>
+                                            </a>
+                                            <div class="collapse" id="sidebarItemOrderSubItem2">
+                                                <ul class="nav sub-navbar-nav">
+                                                    <li class="sub-nav-item">
+                                                        <a class="sub-nav-link"
+                                                            href="{{ URL::to('admin/order-confirm') }}">Order
+                                                            Confirm</a>
+                                                    </li>
+                                                    <li class="sub-nav-item">
+                                                        <a class="sub-nav-link"
+                                                            href="{{ URL::to('admin/all-order') }}">List
+                                                            Order</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    @endif
+                                    @if (auth('admin')->user()->can('publish order list'))
+                                        <li class="sub-nav-item">
+                                            <a class="sub-nav-link menu-arrow" href="#sidebarItemOrderSubItem3"
+                                                data-bs-toggle="collapse" role="button" aria-expanded="false"
+                                                aria-controls="sidebarItemOrderSubItem3">
+                                                <span> Address </span>
+                                            </a>
+                                            <div class="collapse" id="sidebarItemOrderSubItem3">
+                                                <ul class="nav sub-navbar-nav">
+                                                    @can('publish order address')
+                                                        <li class="sub-nav-item">
+                                                            <a class="sub-nav-link"
+                                                                href="{{ URL::to('admin/address-pickup') }}">Address
+                                                                Pickup</a>
+                                                        </li>
+                                                    @endcan
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    @endif
+                                </ul>
+                            </div>
+                        </li>
+                    @endif
 
+                    @if (auth('admin')->user()->can('add category') || auth('admin')->user()->can('publish category'))
+                        <li class="nav-item">
+                            <a class="nav-link menu-arrow" href="#sidebarCategory" data-bs-toggle="collapse"
+                                role="button" aria-expanded="false" aria-controls="sidebarCategory">
+                                <span class="nav-icon">
+                                    <iconify-icon icon="solar:clipboard-list-bold-duotone"></iconify-icon>
+                                </span>
+                                <span class="nav-text"> Category </span>
+                            </a>
+                            <div class="collapse" id="sidebarCategory">
+                                <ul class="nav sub-navbar-nav">
+                                    @can('publish category')
+                                        <li class="sub-nav-item">
+                                            <a class="sub-nav-link"
+                                                href="{{ URL::to('admin/all-category-product') }}">List
+                                                Category</a>
+                                        </li>
+                                    @endcan
+                                    @can('add category')
+                                        <li class="sub-nav-item">
+                                            <a class="sub-nav-link"
+                                                href="{{ URL::to('admin/add-category-product') }}">Add
+                                                Category</a>
+                                        </li>
+                                    @endcan
+                                </ul>
+                            </div>
+                        </li>
+                    @endif
 
-                    <li class="nav-item">
-                        <a class="nav-link menu-arrow" href="#sidebarPurchases" data-bs-toggle="collapse"
-                            role="button" aria-expanded="false" aria-controls="sidebarPurchases">
-                            <span class="nav-icon">
-                                <iconify-icon icon="solar:card-send-bold-duotone"></iconify-icon>
-                            </span>
-                            <span class="nav-text"> Blogs </span>
-                        </a>
-                        <div class="collapse" id="sidebarPurchases">
-                            <ul class="nav sub-navbar-nav">
-                                <li class="sub-nav-item">
-                                    <a class="sub-nav-link" href="{{ URL::to('admin/list-post') }}">List Post</a>
-                                </li>
-                                <li class="sub-nav-item">
-                                    <a class="sub-nav-link" href="{{ URL::to('admin/add-post') }}">Create Post</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link menu-arrow" href="#sidebarReview" data-bs-toggle="collapse"
-                            role="button" aria-expanded="false" aria-controls="sidebarReview">
-                            <span class="nav-icon">
-                                <iconify-icon icon="solar:dialog-2-bold-duotone"></iconify-icon>
-                            </span>
-                            <span class="nav-text"> Reviews </span>
-                        </a>
-                        <div class="collapse" id="sidebarReview">
-                            <ul class="nav sub-navbar-nav">
-                                <li class="sub-nav-item">
-                                    <a class="sub-nav-link" href="{{ URL::to('admin/review-product') }}">List
-                                        Review</a>
-                                </li>
-                                {{-- <li class="sub-nav-item">
+                    @if (auth('admin')->user()->can('add brand') || auth('admin')->user()->can('publish brand'))
+                        <li class="nav-item">
+                            <a class="nav-link menu-arrow" href="#sidebarBrand" data-bs-toggle="collapse"
+                                role="button" aria-expanded="false" aria-controls="sidebarBrand">
+                                <span class="nav-icon">
+                                    <iconify-icon icon="solar:book-2-bold-duotone"></iconify-icon>
+                                </span>
+                                <span class="nav-text"> Brand </span>
+                            </a>
+                            <div class="collapse" id="sidebarBrand">
+                                <ul class="nav sub-navbar-nav">
+                                    @can('publish brand')
+                                        <li class="sub-nav-item">
+                                            <a class="sub-nav-link" href="{{ URL::to('admin/all-brand-product') }}">List
+                                                Brand</a>
+                                        </li>
+                                    @endcan
+                                    @can('add brand')
+                                        <li class="sub-nav-item">
+                                            <a class="sub-nav-link" href="{{ URL::to('admin/add-brand-product') }}">Add
+                                                Brand</a>
+                                        </li>
+                                    @endcan
+                                </ul>
+                            </div>
+                        </li>
+                    @endif
+
+                    @if (auth('admin')->user()->can('add blog') || auth('admin')->user()->can('publish blog'))
+                        <li class="nav-item">
+                            <a class="nav-link menu-arrow" href="#sidebarPurchases" data-bs-toggle="collapse"
+                                role="button" aria-expanded="false" aria-controls="sidebarPurchases">
+                                <span class="nav-icon">
+                                    <iconify-icon icon="solar:card-send-bold-duotone"></iconify-icon>
+                                </span>
+                                <span class="nav-text"> Blogs </span>
+                            </a>
+                            <div class="collapse" id="sidebarPurchases">
+                                <ul class="nav sub-navbar-nav">
+                                    @can('publish blog')
+                                        <li class="sub-nav-item">
+                                            <a class="sub-nav-link" href="{{ URL::to('admin/list-post') }}">List Post</a>
+                                        </li>
+                                    @endcan
+                                    @can('add blog')
+                                        <li class="sub-nav-item">
+                                            <a class="sub-nav-link" href="{{ URL::to('admin/add-post') }}">Create
+                                                Post</a>
+                                        </li>
+                                    @endcan
+                                </ul>
+                            </div>
+                        </li>
+                    @endif
+
+                    @if (auth('admin')->user()->can('publish review'))
+                        <li class="nav-item">
+                            <a class="nav-link menu-arrow" href="#sidebarReview" data-bs-toggle="collapse"
+                                role="button" aria-expanded="false" aria-controls="sidebarReview">
+                                <span class="nav-icon">
+                                    <iconify-icon icon="solar:dialog-2-bold-duotone"></iconify-icon>
+                                </span>
+                                <span class="nav-text"> Reviews </span>
+                            </a>
+                            <div class="collapse" id="sidebarReview">
+                                <ul class="nav sub-navbar-nav">
+                                    @can('publish review')
+                                        <li class="sub-nav-item">
+                                            <a class="sub-nav-link" href="{{ URL::to('admin/review-product') }}">List
+                                                Review</a>
+                                        </li>
+                                    @endcan
+                                    {{-- <li class="sub-nav-item">
                                     <a class="sub-nav-lin   k" href="{{   URL::to('admin/add-post') }}">Create Post</a>
                                 </li> --}}
-                            </ul>
-                        </div>
-                    </li>
-
+                                </ul>
+                            </div>
+                        </li>
+                    @endif
 
                     <li class="menu-title mt-2">Users</li>
 
@@ -798,41 +868,66 @@
                             <span class="nav-text"> Profile </span>
                         </a>
                     </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link menu-arrow" href="#sidebarRoles" data-bs-toggle="collapse" role="button"
-                            aria-expanded="false" aria-controls="sidebarRoles">
-                            <span class="nav-icon">
-                                <iconify-icon icon="solar:user-speak-rounded-bold-duotone"></iconify-icon>
-                            </span>
-                            <span class="nav-text"> Roles </span>
-                        </a>
-                        <div class="collapse" id="sidebarRoles">
-                            <ul class="nav sub-navbar-nav">
+                    @role('admin')
+                        <li class="nav-item">
+                            <a class="nav-link menu-arrow" href="#sidebarAccount" data-bs-toggle="collapse"
+                                role="button" aria-expanded="false" aria-controls="sidebarAccount">
+                                <span class="nav-icon">
+                                    <iconify-icon icon="solar:user-broken"></iconify-icon>
+                                </span>
+                                <span class="nav-text"> Account </span>
+                            </a>
+                            <div class="collapse" id="sidebarAccount">
                                 <ul class="nav sub-navbar-nav">
-                                    <li class="sub-nav-item">
-                                        <a class="sub-nav-link" href="role-list.html">List</a>
-                                    </li>
-                                    <li class="sub-nav-item">
-                                        <a class="sub-nav-link" href="role-edit.html">Edit</a>
-                                    </li>
-                                    <li class="sub-nav-item">
-                                        <a class="sub-nav-link" href="role-add.html">Create</a>
-                                    </li>
+                                    <ul class="nav sub-navbar-nav">
+                                        <li class="sub-nav-item">
+                                            <a class="sub-nav-link" href="{{ URL::to('admin/all-account') }}">All
+                                                Account</a>
+                                        </li>
+                                        <li class="sub-nav-item">
+                                            <a class="sub-nav-link" href="{{ URL::to('admin/add-account') }}">
+                                                Add Account</a>
+                                        </li>
+                                    </ul>
                                 </ul>
-                            </ul>
-                        </div>
-                    </li>
+                            </div>
+                        </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="pages-permissions.html">
-                            <span class="nav-icon">
-                                <iconify-icon icon="solar:checklist-minimalistic-bold-duotone"></iconify-icon>
-                            </span>
-                            <span class="nav-text"> Permissions </span>
-                        </a>
-                    </li>
+                        <li class="nav-item">
+                            <a class="nav-link menu-arrow" href="#sidebarRoles" data-bs-toggle="collapse" role="button"
+                                aria-expanded="false" aria-controls="sidebarRoles">
+                                <span class="nav-icon">
+                                    <iconify-icon icon="solar:user-speak-rounded-bold-duotone"></iconify-icon>
+                                </span>
+                                <span class="nav-text"> Roles </span>
+                            </a>
+                            <div class="collapse" id="sidebarRoles">
+                                <ul class="nav sub-navbar-nav">
+                                    <ul class="nav sub-navbar-nav">
+                                        <li class="sub-nav-item">
+                                            <a class="sub-nav-link" href="{{ URL::to('admin/all-roles') }}">All
+                                                Roles</a>
+                                        </li>
+                                        <li class="sub-nav-item">
+                                            <a class="sub-nav-link" href="{{ URL::to('admin/add-roles') }}">Add
+                                                Roles</a>
+                                        </li>
+                                    </ul>
+                                </ul>
+                            </div>
+                        </li>
 
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ URL::to('admin/all-permission') }}">
+                                <span class="nav-icon">
+                                    <iconify-icon icon="solar:checklist-minimalistic-bold-duotone"></iconify-icon>
+                                </span>
+                                <span class="nav-text"> Permissions </span>
+                            </a>
+                        </li>
+                    @endrole
+
+                    @if (auth('admin')->user()->can('publish order list'))
                     <li class="nav-item">
                         <a class="nav-link menu-arrow" href="#sidebarCustomers" data-bs-toggle="collapse"
                             role="button" aria-expanded="false" aria-controls="sidebarCustomers">
@@ -851,63 +946,83 @@
                             </ul>
                         </div>
                     </li>
-
+                    @endif
                     <li class="menu-title">Pages</li>
 
-                    <li class="nav-item">
-                        <a class="nav-link menu-arrow" href="#sidebarCoupons" data-bs-toggle="collapse"
-                            role="button" aria-expanded="false" aria-controls="sidebarCoupons">
-                            <span class="nav-icon">
-                                <iconify-icon icon="solar:figma-file-bold-duotone"></iconify-icon> </span>
-                            <span class="nav-text"> Sliders </span>
-                        </a>
-                        <div class="collapse" id="sidebarCoupons">
-                            <ul class="nav sub-navbar-nav">
-                                <li class="sub-nav-item">
-                                    <a class="sub-nav-link" href="{{ URL::to('admin/all-sliders') }}">List</a>
-                                </li>
-                                <li class="sub-nav-item">
-                                    <a class="sub-nav-link" href="{{ URL::to('admin/add-sliders') }}">Add</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link menu-arrow" href="#sidebarPoster" data-bs-toggle="collapse"
-                            role="button" aria-expanded="false" aria-controls="sidebarPoster">
-                            <span class="nav-icon">
-                                <iconify-icon icon="solar:card-2-broken"></iconify-icon> </span>
-                            <span class="nav-text">Posters </span>
-                        </a>
-                        <div class="collapse" id="sidebarPoster">
-                            <ul class="nav sub-navbar-nav">
-                                <li class="sub-nav-item">
-                                    <a class="sub-nav-link" href="{{ URL::to('admin/all-poster') }}">List</a>
-                                </li>
-                                <li class="sub-nav-item">
-                                    <a class="sub-nav-link" href="{{ URL::to('admin/add-poster') }}">Add</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link menu-arrow" href="#sidebarFeedBack" data-bs-toggle="collapse"
-                            role="button" aria-expanded="false" aria-controls="sidebarFeedBack">
-                            <span class="nav-icon">
-                                <iconify-icon icon="solar:chat-square-call-bold-duotone"></iconify-icon> </span>
-                            <span class="nav-text">FeedBacks </span>
-                        </a>
-                        <div class="collapse" id="sidebarFeedBack">
-                            <ul class="nav sub-navbar-nav">
-                                <li class="sub-nav-item">
-                                    <a class="sub-nav-link" href="{{ URL::to('admin/all-feedback') }}">List</a>
-                                </li>
-                                <li class="sub-nav-item">
-                                    <a class="sub-nav-link" href="{{ URL::to('admin/add-feedback') }}">Add</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
+                    @if (auth('admin')->user()->can('add slider') || auth('admin')->user()->can('publish slider'))
+                        <li class="nav-item">
+                            <a class="nav-link menu-arrow" href="#sidebarCoupons" data-bs-toggle="collapse"
+                                role="button" aria-expanded="false" aria-controls="sidebarCoupons">
+                                <span class="nav-icon">
+                                    <iconify-icon icon="solar:figma-file-bold-duotone"></iconify-icon> </span>
+                                <span class="nav-text"> Sliders </span>
+                            </a>
+                            <div class="collapse" id="sidebarCoupons">
+                                <ul class="nav sub-navbar-nav">
+                                    @can('publish slider')
+                                        <li class="sub-nav-item">
+                                            <a class="sub-nav-link" href="{{ URL::to('admin/all-sliders') }}">List</a>
+                                        </li>
+                                    @endcan
+                                    @can('add slider')
+                                        <li class="sub-nav-item">
+                                            <a class="sub-nav-link" href="{{ URL::to('admin/add-sliders') }}">Add</a>
+                                        </li>
+                                    @endcan
+                                </ul>
+                            </div>
+                        </li>
+                    @endif
+
+                    @if (auth('admin')->user()->can('add poster') || auth('admin')->user()->can('publish poster'))
+                        <li class="nav-item">
+                            <a class="nav-link menu-arrow" href="#sidebarPoster" data-bs-toggle="collapse"
+                                role="button" aria-expanded="false" aria-controls="sidebarPoster">
+                                <span class="nav-icon">
+                                    <iconify-icon icon="solar:card-2-broken"></iconify-icon> </span>
+                                <span class="nav-text">Posters </span>
+                            </a>
+                            <div class="collapse" id="sidebarPoster">
+                                <ul class="nav sub-navbar-nav">
+                                    @can('publish poster')
+                                        <li class="sub-nav-item">
+                                            <a class="sub-nav-link" href="{{ URL::to('admin/all-poster') }}">List</a>
+                                        </li>
+                                    @endcan
+                                    @can('add poster')
+                                        <li class="sub-nav-item">
+                                            <a class="sub-nav-link" href="{{ URL::to('admin/add-poster') }}">Add</a>
+                                        </li>
+                                    @endcan
+                                </ul>
+                            </div>
+                        </li>
+                    @endif
+
+                    @if (auth('admin')->user()->can('add feedback') || auth('admin')->user()->can('publish feedback'))
+                        <li class="nav-item">
+                            <a class="nav-link menu-arrow" href="#sidebarFeedBack" data-bs-toggle="collapse"
+                                role="button" aria-expanded="false" aria-controls="sidebarFeedBack">
+                                <span class="nav-icon">
+                                    <iconify-icon icon="solar:chat-square-call-bold-duotone"></iconify-icon> </span>
+                                <span class="nav-text">FeedBacks </span>
+                            </a>
+                            <div class="collapse" id="sidebarFeedBack">
+                                <ul class="nav sub-navbar-nav">
+                                    @can('publish feedback')
+                                        <li class="sub-nav-item">
+                                            <a class="sub-nav-link" href="{{ URL::to('admin/all-feedback') }}">List</a>
+                                        </li>
+                                    @endcan
+                                    @can('add feedback')
+                                        <li class="sub-nav-item">
+                                            <a class="sub-nav-link" href="{{ URL::to('admin/add-feedback') }}">Add</a>
+                                        </li>
+                                    @endcan
+                                </ul>
+                            </div>
+                        </li>
+                    @endif
                 </ul>
             </div>
         </div>
@@ -940,8 +1055,6 @@
     <script src="{{ asset('public/BackEnd/js/pages/dashboard.js') }}"></script>
     <script src="{{ asset('public/BackEnd/js/components/extended-sweetalert.js') }}"></script>
     <script src="{{ asset('public/BackEnd/js/components/form-quilljs.js ') }}"></script>
-
-
 
     @yield('scripts')
 
