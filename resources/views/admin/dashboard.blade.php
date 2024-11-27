@@ -3,6 +3,12 @@
     @include('components.toast')
     <div class="page-content">
 
+        <?php
+        if (Auth('admin')->user()->is_status == 0) {
+            Auth::guard('admin')->logout();
+            return redirect('admin/login');
+        }
+        ?>
         <!-- Start Container Fluid -->
         <div class="container-fluid">
 
