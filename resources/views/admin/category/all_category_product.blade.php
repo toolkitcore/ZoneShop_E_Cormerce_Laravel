@@ -9,15 +9,15 @@
             <div class="row">
                 <!-- @foreach ($categories as $category)
     <div class="col-md-6 col-xl-3">
-                                                                                                                                                                            <div class="card">
-                                                                                                                                                                                <div class="card-body text-center">
-                                                                                                                                                                                    <div class="rounded bg-secondary-subtle d-flex align-items-center justify-content-center mx-auto">
-                                                                                                                                                                                        <img src="{{ asset('public/uploads/category/' . $category->category_image) }}" alt="" class="avatar-xl">
+                                                                                                                                                                                    <div class="card">
+                                                                                                                                                                                        <div class="card-body text-center">
+                                                                                                                                                                                            <div class="rounded bg-secondary-subtle d-flex align-items-center justify-content-center mx-auto">
+                                                                                                                                                                                                <img src="{{ asset('public/uploads/category/' . $category->category_image) }}" alt="" class="avatar-xl">
+                                                                                                                                                                                            </div>
+                                                                                                                                                                                            <h4 class="mt-3 mb-0">{{ $category->category_name }}</h4>
+                                                                                                                                                                                        </div>
                                                                                                                                                                                     </div>
-                                                                                                                                                                                    <h4 class="mt-3 mb-0">{{ $category->category_name }}</h4>
                                                                                                                                                                                 </div>
-                                                                                                                                                                            </div>
-                                                                                                                                                                        </div>
     @endforeach -->
             </div>
 

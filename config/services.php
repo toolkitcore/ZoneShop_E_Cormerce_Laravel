@@ -31,8 +31,9 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
     'google' => [
-        'client_id'     => '907463553697-tq2igri5kpgbu7p65r87adch1jjpmtch.apps.googleusercontent.com',
-        'client_secret' => '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',
-        'redirect'      => env('APP_URL') . '/auth/google/callback'
+        'client_id'     => '382471512002-bqe0jss1ukj737oqhj183trgnfl1bjbs.apps.googleusercontent.com',
+        'client_secret' => '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',
+        // 'redirect' => env('APP_URL') . '/auth/google/callback',
+        'redirect' => 'http://localhost:8080/Project_Laravel/zone_shop/auth/google/callback',
     ],
 ];

@@ -83,9 +83,14 @@
                                 </div>
                             </div>
 
-                            <div class="form-group d-flex align-items-center justify-content-between">
+                            <div class="d-flex align-items-center justify-content-between">
                                 <button type="submit" class="axil-btn btn-bg-primary submit-btn">Register</button>
                             </div>
+                            <a href="{{ route('login-google') }}" class="mt-2 axil-btn btn-bg-secondary"
+                                name="login_google" style="padding: 15px; font-size: 16px; height: 58px;"> Log in with
+                                Google
+                                <img src="https://techdocs.akamai.com/identity-cloud/img/social-login/identity-providers/iconfinder-new-google-favicon-682665.png"
+                                    width="20px" height="15px" alt=""></a>
                         </form>
                     </div>
                 </div>
