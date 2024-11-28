@@ -15,6 +15,7 @@ use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DetailProductController;
+use App\Http\Controllers\LoginGoogleController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\PosterHomeController;
@@ -368,3 +369,6 @@ Route::prefix('admin')->middleware(['auth:admin'])->group(function () {
 // });
 require __DIR__ . '/adminauth.php';
 Route::get('/home', [UserController::class, 'index']);
+
+Route::get('auth/google', [LoginGoogleController::class, 'redirectToGoogle'])->name('login-google');
+Route::get('auth/google/callback', [LoginGoogleController::class, 'handleGoogleCallback']);

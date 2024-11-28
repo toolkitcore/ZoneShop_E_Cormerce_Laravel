@@ -91,6 +91,13 @@
                                             <button class="btn btn-soft-primary" name="login" type="submit"
                                                 style="padding: 15px; font-size: 16px; height: 60px;">Sign In</button>
                                         </div>
+                                        <div class="mb-1 text-center d-grid">
+                                            <a href="{{ route('login-google') }}" class="btn btn-soft-primary"
+                                                name="login_google"
+                                                style="padding: 15px; font-size: 16px; height: 60px;">
+                                                LOGIN USING
+                                                GOOGLE</a>
+                                        </div>
 
                                         <!-- Forgot Password -->
                                         <div class="mt-3 text-center">
