@@ -46,7 +46,7 @@
 
             @if ($errors->any())
                 var errorText =
-                    "<ul>@foreach ($errors->all() as $error)<li>{{ $error }}</li>@endforeach</ul>";
+                    "@foreach ($errors->all() as $error){{ $error }}@endforeach";
                 showToast(errorText, {
                     gravity: 'top',
                     position: 'right',

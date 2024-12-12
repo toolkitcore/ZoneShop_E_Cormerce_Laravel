@@ -57,7 +57,7 @@ class CartController extends Controller
             ]);
             Cart::setGlobalTax(0);
         }
-        Session::flash('success', 'Added to Cart successfully');
+        // Session::flash('success', 'Added to Cart successfully');
         return response()->json(['redirect' => route('gio_hang')]);
     }
     public function Delete_to_cart($rowId)

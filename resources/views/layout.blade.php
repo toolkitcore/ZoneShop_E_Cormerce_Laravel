@@ -586,7 +586,7 @@
             gravity: options.gravity,
             position: options.position,
             duration: options.duration,
-            close: false,
+            close: true,
             backgroundColor: options.backgroundColor,
         }).showToast();
     }

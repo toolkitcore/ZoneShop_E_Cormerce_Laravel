@@ -111,12 +111,19 @@ $(document).ready(function() {
                 quantity: quantity
             },
             success: function(response) {
-                if (response.redirect) {
-                    window.location.href = response.redirect;
-                }
+                // if (response.redirect) {
+                    // window.location.href = response.redirect;
+                    showToast('Added to cart successfully', {
+                        gravity: 'top',
+                        position: 'right',
+                        duration: 5000,
+                        close: false,
+                        backgroundColor: '#28a745'
+                    });
+                // }
                         },
             error: function(xhr) {
-                alert("An error occurred while removing the product.");
+                // alert("An error occurred while removing the product.");
             }
         });
     });
