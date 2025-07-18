@@ -304,7 +304,7 @@
                         </div>
                         <div class="card-body">
                             <div class="d-flex align-items-center gap-2">
-                                <img src="{{ asset('public/BackEnd/images/users/avatar-6.jpg') }}" alt=""
+                                <img src="{{ asset('BackEnd/images/users/avatar-6.jpg') }}" alt=""
                                     class="avatar-md rounded-circle">
                                 <div>
                                     <h5 class="mb-0">Henny K. Mark</h5>
@@ -344,7 +344,7 @@
                             <hr class="my-3">
 
                             <div class="d-flex align-items-center gap-2">
-                                <img src="{{ asset('public/BackEnd/images/users/avatar-4.jpg') }}" alt=""
+                                <img src="{{ asset('BackEnd/images/users/avatar-4.jpg') }}" alt=""
                                     class="avatar-md rounded-circle">
                                 <div>
                                     <h5 class="mb-0">Jorge Herry</h5>

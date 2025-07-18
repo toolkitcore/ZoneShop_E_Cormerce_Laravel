@@ -8,19 +8,19 @@
     <meta name="robots" content="noindex, follow" />
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('public/FrontEnd/images/favicon.png') }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('FrontEnd/images/favicon.png') }}">
 
     <!-- CSS -->
-    <link rel="stylesheet" href="{{ asset('public/FrontEnd/css/vendor/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('public/FrontEnd/css/vendor/font-awesome.css') }}">
-    <link rel="stylesheet" href="{{ asset('public/FrontEnd/css/vendor/flaticon/flaticon.css') }}">
-    <link rel="stylesheet" href="{{ asset('public/FrontEnd/css/vendor/slick.css') }}">
-    <link rel="stylesheet" href="{{ asset('public/FrontEnd/css/vendor/slick-theme.css') }}">
-    <link rel="stylesheet" href="{{ asset('public/FrontEnd/css/vendor/jquery-ui.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('public/FrontEnd/css/vendor/sal.css') }}">
-    <link rel="stylesheet" href="{{ asset('public/FrontEnd/css/vendor/magnific-popup.css') }}">
-    <link rel="stylesheet" href="{{ asset('public/FrontEnd/css/vendor/base.css') }}">
-    <link rel="stylesheet" href="{{ asset('public/FrontEnd/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('FrontEnd/css/vendor/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('FrontEnd/css/vendor/font-awesome.css') }}">
+    <link rel="stylesheet" href="{{ asset('FrontEnd/css/vendor/flaticon/flaticon.css') }}">
+    <link rel="stylesheet" href="{{ asset('FrontEnd/css/vendor/slick.css') }}">
+    <link rel="stylesheet" href="{{ asset('FrontEnd/css/vendor/slick-theme.css') }}">
+    <link rel="stylesheet" href="{{ asset('FrontEnd/css/vendor/jquery-ui.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('FrontEnd/css/vendor/sal.css') }}">
+    <link rel="stylesheet" href="{{ asset('FrontEnd/css/vendor/magnific-popup.css') }}">
+    <link rel="stylesheet" href="{{ asset('FrontEnd/css/vendor/base.css') }}">
+    <link rel="stylesheet" href="{{ asset('FrontEnd/css/style.css') }}">
 
 </head>
 
@@ -32,7 +32,7 @@
             <div class="row align-items-center">
                 <div class="col-sm-4">
                     <a href="{{ URL::to('trang-chu') }}" class="site-logo"><img
-                            src="{{ asset('public/FrontEnd/images/logo/logo.png') }}" alt="logo"></a>
+                            src="{{ asset('FrontEnd/images/logo/logo.png') }}" alt="logo"></a>
                 </div>
                 <div class="col-sm-8">
                     <div class="singin-header-btn">
@@ -103,22 +103,22 @@
     </div>
 
     <!-- JavaScript -->
-    <script src="{{ asset('public/FrontEnd/js/vendor/modernizr.min.js') }}"></script>
-    <script src="{{ asset('public/FrontEnd/js/vendor/jquery.js') }}"></script>
-    <script src="{{ asset('public/FrontEnd/js/vendor/popper.min.js') }}"></script>
-    <script src="{{ asset('public/FrontEnd/js/vendor/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('public/FrontEnd/js/vendor/slick.min.js') }}"></script>
-    <script src="{{ asset('public/FrontEnd/js/vendor/js.cookie.js') }}"></script>
-    <script src="{{ asset('public/FrontEnd/js/vendor/jquery-ui.min.js') }}"></script>
-    <script src="{{ asset('public/FrontEnd/js/vendor/jquery.ui.touch-punch.min.js') }}"></script>
-    <script src="{{ asset('public/FrontEnd/js/vendor/jquery.countdown.min.js') }}"></script>
-    <script src="{{ asset('public/FrontEnd/js/vendor/sal.js') }}"></script>
-    <script src="{{ asset('public/FrontEnd/js/vendor/jquery.magnific-popup.min.js') }}"></script>
-    <script src="{{ asset('public/FrontEnd/js/vendor/imagesloaded.pkgd.min.js') }}"></script>
-    <script src="{{ asset('public/FrontEnd/js/vendor/isotope.pkgd.min.js') }}"></script>
-    <script src="{{ asset('public/FrontEnd/js/vendor/counterup.js') }}"></script>
-    <script src="{{ asset('public/FrontEnd/js/vendor/waypoints.min.js') }}"></script>
-    <script src="{{ asset('public/FrontEnd/js/main.js') }}"></script>
+    <script src="{{ asset('FrontEnd/js/vendor/modernizr.min.js') }}"></script>
+    <script src="{{ asset('FrontEnd/js/vendor/jquery.js') }}"></script>
+    <script src="{{ asset('FrontEnd/js/vendor/popper.min.js') }}"></script>
+    <script src="{{ asset('FrontEnd/js/vendor/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('FrontEnd/js/vendor/slick.min.js') }}"></script>
+    <script src="{{ asset('FrontEnd/js/vendor/js.cookie.js') }}"></script>
+    <script src="{{ asset('FrontEnd/js/vendor/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('FrontEnd/js/vendor/jquery.ui.touch-punch.min.js') }}"></script>
+    <script src="{{ asset('FrontEnd/js/vendor/jquery.countdown.min.js') }}"></script>
+    <script src="{{ asset('FrontEnd/js/vendor/sal.js') }}"></script>
+    <script src="{{ asset('FrontEnd/js/vendor/jquery.magnific-popup.min.js') }}"></script>
+    <script src="{{ asset('FrontEnd/js/vendor/imagesloaded.pkgd.min.js') }}"></script>
+    <script src="{{ asset('FrontEnd/js/vendor/isotope.pkgd.min.js') }}"></script>
+    <script src="{{ asset('FrontEnd/js/vendor/counterup.js') }}"></script>
+    <script src="{{ asset('FrontEnd/js/vendor/waypoints.min.js') }}"></script>
+    <script src="{{ asset('FrontEnd/js/main.js') }}"></script>
 
 </body>
 

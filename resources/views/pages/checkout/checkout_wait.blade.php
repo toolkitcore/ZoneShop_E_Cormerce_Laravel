@@ -18,7 +18,7 @@
                     </div>
                     <div class="col-lg-6">
                         <div class="thumbnail" data-sal="zoom-in" data-sal-duration="800" data-sal-delay="400">
-                            <img src="{{ asset('public/FrontEnd/images/others/confirm_order.gif') }}" alt="wait">
+                            <img src="{{ asset('FrontEnd/images/others/confirm_order.gif') }}" alt="wait">
                         </div>
                     </div>
                 </div>

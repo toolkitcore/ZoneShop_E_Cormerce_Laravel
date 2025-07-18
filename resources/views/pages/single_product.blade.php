@@ -158,21 +158,21 @@
                                         <ul class="pro-des-features">
                                             <li class="single-features">
                                                 <div class="icon">
-                                                    <img src="{{ asset('public/FrontEnd/images/product/product-thumb/icon-3.png') }}"
+                                                    <img src="{{ asset('FrontEnd/images/product/product-thumb/icon-3.png') }}"
                                                         alt="icon">
                                                 </div>
                                                 Easy Returns
                                             </li>
                                             <li class="single-features">
                                                 <div class="icon">
-                                                    <img src="{{ asset('public/FrontEnd/images/product/product-thumb/icon-2.png') }}"
+                                                    <img src="{{ asset('FrontEnd/images/product/product-thumb/icon-2.png') }}"
                                                         alt="icon">
                                                 </div>
                                                 Quality Service
                                             </li>
                                             <li class="single-features">
                                                 <div class="icon">
-                                                    <img src="{{ asset('public/FrontEnd/images/product/product-thumb/icon-1.png') }}"
+                                                    <img src="{{ asset('FrontEnd/images/product/product-thumb/icon-1.png') }}"
                                                         alt="icon">
                                                 </div>
                                                 Original Product

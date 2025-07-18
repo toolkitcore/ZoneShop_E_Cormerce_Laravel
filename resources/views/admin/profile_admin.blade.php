@@ -10,7 +10,7 @@
                     <div class="card overflow-hidden">
                         <div class="card-body">
                             <div class="bg-primary profile-bg rounded-top position-relative mx-n3 mt-n3">
-                                <img src="{{ asset('public/uploads/profile/admin_profile.png') }}" alt=""
+                                <img src="{{ asset('uploads/profile/admin_profile.png') }}" alt=""
                                     class="avatar-xl border border-light border-3 rounded-circle position-absolute top-100 start-0 translate-middle ms-5">
                             </div>
                             <div class="mt-5 d-flex flex-wrap align-items-center justify-content-between">

@@ -53,8 +53,8 @@
                                 } else {
                                 ?>
                                         <img id="imagePreview"
-                                            src="{{ 'public/uploads/category/' . $category_item->category_image }}"
-                                            alt="{{ 'public/uploads/category/' . $category_item->category_image }}"
+                                            src="{{ 'uploads/category/' . $category_item->category_image }}"
+                                            alt="{{ 'uploads/category/' . $category_item->category_image }}"
                                             style="display: none; max-width:300px;" />
                                         <?php
                                 }

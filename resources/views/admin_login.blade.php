@@ -13,19 +13,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
     <!-- App favicon -->
-    <link rel="shortcut icon" href="{{ asset('public/BackEnd/images/favicon.ico') }}">
+    <link rel="shortcut icon" href="{{ asset('BackEnd/images/favicon.ico') }}">
 
     <!-- Vendor css (Require in all Page) -->
-    <link href="{{ asset('public/BackEnd/css/vendor.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('BackEnd/css/vendor.min.css') }}" rel="stylesheet" type="text/css" />
 
     <!-- Icons css (Require in all Page) -->
-    <link href="{{ asset('public/BackEnd/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('BackEnd/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
 
     <!-- App css (Require in all Page) -->
-    <link href="{{ asset('public/BackEnd/css/app.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('BackEnd/css/app.min.css') }}" rel="stylesheet" type="text/css" />
 
     <!-- Theme Config js (Require in all Page) -->
-    <script src="{{ asset('public/BackEnd/js/config.js') }}"></script>
+    <script src="{{ asset('BackEnd/js/config.js') }}"></script>
 </head>
 
 <body class="h-100">
@@ -38,12 +38,12 @@
                             <div class="d-flex flex-column h-100 justify-content-center">
                                 <div class="auth-logo mb-4">
                                     <a href="{{ URL::to('/trang-chu') }}" class="logo-dark">
-                                        <img src="{{ asset('public/BackEnd/images/logo-dark.png') }}" height="24"
+                                        <img src="{{ asset('BackEnd/images/logo-dark.png') }}" height="24"
                                             alt="logo dark">
                                     </a>
 
                                     <a href="{{ URL::to('/trang-chu') }}" class="logo-light">
-                                        <img src="{{ asset('public/BackEnd/images/logo-light.png') }}" height="24"
+                                        <img src="{{ asset('BackEnd/images/logo-light.png') }}" height="24"
                                             alt="logo light">
                                     </a>
                                 </div>

@@ -13,7 +13,7 @@
 
 
     <!-- App favicon -->
-    <link rel="shortcut icon" href="{{ asset('public/BackEnd/images/favicon.ico') }}">
+    <link rel="shortcut icon" href="{{ asset('BackEnd/images/favicon.ico') }}">
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
 
@@ -23,16 +23,16 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.3/jquery-ui.min.js"></script>
 
     <!-- Vendor css (Require in all Page) -->
-    <link href="{{ asset('public/BackEnd/css/vendor.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('BackEnd/css/vendor.min.css') }}" rel="stylesheet" type="text/css" />
 
     <!-- Icons css (Require in all Page) -->
-    <link href="{{ asset('public/BackEnd/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('BackEnd/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
 
     <!-- App css (Require in all Page) -->
-    <link href="{{ asset('public/BackEnd/css/app.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('BackEnd/css/app.min.css') }}" rel="stylesheet" type="text/css" />
 
     <!-- Theme Config js (Require in all Page) -->
-    <script src="{{ asset('public/BackEnd/js/config.js') }}"></script>
+    <script src="{{ asset('BackEnd/js/config.js') }}"></script>
 </head>
 
 <body>
@@ -206,7 +206,7 @@
                                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="d-flex align-items-center">
                                     <img class="rounded-circle" width="32"
-                                        src="{{ asset('public/uploads/profile/admin_profile.png') }}" alt="avatar-3">
+                                        src="{{ asset('uploads/profile/admin_profile.png') }}" alt="avatar-3">
                                 </span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
@@ -335,7 +335,7 @@
                                 <div class="mb-4">
                                     <span
                                         class="position-absolute start-0 translate-middle-x bg-success bg-gradient d-inline-flex align-items-center justify-content-center rounded-circle text-light fs-20"><img
-                                            src="{{ asset('public/BackEnd/images/users/avatar-7.jpg') }}"
+                                            src="{{ asset('BackEnd/images/users/avatar-7.jpg') }}"
                                             alt="avatar-5" class="avatar-sm rounded-circle"></span>
                                     <div class="ms-2">
                                         <h5 class="mb-0 text-dark fw-semibold fs-15 lh-base">Alex Smith Attached Photos
@@ -343,19 +343,19 @@
                                         <div class="row g-2 mt-2">
                                             <div class="col-lg-4">
                                                 <a href="#!">
-                                                    <img src="{{ asset('public/BackEnd/images/small/img-6.jpg') }}"
+                                                    <img src="{{ asset('BackEnd/images/small/img-6.jpg') }}"
                                                         alt="" class="img-fluid rounded">
                                                 </a>
                                             </div>
                                             <div class="col-lg-4">
                                                 <a href="#!">
-                                                    <img src="{{ asset('public/BackEnd/images/small/img-3.jpg') }}"
+                                                    <img src="{{ asset('BackEnd/images/small/img-3.jpg') }}"
                                                         alt="" class="img-fluid rounded">
                                                 </a>
                                             </div>
                                             <div class="col-lg-4">
                                                 <a href="#!">
-                                                    <img src="{{ asset('public/BackEnd/images/small/img-4.jpg') }}"
+                                                    <img src="{{ asset('BackEnd/images/small/img-4.jpg') }}"
                                                         alt="" class="img-fluid rounded">
                                                 </a>
                                             </div>
@@ -368,7 +368,7 @@
                                 <div class="mb-4">
                                     <span
                                         class="position-absolute start-0 translate-middle-x bg-success bg-gradient d-inline-flex align-items-center justify-content-center rounded-circle text-light fs-20"><img
-                                            src="{{ asset('public/BackEnd/images/users/avatar-6.jpg') }}"
+                                            src="{{ asset('BackEnd/images/users/avatar-6.jpg') }}"
                                             alt="avatar-5" class="avatar-sm rounded-circle"></span>
                                     <div class="ms-2">
                                         <h5 class="mb-0 text-dark fw-semibold fs-15 lh-base">Rebecca J. added a new
@@ -532,13 +532,13 @@
             <!-- Sidebar Logo -->
             <div class="logo-box">
                 <a href="{{ URL::to('/trang-chu') }}" class="logo-dark">
-                    <img src="{{ asset('public/BackEnd/images/logo-sm.png') }}" class="logo-sm" alt="logo sm">
-                    <img src="{{ asset('public/BackEnd/images/logo-dark.png') }}" class="logo-lg" alt="logo dark">
+                    <img src="{{ asset('BackEnd/images/logo-sm.png') }}" class="logo-sm" alt="logo sm">
+                    <img src="{{ asset('BackEnd/images/logo-dark.png') }}" class="logo-lg" alt="logo dark">
                 </a>
 
                 <a href="{{ URL::to('/trang-chu') }}" class="logo-light">
-                    <img src="{{ asset('public/BackEnd/images/logo-sm.png') }}" class="logo-sm" alt="logo sm">
-                    <img src="{{ asset('public/BackEnd/images/logo-light.png') }}" class="logo-lg" alt="logo light">
+                    <img src="{{ asset('BackEnd/images/logo-sm.png') }}" class="logo-sm" alt="logo sm">
+                    <img src="{{ asset('BackEnd/images/logo-light.png') }}" class="logo-lg" alt="logo light">
                 </a>
             </div>
 
@@ -1041,20 +1041,20 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 
     <!-- Vendor Javascript (Require in all Page) -->
-    <script src="{{ asset('public/BackEnd/js/vendor.js') }}"></script>
+    <script src="{{ asset('BackEnd/js/vendor.js') }}"></script>
     <!-- App Javascript (Require in all Page) -->
-    <script src="{{ asset('public/BackEnd/js/app.js') }}"></script>
+    <script src="{{ asset('BackEnd/js/app.js') }}"></script>
 
 
     <!-- Vector Map Js -->
-    <script src="{{ asset('public/BackEnd/vendor/jsvectormap/js/jsvectormap.min.js') }}"></script>
-    <script src="{{ asset('public/BackEnd/vendor/jsvectormap/maps/world-merc.js') }}"></script>
-    <script src="{{ asset('public/BackEnd/vendor/jsvectormap/maps/world.js') }}"></script>
+    <script src="{{ asset('BackEnd/vendor/jsvectormap/js/jsvectormap.min.js') }}"></script>
+    <script src="{{ asset('BackEnd/vendor/jsvectormap/maps/world-merc.js') }}"></script>
+    <script src="{{ asset('BackEnd/vendor/jsvectormap/maps/world.js') }}"></script>
 
-    <script src="{{ asset('public/BackEnd/js/pages/product-grid.js') }}"></script>
-    <script src="{{ asset('public/BackEnd/js/pages/dashboard.js') }}"></script>
-    <script src="{{ asset('public/BackEnd/js/components/extended-sweetalert.js') }}"></script>
-    <script src="{{ asset('public/BackEnd/js/components/form-quilljs.js ') }}"></script>
+    <script src="{{ asset('BackEnd/js/pages/product-grid.js') }}"></script>
+    <script src="{{ asset('BackEnd/js/pages/dashboard.js') }}"></script>
+    <script src="{{ asset('BackEnd/js/components/extended-sweetalert.js') }}"></script>
+    <script src="{{ asset('BackEnd/js/components/form-quilljs.js ') }}"></script>
 
     @yield('scripts')
 

@@ -52,7 +52,7 @@
                                             <div class="comment-body">
                                                 <div class="single-comment">
                                                     <div class="comment-img">
-                                                        <img src="{{ URL::to('public/FrontEnd/images/User/user-2.png') }}"
+                                                        <img src="{{ URL::to('FrontEnd/images/User/user-2.png') }}"
                                                             alt="Author Images" width="50px">
                                                     </div>
                                                     <div class="comment-inner">
@@ -287,7 +287,7 @@
                                                     <div class="comment-body">
                                                         <div class="single-comment">
                                                             <div class="comment-img">
-                                                                <img src="{{ URL::to('public/FrontEnd/images/User/user-2.png') }}" alt="Author Images" width="50px">
+                                                                <img src="{{ URL::to('FrontEnd/images/User/user-2.png') }}" alt="Author Images" width="50px">
                                                             </div>
                                                             <div class="comment-inner">
                                                                 <h6 class="commenter">

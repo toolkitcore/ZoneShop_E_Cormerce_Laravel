@@ -34,7 +34,7 @@
                     <div class="axil-dashboard-author">
                         <div class="media">
                             <div class="thumbnail">
-                                <img src="{{ asset('public/uploads/User/user-2.png') }}" alt="pic" width="80px">
+                                <img src="{{ asset('uploads/User/user-2.png') }}" alt="pic" width="80px">
                             </div>
                             <div class="media-body">
                                 <h5 class="title mb-0">Hello {{ $name_account }}</h5>

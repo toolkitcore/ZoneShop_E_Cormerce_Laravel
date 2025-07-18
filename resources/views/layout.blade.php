@@ -16,7 +16,7 @@
     <meta name="add-cart-item-url" content="{{ url('add-cart-item') }}">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="{{ asset('/public/FrontEnd/images/favicon.ico') }}">
+    <link rel="icon" type="image/x-icon" href="{{ asset('FrontEnd/images/favicon.ico') }}">
 
     <!-- CSS
     ============================================ -->
@@ -34,16 +34,16 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 
-    <link rel="stylesheet" href="{{ asset('public/FrontEnd/css/vendor/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('public/FrontEnd/css/vendor/font-awesome.css') }}">
-    <link rel="stylesheet" href="{{ asset('public/FrontEnd/css/vendor/flaticon/flaticon.css') }}">
-    <link rel="stylesheet" href="{{ asset('public/FrontEnd/css/vendor/slick.css') }}">
-    <link rel="stylesheet" href="{{ asset('public/FrontEnd/css/vendor/slick-theme.css') }}">
-    <link rel="stylesheet" href="{{ asset('public/FrontEnd/css/vendor/jquery-ui.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('public/FrontEnd/css/vendor/sal.css') }}">
-    <link rel="stylesheet" href="{{ asset('public/FrontEnd/css/vendor/magnific-popup.css') }}">
-    <link rel="stylesheet" href="{{ asset('public/FrontEnd/css/vendor/base.css') }}">
-    <link rel="stylesheet" href="{{ asset('public/FrontEnd/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('FrontEnd/css/vendor/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('FrontEnd/css/vendor/font-awesome.css') }}">
+    <link rel="stylesheet" href="{{ asset('FrontEnd/css/vendor/flaticon/flaticon.css') }}">
+    <link rel="stylesheet" href="{{ asset('FrontEnd/css/vendor/slick.css') }}">
+    <link rel="stylesheet" href="{{ asset('FrontEnd/css/vendor/slick-theme.css') }}">
+    <link rel="stylesheet" href="{{ asset('FrontEnd/css/vendor/jquery-ui.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('FrontEnd/css/vendor/sal.css') }}">
+    <link rel="stylesheet" href="{{ asset('FrontEnd/css/vendor/magnific-popup.css') }}">
+    <link rel="stylesheet" href="{{ asset('FrontEnd/css/vendor/base.css') }}">
+    <link rel="stylesheet" href="{{ asset('FrontEnd/css/style.css') }}">
 
 </head>
 
@@ -111,10 +111,10 @@
                 <div class="header-navbar">
                     <div class="header-brand">
                         <a href="{{ URL::to('/trang-chu') }}" class="logo logo-dark">
-                            <img src="{{ asset('public/FrontEnd/images/logo/logo.png') }}" alt="Site Logo">
+                            <img src="{{ asset('FrontEnd/images/logo/logo.png') }}" alt="Site Logo">
                         </a>
                         <a href="{{ URL::to('/trang-chu') }}" class="logo logo-light">
-                            <img src="{{ asset('public/FrontEnd/images/logo/logo-light.png') }}" alt="Site Logo">
+                            <img src="{{ asset('FrontEnd/images/logo/logo-light.png') }}" alt="Site Logo">
                         </a>
                     </div>
                     <div class="header-main-nav">
@@ -123,7 +123,7 @@
                             <button class="mobile-close-btn mobile-nav-toggler"><i class="fas fa-times"></i></button>
                             <div class="mobile-nav-brand">
                                 <a href="{{ URL::to('/trang-chu') }}" class="logo">
-                                    <img src="{{ asset('public/FrontEnd/images/logo/logo.png') }}" alt="Site Logo">
+                                    <img src="{{ asset('FrontEnd/images/logo/logo.png') }}" alt="Site Logo">
                                 </a>
                             </div>
                             <ul class="mainmenu">
@@ -311,7 +311,7 @@
                             <h5 class="widget-title">Support</h5>
                             <!-- <div class="logo mb--30">
                             <a href="{{ URL::to('/trang-chu') }}">
-                                <img class="light-logo" src="{{ asset('public/FrontEnd/images/logo/logo.png') }}" alt="Logo Images">
+                                <img class="light-logo" src="{{ asset('FrontEnd/images/logo/logo.png') }}" alt="Logo Images">
                             </a>
                         </div> -->
                             <div class="inner">
@@ -376,7 +376,7 @@
                                             class="single-product-thumbnail product-large-thumbnail axil-product thumbnail-badge zoom-gallery">
                                             <div class="thumbnail" id="large-image-container">
                                                 <img class="view-picture"
-                                                    src="{{ asset('public/FrontEnd/images/product/product-big-01.png') }}"
+                                                    src="{{ asset('FrontEnd/images/product/product-big-01.png') }}"
                                                     alt="Product Images">
                                                 <div class="label-block label-right">
                                                     <div class="product-badget view-discount">20% OFF</div>
@@ -391,7 +391,7 @@
                                     <div class="inner">
                                         <div class="product-rating">
                                             <div class="star-rating">
-                                                <img src="{{ asset('public/FrontEnd/images/icons/rate.png') }}"
+                                                <img src="{{ asset('FrontEnd/images/icons/rate.png') }}"
                                                     alt="Rate Images">
                                             </div>
                                             <div class="review-link">
@@ -470,9 +470,9 @@
     </div>
     <!-- Header Search Modal End -->
     <?php
-    
+
     use Gloudemans\Shoppingcart\Facades\Cart;
-    
+
     $content = Cart::content();
     ?>
 
@@ -548,29 +548,29 @@
 ============================================ -->
 
     <!-- Modernizer JS -->
-    <script src="{{ asset('public/FrontEnd/js/ajax/cart.js') }}"></script>
-    <script src="{{ asset('public/FrontEnd/js/vendor/modernizr.min.js') }}"></script>
+    <script src="{{ asset('FrontEnd/js/ajax/cart.js') }}"></script>
+    <script src="{{ asset('FrontEnd/js/vendor/modernizr.min.js') }}"></script>
     <!-- jQuery JS -->
-    <script src="{{ asset('public/FrontEnd/js/vendor/jquery.js') }}"></script>
+    <script src="{{ asset('FrontEnd/js/vendor/jquery.js') }}"></script>
     <!-- Bootstrap JS -->
-    <script src="{{ asset('public/FrontEnd/js/vendor/popper.min.js') }}"></script>
-    <script src="{{ asset('public/FrontEnd/js/vendor/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('public/FrontEnd/js/vendor/slick.min.js') }}"></script>
-    <script src="{{ asset('public/FrontEnd/js/vendor/js.cookie.js') }}"></script>
-    <!-- <script src="{{ asset('public/FrontEnd/js/vendor/jquery.style.switcher.js') }}"></script> -->
-    <script src="{{ asset('public/FrontEnd/js/vendor/jquery-ui.min.js') }}"></script>
-    <script src="{{ asset('public/FrontEnd/js/vendor/jquery.ui.touch-punch.min.js') }}"></script>
-    <script src="{{ asset('public/FrontEnd/js/vendor/jquery.countdown.min.js') }}"></script>
-    <script src="{{ asset('public/FrontEnd/js/vendor/sal.js') }}"></script>
-    <script src="{{ asset('public/FrontEnd/js/vendor/jquery.magnific-popup.min.js') }}"></script>
-    <script src="{{ asset('public/FrontEnd/js/vendor/imagesloaded.pkgd.min.js') }}"></script>
-    <script src="{{ asset('public/FrontEnd/js/vendor/isotope.pkgd.min.js') }}"></script>
-    <script src="{{ asset('public/FrontEnd/js/vendor/counterup.js') }}"></script>
-    <script src="{{ asset('public/FrontEnd/js/vendor/waypoints.min.js') }}"></script>
+    <script src="{{ asset('FrontEnd/js/vendor/popper.min.js') }}"></script>
+    <script src="{{ asset('FrontEnd/js/vendor/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('FrontEnd/js/vendor/slick.min.js') }}"></script>
+    <script src="{{ asset('FrontEnd/js/vendor/js.cookie.js') }}"></script>
+    <!-- <script src="{{ asset('FrontEnd/js/vendor/jquery.style.switcher.js') }}"></script> -->
+    <script src="{{ asset('FrontEnd/js/vendor/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('FrontEnd/js/vendor/jquery.ui.touch-punch.min.js') }}"></script>
+    <script src="{{ asset('FrontEnd/js/vendor/jquery.countdown.min.js') }}"></script>
+    <script src="{{ asset('FrontEnd/js/vendor/sal.js') }}"></script>
+    <script src="{{ asset('FrontEnd/js/vendor/jquery.magnific-popup.min.js') }}"></script>
+    <script src="{{ asset('FrontEnd/js/vendor/imagesloaded.pkgd.min.js') }}"></script>
+    <script src="{{ asset('FrontEnd/js/vendor/isotope.pkgd.min.js') }}"></script>
+    <script src="{{ asset('FrontEnd/js/vendor/counterup.js') }}"></script>
+    <script src="{{ asset('FrontEnd/js/vendor/waypoints.min.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
 
     <!-- Main JS -->
-    <script src="{{ asset('public/FrontEnd/js/main.js') }}"></script>
+    <script src="{{ asset('FrontEnd/js/main.js') }}"></script>
     <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
     <df-messenger intent="WELCOME"
         chat-icon="https://github.com/DucTrinh244/Wallpapers/blob/main/zoneshop/icon/chatbox.png?raw=true"

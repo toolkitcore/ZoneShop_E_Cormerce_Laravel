@@ -176,9 +176,9 @@
                 </div>
             </div>
             <ul class="shape-group">
-                <li class="shape-1"><img src="{{ asset('public/FrontEnd/images/others/shape-1.png') }}" alt="Shape">
+                <li class="shape-1"><img src="{{ asset('FrontEnd/images/others/shape-1.png') }}" alt="Shape">
                 </li>
-                <li class="shape-2"><img src="{{ asset('public/FrontEnd/images/others/shape-2.png') }}" alt="Shape">
+                <li class="shape-2"><img src="{{ asset('FrontEnd/images/others/shape-2.png') }}" alt="Shape">
                 </li>
             </ul>
         </div>
@@ -195,7 +195,7 @@
                         <div class="slick-single-layout">
                             <div class="categrie-product" data-sal="zoom-out" data-sal-delay="200" data-sal-duration="500">
                                 <a href="{{ URL::to('danh-muc-san-pham-' . $item->category_id) }}">
-                                    <img class="img-fluid" src="{{ 'public/uploads/category/' . $item->category_image }}"
+                                    <img class="img-fluid" src="{{ 'uploads/category/' . $item->category_image }}"
                                         alt="product categorie">
                                     <h6 class="cat-title">{{ $item->category_name }}</h6>
                                 </a>
@@ -744,7 +744,7 @@
                     <div class="col">
                         <div class="service-box">
                             <div class="icon">
-                                <img src="{{ asset('public/FrontEnd/images/icons/service6.png') }}" alt="Service">
+                                <img src="{{ asset('FrontEnd/images/icons/service6.png') }}" alt="Service">
                             </div>
                             <h6 class="title">Fast &amp; Secure Delivery</h6>
                         </div>
@@ -752,7 +752,7 @@
                     <div class="col">
                         <div class="service-box">
                             <div class="icon">
-                                <img src="{{ asset('public/FrontEnd/images/icons/service7.png') }}" alt="Service">
+                                <img src="{{ asset('FrontEnd/images/icons/service7.png') }}" alt="Service">
                             </div>
                             <h6 class="title">100% Guarantee On Product</h6>
                         </div>
@@ -760,7 +760,7 @@
                     <div class="col">
                         <div class="service-box">
                             <div class="icon">
-                                <img src="{{ asset('public/FrontEnd/images/icons/service8.png') }}" alt="Service">
+                                <img src="{{ asset('FrontEnd/images/icons/service8.png') }}" alt="Service">
                             </div>
                             <h6 class="title">24 Hour Return Policy</h6>
                         </div>
@@ -768,7 +768,7 @@
                     <div class="col">
                         <div class="service-box">
                             <div class="icon">
-                                <img src="{{ asset('public/FrontEnd/images/icons/service9.png') }}" alt="Service">
+                                <img src="{{ asset('FrontEnd/images/icons/service9.png') }}" alt="Service">
                             </div>
                             <h6 class="title">24 Hour Return Policy</h6>
                         </div>
@@ -776,7 +776,7 @@
                     <div class="col">
                         <div class="service-box">
                             <div class="icon">
-                                <img src="{{ asset('public/FrontEnd/images/icons/service10.png') }}" alt="Service">
+                                <img src="{{ asset('FrontEnd/images/icons/service10.png') }}" alt="Service">
                             </div>
                             <h6 class="title">Next Level Pro Quality</h6>
                         </div>

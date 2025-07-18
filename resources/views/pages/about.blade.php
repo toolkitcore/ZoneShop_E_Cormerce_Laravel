@@ -28,7 +28,7 @@
                     <div class="col-xl-4 col-lg-6">
                         <div class="about-thumbnail">
                             <div class="thumbnail">
-                                <img src="{{ asset('public/FrontEnd/images/about/about-01.png') }}" alt="About Us">
+                                <img src="{{ asset('FrontEnd/images/about/about-01.png') }}" alt="About Us">
                             </div>
                         </div>
                     </div>
@@ -67,7 +67,7 @@
                     <div class="col-lg-4">
                         <div class="about-info-box">
                             <div class="thumb">
-                                <img src="{{ asset('public/FrontEnd/images/about/shape-01.png') }}" alt="Shape">
+                                <img src="{{ asset('FrontEnd/images/about/shape-01.png') }}" alt="Shape">
                             </div>
                             <div class="content">
                                 <h6 class="title">40,000+ Happy Customer</h6>
@@ -79,7 +79,7 @@
                     <div class="col-lg-4">
                         <div class="about-info-box">
                             <div class="thumb">
-                                <img src="{{ asset('public/FrontEnd/images/about/shape-02.png') }}" alt="Shape">
+                                <img src="{{ asset('FrontEnd/images/about/shape-02.png') }}" alt="Shape">
                             </div>
                             <div class="content">
                                 <h6 class="title">16 Years of Experiences</h6>
@@ -91,7 +91,7 @@
                     <div class="col-lg-4">
                         <div class="about-info-box">
                             <div class="thumb">
-                                <img src="{{ asset('public/FrontEnd/images/about/shape-03.png') }}" alt="Shape">
+                                <img src="{{ asset('FrontEnd/images/about/shape-03.png') }}" alt="Shape">
                             </div>
                             <div class="content">
                                 <h6 class="title">12 Awards Won</h6>
@@ -110,7 +110,7 @@
                 <div class="row align-items-center mb--80 mb_sm--60">
                     <div class="col-lg-5">
                         <div class="about-thumbnail">
-                            <img src="{{ asset('public/FrontEnd/images/about/about-02.png') }}" alt="about">
+                            <img src="{{ asset('FrontEnd/images/about/about-02.png') }}" alt="about">
                         </div>
                     </div>
                     <div class="col-lg-7">
@@ -128,7 +128,7 @@
                 <div class="row align-items-center">
                     <div class="col-lg-5 order-lg-2">
                         <div class="about-thumbnail">
-                            <img src="{{ asset('public/FrontEnd/images/about/about-03.png') }}" alt="about">
+                            <img src="{{ asset('FrontEnd/images/about/about-03.png') }}" alt="about">
                         </div>
                     </div>
                     <div class="col-lg-7 order-lg-1">

@@ -21,7 +21,7 @@
                     </div>
                     <div class="col-lg-6">
                         <div class="thumbnail" data-sal="zoom-in" data-sal-duration="800" data-sal-delay="400">
-                            <img src="{{ asset('public/FrontEnd/images/others/checkout_success.png') }}" alt="success">
+                            <img src="{{ asset('FrontEnd/images/others/checkout_success.png') }}" alt="success">
                         </div>
                     </div>
                 </div>

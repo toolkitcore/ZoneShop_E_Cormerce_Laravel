@@ -3,9 +3,9 @@
     @include('components.toast')
     <main class="main-wrapper">
         <?php
-        
+
         use Gloudemans\Shoppingcart\Facades\Cart;
-        
+
         $content = Cart::content();
         ?>
         <!-- Start Checkout Area  -->
@@ -115,7 +115,7 @@
                                         <input type="radio" id="radio4" name="payment" value="pay_online">
                                         <label for="radio4">Direct bank transfer</label>
                                     </div>
-                                    <img src="{{ asset('public/FrontEnd/images/vnpay.png') }}" alt=""
+                                    <img src="{{ asset('FrontEnd/images/vnpay.png') }}" alt=""
                                         width="200px">
                                 </div>
                                 <div class="single-payment">
